@@ -20,6 +20,22 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Render Marp deck (HTML + PDF)
+        run: |
+          npx --yes @marp-team/marp-cli@latest \
+            docs/slides/soutenance-slides.md \
+            --html --allow-local-files \
+            -o docs/slides/soutenance-slides.html
+          npx --yes @marp-team/marp-cli@latest \
+            docs/slides/soutenance-slides.md \
+            --pdf --allow-local-files \
+            -o docs/slides/soutenance-slides.pdf
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'

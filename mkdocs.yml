@@ -6,6 +6,9 @@ repo_url: https://github.com/Keutin/recipe-shelter-mkdocs-poc
 repo_name: Keutin/recipe-shelter-mkdocs-poc
 edit_uri: edit/main/docs/
 
+exclude_docs: |
+  slides/soutenance-slides.md
+
 theme:
   name: material
   language: fr
