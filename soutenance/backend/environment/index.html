@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/environment/">
       
       
-        <link rel="prev" href="../data-dictionary/">
+        <link rel="prev" href="../tests/">
       
       
-        <link rel="next" href="../errors/">
+        <link rel="next" href="../openapi/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Variables d'environnement du backend Recipe Shelter - Recipe Shelter — Documentation (POC sandbox)</title>
+        <title>Variables d'environnement - Recipe Shelter — Documentation (POC sandbox)</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Variables d'environnement du backend Recipe Shelter
+              Variables d'environnement
             
           </span>
         </div>
@@ -625,6 +625,343 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../data-dictionary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data dictionary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Variables d'environnement
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Variables d'environnement
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-pourquoi-un-module-envts-centralise" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pourquoi un module env.ts centralisé
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-architecture-du-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Architecture du parsing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Architecture du parsing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-readstringvalue-fallback-envts27-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 readString(value, fallback) — [env.ts:27-29`
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-readnumbervalue-fallback-envts3-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 readNumber(value, fallback) — [env.ts:3-10`
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-readbooleanvalue-fallback-envts12-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 readBoolean(value, fallback) — [env.ts:12-25`
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-readoptionalstringvalue-envts31-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 readOptionalString(value) — [env.ts:31-33`
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-readsamesitevalue-fallback-envts35-42" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 readSameSite(value, fallback) — [env.ts:35-42`
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-readdurationmsvalue-fallback-envts44-65" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 readDurationMs(value, fallback) — [env.ts:44-65`
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-le-cas-particulier-jwt_secret-fail-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7 Le cas particulier JWT_SECRET (fail-fast)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-inventaire-complet-des-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Inventaire complet des variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Inventaire complet des variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Runtime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-database-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Database (MySQL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-authentification-jwt-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Authentification (JWT + session)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-rate-limiting-anti-brute-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Rate limiting (anti brute force)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-cors-et-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 CORS et frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-smtp-envoi-demails" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 SMTP (envoi d'emails)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7 Contact
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-variables-secretes-vs-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Variables secrètes vs configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-comportement-environnement-dependant" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Comportement environnement-dépendant
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Comportement environnement-dépendant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-auth_session_cookie_secure-depend-de-node_env" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 AUTH_SESSION_COOKIE_SECURE dépend de NODE_ENV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-cors_allowed_origins-doit-etre-reecrit-en-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 CORS_ALLOWED_ORIGINS doit être réécrit en production
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-auth_session_cookie_max_age_ms-derive-de-jwt_expires_in" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 AUTH_SESSION_COOKIE_MAX_AGE_MS dérivé de JWT_EXPIRES_IN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-preparation-au-deploiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Préparation au déploiement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-points-damelioration-identifies" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Points d'amélioration identifiés
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -640,10 +977,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_8" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_8" id="__nav_2_1_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -654,8 +991,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_8">
             <span class="md-nav__icon md-icon"></span>
             OpenAPI (Redoc)
           </label>
@@ -711,10 +1048,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_9" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_9" id="__nav_2_1_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -725,8 +1062,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_6">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_9">
             <span class="md-nav__icon md-icon"></span>
             Diagrammes
           </label>
@@ -816,6 +1153,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g5-erd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G5 — ERD (base de données)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g6-pipeline-erreur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G6 — Pipeline d'erreur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g7-slug-two-phase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G7 — Slug en deux phases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g8-user-lifecycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G8 — Lifecycle utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -845,10 +1266,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_10" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_7" id="__nav_2_1_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_10" id="__nav_2_1_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -859,8 +1280,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_7">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_10">
             <span class="md-nav__icon md-icon"></span>
             UML
           </label>
@@ -1021,10 +1442,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_8" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_11" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_8" id="__nav_2_1_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_11" id="__nav_2_1_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1035,8 +1456,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_8">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_11">
             <span class="md-nav__icon md-icon"></span>
             ADR (décisions)
           </label>
@@ -1218,10 +1639,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_9" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_12" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_9" id="__nav_2_1_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_12" id="__nav_2_1_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1232,8 +1653,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_9">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_12">
             <span class="md-nav__icon md-icon"></span>
             Routes API
           </label>
@@ -1289,10 +1710,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_10" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_13" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_10" id="__nav_2_1_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_13" id="__nav_2_1_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1303,8 +1724,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_10">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_13">
             <span class="md-nav__icon md-icon"></span>
             Postman
           </label>
@@ -1360,10 +1781,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_11" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_14" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_11" id="__nav_2_1_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_14" id="__nav_2_1_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1374,8 +1795,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_11">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_14">
             <span class="md-nav__icon md-icon"></span>
             Base de données
           </label>
@@ -1512,7 +1933,7 @@
             
   
   <span class="md-ellipsis">
-    Audit Lighthouse + RGAA
+    ADR (décisions Bloc 3)
   </span>
   
 
@@ -1521,6 +1942,182 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            ADR (décisions Bloc 3)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vue d'ensemble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-006-angular-signals-standalone/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-006 — Signals + Standalone
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-007-ssr-per-route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-007 — SSR par route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-008-typescript-strict/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-008 — TypeScript strict
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-009-vitest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-009 — Vitest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-010-bootstrap-partial-scss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-010 — Bootstrap partial SCSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit Lighthouse + RGAA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
             Audit Lighthouse + RGAA
           </label>
@@ -1681,10 +2278,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_2_4" id="__nav_2_2_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1695,8 +2292,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4">
             <span class="md-nav__icon md-icon"></span>
             Captures responsive
           </label>
@@ -3770,7 +4367,7 @@ proportionnée au besoin réel.</p>
       <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
         
           
-          <a href="../data-dictionary/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Data dictionary du backend Recipe Shelter">
+          <a href="../tests/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Tests">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3780,20 +4377,20 @@ proportionnée au besoin réel.</p>
                 Précédent
               </span>
               <div class="md-ellipsis">
-                Data dictionary du backend Recipe Shelter
+                Tests
               </div>
             </div>
           </a>
         
         
           
-          <a href="../errors/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Catalogue d&#39;erreurs">
+          <a href="../openapi/" class="md-footer__link md-footer__link--next" aria-label="Suivant: OpenAPI (Redoc)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Suivant
               </span>
               <div class="md-ellipsis">
-                Catalogue d'erreurs
+                OpenAPI (Redoc)
               </div>
             </div>
             <div class="md-footer__button md-icon">

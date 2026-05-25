@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/data-dictionary/">
       
       
-        <link rel="prev" href="../architecture/">
+        <link rel="prev" href="../errors/">
       
       
-        <link rel="next" href="../environment/">
+        <link rel="next" href="../tests/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Data dictionary du backend Recipe Shelter - Recipe Shelter — Documentation (POC sandbox)</title>
+        <title>Data dictionary - Recipe Shelter — Documentation (POC sandbox)</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data dictionary du backend Recipe Shelter
+              Data dictionary
             
           </span>
         </div>
@@ -623,6 +623,358 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Data dictionary
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Data dictionary
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-pourquoi-un-data-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pourquoi un data dictionary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Vue d'ensemble
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-auth-et-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Auth et Users
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Auth et Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Roles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-usermoderationlogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. UserModerationLogs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-emailvalidations" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. EmailValidations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-passwordresets" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. PasswordResets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-catalogues" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Catalogues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Catalogues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-recipecategories" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. RecipeCategories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-ingredients" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Ingredients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-equipments" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Equipments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Tags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-recettes" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Recettes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Recettes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-recipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Recipes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-recipesteps" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. RecipeSteps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-recipeingredients" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. RecipeIngredients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-recipeequipments" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. RecipeEquipments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-recipetags" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5. RecipeTags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-social" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Social
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Social">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-favorites" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Favorites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Comments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-conventions-de-modelisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Conventions de modélisation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-coherence-avec-le-code-applicatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Cohérence avec le code applicatif
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-cross-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Cross-références
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Variables d'environnement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -640,10 +992,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_8" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_8" id="__nav_2_1_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -654,8 +1006,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_8">
             <span class="md-nav__icon md-icon"></span>
             OpenAPI (Redoc)
           </label>
@@ -711,10 +1063,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_9" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_9" id="__nav_2_1_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -725,8 +1077,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_6">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_9">
             <span class="md-nav__icon md-icon"></span>
             Diagrammes
           </label>
@@ -816,6 +1168,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g5-erd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G5 — ERD (base de données)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g6-pipeline-erreur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G6 — Pipeline d'erreur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g7-slug-two-phase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G7 — Slug en deux phases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g8-user-lifecycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G8 — Lifecycle utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -845,10 +1281,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_10" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_7" id="__nav_2_1_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_10" id="__nav_2_1_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -859,8 +1295,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_7">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_10">
             <span class="md-nav__icon md-icon"></span>
             UML
           </label>
@@ -1021,10 +1457,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_8" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_11" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_8" id="__nav_2_1_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_11" id="__nav_2_1_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1035,8 +1471,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_8">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_11">
             <span class="md-nav__icon md-icon"></span>
             ADR (décisions)
           </label>
@@ -1218,10 +1654,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_9" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_12" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_9" id="__nav_2_1_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_12" id="__nav_2_1_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1232,8 +1668,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_9">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_12">
             <span class="md-nav__icon md-icon"></span>
             Routes API
           </label>
@@ -1289,10 +1725,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_10" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_13" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_10" id="__nav_2_1_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_13" id="__nav_2_1_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1303,8 +1739,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_10">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_13">
             <span class="md-nav__icon md-icon"></span>
             Postman
           </label>
@@ -1360,10 +1796,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_11" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_14" >
         
           
-          <label class="md-nav__link" for="__nav_2_1_11" id="__nav_2_1_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_14" id="__nav_2_1_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1374,8 +1810,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_11">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_14">
             <span class="md-nav__icon md-icon"></span>
             Base de données
           </label>
@@ -1512,7 +1948,7 @@
             
   
   <span class="md-ellipsis">
-    Audit Lighthouse + RGAA
+    ADR (décisions Bloc 3)
   </span>
   
 
@@ -1521,6 +1957,182 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            ADR (décisions Bloc 3)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vue d'ensemble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-006-angular-signals-standalone/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-006 — Signals + Standalone
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-007-ssr-per-route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-007 — SSR par route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-008-typescript-strict/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-008 — TypeScript strict
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-009-vitest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-009 — Vitest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/adr/adr-010-bootstrap-partial-scss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-010 — Bootstrap partial SCSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit Lighthouse + RGAA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
             Audit Lighthouse + RGAA
           </label>
@@ -1681,10 +2293,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_2_4" id="__nav_2_2_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1695,8 +2307,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4">
             <span class="md-nav__icon md-icon"></span>
             Captures responsive
           </label>
@@ -4542,7 +5154,7 @@ repositories concernés et de ce data dictionary, dans le même commit</strong>.
       <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
         
           
-          <a href="../architecture/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Architecture">
+          <a href="../errors/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Catalogue d&#39;erreurs">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4552,20 +5164,20 @@ repositories concernés et de ce data dictionary, dans le même commit</strong>.
                 Précédent
               </span>
               <div class="md-ellipsis">
-                Architecture
+                Catalogue d'erreurs
               </div>
             </div>
           </a>
         
         
           
-          <a href="../environment/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Variables d&#39;environnement du backend Recipe Shelter">
+          <a href="../tests/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Tests">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Suivant
               </span>
               <div class="md-ellipsis">
-                Variables d'environnement du backend Recipe Shelter
+                Tests
               </div>
             </div>
             <div class="md-footer__button md-icon">
