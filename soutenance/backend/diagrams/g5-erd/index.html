@@ -3333,7 +3333,7 @@
     }
 
     RecipeSteps {
-        bigint RecipeId PK_FK
+        bigint RecipeId PK
         int StepNumber PK
         text Description
     }
@@ -3349,18 +3349,18 @@
     }
 
     RecipeEquipments {
-        bigint RecipeId PK_FK
-        bigint EquipmentId PK_FK
+        bigint RecipeId PK
+        bigint EquipmentId PK
     }
 
     RecipeTags {
-        bigint RecipeId PK_FK
-        bigint TagId PK_FK
+        bigint RecipeId PK
+        bigint TagId PK
     }
 
     Favorites {
-        bigint UserId PK_FK
-        bigint RecipeId PK_FK
+        bigint UserId PK
+        bigint RecipeId PK
         datetime CreatedAt
     }
 
@@ -3408,7 +3408,7 @@
     Comments }o--o| Users : "deleted by"</code></pre>
 <h2 id="legende-et-points-de-lecture">Legende et points de lecture<a class="headerlink" href="#legende-et-points-de-lecture" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>PK / FK / UK</strong> : cle primaire, cle etrangere, contrainte d'unicite. <code>PK_FK</code> marque une colonne qui est a la fois dans la PK composite et FK d'une autre table (cas des tables d'association : <code>RecipeSteps</code>, <code>RecipeEquipments</code>, <code>RecipeTags</code>, <code>Favorites</code>).</li>
+<li><strong>PK / FK / UK</strong> : cle primaire, cle etrangere, contrainte d'unicite. <code>PK</code> marque une colonne qui est a la fois dans la PK composite et FK d'une autre table (cas des tables d'association : <code>RecipeSteps</code>, <code>RecipeEquipments</code>, <code>RecipeTags</code>, <code>Favorites</code>).</li>
 <li><strong>ENUMs MySQL</strong> :</li>
 <li><code>Users.Status</code> : <code>inactive | active | banned</code></li>
 <li><code>Recipes.Status</code> : <code>draft | pending | published | rejected | archived</code> (cycle de vie editorial)</li>

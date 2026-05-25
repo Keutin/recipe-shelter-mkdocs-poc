@@ -3417,7 +3417,7 @@
     COND -- non --&gt; SKIP[pas de log]
     LOG --&gt; SERIAL
     SKIP --&gt; SERIAL
-    SERIAL[res.status statusCode .json&lt;br/&gt;{ error: { message, code } }]
+    SERIAL["res.status statusCode .json&lt;br/&gt;error: message, code"]
     SERIAL --&gt; RES([Reponse HTTP au client]):::exit
 
     classDef entry fill:#e8f4ff,stroke:#1f6feb,color:#0a2540
