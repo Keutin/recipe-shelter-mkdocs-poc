@@ -11,7 +11,7 @@ Drafts produits par Paige (tech writer) le 2026-05-25 pour la **Vague 1** du pla
 | # | Fichier | Type | Cible repo doc |
 | --- | --- | --- | --- |
 | D1 | [`openapi/openapi.yaml`](openapi/openapi.yaml) | OpenAPI 3.1 (53 endpoints, 20+ schemas) | `backend/openapi/openapi.yaml` |
-| D1 | [`openapi/index.html`](openapi/index.html) | Redoc viewer statique (CDN) | `backend/openapi/index.html` |
+| D1 | [OpenAPI (Redoc)](openapi/README.md) | Redoc viewer statique (CDN) | `backend/openapi/index.html` |
 | D2 | [`errors.md`](errors.md) | Catalogue codes d'erreur (~140 codes, 11 domaines) | `backend/errors.md` |
 | D3 | [`architecture.md`](architecture.md) | Vue d'ensemble narrative (820 lignes, 12 sections) | `backend/architecture.md` |
 | D4 | [`securite.md`](securite.md) | Sécurité consolidée (440 lignes, 15 sections, OWASP, RGPD) | `backend/securite.md` |
@@ -110,7 +110,7 @@ Pour prévisualiser **avant** push : VS Code avec l'extension *Markdown Preview 
 
 ### Étape 5 — Vérifier le rendu Redoc en local
 
-Ouvrir `documentation/soutenance/backend/openapi/index.html` directement dans le navigateur. Redoc se charge depuis le CDN (`cdn.redoc.ly`). Si tu veux le rendre **offline-friendly**, télécharger `redoc.standalone.js` localement et changer le `<script src>`.
+Ouvrir [`openapi/README.md`](openapi/README.md) (Redoc embarqué) ou directement `redoc.html` dans le navigateur. Redoc se charge depuis le CDN (`cdn.redoc.ly`). Si tu veux le rendre **offline-friendly**, télécharger `redoc.standalone.js` localement et changer le `<script src>`.
 
 ### Étape 6 — Vérifier les liens internes
 

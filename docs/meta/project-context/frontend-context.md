@@ -214,7 +214,7 @@ frontend/
 - [[project-certification-brief]] — RNCP context (Bloc 1 = frontend audit, Bloc 3 = Angular)
 - [`backend-context.md`](./backend-context.md) — sibling context for the backend repo
 - [`_draft_bloc1_audit/`](../../soutenance/frontend/audit/README.md) — Lighthouse + RGAA findings (file:line) — useful when fixing a11y/perf
-- [`_draft_uml/`](/recipe-shelter-mkdocs-poc/soutenance/backend/uml/README.md) — UML diagrams (some apply to the frontend client flow)
+- [UML diagrams](../../soutenance/backend/uml/README.md) — UML diagrams (some apply to the frontend client flow)
 - [`_draft_deployment/`](../../deployment/README.md) — deployment plan (Railway) — affects `environment.prod.ts`
 - `CAHIER_DES_CHARGES.md` — cert spec at workspace root
 - `frontend/RecipeShelterNamingConvention.md` — authoritative naming convention reference (kept in sync with this file)

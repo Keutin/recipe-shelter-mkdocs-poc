@@ -21,7 +21,7 @@ RNCP — 3 blocs : front HTML/CSS/JS, back from-scratch, front Angular).
 | **Bloc 2** — Back from-scratch | UML (classes, séquences, cas d'usage) | [Diagrammes UML](soutenance/backend/uml/README.md) |
 | **Bloc 2** — Back from-scratch | Diagrammes techniques (C4, pipeline, séquences) | [Diagrammes](soutenance/backend/diagrams/g1-architecture-c4.md) |
 | **Bloc 2** — Back from-scratch | Schéma SQL + dictionnaire de données | [Base de données](soutenance/backend/database/README.md) |
-| **Bloc 2** — Back from-scratch | API (CRUD, auth, rôles) | [OpenAPI Redoc](soutenance/backend/openapi/index.html) · [Postman](soutenance/backend/postman/README.md) · [Catalogue d'erreurs](soutenance/backend/errors.md) |
+| **Bloc 2** — Back from-scratch | API (CRUD, auth, rôles) | [OpenAPI Redoc](soutenance/backend/openapi/README.md) · [Postman](soutenance/backend/postman/README.md) · [Catalogue d'erreurs](soutenance/backend/errors.md) |
 | **Bloc 2** — Back from-scratch | Décisions techniques justifiées | [ADRs](soutenance/backend/adr/README.md) · [Narration from-scratch](soutenance/backend/adr/00-narration-from-scratch.md) |
 | **Bloc 3** — Framework (Angular) | Architecture frontend + choix tech | [Architecture frontend](soutenance/frontend/architecture.md) |
 | **Bloc 3** — Framework (Angular) | Guide utilisateur | [Manuel utilisateur](manuel-utilisateur/README.md) |

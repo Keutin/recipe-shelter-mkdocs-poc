@@ -40,7 +40,7 @@ tags:
   — séparation interface / implémentation MySQL.
 - [Catalogue d'erreurs](../errors.md) — codes d'erreur SQL mappés
   (`ER_DUP_ENTRY` → 409, etc.).
-- [OpenAPI](../openapi/index.html) — schémas applicatifs exposés via l'API,
+- [OpenAPI](../openapi/README.md) — schémas applicatifs exposés via l'API,
   correspondance avec les tables.
 
 !!! note "Source"

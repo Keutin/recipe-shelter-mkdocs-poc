@@ -10,7 +10,7 @@ tags:
 # Collections Postman
 
 > 12 collections Postman couvrant les **53 endpoints** de l'API Recipe Shelter
-> (voir [OpenAPI](../openapi/index.html) pour la spec complète). Chaque
+> (voir [OpenAPI](../openapi/README.md) pour la spec complète). Chaque
 > collection couvre un domaine fonctionnel, avec exemples de payloads et
 > assertions de base.
 
@@ -54,7 +54,7 @@ de dev).
 
 ## Liens
 
-- [Spec OpenAPI 3.1 (Redoc)](../openapi/index.html) — référence exhaustive.
+- [Spec OpenAPI 3.1 (Redoc)](../openapi/README.md) — référence exhaustive.
 - [Catalogue d'erreurs](../errors.md) — ~140 codes d'erreur retournés par l'API.
 - [Architecture backend](../architecture.md) — pipeline Express,
   middlewares, gestion des erreurs.
