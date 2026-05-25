@@ -169,6 +169,10 @@
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/api/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
          <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/database/</loc>
          <lastmod>2026-05-25</lastmod>
     </url>
@@ -186,6 +190,10 @@
     </url>
     <url>
          <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/diagrams/g4-sequence-auth-email/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/openapi/</loc>
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>

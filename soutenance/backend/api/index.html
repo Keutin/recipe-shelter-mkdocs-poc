@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Schéma relationnel MySQL du backend Recipe Shelter">
+        <meta name="description" content="Index statique HTML des routes Express du backend">
       
       
         <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
       
       
-        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/database/">
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/api/">
       
       
-        <link rel="prev" href="../postman/">
+        <link rel="prev" href="../adr/adr-005-slug-en-deux-phases/">
       
       
-        <link rel="next" href="../../frontend/architecture/">
+        <link rel="next" href="../postman/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Schéma de base de données - Recipe Shelter — Documentation (POC sandbox)</title>
+        <title>Routes API (vue statique) - Recipe Shelter — Documentation (POC sandbox)</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#schema-de-base-de-donnees" class="md-skip">
+        <a href="#routes-api-vue-statique" class="md-skip">
           Aller au contenu
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Schéma de base de données
+              Routes API (vue statique)
             
           </span>
         </div>
@@ -1201,8 +1201,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -1212,13 +1214,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_9" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1_9" id="__nav_2_1_9_label" tabindex="0">
@@ -1232,7 +1232,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_9">
             <span class="md-nav__icon md-icon"></span>
             Routes API
@@ -1243,10 +1243,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../api/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1255,6 +1264,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1343,8 +1353,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1356,11 +1364,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_11" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_11" >
         
           
           <label class="md-nav__link" for="__nav_2_1_11" id="__nav_2_1_11_label" tabindex="0">
@@ -1374,7 +1384,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_11_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_1_11">
             <span class="md-nav__icon md-icon"></span>
             Base de données
@@ -1385,30 +1395,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Schéma de base de données
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1417,53 +1407,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#vue-densemble" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vue d'ensemble
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conventions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conventions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pour-aller-plus-loin" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pour aller plus loin
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2860,41 +2803,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#vue-densemble" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vue d'ensemble
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conventions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conventions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pour-aller-plus-loin" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pour aller plus loin
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2924,14 +2832,14 @@
     
     
     
-      <a href="../../../tags/#database" class="md-tag">database</a>
+      <a href="../../../tags/#api" class="md-tag">api</a>
     
   
 </nav>
 
 
   
-    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/backend/database/README.md" title="Editer cette page" class="md-content__button md-icon">
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/backend/api/README.md" title="Editer cette page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2939,45 +2847,14 @@
   
 
 
-<h1 id="schema-de-base-de-donnees">Schéma de base de données<a class="headerlink" href="#schema-de-base-de-donnees" title="Permanent link">&para;</a></h1>
+<h1 id="routes-api-vue-statique">Routes API — vue statique<a class="headerlink" href="#routes-api-vue-statique" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>Schéma relationnel <strong>MySQL</strong> du backend Recipe Shelter, généré depuis le
-script <code>database/</code> du repo backend. Couvre les 15 domaines applicatifs
-(utilisateurs, recettes, commentaires, favoris, modération, etc.).</p>
+<p>Liste statique HTML des routes Express, générée depuis le code backend.
+Complément de la spec <a href="../openapi/">OpenAPI</a> et des
+<a href="../postman/">collections Postman</a>.</p>
 </blockquote>
-<h2 id="vue-densemble">Vue d'ensemble<a class="headerlink" href="#vue-densemble" title="Permanent link">&para;</a></h2>
-<p><img alt="Schéma de la base de données Recipe Shelter" loading="lazy" src="Schema.svg" /></p>
-<p><a class="md-button" href="Schema.png">:material-image: Version PNG haute résolution</a></p>
-<h2 id="conventions">Conventions<a class="headerlink" href="#conventions" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Moteur</strong> : MySQL 8.x (InnoDB par défaut, support des contraintes FK).</li>
-<li><strong>Nommage tables</strong> : pluriel, snake_case (<code>users</code>, <code>recipes</code>, <code>recipe_comments</code>,
-  <code>recipe_favorites</code>, …).</li>
-<li><strong>Clés primaires</strong> : <code>id</code> BIGINT auto-increment sur chaque table.</li>
-<li><strong>Clés étrangères</strong> : <code>&lt;table_singulier&gt;_id</code> (ex : <code>user_id</code>, <code>recipe_id</code>).</li>
-<li><strong>Timestamps</strong> : <code>created_at</code>, <code>updated_at</code> (DATETIME) sur les tables
-  applicatives ; <code>deleted_at</code> pour le <strong>soft-delete</strong> (voir
-  <a href="../adr/adr-004-soft-delete-et-log-moderation/">ADR-004</a>).</li>
-<li><strong>Slug</strong> : généré en deux phases (insert → calc → update) — voir
-  <a href="../adr/adr-005-slug-en-deux-phases/">ADR-005</a>.</li>
-</ul>
-<h2 id="pour-aller-plus-loin">Pour aller plus loin<a class="headerlink" href="#pour-aller-plus-loin" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../architecture/">Architecture backend</a> — couche persistence (section
-  « Persistence ») et pattern Repository.</li>
-<li><a href="../adr/adr-002-pattern-repository-interface-impl/">ADR-002 — Pattern Repository</a>
-  — séparation interface / implémentation MySQL.</li>
-<li><a href="../errors/">Catalogue d'erreurs</a> — codes d'erreur SQL mappés
-  (<code>ER_DUP_ENTRY</code> → 409, etc.).</li>
-<li><a href="../openapi/">OpenAPI</a> — schémas applicatifs exposés via l'API,
-  correspondance avec les tables.</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Source</p>
-<p>Le schéma <code>.sql</code> complet (DDL avec contraintes, index, triggers) vit dans
-le repo backend, à <code>database/schema.sql</code>. Cette page n'expose que la vue
-visuelle ; le DDL fait foi.</p>
-</div>
+<p><a class="md-button md-button--primary" href="api-routes.html" target="_blank">:material-open-in-new: Ouvrir la vue statique</a></p>
+<iframe src="api-routes.html" style="width:100%; height: 80vh; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px;" title="Routes API — vue statique"></iframe>
 
 
 
@@ -3016,7 +2893,7 @@ visuelle ; le DDL fait foi.</p>
       <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
         
           
-          <a href="../postman/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Collections Postman">
+          <a href="../adr/adr-005-slug-en-deux-phases/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: ADR-005 Slug en deux phases">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3026,20 +2903,20 @@ visuelle ; le DDL fait foi.</p>
                 Précédent
               </span>
               <div class="md-ellipsis">
-                Collections Postman
+                ADR-005 Slug en deux phases
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../frontend/architecture/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Architecture">
+          <a href="../postman/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Collections Postman">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Suivant
               </span>
               <div class="md-ellipsis">
-                Architecture
+                Collections Postman
               </div>
             </div>
             <div class="md-footer__button md-icon">
