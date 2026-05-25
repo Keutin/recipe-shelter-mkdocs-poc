@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Audit qualité frontend Bloc 1 — Lighthouse et grille RGAA/WCAG">
+        <meta name="description" content="Architecture du frontend Angular 21 — Bloc 3 de la certification">
       
       
         <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
       
       
-        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/audit/">
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/architecture/">
       
       
-        <link rel="prev" href="../architecture/">
+        <link rel="prev" href="../../backend/database/">
       
       
-        <link rel="next" href="01-lighthouse-template/">
+        <link rel="next" href="../audit/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Audit Lighthouse + RGAA - Recipe Shelter — Documentation (POC sandbox)</title>
+        <title>Architecture frontend (Angular) - Recipe Shelter — Documentation (POC sandbox)</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bloc-1-audit-lighthouse-grille-rgaawcag" class="md-skip">
+        <a href="#architecture-frontend-bloc-3-angular" class="md-skip">
           Aller au contenu
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Audit Lighthouse + RGAA
+              Architecture frontend (Angular)
             
           </span>
         </div>
@@ -1367,10 +1367,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1379,6 +1388,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1388,8 +1398,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1401,11 +1409,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
@@ -1419,7 +1429,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_2">
             <span class="md-nav__icon md-icon"></span>
             Audit Lighthouse + RGAA
@@ -1430,30 +1440,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Index
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../audit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1462,140 +1452,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pourquoi-ce-livrable" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pourquoi ce livrable
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      Structure
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#walkthrough-pour-arthur" class="md-nav__link">
-    <span class="md-ellipsis">
-      Walkthrough pour Arthur
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Walkthrough pour Arthur">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#etape-1-relire-les-findings-30-min" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 1 — Relire les findings (30 min)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-2-faire-tourner-lighthouse-1-h" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 2 — Faire tourner Lighthouse (1 h)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-3-completer-la-grille-rgaa-30-min" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 3 — Compléter la grille RGAA (30 min)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-4-decider-du-perimetre-de-remediation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 4 — Décider du périmètre de remédiation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-5-preparer-le-discours" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 5 — Préparer le discours
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-6-copier-dans-le-repo-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 6 — Copier dans le repo documentation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#perimetre-de-laudit-statique" class="md-nav__link">
-    <span class="md-ellipsis">
-      Périmètre de l'audit statique
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lien-avec-les-autres-livrables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lien avec les autres livrables
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referentiel-utilise" class="md-nav__link">
-    <span class="md-ellipsis">
-      Référentiel utilisé
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1608,7 +1464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-lighthouse-template/" class="md-nav__link">
+      <a href="../audit/01-lighthouse-template/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1629,7 +1485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-rgaa-grille/" class="md-nav__link">
+      <a href="../audit/02-rgaa-grille/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1650,7 +1506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-findings-detailles/" class="md-nav__link">
+      <a href="../audit/03-findings-detailles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1671,7 +1527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-plan-remediation/" class="md-nav__link">
+      <a href="../audit/04-plan-remediation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1692,7 +1548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-defense-jury/" class="md-nav__link">
+      <a href="../audit/05-defense-jury/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2797,128 +2653,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pourquoi-ce-livrable" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pourquoi ce livrable
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      Structure
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#walkthrough-pour-arthur" class="md-nav__link">
-    <span class="md-ellipsis">
-      Walkthrough pour Arthur
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Walkthrough pour Arthur">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#etape-1-relire-les-findings-30-min" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 1 — Relire les findings (30 min)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-2-faire-tourner-lighthouse-1-h" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 2 — Faire tourner Lighthouse (1 h)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-3-completer-la-grille-rgaa-30-min" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 3 — Compléter la grille RGAA (30 min)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-4-decider-du-perimetre-de-remediation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 4 — Décider du périmètre de remédiation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-5-preparer-le-discours" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 5 — Préparer le discours
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-6-copier-dans-le-repo-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 6 — Copier dans le repo documentation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#perimetre-de-laudit-statique" class="md-nav__link">
-    <span class="md-ellipsis">
-      Périmètre de l'audit statique
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lien-avec-les-autres-livrables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lien avec les autres livrables
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referentiel-utilise" class="md-nav__link">
-    <span class="md-ellipsis">
-      Référentiel utilisé
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2936,7 +2670,7 @@
     
     
     
-      <a href="../../../tags/#bloc-1" class="md-tag">bloc-1</a>
+      <a href="../../../tags/#bloc-3" class="md-tag">bloc-3</a>
     
   
     
@@ -2948,20 +2682,14 @@
     
     
     
-      <a href="../../../tags/#audit" class="md-tag">audit</a>
-    
-  
-    
-    
-    
-      <a href="../../../tags/#accessibilite" class="md-tag">accessibilite</a>
+      <a href="../../../tags/#architecture" class="md-tag">architecture</a>
     
   
 </nav>
 
 
   
-    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/frontend/audit/README.md" title="Editer cette page" class="md-content__button md-icon">
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/frontend/architecture.md" title="Editer cette page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2969,116 +2697,25 @@
   
 
 
-<h1 id="bloc-1-audit-lighthouse-grille-rgaawcag">Bloc 1 — Audit Lighthouse + grille RGAA/WCAG<a class="headerlink" href="#bloc-1-audit-lighthouse-grille-rgaawcag" title="Permanent link">&para;</a></h1>
-<p>Ce dossier contient le <strong>livrable de qualité frontend</strong> attendu pour le Bloc 1 de la certification : un audit Lighthouse (performance, accessibilité, bonnes pratiques, SEO) et une grille RGAA/WCAG avec statut critère par critère.</p>
-<p>L'audit RGAA a été <strong>pré-rempli par lecture statique du code</strong> (Angular templates + CSS + config). Lighthouse, lui, demande de lancer l'application — Arthur doit faire tourner les mesures lui-même et reporter les chiffres dans le template fourni.</p>
-<h2 id="pourquoi-ce-livrable">Pourquoi ce livrable<a class="headerlink" href="#pourquoi-ce-livrable" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Le Bloc 1 (HTML/CSS/JS et accessibilité) doit montrer que l'application respecte les standards d'accessibilité (RGAA 4.x / WCAG 2.1 AA) et les bonnes pratiques de qualité web (Lighthouse).</li>
-<li>Le jury attend des <strong>chiffres</strong> (scores Lighthouse) <strong>et</strong> une <strong>analyse critique</strong> (où on est conforme, où on ne l'est pas, et pourquoi).</li>
-<li>Une grille rigoureuse vaut mieux qu'un Lighthouse à 100 partout sans recul : la honnêteté impressionne, l'auto-satisfaction agace.</li>
-</ul>
-<h2 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Fichier</th>
-<th>Contenu</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="01-lighthouse-template/">01-lighthouse-template.md</a></td>
-<td>Template à remplir : 5 URLs cibles, 4 catégories, commandes exactes (CLI ou DevTools), captures à prendre.</td>
-</tr>
-<tr>
-<td><a href="02-rgaa-grille/">02-rgaa-grille.md</a></td>
-<td>Grille RGAA 4.1 par thématique (13 thématiques), pré-remplie avec les findings issus de l'audit statique. Chaque critère a un statut : ✅ conforme / ⚠️ partiellement / ❌ non conforme / N/A.</td>
-</tr>
-<tr>
-<td><a href="03-findings-detailles/">03-findings-detailles.md</a></td>
-<td>Inventaire complet des findings (≈ 120) avec <code>file:line</code>, ce qui est bon, ce qui manque, et la correction concrète. C'est la base technique des deux fichiers précédents.</td>
-</tr>
-<tr>
-<td><a href="04-plan-remediation/">04-plan-remediation.md</a></td>
-<td>Plan d'action priorisé : 10 corrections à fort impact, avec effort estimé et fichier exact à modifier. Pour montrer au jury qu'on sait où aller ensuite.</td>
-</tr>
-<tr>
-<td><a href="05-defense-jury/">05-defense-jury.md</a></td>
-<td>Notes pour la soutenance : comment parler du score, comment justifier les écarts, questions probables et leurs réponses.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="walkthrough-pour-arthur">Walkthrough pour Arthur<a class="headerlink" href="#walkthrough-pour-arthur" title="Permanent link">&para;</a></h2>
-<h3 id="etape-1-relire-les-findings-30-min">Étape 1 — Relire les findings (30 min)<a class="headerlink" href="#etape-1-relire-les-findings-30-min" title="Permanent link">&para;</a></h3>
-<p>Ouvrir <a href="03-findings-detailles/">03-findings-detailles.md</a>. Pour chaque thématique, vérifier en ouvrant les fichiers pointés que les findings correspondent à la réalité. Quelques-uns peuvent être faux positifs (audit statique → pas d'exécution réelle). Corriger la grille si besoin.</p>
-<h3 id="etape-2-faire-tourner-lighthouse-1-h">Étape 2 — Faire tourner Lighthouse (1 h)<a class="headerlink" href="#etape-2-faire-tourner-lighthouse-1-h" title="Permanent link">&para;</a></h3>
-<p>Suivre <a href="01-lighthouse-template/">01-lighthouse-template.md</a>. Procédure résumée :</p>
-<ol>
-<li>Build de production : <code>cd frontend &amp;&amp; npm run build</code></li>
-<li>Servir : <code>npm run serve:ssr:recipe-shelter</code> (ou la commande SSR du <code>package.json</code>).</li>
-<li>Pour chaque URL cible (home, /recipes, /recipes/:slug, /sign-in, /admin/dashboard) :</li>
-<li>Ouvrir Chrome en navigation privée (extensions désactivées).</li>
-<li>DevTools → Lighthouse → Mobile → toutes catégories → Analyser.</li>
-<li>Remplir la grille de scores.</li>
-<li>Faire une capture du rapport (PNG ou PDF).</li>
-</ol>
-<p>Si possible, lancer aussi un audit <strong>Desktop</strong> : les scores sont souvent plus flatteurs.</p>
-<h3 id="etape-3-completer-la-grille-rgaa-30-min">Étape 3 — Compléter la grille RGAA (30 min)<a class="headerlink" href="#etape-3-completer-la-grille-rgaa-30-min" title="Permanent link">&para;</a></h3>
-<p><a href="02-rgaa-grille/">02-rgaa-grille.md</a> est déjà rempli sur la majorité des critères techniques. Restent à valider manuellement :</p>
-<ul>
-<li><strong>Contraste</strong> : utiliser l'extension Chrome <code>axe DevTools</code> ou <code>WAVE</code> sur chaque page cible. Reporter les contrastes &lt; 4.5:1.</li>
-<li><strong>Navigation clavier</strong> : tester chaque page en Tab/Shift+Tab/Entrée/Échap. Confirmer ce que dit la grille.</li>
-<li><strong>Lecteur d'écran</strong> (optionnel mais valorisé) : faire une passe rapide avec NVDA (Windows, gratuit) ou Voice Over (Mac). 5 min sur la home + une fiche recette suffisent à étoffer le discours.</li>
-</ul>
-<h3 id="etape-4-decider-du-perimetre-de-remediation">Étape 4 — Décider du périmètre de remédiation<a class="headerlink" href="#etape-4-decider-du-perimetre-de-remediation" title="Permanent link">&para;</a></h3>
-<p>Lire <a href="04-plan-remediation/">04-plan-remediation.md</a>. Si l'épreuve est proche, <strong>ne pas chercher à tout corriger</strong>. Choisir 3 à 5 corrections symboliques (les plus visibles : skip link, fr-FR locale, 404 page, alt text, title/meta SEO) — c'est l'amélioration entre l'avant et l'après qui parle au jury, pas la perfection.</p>
-<p>Documenter les corrections faites dans un commit <code>feat: améliorations accessibilité et SEO Bloc 1</code> (ou plusieurs petits commits sémantiques).</p>
-<h3 id="etape-5-preparer-le-discours">Étape 5 — Préparer le discours<a class="headerlink" href="#etape-5-preparer-le-discours" title="Permanent link">&para;</a></h3>
-<p>Lire <a href="05-defense-jury/">05-defense-jury.md</a>. Les questions Bloc 1 de la banque jury (<code>_draft_jury/01-bloc1-frontend.md</code>) recoupent en partie ce livrable — l'audit fournit les <strong>ancres factuelles</strong> (« on a 92 en accessibilité parce que… »).</p>
-<h3 id="etape-6-copier-dans-le-repo-documentation">Étape 6 — Copier dans le repo <code>documentation</code><a class="headerlink" href="#etape-6-copier-dans-le-repo-documentation" title="Permanent link">&para;</a></h3>
-<p>Cible : créer <code>documentation/soutenance/frontend/audit/</code>. Commandes (à exécuter par Arthur dans <code>C:\DEV\ARTHUR\RECETTES\documentation</code>) :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>soutenance<span class="se">\f</span>rontend<span class="se">\a</span>udit
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>copy<span class="w"> </span>..<span class="se">\_</span>draft_bloc1_audit<span class="se">\*</span>.md<span class="w"> </span>soutenance<span class="se">\f</span>rontend<span class="se">\a</span>udit<span class="se">\</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>docs/bloc1-audit
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git<span class="w"> </span>add<span class="w"> </span>soutenance/frontend/audit
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: ajoute audit Lighthouse et grille RGAA (Bloc 1)&quot;</span>
-</code></pre></div>
-<p>Ne PAS copier <code>03-findings-detailles.md</code> si on préfère garder l'inventaire technique privé — il révèle aussi les défauts par fichier:ligne. Le garder dans <code>_draft_bloc1_audit/</code> comme note de travail.</p>
-<h2 id="perimetre-de-laudit-statique">Périmètre de l'audit statique<a class="headerlink" href="#perimetre-de-laudit-statique" title="Permanent link">&para;</a></h2>
-<p>Ce qu'on a pu analyser <strong>sans lancer l'app</strong> :</p>
-<ul>
-<li>Structure HTML sémantique (landmarks, headings, listes)</li>
-<li>Attributs <code>alt</code>, <code>lang</code>, <code>aria-*</code>, <code>role</code></li>
-<li>Liaison label/input dans les formulaires</li>
-<li>Présence de <code>outline:none</code>, focus visible, skip links</li>
-<li>Configuration Angular (lazy routes, SSR, Title/Meta, OnPush, <code>@defer</code>, NgOptimizedImage)</li>
-<li>Tokens CSS et calcul approximatif de contraste</li>
-<li>Robots.txt, sitemap, OpenGraph</li>
-<li>Gestion d'erreurs et états vides</li>
-</ul>
-<p>Ce qui demande <strong>l'application en marche</strong> :</p>
-<ul>
-<li>Scores Lighthouse réels (Performance dépend du temps de réponse serveur)</li>
-<li>Contraste exact des images de fond (hero) au runtime</li>
-<li>Performance hors localhost (Core Web Vitals en conditions réelles)</li>
-<li>Comportement focus après navigation routée (visible à l'œil)</li>
-<li>Lecteur d'écran (NVDA/VoiceOver)</li>
-</ul>
-<h2 id="lien-avec-les-autres-livrables">Lien avec les autres livrables<a class="headerlink" href="#lien-avec-les-autres-livrables" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../../../jury/01-bloc1-frontend/">Banque de questions jury, Bloc 1</a> — questions sur HTML/CSS/JS/responsive/a11y/Lighthouse.</li>
-<li><a href="../../backend/adr/">ADRs frontend potentielles</a> — ADR-006 (Signals + standalone), ADR-007 (SSR), ADR-010 (Bootstrap 5).</li>
-<li><a href="../../../slides/soutenance-slides/">Slides soutenance, slide Bloc 1</a> — les scores Lighthouse ont une zone <code>[À COMPLÉTER]</code>.</li>
-<li><a href="../../../manuel-utilisateur/">Manuel utilisateur</a> — recoupe accessibilité côté discours utilisateur.</li>
-</ul>
-<h2 id="referentiel-utilise">Référentiel utilisé<a class="headerlink" href="#referentiel-utilise" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>RGAA 4.1.2</strong> (Référentiel Général d'Amélioration de l'Accessibilité, version 2023) — version officielle française.</li>
-<li><strong>WCAG 2.1 niveau AA</strong> — base internationale, ce que Lighthouse mesure aussi.</li>
-<li><strong>Lighthouse v11+</strong> — score / 100 sur 4 catégories.</li>
-</ul>
-<p>Sources officielles : <code>https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/</code>, <code>https://www.w3.org/TR/WCAG21/</code>.</p>
+<h1 id="architecture-frontend-bloc-3-angular">Architecture frontend (Bloc 3 — Angular)<a class="headerlink" href="#architecture-frontend-bloc-3-angular" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Document de référence pour la soutenance — <strong>Bloc 3 « Framework »</strong> de la
+certification. Décrit la stack, les patterns architecturaux et les règles de
+code du projet <code>recipe-shelter-frontend</code>.</p>
+<p>Le même contenu est aussi exposé en
+<a href="../../../meta/project-context/frontend-context/">contexte pour agents IA</a> :
+les sections sont identiques, seul l'angle de lecture diffère.</p>
+</blockquote>
+<div class="admonition info">
+<p class="admonition-title">Périmètre Bloc 3</p>
+<p>Le Bloc 3 demande : code source, documentation technique, guide utilisateur,
+démo en ligne, choix de framework <strong>justifié et défendu</strong>. Ce document
+couvre le <em>quoi</em> et le <em>pourquoi</em> du frontend. Pour le guide utilisateur,
+voir <a href="../../../manuel-utilisateur/">Manuel utilisateur</a>. Pour le pitch
+de défense face au jury, voir <a href="../audit/05-defense-jury/">Audit &amp; défense Bloc 1</a>
+et <a href="../../../jury/03-bloc3-angular/">Banque de questions jury — Bloc 3</a>.</p>
+</div>
+<hr />
 
 
 
@@ -3117,7 +2754,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
         
           
-          <a href="../architecture/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Architecture">
+          <a href="../../backend/database/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Schéma de base de données">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3127,20 +2764,20 @@
                 Précédent
               </span>
               <div class="md-ellipsis">
-                Architecture
+                Schéma de base de données
               </div>
             </div>
           </a>
         
         
           
-          <a href="01-lighthouse-template/" class="md-footer__link md-footer__link--next" aria-label="Suivant: 01 — Template Lighthouse">
+          <a href="../audit/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Index">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Suivant
               </span>
               <div class="md-ellipsis">
-                01 — Template Lighthouse
+                Index
               </div>
             </div>
             <div class="md-footer__button md-icon">

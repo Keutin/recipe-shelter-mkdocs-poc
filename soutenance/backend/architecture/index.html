@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="POC MkDocs Material pour le projet Recipe Shelter">
+        <meta name="description" content="Architecture applicative du backend Recipe Shelter (Bloc 2)">
       
       
         <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
@@ -18,7 +18,7 @@
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../errors/">
+        <link rel="next" href="../securite/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Architecture du backend Recipe Shelter - Recipe Shelter — Documentation (POC sandbox)</title>
+        <title>Architecture backend - Recipe Shelter — Documentation (POC sandbox)</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Architecture du backend Recipe Shelter
+              Architecture backend
             
           </span>
         </div>
@@ -226,126 +226,10 @@
   
     
   
-  Recipe Shelter — Documentation
+  Accueil
 
       </a>
     </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../GIT_CONVENTION/" class="md-tabs__link">
-        
-  
-    
-  
-  Recipe Shelter - Git Convention
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../deployment/" class="md-tabs__link">
-          
-  
-  Deployment
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../jury/" class="md-tabs__link">
-          
-  
-  Jury
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../manuel-utilisateur/" class="md-tabs__link">
-          
-  
-  Manuel utilisateur
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../meta/mkdocs/" class="md-tabs__link">
-          
-  
-  Meta
-
-        </a>
-      </li>
-    
-  
-
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../slides/" class="md-tabs__link">
-          
-  
-  Slides
-
-        </a>
-      </li>
-    
   
 
       
@@ -377,6 +261,122 @@
   
 
     
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../manuel-utilisateur/" class="md-tabs__link">
+          
+  
+  Manuel utilisateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../deployment/" class="md-tabs__link">
+          
+  
+  Déploiement
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../jury/" class="md-tabs__link">
+          
+  
+  Jury Q&A
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../meta/mkdocs/" class="md-tabs__link">
+          
+  
+  Méta
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../GIT_CONVENTION/" class="md-tabs__link">
+        
+  
+    
+  
+  Convention Git
+
+      </a>
+    </li>
   
 
       
@@ -436,943 +436,11 @@
         
   
   <span class="md-ellipsis">
-    Recipe Shelter — Documentation
+    Accueil
   </span>
   
 
       </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../GIT_CONVENTION/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Recipe Shelter - Git Convention
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Deployment
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            Deployment
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../deployment/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Déploiement — diagnostic et plan d'action
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../deployment/01-options-comparees/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Options de déploiement comparées
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../deployment/02-plan-railway/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Plan déploiement Railway pas-à-pas
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../deployment/03-fallback-et-defense/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Plan B et défense jury
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Jury
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            Jury
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../jury/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Banque de questions jury — Recipe Shelter
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../jury/00-questions-transversales/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    00 — Questions transversales
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../jury/01-bloc1-frontend/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    01 — Bloc 1 : Front-End HTML/CSS/JS
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../jury/02-bloc2-backend-from-scratch/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    02 — Bloc 2 : Back-End from scratch
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../jury/03-bloc3-angular/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    03 — Bloc 3 : Framework (Angular)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../jury/04-securite-rgpd/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    04 — Sécurité et RGPD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../jury/05-pieges-et-defense/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    05 — Questions pièges et défense d'architecture
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../jury/06-ameliorations-innovantes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    06 — Améliorations innovantes
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../jury/07-mode-entrainement/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    07 — Mode d'entraînement
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Manuel utilisateur
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Manuel utilisateur
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../manuel-utilisateur/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Guide utilisateur — Recipe Shelter
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    1. Découvrir Recipe Shelter (sans compte)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    2. Compte utilisateur
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    3. Utiliser les recettes (membre connecté)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../manuel-utilisateur/04-administration/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    4. Administration
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    5. FAQ et messages d'erreur courants
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Meta
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            Meta
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Mkdocs
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_1">
-            <span class="md-nav__icon md-icon"></span>
-            Mkdocs
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../meta/mkdocs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MkDocs — Plan d'intégration
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../meta/mkdocs/01-architecture-et-justification/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    01 — Architecture cible et justification
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../meta/mkdocs/02-plan-poc-sandbox/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    02 — POC sandbox côté Quentin (Keutin)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../meta/mkdocs/03-walkthrough-handoff-arthur/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    03 — Walkthrough handoff Arthur
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Project context
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2">
-            <span class="md-nav__icon md-icon"></span>
-            Project context
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../meta/project-context/backend-context/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Project Context — Recipe Shelter Backend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../meta/project-context/frontend-context/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Project Context — Recipe Shelter Frontend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Slides
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            Slides
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../slides/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Slides soutenance — Recipe Shelter
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../slides/soutenance-slides/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Soutenance slides
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1401,10 +469,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1415,8 +483,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Soutenance
           </label>
@@ -1446,10 +514,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1460,8 +528,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             Backend
           </label>
@@ -1478,7 +546,7 @@
         
   
   <span class="md-ellipsis">
-    _draft_backend_docs/ — Documentation backend pour soutenance
+    Vue d'ensemble
   </span>
   
 
@@ -1508,7 +576,7 @@
           
   
   <span class="md-ellipsis">
-    Architecture du backend Recipe Shelter
+    Architecture
   </span>
   
 
@@ -1519,7 +587,7 @@
         
   
   <span class="md-ellipsis">
-    Architecture du backend Recipe Shelter
+    Architecture
   </span>
   
 
@@ -1832,32 +900,53 @@
   
   
     <li class="md-nav__item">
-      <a href="../errors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Catalogue des codes d'erreur
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../securite/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Sécurité — Recipe Shelter (Backend)
+    Sécurité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catalogue d'erreurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openapi" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
   </span>
   
 
@@ -1888,221 +977,24 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_6" >
         
           
-          <label class="md-nav__link" for="__nav_8_1_5" id="__nav_8_1_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Adr
+    Diagrammes
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_1_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
             <span class="md-nav__icon md-icon"></span>
-            Adr
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../adr/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ADR — Architecture Decision Records
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../adr/00-narration-from-scratch/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Narration "from scratch" — défense pour la soutenance
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../adr/adr-001-express-comme-couche-http/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ADR-001 — Express comme couche HTTP
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ADR-002 — Pattern Repository : interface + implémentation MySQL
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ADR-003 — JWT en cookie HttpOnly (vs header Authorization)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ADR-004 — Soft-delete et log de modération
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ADR-005 — Slug en deux phases (brouillon puis public)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_1_6" id="__nav_8_1_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Diagrams
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_1_6">
-            <span class="md-nav__icon md-icon"></span>
-            Diagrams
+            Diagrammes
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2117,7 +1009,7 @@
         
   
   <span class="md-ellipsis">
-    G1 — Architecture C4 Container
+    G1 — Architecture C4
   </span>
   
 
@@ -2138,7 +1030,7 @@
         
   
   <span class="md-ellipsis">
-    G2 — Pipeline middleware Express
+    G2 — Pipeline middleware
   </span>
   
 
@@ -2159,7 +1051,7 @@
         
   
   <span class="md-ellipsis">
-    G3 — Séquence : modération d'une recette
+    G3 — Séquence modération
   </span>
   
 
@@ -2180,7 +1072,7 @@
         
   
   <span class="md-ellipsis">
-    G4 — Séquences : reset password &amp; validation email
+    G4 — Séquence auth/email
   </span>
   
 
@@ -2219,24 +1111,24 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_7" >
         
           
-          <label class="md-nav__link" for="__nav_8_1_7" id="__nav_8_1_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1_7" id="__nav_2_1_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Uml
+    UML
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_1_7">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_7">
             <span class="md-nav__icon md-icon"></span>
-            Uml
+            UML
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2251,7 +1143,7 @@
         
   
   <span class="md-ellipsis">
-    UML — Brouillons à intégrer
+    Index
   </span>
   
 
@@ -2272,7 +1164,7 @@
         
   
   <span class="md-ellipsis">
-    Diagramme de classes — Modèle de domaine
+    01 — Classes domaine
   </span>
   
 
@@ -2293,7 +1185,7 @@
         
   
   <span class="md-ellipsis">
-    Diagramme de classes — Architecture backend
+    02 — Classes architecture
   </span>
   
 
@@ -2314,7 +1206,7 @@
         
   
   <span class="md-ellipsis">
-    Diagramme de cas d'utilisation
+    03 — Cas d'utilisation
   </span>
   
 
@@ -2335,7 +1227,7 @@
         
   
   <span class="md-ellipsis">
-    Diagramme de séquence — Connexion (login)
+    04 — Séquence connexion
   </span>
   
 
@@ -2356,7 +1248,367 @@
         
   
   <span class="md-ellipsis">
-    Diagramme de séquence — Cycle de vie d'une recette
+    05 — Séquence recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_8" id="__nav_2_1_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADR (décisions)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            ADR (décisions)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/00-narration-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Narration from-scratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-001-express-comme-couche-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-001 Express comme couche HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-002 Repository (interface + impl)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-003 JWT cookie HttpOnly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-004 Soft-delete + log modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-005 Slug en deux phases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routes API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_10" id="__nav_2_1_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            Postman
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Postman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_11" id="__nav_2_1_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Base de données
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_11">
+            <span class="md-nav__icon md-icon"></span>
+            Base de données
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schéma de base de données
   </span>
   
 
@@ -2406,24 +1658,295 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    Demo
+    Frontend
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
-            Demo
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit Lighthouse + RGAA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Audit Lighthouse + RGAA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/01-lighthouse-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Template Lighthouse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/02-rgaa-grille/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Grille RGAA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/03-findings-detailles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Findings détaillés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/04-plan-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Plan de remédiation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/05-defense-jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Défense jury
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Responsive/README.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Captures responsive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Démo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Démo
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2459,7 +1982,7 @@
         
   
   <span class="md-ellipsis">
-    Scénario de démonstration
+    Scénario de démo
   </span>
   
 
@@ -2477,8 +2000,15 @@
 
               
             
-              
-                
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
   
@@ -2489,36 +2019,670 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Frontend
+    Manuel utilisateur
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Frontend
+            Manuel utilisateur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Découverte
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Compte utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Utiliser les recettes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/04-administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — FAQ & incidents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Déploiement
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Déploiement
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vue d'ensemble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/01-options-comparees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Options comparées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/02-plan-railway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Plan Railway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/03-fallback-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Fallback & défense
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Slides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slides soutenance — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/soutenance-slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soutenance slides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Jury Q&A
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Jury Q&A
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index + principes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/00-questions-transversales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00 — Questions transversales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/01-bloc1-frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Bloc 1 (frontend HTML/CSS/JS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/02-bloc2-backend-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Bloc 2 (backend from scratch)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/03-bloc3-angular/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Bloc 3 (Angular)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/04-securite-rgpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Sécurité & RGPD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/05-pieges-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Pièges & défense
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/06-ameliorations-innovantes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 — Améliorations innovantes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/07-mode-entrainement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 — Mode entraînement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Méta
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Méta
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2543,24 +2707,24 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
         
           
-          <label class="md-nav__link" for="__nav_8_3_1" id="__nav_8_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Audit
+    Plan MkDocs
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
-            Audit
+            Plan MkDocs
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2571,11 +2735,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../frontend/audit/" class="md-nav__link">
+      <a href="../../../meta/mkdocs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Bloc 1 — Audit Lighthouse + grille RGAA/WCAG
+    Index
   </span>
   
 
@@ -2592,11 +2756,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../frontend/audit/01-lighthouse-template/" class="md-nav__link">
+      <a href="../../../meta/mkdocs/01-architecture-et-justification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Lighthouse — Template d'audit à remplir
+    01 — Architecture et justification
   </span>
   
 
@@ -2613,11 +2777,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../frontend/audit/02-rgaa-grille/" class="md-nav__link">
+      <a href="../../../meta/mkdocs/02-plan-poc-sandbox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter
+    02 — Plan POC sandbox
   </span>
   
 
@@ -2634,11 +2798,82 @@
   
   
     <li class="md-nav__item">
-      <a href="../../frontend/audit/03-findings-detailles/" class="md-nav__link">
+      <a href="../../../meta/mkdocs/03-walkthrough-handoff-arthur/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Findings détaillés — audit statique frontend
+    03 — Walkthrough handoff Arthur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contextes LLM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contextes LLM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/project-context/backend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backend (Node/TS)
   </span>
   
 
@@ -2655,32 +2890,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../frontend/audit/04-plan-remediation/" class="md-nav__link">
+      <a href="../../../meta/project-context/frontend-context/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Plan de remédiation priorisé
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../frontend/audit/05-defense-jury/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Défendre le Bloc 1 en soutenance
+    Frontend (Angular)
   </span>
   
 
@@ -2704,11 +2918,23 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
+    
       
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GIT_CONVENTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convention Git
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3028,6 +3254,29 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../../tags/#bloc-2" class="md-tag">bloc-2</a>
+    
+  
+    
+    
+    
+      <a href="../../../tags/#backend" class="md-tag">backend</a>
+    
+  
+    
+    
+    
+      <a href="../../../tags/#architecture" class="md-tag">architecture</a>
+    
+  
+</nav>
+
 
   
     <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/backend/architecture.md" title="Editer cette page" class="md-content__button md-icon">
@@ -3162,7 +3411,7 @@ injecté aux services métier qui en ont besoin.</p>
 <p>Toutes les dépendances de production tiennent sur <strong>huit packages</strong>. C'est
 volontairement minimal : chaque ligne du <code>package.json</code> représente une décision
 défendable plutôt qu'une dépendance transitive subie.</p>
-<p>Référence : <a href="backend/package.json:40-49">backend/package.json</a>.</p>
+<p>Référence : <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/package.json#L40-L49">backend/package.json</a>.</p>
 <h2 id="3-architecture-en-couches">3. Architecture en couches<a class="headerlink" href="#3-architecture-en-couches" title="Permanent link">&para;</a></h2>
 <p>L'architecture suit un découpage en trois couches, du plus proche du transport
 HTTP au plus proche de la persistance.</p>
@@ -3193,7 +3442,7 @@ qui contient au minimum trois fichiers :</p>
 retournent respectivement un objet contenant des <code>RequestHandler</code> et un
 <code>Router</code> Express. Cette forme « factory » est la clé du câblage manuel : elle
 permet d'injecter les dépendances depuis <code>app.ts</code> sans recourir à un container.</p>
-<p>Extrait de <a href="backend/src/api/recipes/recipes.controller.ts:7">backend/src/api/recipes/recipes.controller.ts:7-20</a> :</p>
+<p>Extrait de <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/api/recipes/recipes.controller.ts#L7">backend/src/api/recipes/recipes.controller.ts:7-20</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createRecipesController</span><span class="p">(</span><span class="nx">recipeService</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipeService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nx">getMyRecipes</span><span class="o">:</span><span class="w"> </span><span class="kt">asyncHandler</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -3213,12 +3462,12 @@ permet d'injecter les dépendances depuis <code>app.ts</code> sans recourir à u
 <li>appeler le service ;</li>
 <li>sérialiser la réponse JSON avec le bon code HTTP.</li>
 </ol>
-<p>Le wrapper <a href="backend/src/api/http/async-handler.ts:3">asyncHandler</a> capture les
+<p>Le wrapper <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/api/http/async-handler.ts#L3">asyncHandler</a> capture les
 exceptions des handlers <code>async</code> et les transmet à <code>next(err)</code>, ce qui les
 achemine vers le middleware d'erreur global sans avoir à écrire des <code>try/catch</code>
 dans chaque controller.</p>
 <p>Les routes décrivent l'enchaînement des middlewares pour chaque endpoint.
-Exemple <a href="backend/src/api/recipes/recipes.routes.ts:20">backend/src/api/recipes/recipes.routes.ts:20-35</a> :</p>
+Exemple <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/api/recipes/recipes.routes.ts#L20">backend/src/api/recipes/recipes.routes.ts:20-35</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createRecipesRouter</span><span class="p">(</span><span class="nx">controller</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipesController</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Router</span><span class="p">();</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/me&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">requireAuth</span><span class="p">,</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">getMyRecipes</span><span class="p">);</span>
@@ -3242,7 +3491,7 @@ fonctionnels (différents de l'authentification, traitée en middleware).</p>
 dépendances en paramètres. Aucun service n'importe Express, ni les types
 <code>Request</code>/<code>Response</code>. Cela permet de les tester sans avoir à monter un serveur
 HTTP : il suffit d'instancier la classe avec des doublures de repositories.</p>
-<p>Exemple — <a href="backend/src/services/recipes/recipes.services.ts:24">backend/src/services/recipes/recipes.services.ts:24-25</a> :</p>
+<p>Exemple — <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/recipes/recipes.services.ts#L24">backend/src/services/recipes/recipes.services.ts:24-25</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">RecipeService</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">recipeRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipeRepository</span><span class="p">,</span>
@@ -3254,12 +3503,12 @@ HTTP : il suffit d'instancier la classe avec des doublures de repositories.</p>
 <p>Quand un service a besoin de remonter une erreur HTTP au controller (par
 exemple « recette introuvable » ou « accès refusé »), il jette une <code>HttpError</code>
 construite via les helpers <code>notFound</code>, <code>forbidden</code>, <code>badRequest</code>, etc., depuis
-<a href="backend/src/utils/errors.ts:12">backend/src/utils/errors.ts</a>. Le middleware
+<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/utils/errors.ts#L12">backend/src/utils/errors.ts</a>. Le middleware
 d'erreur global la traduit ensuite en réponse JSON normalisée.</p>
 <p>Certains services orchestrent <strong>plusieurs repositories</strong>. Par exemple
 <code>AuthService</code> reçoit le <code>UserRepository</code> et l'<code>EmailValidationService</code> pour
 déclencher l'envoi de l'email de validation lors de l'inscription
-(<a href="backend/src/services/auth/auth.service.ts:22">backend/src/services/auth/auth.service.ts:22</a>).
+(<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/auth/auth.service.ts#L22">backend/src/services/auth/auth.service.ts:22</a>).
 <code>EmailValidationService</code> reçoit lui-même le <code>UserRepository</code>, son propre
 repository, le <code>Mailer</code> et l'URL du frontend. Cette composition est entièrement
 visible dans <code>app.ts</code> (voir section 4).</p>
@@ -3293,7 +3542,7 @@ structurée autour de quatre fichiers par domaine :</p>
 </tbody>
 </table>
 <p>Exemple — interface du repository des recettes,
-<a href="backend/src/repositories/recipes/recipe.repository.interface.ts:4">backend/src/repositories/recipes/recipe.repository.interface.ts:4-17</a> :</p>
+<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/repositories/recipes/recipe.repository.interface.ts#L4">backend/src/repositories/recipes/recipe.repository.interface.ts:4-17</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">RecipeRepository</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nx">create</span><span class="p">(</span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipeInput</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Recipe</span><span class="o">&gt;</span><span class="p">;</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">updateDraft</span><span class="p">(</span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="kt">UpdateRecipeInput</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Recipe</span><span class="o">&gt;</span><span class="p">;</span>
@@ -3307,7 +3556,7 @@ structurée autour de quatre fichiers par domaine :</p>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
 </code></pre></div>
 <p>L'implémentation MySQL est dans
-<a href="backend/src/repositories/recipes/recipe.repository.mysql.ts:20">backend/src/repositories/recipes/recipe.repository.mysql.ts:20-21</a> :</p>
+<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/repositories/recipes/recipe.repository.mysql.ts#L20">backend/src/repositories/recipes/recipe.repository.mysql.ts:20-21</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">RecipeRepositoryMysql</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">RecipeRepository</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">db</span><span class="o">:</span><span class="w"> </span><span class="kt">Pool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="c1">// ...</span>
@@ -3318,7 +3567,7 @@ structurée autour de quatre fichiers par domaine :</p>
 <li>
 <p><strong>Testabilité.</strong> Les services dépendent de l'interface, pas de
    l'implémentation MySQL. Les tests unitaires des services
-   (<a href="backend/tests/services/">backend/tests/services/</a>) instancient un objet
+   (<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/tests/services/">backend/tests/services/</a>) instancient un objet
    stub satisfaisant l'interface (souvent un objet littéral avec les méthodes
    mockées), sans avoir besoin d'une base de données réelle.</p>
 </li>
@@ -3335,20 +3584,20 @@ structurée autour de quatre fichiers par domaine :</p>
    centaines de lignes de SQL.</p>
 </li>
 </ol>
-<p>Les <strong>mappers</strong> (<a href="backend/src/repositories/recipes/recipe.mapper.ts:3">backend/src/repositories/recipes/recipe.mapper.ts:3</a>)
+<p>Les <strong>mappers</strong> (<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/repositories/recipes/recipe.mapper.ts#L3">backend/src/repositories/recipes/recipe.mapper.ts:3</a>)
 isolent la traduction entre le format SQL (colonnes PascalCase typées
 <code>RecipeRow</code>) et le format métier (propriétés camelCase typées <code>Recipe</code>). Cette
 indirection permet de renommer une colonne sans propager le changement à toute
 l'application, et garantit que les services manipulent toujours des modèles
 typés.</p>
 <h2 id="4-cablage-manuel-dans-appts">4. Câblage manuel dans <code>app.ts</code><a class="headerlink" href="#4-cablage-manuel-dans-appts" title="Permanent link">&para;</a></h2>
-<p>Le fichier <a href="backend/src/app.ts:69">backend/src/app.ts</a> est la <strong>clé de voûte
+<p>Le fichier <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L69">backend/src/app.ts</a> est la <strong>clé de voûte
 pédagogique</strong> du projet. Il rend explicite tout ce que des frameworks comme
 NestJS ou Spring cachent dans leur container d'injection. Sa lecture suffit à
 comprendre l'intégralité du graphe de dépendances de l'application.</p>
 <p>L'assemblage se fait en cinq étapes successives dans <code>createApp()</code> :</p>
 <h3 id="etape-1-middlewares-globaux">Étape 1 — middlewares globaux<a class="headerlink" href="#etape-1-middlewares-globaux" title="Permanent link">&para;</a></h3>
-<p><a href="backend/src/app.ts:80">backend/src/app.ts:80-82</a> :</p>
+<p><a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L80">backend/src/app.ts:80-82</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">({</span><span class="w"> </span><span class="nx">credentials</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="kt">origins</span><span class="w"> </span><span class="p">}));</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cookieParser</span><span class="p">());</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
@@ -3358,12 +3607,12 @@ peuplé <code>req.cookies</code> avant que <code>requireAuth</code> ne lise le c
 <code>express.json()</code> doit avoir désérialisé le body avant que les controllers ne
 lisent <code>req.body</code>.</p>
 <p>Une garde explicite refuse <code>*</code> comme origine autorisée
-(<a href="backend/src/app.ts:77">backend/src/app.ts:77-78</a>) : avec
+(<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L77">backend/src/app.ts:77-78</a>) : avec
 <code>credentials: true</code>, le wildcard est interdit par la spec CORS et constituerait
 une faille de sécurité. Le code lève une erreur au boot plutôt que de laisser
 le serveur démarrer dans un état dangereux.</p>
 <h3 id="etape-2-instanciation-du-mailer-et-des-repositories">Étape 2 — instanciation du <code>Mailer</code> et des repositories<a class="headerlink" href="#etape-2-instanciation-du-mailer-et-des-repositories" title="Permanent link">&para;</a></h3>
-<p><a href="backend/src/app.ts:84">backend/src/app.ts:84-98</a> :</p>
+<p><a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L84">backend/src/app.ts:84-98</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">mailer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SmtpMailService</span><span class="p">(</span><span class="nx">env</span><span class="p">.</span><span class="nx">smtp</span><span class="p">);</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminCommentRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminCommentRepositoryMysql</span><span class="p">(</span><span class="nx">pool</span><span class="p">);</span>
@@ -3378,7 +3627,7 @@ le serveur démarrer dans un état dangereux.</p>
 toute l'application : c'est la bonne pratique pour mutualiser les connexions
 TCP vers MySQL.</p>
 <h3 id="etape-3-configuration-du-middleware-requireauth">Étape 3 — configuration du middleware <code>requireAuth</code><a class="headerlink" href="#etape-3-configuration-du-middleware-requireauth" title="Permanent link">&para;</a></h3>
-<p><a href="backend/src/app.ts:100">backend/src/app.ts:100</a> :</p>
+<p><a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L100">backend/src/app.ts:100</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">configureAuthUserRepository</span><span class="p">(</span><span class="nx">userRepository</span><span class="p">);</span>
 </code></pre></div>
 <p>Le middleware <code>requireAuth</code> a besoin de re-vérifier que l'utilisateur extrait
@@ -3386,9 +3635,9 @@ du JWT existe toujours et est actif en base. Plutôt que d'importer
 directement le repository (ce qui créerait une dépendance statique difficile à
 tester), on lui injecte la dépendance via une fonction de configuration
 exécutée une fois au démarrage. Voir
-<a href="backend/src/middlewares/require-auth.ts:22">backend/src/middlewares/require-auth.ts:22</a>.</p>
+<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/require-auth.ts#L22">backend/src/middlewares/require-auth.ts:22</a>.</p>
 <h3 id="etape-4-instanciation-des-services">Étape 4 — instanciation des services<a class="headerlink" href="#etape-4-instanciation-des-services" title="Permanent link">&para;</a></h3>
-<p><a href="backend/src/app.ts:102">backend/src/app.ts:102-117</a> :</p>
+<p><a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L102">backend/src/app.ts:102-117</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminCommentService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminCommentService</span><span class="p">(</span><span class="nx">adminCommentRepository</span><span class="p">);</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminRecipeService</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminRecipeService</span><span class="p">(</span><span class="nx">recipeRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">adminRecipeRepository</span><span class="p">);</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminUserService</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminUserService</span><span class="p">(</span><span class="nx">userRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">adminUserRepository</span><span class="p">);</span>
@@ -3417,7 +3666,7 @@ visibles à l'œil nu</strong> : <code>AuthService</code> dépend du <code>UserR
 <code>EmailValidationService</code>, <code>RecipeService</code> dépend du <code>RecipeRepository</code> ET du
 <code>RecipeSlugService</code>, etc.</p>
 <h3 id="etape-5-instanciation-des-controllers-et-montage-des-routes">Étape 5 — instanciation des controllers et montage des routes<a class="headerlink" href="#etape-5-instanciation-des-controllers-et-montage-des-routes" title="Permanent link">&para;</a></h3>
-<p><a href="backend/src/app.ts:119">backend/src/app.ts:119-147</a> :</p>
+<p><a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L119">backend/src/app.ts:119-147</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">recipesController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createRecipesController</span><span class="p">(</span><span class="nx">recipeService</span><span class="p">);</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">// ...</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/v1/recipes&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">createRecipesRouter</span><span class="p">(</span><span class="nx">recipesController</span><span class="p">));</span>
@@ -3425,7 +3674,7 @@ visibles à l'œil nu</strong> : <code>AuthService</code> dépend du <code>UserR
 <p>Tous les sous-routeurs sont préfixés par <code>/api/v1/</code> ce qui anticipe un
 versionnement futur de l'API sans casser les clients existants.</p>
 <p>Enfin, les deux middlewares terminaux sont montés :</p>
-<p><a href="backend/src/app.ts:149">backend/src/app.ts:149-150</a> :</p>
+<p><a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L149">backend/src/app.ts:149-150</a> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">notFound</span><span class="p">);</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">errorHandler</span><span class="p">);</span>
 </code></pre></div>
@@ -3548,7 +3797,7 @@ sont systématiquement protégés par le middleware <code>requireAdmin</code> (e
 <code>requireAuth</code>), qui vérifie que <code>req.auth.roleId === 1</code>.</p>
 <p>Le sous-routeur <code>comments</code> imbriqué sous <code>recipes/:recipeId/comments</code> est
 monté <strong>avant</strong> le routeur <code>recipes/</code> racine
-(<a href="backend/src/app.ts:144">backend/src/app.ts:144-145</a>) pour qu'Express
+(<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L144">backend/src/app.ts:144-145</a>) pour qu'Express
 matche la route la plus spécifique en premier.</p>
 <h2 id="6-flux-dune-requete">6. Flux d'une requête<a class="headerlink" href="#6-flux-dune-requete" title="Permanent link">&para;</a></h2>
 <p>Suivons un cas concret : un utilisateur authentifié crée une recette via
@@ -3628,7 +3877,7 @@ TCP jusqu'à la base de données et retour.</p>
 </code></pre></div>
 <p>En cas d'exception levée à n'importe quelle étape, <code>asyncHandler</code> la transmet
 à <code>next(err)</code>, ce qui court-circuite la chaîne et invoque
-<a href="backend/src/middlewares/error-handler.ts:12">errorHandler</a> qui produit la
+<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/error-handler.ts#L12">errorHandler</a> qui produit la
 réponse <code>{ error: { message, code } }</code> avec le bon code HTTP.</p>
 <p>Pour la visualisation graphique de ce pipeline, voir
 <a href="../diagrams/g2-pipeline-middleware/">diagrams/g2-pipeline-middleware.md</a>.
@@ -3636,7 +3885,7 @@ Pour le diagramme C4 de l'architecture globale, voir
 <a href="../diagrams/g1-architecture-c4/">diagrams/g1-architecture-c4.md</a>.</p>
 <h2 id="7-persistance">7. Persistance<a class="headerlink" href="#7-persistance" title="Permanent link">&para;</a></h2>
 <h3 id="71-pool-mysql">7.1 Pool MySQL<a class="headerlink" href="#71-pool-mysql" title="Permanent link">&para;</a></h3>
-<p>Le module <a href="backend/src/db/pool.ts:5">backend/src/db/pool.ts</a> instancie une
+<p>Le module <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/db/pool.ts#L5">backend/src/db/pool.ts</a> instancie une
 unique pool <code>mysql2/promise</code> partagée par tous les repositories :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mysql</span><span class="p">.</span><span class="nx">createPool</span><span class="p">({</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">env.db.host</span><span class="p">,</span>
@@ -3665,17 +3914,17 @@ unique pool <code>mysql2/promise</code> partagée par tous les repositories :</p
   préparées (utilisé pour les requêtes longues à nombreux paramètres).</li>
 </ul>
 <h3 id="72-helper-query">7.2 Helper <code>query</code><a class="headerlink" href="#72-helper-query" title="Permanent link">&para;</a></h3>
-<p><a href="backend/src/db/query.ts:21">backend/src/db/query.ts:21</a> enveloppe <code>pool.execute</code>
+<p><a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/db/query.ts#L21">backend/src/db/query.ts:21</a> enveloppe <code>pool.execute</code>
 avec :</p>
 <ul>
 <li>mesure du temps d'exécution (<code>performance.now()</code>) ;</li>
 <li>log debug systématique, log warning au-delà de 200 ms (<code>SLOW_QUERY_MS</code>) ;</li>
 <li>traduction des erreurs SQL en <code>DbError</code> typé via
-  <a href="backend/src/db/errors.ts:15">toDbError</a> ;</li>
+  <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/db/errors.ts#L15">toDbError</a> ;</li>
 <li>support d'une connexion explicite (pour participer à une transaction).</li>
 </ul>
 <h3 id="73-transactions">7.3 Transactions<a class="headerlink" href="#73-transactions" title="Permanent link">&para;</a></h3>
-<p>Le helper <a href="backend/src/db/transaction.ts:5">transaction</a> standardise le pattern
+<p>Le helper <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/db/transaction.ts#L5">transaction</a> standardise le pattern
 <code>beginTransaction / commit / rollback</code> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">transaction</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">fn</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="o">:</span><span class="w"> </span><span class="kt">PoolConnection</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pool</span><span class="p">.</span><span class="nx">getConnection</span><span class="p">();</span>
@@ -3697,7 +3946,7 @@ atomique (création d'une recette avec ses ingrédients, étapes, équipements,
 tags) gèrent leur propre transaction inline avec
 <code>connection.beginTransaction()</code> pour pouvoir intercaler des requêtes
 intermédiaires et utiliser les <code>insertId</code> au fil de l'eau — voir
-<a href="backend/src/repositories/recipes/recipe.repository.mysql.ts:23">backend/src/repositories/recipes/recipe.repository.mysql.ts:23-56</a>.</p>
+<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/repositories/recipes/recipe.repository.mysql.ts#L23">backend/src/repositories/recipes/recipe.repository.mysql.ts:23-56</a>.</p>
 <h3 id="74-schema-de-base-de-donnees">7.4 Schéma de base de données<a class="headerlink" href="#74-schema-de-base-de-donnees" title="Permanent link">&para;</a></h3>
 <p>Le schéma relationnel complet est documenté sous forme graphique dans
 <a href="../database/Schema.svg">database/Schema.svg</a>.
@@ -3716,8 +3965,8 @@ uniques sur slug et email) sont déclarées au niveau du schéma SQL et servent
 de filet de sécurité en complément des règles applicatives.</p>
 <h2 id="8-envoi-demails">8. Envoi d'emails<a class="headerlink" href="#8-envoi-demails" title="Permanent link">&para;</a></h2>
 <p>L'envoi d'emails est centralisé dans une <strong>interface <code>Mailer</code></strong>
-(<a href="backend/src/services/mail/mail.types.ts">backend/src/services/mail/mail.types.ts</a>)
-implémentée par <a href="backend/src/services/mail/mail.service.ts:19">SmtpMailService</a>
+(<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/mail/mail.types.ts">backend/src/services/mail/mail.types.ts</a>)
+implémentée par <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/mail/mail.service.ts#L19">SmtpMailService</a>
 qui utilise Nodemailer en arrière-plan.</p>
 <p>Trois services métier consomment le <code>Mailer</code> :</p>
 <table>
@@ -3767,7 +4016,7 @@ documenté dans <a href="../securite/">securite.md</a>.</p>
 <p>En synthèse :</p>
 <ul>
 <li>À l'inscription, <code>AuthService.register</code>
-  (<a href="backend/src/services/auth/auth.service.ts:39">backend/src/services/auth/auth.service.ts:39</a>)
+  (<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/auth/auth.service.ts#L39">backend/src/services/auth/auth.service.ts:39</a>)
   valide le payload, hashe le mot de passe avec bcrypt (<code>BCRYPT_COST=12</code>),
   crée l'utilisateur en statut <code>inactive</code> et délègue à
   <code>EmailValidationService</code> l'envoi de l'email d'activation.</li>
@@ -3777,19 +4026,19 @@ documenté dans <a href="../securite/">securite.md</a>.</p>
 <li>Le controller pose le cookie de session via les options définies dans
   <code>env.auth.sessionCookie*</code> (HttpOnly, Secure en production, SameSite=lax par
   défaut, expiration alignée sur le JWT).</li>
-<li>Sur chaque requête authentifiée, <a href="backend/src/middlewares/require-auth.ts:69">requireAuth</a>
+<li>Sur chaque requête authentifiée, <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/require-auth.ts#L69">requireAuth</a>
   lit le cookie, vérifie le JWT, <strong>re-charge l'utilisateur depuis la base</strong> et
   contrôle qu'il est toujours <code>active</code>. Cette double vérification permet de
   révoquer immédiatement un utilisateur banni sans attendre l'expiration du
   JWT.</li>
-<li><a href="backend/src/middlewares/require-auth.ts:94">optionalAuth</a> est une variante
+<li><a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/require-auth.ts#L94">optionalAuth</a> est une variante
   qui peuple <code>req.auth</code> si le cookie est valide mais n'échoue pas s'il est
   absent — utilisée pour les routes publiques qui adaptent leur réponse selon
   que l'utilisateur est connecté ou non (ex. marquer les recettes en favori).</li>
 </ul>
 <h2 id="10-configuration">10. Configuration<a class="headerlink" href="#10-configuration" title="Permanent link">&para;</a></h2>
 <p>Toute la configuration runtime de l'application transite par un <strong>objet <code>env</code>
-unique et typé</strong> exporté depuis <a href="backend/src/utils/env.ts:71">backend/src/utils/env.ts</a>.
+unique et typé</strong> exporté depuis <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/utils/env.ts#L71">backend/src/utils/env.ts</a>.
 Aucun module n'accède directement à <code>process.env</code> en dehors de ce fichier.</p>
 <h3 id="101-lecture-typee-et-fallbacks">10.1 Lecture typée et fallbacks<a class="headerlink" href="#101-lecture-typee-et-fallbacks" title="Permanent link">&para;</a></h3>
 <p>Le module définit des fonctions utilitaires qui convertissent les chaînes
@@ -3911,7 +4160,7 @@ développement, et la validation SMTP est différée au premier envoi d'email
 (pour permettre un démarrage sans SMTP en dev local).</p>
 <h2 id="11-gestion-des-erreurs">11. Gestion des erreurs<a class="headerlink" href="#11-gestion-des-erreurs" title="Permanent link">&para;</a></h2>
 <p>Le projet utilise une classe d'erreur applicative unique,
-<a href="backend/src/utils/errors.ts:1">HttpError</a> (et non <code>AppError</code>), qui encapsule
+<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/utils/errors.ts#L1">HttpError</a> (et non <code>AppError</code>), qui encapsule
 trois informations :</p>
 <ul>
 <li><code>status: number</code> — code HTTP (400, 401, 403, 404, 409, 500) ;</li>
@@ -3922,7 +4171,7 @@ trois informations :</p>
 </ul>
 <p>Des helpers <code>badRequest</code>, <code>unauthorized</code>, <code>forbidden</code>, <code>notFound</code>, <code>conflict</code>,
 <code>internalError</code> couvrent les cas usuels.</p>
-<p>Le middleware <a href="backend/src/middlewares/error-handler.ts:12">errorHandler</a> est
+<p>Le middleware <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/error-handler.ts#L12">errorHandler</a> est
 le <strong>point unique de sérialisation</strong> des erreurs. Toute exception levée dans
 un controller ou un service, propagée par <code>next(err)</code>, est traduite en :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
@@ -3930,13 +4179,13 @@ un controller ou un service, propagée par <code>next(err)</code>, est traduite 
 <p>avec le bon code HTTP. Les erreurs 5xx sont loggées avec leur stack ; les 4xx
 sont retournées sans bruit (elles correspondent à des comportements clients
 attendus).</p>
-<p>Le middleware <a href="backend/src/middlewares/not-found.ts:3">notFound</a> intercepte les
+<p>Le middleware <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/not-found.ts#L3">notFound</a> intercepte les
 routes non matchées et émet une 404 normalisée (<code>ROUTE_NOT_FOUND</code>).</p>
 <p>Le catalogue exhaustif des codes d'erreur applicatifs (avec leur signification
 et la couche qui les émet) est documenté dans
 <a href="../errors/">errors.md</a>.</p>
 <h2 id="12-tests">12. Tests<a class="headerlink" href="#12-tests" title="Permanent link">&para;</a></h2>
-<p>Les tests automatisés vivent dans <a href="backend/tests/">backend/tests/</a> et
+<p>Les tests automatisés vivent dans <a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/tests/">backend/tests/</a> et
 reproduisent la structure de <code>src/</code> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>backend/tests/
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>├── api/
@@ -3969,7 +4218,7 @@ des lignes SQL fabriquées à la main ; les DTO sont testés sur des payloads
 valides et invalides.</p>
 <p>Le <strong>test runner est le runner natif de Node</strong>
 (<code>node --import tsx --test "tests/**/*.test.ts"</code>, voir
-<a href="backend/package.json:14">backend/package.json:14</a>), exécuté via <code>tsx</code> pour
+<a href="https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/package.json#L14">backend/package.json:14</a>), exécuté via <code>tsx</code> pour
 transpiler le TypeScript à la volée. Aucune dépendance externe (Jest, Mocha,
 Vitest) : seul le runtime Node est requis. C'est cohérent avec la philosophie
 « from scratch » du projet et avec la volonté de minimiser la surface
@@ -3992,6 +4241,9 @@ pas dans ce répertoire : ils relèvent de la stratégie de test du frontend
 
 
 
+
+  
+  
 
 
 
@@ -4021,7 +4273,7 @@ pas dans ce répertoire : ils relèvent de la stratégie de test du frontend
       <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Précédent: _draft_backend_docs/ — Documentation backend pour soutenance">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Vue d&#39;ensemble">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4031,20 +4283,20 @@ pas dans ce répertoire : ils relèvent de la stratégie de test du frontend
                 Précédent
               </span>
               <div class="md-ellipsis">
-                _draft_backend_docs/ — Documentation backend pour soutenance
+                Vue d'ensemble
               </div>
             </div>
           </a>
         
         
           
-          <a href="../errors/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Catalogue des codes d&#39;erreur">
+          <a href="../securite/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Sécurité">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Suivant
               </span>
               <div class="md-ellipsis">
-                Catalogue des codes d'erreur
+                Sécurité
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -4060,11 +4312,6 @@ pas dans ce répertoire : ils relèvent de la stratégie de test du frontend
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
   
 </div>
       
