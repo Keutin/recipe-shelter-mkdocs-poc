@@ -1,6 +1,6 @@
 # Matrice de conformité — Recipe Shelter ⇄ Cahier des charges
 
-> Une ligne = une exigence atomique extraite du [cahier des charges](../CAHIER_DES_CHARGES.md).
+> Une ligne = une exigence atomique extraite du [cahier des charges](cahier-des-charges.md).
 > Évidences pointées vers les chemins réels (repos Arthur ou drafts `_draft_*/`).
 > Date du snapshot : 2026-05-25.
 
@@ -13,6 +13,23 @@
 | 🟠 | Partial — partiellement traité, manque éléments |
 | 🔴 | Manque — rien produit |
 | ⚫ | N/A — non applicable au périmètre doc (justifié) |
+
+---
+
+## Synthèse des comptages
+
+| Statut | Bloc 1 | Bloc 2 | Bloc 3 | Trans. | **Total** |
+|--------|-------:|-------:|-------:|-------:|----------:|
+| 🟢 OK  | 8      | 22     | 8      | 0      | **38**    |
+| 🟡 Ready | 3    | 2      | 2      | 3      | **10**    |
+| 🟠 Partial | 2  | 2      | 1      | 1      | **6**     |
+| 🔴 Manque | 2   | 0      | 1      | 0      | **3**     |
+| ⚫ N/A | 0      | 1      | 0      | 3      | **4**     |
+| **Total ligne** | **15** | **27** | **12** | **7** | **61** |
+
+**Taux brut OK** : 38 / 61 = **62 %**
+**Taux livrable** (OK + Ready, hors N/A) : 48 / 57 = **84 %** si Arthur exécute tous les handoffs
+**Taux soutenable** (OK + Ready + Partial avec défense, hors N/A) : 54 / 57 = **95 %**, modulo le bloc éliminatoire déploiement (3 🔴)
 
 ---
 
@@ -96,23 +113,6 @@
 | T.5 | Force de proposition (innovations) | l.122 | 🟡 | [`_draft_jury/06-ameliorations-innovantes.md`](../jury/06-ameliorations-innovantes.md) (10 questions amélioration sécu/perf/UX/IA) | Reste local (banque entraînement, pas un livrable) |
 | T.6 | RGPD (sous-entendu cert RNCP) | — | 🟠 | Securite.md identifie trou : pas de `DELETE /users/me` en code. Mentions légales committed dans frontend `pages/legal/` | Code change Arthur : exposer `DELETE /users/me` ; ou défense « purge admin sur demande utilisateur » |
 | T.7 | Stage avec tuteur | l.124 | ⚫ | Hors périmètre projet | — |
-
----
-
-## Synthèse des comptages
-
-| Statut | Bloc 1 | Bloc 2 | Bloc 3 | Trans. | **Total** |
-|--------|-------:|-------:|-------:|-------:|----------:|
-| 🟢 OK  | 8      | 22     | 8      | 0      | **38**    |
-| 🟡 Ready | 3    | 2      | 2      | 3      | **10**    |
-| 🟠 Partial | 2  | 2      | 1      | 1      | **6**     |
-| 🔴 Manque | 2   | 0      | 1      | 0      | **3**     |
-| ⚫ N/A | 0      | 1      | 0      | 3      | **4**     |
-| **Total ligne** | **15** | **27** | **12** | **7** | **61** |
-
-**Taux brut OK** : 38 / 61 = **62 %**
-**Taux livrable** (OK + Ready, hors N/A) : 48 / 57 = **84 %** si Arthur exécute tous les handoffs
-**Taux soutenable** (OK + Ready + Partial avec défense, hors N/A) : 54 / 57 = **95 %**, modulo le bloc éliminatoire déploiement (3 🔴)
 
 ---
 
