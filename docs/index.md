@@ -64,8 +64,6 @@ RNCP — 3 blocs : front HTML/CSS/JS, back from-scratch, front Angular).
   walkthrough handoff.
 - **[Contextes LLM](meta/project-context/backend-context.md)** — règles
   pour assistants IA sur les repos backend & frontend.
-- **[Revue de conformité](meta/review/synthesis.md)** — matrice cahier des
-  charges ⇄ état du projet, top 5 risques, plan d'action pré-soutenance.
 
 ---
 

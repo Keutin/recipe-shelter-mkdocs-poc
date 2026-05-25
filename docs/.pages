@@ -1,5 +1,6 @@
 nav:
   - Accueil: index.md
+  - Revue: review
   - Soutenance: soutenance
   - Manuel utilisateur: manuel-utilisateur
   - Déploiement: deployment

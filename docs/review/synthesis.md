@@ -16,9 +16,9 @@
 
 ## Top 5 risques classés
 
-1. **🚨 Démo en ligne absente — ÉLIMINATOIRE.** Le cahier l.34 (Bloc 1), l.107 (Bloc 3) et l'évaluation RNCP l.118 exigent une appli accessible. `nslookup recipe-shelter.fr` → NXDOMAIN. Aucun Dockerfile, fly.toml, render.yaml, .github/workflows/ dans les 3 repos. **Plan détaillé** : [`_draft_deployment/02-plan-railway.md`](../../deployment/02-plan-railway.md) (~3h30, Railway recommandé). **Plan B** si délai trop court : tunnel ngrok/cloudflared documenté dans [`03-fallback-et-defense.md`](../../deployment/03-fallback-et-defense.md).
+1. **🚨 Démo en ligne absente — ÉLIMINATOIRE.** Le cahier l.34 (Bloc 1), l.107 (Bloc 3) et l'évaluation RNCP l.118 exigent une appli accessible. `nslookup recipe-shelter.fr` → NXDOMAIN. Aucun Dockerfile, fly.toml, render.yaml, .github/workflows/ dans les 3 repos. **Plan détaillé** : [`_draft_deployment/02-plan-railway.md`](../deployment/02-plan-railway.md) (~3h30, Railway recommandé). **Plan B** si délai trop court : tunnel ngrok/cloudflared documenté dans [`03-fallback-et-defense.md`](../deployment/03-fallback-et-defense.md).
 
-2. **🟠 Audit Lighthouse non exécuté.** Le cahier l.21, 38 nomme Lighthouse explicitement. Template prêt [`01-lighthouse-template.md`](../../soutenance/frontend/audit/01-lighthouse-template.md), Arthur doit exécuter (5 URLs × mobile+desktop, ~30 min après `npm run build`). À faire impérativement *avant* la soutenance, idéalement après le P1 du [plan de remédiation](../../soutenance/frontend/audit/04-plan-remediation.md) (~1h20) pour des scores plus présentables.
+2. **🟠 Audit Lighthouse non exécuté.** Le cahier l.21, 38 nomme Lighthouse explicitement. Template prêt [`01-lighthouse-template.md`](../soutenance/frontend/audit/01-lighthouse-template.md), Arthur doit exécuter (5 URLs × mobile+desktop, ~30 min après `npm run build`). À faire impérativement *avant* la soutenance, idéalement après le P1 du [plan de remédiation](../soutenance/frontend/audit/04-plan-remediation.md) (~1h20) pour des scores plus présentables.
 
 3. **🟡 Handoffs draft → documentation repo non exécutés.** 10 livrables prêts en `_draft_*/` mais pas encore copiés dans le repo `documentation` :
    - `_draft_adr/` (5 ADRs backend) → `documentation/soutenance/backend/adr/`
@@ -39,8 +39,8 @@
 Hypothèse : il reste **2 semaines** avant la soutenance (à adapter selon date réelle).
 
 ### J-14 à J-10 — déblocage éliminatoire
-1. **Lancer le déploiement** ([`02-plan-railway.md`](../../deployment/02-plan-railway.md)) — provider Railway, 3 prérequis code (PORT env, CORS, Cookie Secure), SMTP Brevo. Risque #1 ⇒ J0.
-2. Si trop court, basculer plan B tunnel ([`03-fallback-et-defense.md`](../../deployment/03-fallback-et-defense.md)).
+1. **Lancer le déploiement** ([`02-plan-railway.md`](../deployment/02-plan-railway.md)) — provider Railway, 3 prérequis code (PORT env, CORS, Cookie Secure), SMTP Brevo. Risque #1 ⇒ J0.
+2. Si trop court, basculer plan B tunnel ([`03-fallback-et-defense.md`](../deployment/03-fallback-et-defense.md)).
 
 ### J-10 à J-7 — handoffs documentation
 3. Copier les drafts dans le repo `documentation` selon leurs walkthroughs respectifs (compter ~3h cumulées). Ordre suggéré :
@@ -53,13 +53,13 @@ Hypothèse : il reste **2 semaines** avant la soutenance (à adapter selon date 
 5. Pousser le commit UML `1acdf99` après ré-attribution patch (voir notes session_state Claude Code côté Quentin).
 
 ### J-7 à J-4 — audit qualité
-6. Appliquer P1 du plan de remédiation accessibilité (~1h20, [`_draft_bloc1_audit/04-plan-remediation.md`](../../soutenance/frontend/audit/04-plan-remediation.md)) : skip link, Title/Meta, page 404, `role=list`→`ul`, `fr-FR` locale.
+6. Appliquer P1 du plan de remédiation accessibilité (~1h20, [`_draft_bloc1_audit/04-plan-remediation.md`](../soutenance/frontend/audit/04-plan-remediation.md)) : skip link, Title/Meta, page 404, `role=list`→`ul`, `fr-FR` locale.
 7. **Exécuter Lighthouse** (5 URLs × mobile+desktop sur build prod en ligne), remplir le template, capturer scores.
 8. Mettre à jour `environment.prod.ts` + `scenario-demo.md` + slides avec URLs réelles.
 
 ### J-4 à J-0 — défense
 9. Personnaliser les [À COMPLÉTER] des slides Marp.
-10. Drill quotidien des questions [`_draft_jury/`](../../jury/README.md) (104 Q&A, plan 2 semaines fourni en [`07-mode-entrainement.md`](../../jury/07-mode-entrainement.md)).
+10. Drill quotidien des questions [`_draft_jury/`](../jury/README.md) (104 Q&A, plan 2 semaines fourni en [`07-mode-entrainement.md`](../jury/07-mode-entrainement.md)).
 11. Simulation à blanc 20 min en conditions réelles.
 
 ## Discours de défense pour les gaps non comblables
