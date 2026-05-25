@@ -3,6 +3,9 @@ nav:
   - Architecture: architecture.md
   - Sécurité: securite.md
   - Catalogue d'erreurs: errors.md
+  - Data dictionary: data-dictionary.md
+  - Tests: tests.md
+  - Variables d'environnement: environment.md
   - OpenAPI (Redoc): openapi
   - Diagrammes: diagrams
   - UML: uml

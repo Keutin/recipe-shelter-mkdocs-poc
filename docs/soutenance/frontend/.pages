@@ -1,4 +1,5 @@
 nav:
   - Architecture: architecture.md
+  - ADR (décisions Bloc 3): adr
   - Audit Lighthouse + RGAA: audit
   - Captures responsive: Responsive

@@ -3,3 +3,7 @@ nav:
   - G2 — Pipeline middleware: g2-pipeline-middleware.md
   - G3 — Séquence modération: g3-sequence-moderation.md
   - G4 — Séquence auth/email: g4-sequence-auth-email.md
+  - G5 — ERD (base de données): g5-erd.md
+  - G6 — Pipeline d'erreur: g6-pipeline-erreur.md
+  - G7 — Slug en deux phases: g7-slug-two-phase.md
+  - G8 — Lifecycle utilisateur: g8-user-lifecycle.md

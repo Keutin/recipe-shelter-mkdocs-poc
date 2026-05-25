@@ -1,0 +1,7 @@
+nav:
+  - Vue d'ensemble: README.md
+  - ADR-006 — Signals + Standalone: adr-006-angular-signals-standalone.md
+  - ADR-007 — SSR par route: adr-007-ssr-per-route.md
+  - ADR-008 — TypeScript strict: adr-008-typescript-strict.md
+  - ADR-009 — Vitest: adr-009-vitest.md
+  - ADR-010 — Bootstrap partial SCSS: adr-010-bootstrap-partial-scss.md
