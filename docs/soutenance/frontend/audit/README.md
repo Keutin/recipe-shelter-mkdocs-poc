@@ -95,10 +95,10 @@ Ce qui demande **l'application en marche** :
 
 ## Lien avec les autres livrables
 
-- [Banque de questions jury, Bloc 1](../_draft_jury/01-bloc1-frontend.md) — questions sur HTML/CSS/JS/responsive/a11y/Lighthouse.
-- [ADRs frontend potentielles](../_draft_adr/README.md) — ADR-006 (Signals + standalone), ADR-007 (SSR), ADR-010 (Bootstrap 5).
-- [Slides soutenance, slide Bloc 1](../_draft_slides/soutenance-slides.md) — les scores Lighthouse ont une zone `[À COMPLÉTER]`.
-- [Manuel utilisateur](../_draft_user_guide/README.md) — recoupe accessibilité côté discours utilisateur.
+- [Banque de questions jury, Bloc 1](../../../jury/01-bloc1-frontend.md) — questions sur HTML/CSS/JS/responsive/a11y/Lighthouse.
+- [ADRs frontend potentielles](../../backend/adr/README.md) — ADR-006 (Signals + standalone), ADR-007 (SSR), ADR-010 (Bootstrap 5).
+- [Slides soutenance, slide Bloc 1](../../../slides/soutenance-slides.md) — les scores Lighthouse ont une zone `[À COMPLÉTER]`.
+- [Manuel utilisateur](../../../manuel-utilisateur/README.md) — recoupe accessibilité côté discours utilisateur.
 
 ## Référentiel utilisé
 

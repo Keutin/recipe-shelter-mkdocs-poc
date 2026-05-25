@@ -8,7 +8,7 @@ Ce chapitre concerne les **comptes administrateur**. L'accès aux pages décrite
 
 L'identification est la même que pour un compte standard, via la page `/sign-in`. Le caractère « admin » est attaché au compte lui-même : il n'y a **pas de page de connexion séparée**. Une fois connecté, le menu compte montre une entrée supplémentaire `Administration`.
 
-En soutenance, le compte de test admin est documenté dans `documentation/soutenance/comptes-test.md`.
+En soutenance, le compte de test admin est documenté dans `documentation/soutenance/demo/comptes-test.md`.
 
 ## 4.2 Tableau de bord
 

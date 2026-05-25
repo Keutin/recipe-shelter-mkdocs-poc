@@ -81,7 +81,7 @@ Le manuel n'est probablement pas projeté tel quel pendant la soutenance — il 
 
 ## Lien avec les autres livrables
 
-- [Scénario de démo](../documentation/soutenance/demo/scenario-demo.md) → fil rouge pour le jury (8–10 min de manipulation).
-- [Comptes de test](../documentation/soutenance/comptes-test.md) si présents → identifiants à utiliser pour tester chaque rôle.
-- [Banque de questions jury](../_draft_jury/README.md) → certains items de FAQ peuvent recouper des questions Bloc 3 sur l'expérience utilisateur.
-- [Slides soutenance](../_draft_slides/soutenance-slides.md) → Slide « Démo » peut renvoyer au manuel pour la version écrite.
+- [Scénario de démo](../soutenance/demo/scenario-demo.md) → fil rouge pour le jury (8–10 min de manipulation).
+- [Comptes de test](../soutenance/demo/comptes-test.md) si présents → identifiants à utiliser pour tester chaque rôle.
+- [Banque de questions jury](../jury/README.md) → certains items de FAQ peuvent recouper des questions Bloc 3 sur l'expérience utilisateur.
+- [Slides soutenance](../slides/soutenance-slides.md) → Slide « Démo » peut renvoyer au manuel pour la version écrite.

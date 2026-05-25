@@ -1,22 +1,29 @@
-# Recipe Shelter - Documentation
+# Recipe Shelter — Documentation
 
-Ce dépôt contient la documentation du projet **Recipe Shelter**.
+Site de documentation complet du projet **Recipe Shelter** (certification RNCP — 3 blocs : front HTML/CSS/JS, back from-scratch, front Angular).
 
-## Contenu
+## Sections
 
-- `docs/Database/` : schéma de la base de données.
-- `docs/API backend/` : documentation des routes API backend.
-- `docs/Postman/` : collections Postman pour tester les endpoints.
-- `docs/Screenshoots/` : captures d'écran du frontend et des tests Postman.
-- `docs/Demo/` : données utiles pour les démonstrations.
+### Soutenance
+- **[Backend](soutenance/backend/)** — architecture, sécurité, catalogue d'erreurs, OpenAPI (53 endpoints), diagrammes (C4, pipeline, séquences), ADRs, UML, collections Postman, schéma BDD
+- **[Frontend](soutenance/frontend/)** — captures responsive (desktop/iPad/iPhone), audit Lighthouse + RGAA, plan de remédiation
+- **[Demo](soutenance/demo/)** — comptes de test + scénario de démonstration
 
-## Objectif
+### Manuel utilisateur
+- **[Manuel utilisateur](manuel-utilisateur/)** — guide visiteur / membre / admin, FAQ, incidents
 
-Centraliser les documents utiles pour comprendre et tester le projet.
+### Mise en production
+- **[Déploiement](deployment/)** — options comparées (Railway/Render/Fly/OVH), plan Railway pas-à-pas, fallback + défense jury
 
-## Utilisation
+### Préparation soutenance
+- **[Slides](slides/)** — deck Marp ~20 min, 28 slides
+- **[Banque de questions jury](jury/)** — ~104 questions (transversales, Bloc 1/2/3, sécurité, pièges, améliorations) + plan d'entraînement
 
-- Consulter `docs/Database/Schema.png` ou `docs/Database/Schema.svg` pour voir le schéma de la base de données.
-- Ouvrir `docs/API backend/api-routes.html` pour lire la documentation API.
-- Importer les collections du dossier `docs/Postman/` dans Postman pour tester les routes.
-- Utiliser `baseUrl` pour l'origine du backend, par exemple `http://localhost:3000`; les routes documentées passent ensuite par le préfixe `/api/v1`.
+### Méta
+- **[Project context (LLM)](meta/project-context/)** — contextes backend/frontend pour assistants IA
+- **[Plan MkDocs](meta/mkdocs/)** — architecture du site, POC, walkthrough handoff
+
+## Conventions
+
+- **Branches & commits** : voir [GIT_CONVENTION](GIT_CONVENTION.md).
+- **Base URL backend** : `http://localhost:3000` en local, préfixe `/api/v1` pour les routes documentées.
