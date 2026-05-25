@@ -1,3 +1,13 @@
+---
+title: Audit Lighthouse + RGAA
+description: Audit qualité frontend Bloc 1 — Lighthouse et grille RGAA/WCAG
+tags:
+  - bloc-1
+  - frontend
+  - audit
+  - accessibilite
+---
+
 # Bloc 1 — Audit Lighthouse + grille RGAA/WCAG
 
 Ce dossier contient le **livrable de qualité frontend** attendu pour le Bloc 1 de la certification : un audit Lighthouse (performance, accessibilité, bonnes pratiques, SEO) et une grille RGAA/WCAG avec statut critère par critère.

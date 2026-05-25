@@ -1,0 +1,5 @@
+nav:
+  - Vue d'ensemble: README.md
+  - 01 — Options comparées: 01-options-comparees.md
+  - 02 — Plan Railway: 02-plan-railway.md
+  - 03 — Fallback & défense: 03-fallback-et-defense.md

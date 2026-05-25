@@ -30,7 +30,7 @@ Ces écarts entre le code et l'attendu / la convention ont été identifiés en 
 
 ### Nommage de l'erreur applicative
 
-Le brief Vague 1 parlait de `AppError`. Le code réel utilise `HttpError` ([backend/src/utils/errors.ts:1](../backend/src/utils/errors.ts:1)). Toute la doc emploie le nom **réel** (`HttpError`). Si tu renommes un jour, mets à jour `architecture.md`, `errors.md`, `securite.md`.
+Le brief Vague 1 parlait de `AppError`. Le code réel utilise `HttpError` ([backend/src/utils/errors.ts:1](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/utils/errors.ts#L1)). Toute la doc emploie le nom **réel** (`HttpError`). Si tu renommes un jour, mets à jour `architecture.md`, `errors.md`, `securite.md`.
 
 ### Catalogue d'erreurs — 9 inconsistances signalées dans `errors.md`
 
@@ -139,7 +139,7 @@ Description suggérée : copier l'inventaire de la table ci-dessus + section "Po
 
 ## Et après ? — Vagues 2 et 3 différées
 
-Cf. [memory `project_session_state.md`](../../) — pas dans cette livraison :
+Cf. la mémoire `project_session_state.md` (hors site) — pas dans cette livraison :
 
 - **Vague 2** : D5 data dictionary, D6 doc tests, D7 doc env vars, D8 README backend repo.
 - **Vague 3** : G5 ERD Mermaid, G6 pipeline d'erreur, G7 slug two-phase, G8 user lifecycle, G9 archi déploiement (bloqué tant que Railway pas fait — cf. `_draft_deployment/`).

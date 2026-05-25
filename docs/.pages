@@ -1,0 +1,9 @@
+nav:
+  - Accueil: index.md
+  - Soutenance: soutenance
+  - Manuel utilisateur: manuel-utilisateur
+  - Déploiement: deployment
+  - Slides: slides
+  - Jury Q&A: jury
+  - Méta: meta
+  - Convention Git: GIT_CONVENTION.md

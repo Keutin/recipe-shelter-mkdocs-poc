@@ -1,0 +1,5 @@
+nav:
+  - G1 — Architecture C4: g1-architecture-c4.md
+  - G2 — Pipeline middleware: g2-pipeline-middleware.md
+  - G3 — Séquence modération: g3-sequence-moderation.md
+  - G4 — Séquence auth/email: g4-sequence-auth-email.md

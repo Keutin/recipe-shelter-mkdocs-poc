@@ -1,0 +1,10 @@
+nav:
+  - Index + principes: README.md
+  - 00 — Questions transversales: 00-questions-transversales.md
+  - 01 — Bloc 1 (frontend HTML/CSS/JS): 01-bloc1-frontend.md
+  - 02 — Bloc 2 (backend from scratch): 02-bloc2-backend-from-scratch.md
+  - 03 — Bloc 3 (Angular): 03-bloc3-angular.md
+  - 04 — Sécurité & RGPD: 04-securite-rgpd.md
+  - 05 — Pièges & défense: 05-pieges-et-defense.md
+  - 06 — Améliorations innovantes: 06-ameliorations-innovantes.md
+  - 07 — Mode entraînement: 07-mode-entrainement.md

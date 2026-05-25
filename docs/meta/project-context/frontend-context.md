@@ -148,7 +148,7 @@ _Critical rules and patterns AI agents must follow when implementing code in thi
 - 🚨 **Don't add a state-management lib** (NgRx, Akita, ngxs). Signals + services are deliberate. See [[project-certification-brief]] — Bloc 3 emphasizes mastery of modern Angular primitives.
 - ⚠️ **Lazy loading must stay lazy** — never `import { Home } from './pages/home/home'` in `app.routes.ts`. Always `loadComponent: () => import('...').then(m => m.Home)`.
 - ⚠️ **Form/API conversions** stay close to the service or component (see `RecipesService.toRecipeBody`) — no separate "mapper" layer.
-- ⚠️ **`@angular-eslint` template a11y rules are on** (`templateAccessibility`). Fix the warnings rather than silencing them — the Bloc 1 audit ([`_draft_bloc1_audit/`](../../soutenance/frontend/audit/)) tracks accessibility status for the jury.
+- ⚠️ **`@angular-eslint` template a11y rules are on** (`templateAccessibility`). Fix the warnings rather than silencing them — the Bloc 1 audit ([`_draft_bloc1_audit/`](../../soutenance/frontend/audit/README.md)) tracks accessibility status for the jury.
 - ⚠️ **Bundle budgets**: `initial` 500 kB warn / 1 MB error, `anyComponentStyle` 4 kB warn / 8 kB error. Crossing them fails the production build.
 - ⚠️ **`takeUntilDestroyed()`** is the unsubscribe pattern (no manual `Subject` + `takeUntil` boilerplate). It must be called in an injection context (constructor/field initializer) or with an explicit `DestroyRef`.
 
@@ -204,7 +204,7 @@ frontend/
 
 - Drop into a fresh Claude session (or any LLM) before asking it to write/modify frontend code.
 - Update **only** when stack, conventions, or architectural rules change — not for every commit.
-- This file is **not** for jury defense (see [`_draft_adr/`](../../soutenance/backend/adr/), [`_draft_bloc1_audit/`](../../soutenance/frontend/audit/) and `documentation/soutenance/` for that).
+- This file is **not** for jury defense (see [`_draft_adr/`](../../soutenance/backend/adr/README.md), [`_draft_bloc1_audit/`](../../soutenance/frontend/audit/README.md) and `documentation/soutenance/` for that).
 
 ---
 
@@ -213,8 +213,8 @@ frontend/
 - [[project-recipe-shelter]] — overall project memory
 - [[project-certification-brief]] — RNCP context (Bloc 1 = frontend audit, Bloc 3 = Angular)
 - [`backend-context.md`](./backend-context.md) — sibling context for the backend repo
-- [`_draft_bloc1_audit/`](../../soutenance/frontend/audit/) — Lighthouse + RGAA findings (file:line) — useful when fixing a11y/perf
-- [`_draft_uml/`](../../soutenance/backend/uml/) — UML diagrams (some apply to the frontend client flow)
-- [`_draft_deployment/`](../../deployment/) — deployment plan (Railway) — affects `environment.prod.ts`
+- [`_draft_bloc1_audit/`](../../soutenance/frontend/audit/README.md) — Lighthouse + RGAA findings (file:line) — useful when fixing a11y/perf
+- [`_draft_uml/`](/recipe-shelter-mkdocs-poc/soutenance/backend/uml/README.md) — UML diagrams (some apply to the frontend client flow)
+- [`_draft_deployment/`](../../deployment/README.md) — deployment plan (Railway) — affects `environment.prod.ts`
 - `CAHIER_DES_CHARGES.md` — cert spec at workspace root
 - `frontend/RecipeShelterNamingConvention.md` — authoritative naming convention reference (kept in sync with this file)

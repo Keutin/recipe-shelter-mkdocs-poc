@@ -1,3 +1,13 @@
+---
+title: Sécurité backend
+description: Sécurité du backend Recipe Shelter — OWASP, auth, RGPD
+tags:
+  - bloc-2
+  - backend
+  - securite
+  - rgpd
+---
+
 # Sécurité — Recipe Shelter (Backend)
 
 > Document de référence pour la soutenance RNCP.

@@ -1,3 +1,12 @@
+---
+title: Architecture backend
+description: Architecture applicative du backend Recipe Shelter (Bloc 2)
+tags:
+  - bloc-2
+  - backend
+  - architecture
+---
+
 # Architecture du backend Recipe Shelter
 
 > Document de référence pour la défense de soutenance (RNCP). Décrit l'architecture
@@ -60,7 +69,7 @@ Toutes les dépendances de production tiennent sur **huit packages**. C'est
 volontairement minimal : chaque ligne du `package.json` représente une décision
 défendable plutôt qu'une dépendance transitive subie.
 
-Référence : [backend/package.json](backend/package.json:40-49).
+Référence : [backend/package.json](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/package.json#L40-L49).
 
 ## 3. Architecture en couches
 
@@ -98,7 +107,7 @@ retournent respectivement un objet contenant des `RequestHandler` et un
 `Router` Express. Cette forme « factory » est la clé du câblage manuel : elle
 permet d'injecter les dépendances depuis `app.ts` sans recourir à un container.
 
-Extrait de [backend/src/api/recipes/recipes.controller.ts:7-20](backend/src/api/recipes/recipes.controller.ts:7) :
+Extrait de [backend/src/api/recipes/recipes.controller.ts:7-20](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/api/recipes/recipes.controller.ts#L7) :
 
 ```ts
 export function createRecipesController(recipeService: RecipeService) {
@@ -121,13 +130,13 @@ Les controllers ne contiennent **aucune logique métier**. Ils se contentent de 
 3. appeler le service ;
 4. sérialiser la réponse JSON avec le bon code HTTP.
 
-Le wrapper [asyncHandler](backend/src/api/http/async-handler.ts:3) capture les
+Le wrapper [asyncHandler](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/api/http/async-handler.ts#L3) capture les
 exceptions des handlers `async` et les transmet à `next(err)`, ce qui les
 achemine vers le middleware d'erreur global sans avoir à écrire des `try/catch`
 dans chaque controller.
 
 Les routes décrivent l'enchaînement des middlewares pour chaque endpoint.
-Exemple [backend/src/api/recipes/recipes.routes.ts:20-35](backend/src/api/recipes/recipes.routes.ts:20) :
+Exemple [backend/src/api/recipes/recipes.routes.ts:20-35](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/api/recipes/recipes.routes.ts#L20) :
 
 ```ts
 export function createRecipesRouter(controller: RecipesController) {
@@ -158,7 +167,7 @@ dépendances en paramètres. Aucun service n'importe Express, ni les types
 `Request`/`Response`. Cela permet de les tester sans avoir à monter un serveur
 HTTP : il suffit d'instancier la classe avec des doublures de repositories.
 
-Exemple — [backend/src/services/recipes/recipes.services.ts:24-25](backend/src/services/recipes/recipes.services.ts:24) :
+Exemple — [backend/src/services/recipes/recipes.services.ts:24-25](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/recipes/recipes.services.ts#L24) :
 
 ```ts
 export class RecipeService {
@@ -173,13 +182,13 @@ export class RecipeService {
 Quand un service a besoin de remonter une erreur HTTP au controller (par
 exemple « recette introuvable » ou « accès refusé »), il jette une `HttpError`
 construite via les helpers `notFound`, `forbidden`, `badRequest`, etc., depuis
-[backend/src/utils/errors.ts](backend/src/utils/errors.ts:12). Le middleware
+[backend/src/utils/errors.ts](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/utils/errors.ts#L12). Le middleware
 d'erreur global la traduit ensuite en réponse JSON normalisée.
 
 Certains services orchestrent **plusieurs repositories**. Par exemple
 `AuthService` reçoit le `UserRepository` et l'`EmailValidationService` pour
 déclencher l'envoi de l'email de validation lors de l'inscription
-([backend/src/services/auth/auth.service.ts:22](backend/src/services/auth/auth.service.ts:22)).
+([backend/src/services/auth/auth.service.ts:22](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/auth/auth.service.ts#L22)).
 `EmailValidationService` reçoit lui-même le `UserRepository`, son propre
 repository, le `Mailer` et l'URL du frontend. Cette composition est entièrement
 visible dans `app.ts` (voir section 4).
@@ -197,7 +206,7 @@ structurée autour de quatre fichiers par domaine :
 | `*.types.ts`                     | Types `*Row` (forme SQL) et types métier (forme applicative).          |
 
 Exemple — interface du repository des recettes,
-[backend/src/repositories/recipes/recipe.repository.interface.ts:4-17](backend/src/repositories/recipes/recipe.repository.interface.ts:4) :
+[backend/src/repositories/recipes/recipe.repository.interface.ts:4-17](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/repositories/recipes/recipe.repository.interface.ts#L4) :
 
 ```ts
 export interface RecipeRepository {
@@ -214,7 +223,7 @@ export interface RecipeRepository {
 ```
 
 L'implémentation MySQL est dans
-[backend/src/repositories/recipes/recipe.repository.mysql.ts:20-21](backend/src/repositories/recipes/recipe.repository.mysql.ts:20) :
+[backend/src/repositories/recipes/recipe.repository.mysql.ts:20-21](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/repositories/recipes/recipe.repository.mysql.ts#L20) :
 
 ```ts
 export class RecipeRepositoryMysql implements RecipeRepository {
@@ -227,7 +236,7 @@ export class RecipeRepositoryMysql implements RecipeRepository {
 
 1. **Testabilité.** Les services dépendent de l'interface, pas de
    l'implémentation MySQL. Les tests unitaires des services
-   ([backend/tests/services/](backend/tests/services/)) instancient un objet
+   ([backend/tests/services/](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/tests/services/)) instancient un objet
    stub satisfaisant l'interface (souvent un objet littéral avec les méthodes
    mockées), sans avoir besoin d'une base de données réelle.
 
@@ -241,7 +250,7 @@ export class RecipeRepositoryMysql implements RecipeRepository {
    comprendre l'API de persistance des recettes, sans avoir à parcourir des
    centaines de lignes de SQL.
 
-Les **mappers** ([backend/src/repositories/recipes/recipe.mapper.ts:3](backend/src/repositories/recipes/recipe.mapper.ts:3))
+Les **mappers** ([backend/src/repositories/recipes/recipe.mapper.ts:3](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/repositories/recipes/recipe.mapper.ts#L3))
 isolent la traduction entre le format SQL (colonnes PascalCase typées
 `RecipeRow`) et le format métier (propriétés camelCase typées `Recipe`). Cette
 indirection permet de renommer une colonne sans propager le changement à toute
@@ -250,7 +259,7 @@ typés.
 
 ## 4. Câblage manuel dans `app.ts`
 
-Le fichier [backend/src/app.ts](backend/src/app.ts:69) est la **clé de voûte
+Le fichier [backend/src/app.ts](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L69) est la **clé de voûte
 pédagogique** du projet. Il rend explicite tout ce que des frameworks comme
 NestJS ou Spring cachent dans leur container d'injection. Sa lecture suffit à
 comprendre l'intégralité du graphe de dépendances de l'application.
@@ -259,7 +268,7 @@ L'assemblage se fait en cinq étapes successives dans `createApp()` :
 
 ### Étape 1 — middlewares globaux
 
-[backend/src/app.ts:80-82](backend/src/app.ts:80) :
+[backend/src/app.ts:80-82](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L80) :
 
 ```ts
 app.use(cors({ credentials: true, origin: origins }));
@@ -273,14 +282,14 @@ peuplé `req.cookies` avant que `requireAuth` ne lise le cookie de session, et
 lisent `req.body`.
 
 Une garde explicite refuse `*` comme origine autorisée
-([backend/src/app.ts:77-78](backend/src/app.ts:77)) : avec
+([backend/src/app.ts:77-78](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L77)) : avec
 `credentials: true`, le wildcard est interdit par la spec CORS et constituerait
 une faille de sécurité. Le code lève une erreur au boot plutôt que de laisser
 le serveur démarrer dans un état dangereux.
 
 ### Étape 2 — instanciation du `Mailer` et des repositories
 
-[backend/src/app.ts:84-98](backend/src/app.ts:84) :
+[backend/src/app.ts:84-98](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L84) :
 
 ```ts
 const mailer = new SmtpMailService(env.smtp);
@@ -300,7 +309,7 @@ TCP vers MySQL.
 
 ### Étape 3 — configuration du middleware `requireAuth`
 
-[backend/src/app.ts:100](backend/src/app.ts:100) :
+[backend/src/app.ts:100](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L100) :
 
 ```ts
 configureAuthUserRepository(userRepository);
@@ -311,11 +320,11 @@ du JWT existe toujours et est actif en base. Plutôt que d'importer
 directement le repository (ce qui créerait une dépendance statique difficile à
 tester), on lui injecte la dépendance via une fonction de configuration
 exécutée une fois au démarrage. Voir
-[backend/src/middlewares/require-auth.ts:22](backend/src/middlewares/require-auth.ts:22).
+[backend/src/middlewares/require-auth.ts:22](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/require-auth.ts#L22).
 
 ### Étape 4 — instanciation des services
 
-[backend/src/app.ts:102-117](backend/src/app.ts:102) :
+[backend/src/app.ts:102-117](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L102) :
 
 ```ts
 const adminCommentService = new AdminCommentService(adminCommentRepository);
@@ -349,7 +358,7 @@ visibles à l'œil nu** : `AuthService` dépend du `UserRepository` ET de
 
 ### Étape 5 — instanciation des controllers et montage des routes
 
-[backend/src/app.ts:119-147](backend/src/app.ts:119) :
+[backend/src/app.ts:119-147](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L119) :
 
 ```ts
 const recipesController = createRecipesController(recipeService);
@@ -362,7 +371,7 @@ versionnement futur de l'API sans casser les clients existants.
 
 Enfin, les deux middlewares terminaux sont montés :
 
-[backend/src/app.ts:149-150](backend/src/app.ts:149) :
+[backend/src/app.ts:149-150](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L149) :
 
 ```ts
 app.use(notFound);
@@ -427,7 +436,7 @@ sont systématiquement protégés par le middleware `requireAdmin` (en plus de
 
 Le sous-routeur `comments` imbriqué sous `recipes/:recipeId/comments` est
 monté **avant** le routeur `recipes/` racine
-([backend/src/app.ts:144-145](backend/src/app.ts:144)) pour qu'Express
+([backend/src/app.ts:144-145](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/app.ts#L144)) pour qu'Express
 matche la route la plus spécifique en premier.
 
 ## 6. Flux d'une requête
@@ -512,7 +521,7 @@ Client reçoit 201 Created + Recipe au format JSON
 
 En cas d'exception levée à n'importe quelle étape, `asyncHandler` la transmet
 à `next(err)`, ce qui court-circuite la chaîne et invoque
-[errorHandler](backend/src/middlewares/error-handler.ts:12) qui produit la
+[errorHandler](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/error-handler.ts#L12) qui produit la
 réponse `{ error: { message, code } }` avec le bon code HTTP.
 
 Pour la visualisation graphique de ce pipeline, voir
@@ -524,7 +533,7 @@ Pour le diagramme C4 de l'architecture globale, voir
 
 ### 7.1 Pool MySQL
 
-Le module [backend/src/db/pool.ts](backend/src/db/pool.ts:5) instancie une
+Le module [backend/src/db/pool.ts](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/db/pool.ts#L5) instancie une
 unique pool `mysql2/promise` partagée par tous les repositories :
 
 ```ts
@@ -557,18 +566,18 @@ Points notables :
 
 ### 7.2 Helper `query`
 
-[backend/src/db/query.ts:21](backend/src/db/query.ts:21) enveloppe `pool.execute`
+[backend/src/db/query.ts:21](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/db/query.ts#L21) enveloppe `pool.execute`
 avec :
 
 - mesure du temps d'exécution (`performance.now()`) ;
 - log debug systématique, log warning au-delà de 200 ms (`SLOW_QUERY_MS`) ;
 - traduction des erreurs SQL en `DbError` typé via
-  [toDbError](backend/src/db/errors.ts:15) ;
+  [toDbError](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/db/errors.ts#L15) ;
 - support d'une connexion explicite (pour participer à une transaction).
 
 ### 7.3 Transactions
 
-Le helper [transaction](backend/src/db/transaction.ts:5) standardise le pattern
+Le helper [transaction](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/db/transaction.ts#L5) standardise le pattern
 `beginTransaction / commit / rollback` :
 
 ```ts
@@ -593,7 +602,7 @@ atomique (création d'une recette avec ses ingrédients, étapes, équipements,
 tags) gèrent leur propre transaction inline avec
 `connection.beginTransaction()` pour pouvoir intercaler des requêtes
 intermédiaires et utiliser les `insertId` au fil de l'eau — voir
-[backend/src/repositories/recipes/recipe.repository.mysql.ts:23-56](backend/src/repositories/recipes/recipe.repository.mysql.ts:23).
+[backend/src/repositories/recipes/recipe.repository.mysql.ts:23-56](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/repositories/recipes/recipe.repository.mysql.ts#L23).
 
 ### 7.4 Schéma de base de données
 
@@ -616,8 +625,8 @@ de filet de sécurité en complément des règles applicatives.
 ## 8. Envoi d'emails
 
 L'envoi d'emails est centralisé dans une **interface `Mailer`**
-([backend/src/services/mail/mail.types.ts](backend/src/services/mail/mail.types.ts))
-implémentée par [SmtpMailService](backend/src/services/mail/mail.service.ts:19)
+([backend/src/services/mail/mail.types.ts](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/mail/mail.types.ts))
+implémentée par [SmtpMailService](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/mail/mail.service.ts#L19)
 qui utilise Nodemailer en arrière-plan.
 
 Trois services métier consomment le `Mailer` :
@@ -649,7 +658,7 @@ documenté dans [securite.md](securite.md).
 En synthèse :
 
 - À l'inscription, `AuthService.register`
-  ([backend/src/services/auth/auth.service.ts:39](backend/src/services/auth/auth.service.ts:39))
+  ([backend/src/services/auth/auth.service.ts:39](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/services/auth/auth.service.ts#L39))
   valide le payload, hashe le mot de passe avec bcrypt (`BCRYPT_COST=12`),
   crée l'utilisateur en statut `inactive` et délègue à
   `EmailValidationService` l'envoi de l'email d'activation.
@@ -659,12 +668,12 @@ En synthèse :
 - Le controller pose le cookie de session via les options définies dans
   `env.auth.sessionCookie*` (HttpOnly, Secure en production, SameSite=lax par
   défaut, expiration alignée sur le JWT).
-- Sur chaque requête authentifiée, [requireAuth](backend/src/middlewares/require-auth.ts:69)
+- Sur chaque requête authentifiée, [requireAuth](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/require-auth.ts#L69)
   lit le cookie, vérifie le JWT, **re-charge l'utilisateur depuis la base** et
   contrôle qu'il est toujours `active`. Cette double vérification permet de
   révoquer immédiatement un utilisateur banni sans attendre l'expiration du
   JWT.
-- [optionalAuth](backend/src/middlewares/require-auth.ts:94) est une variante
+- [optionalAuth](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/require-auth.ts#L94) est une variante
   qui peuple `req.auth` si le cookie est valide mais n'échoue pas s'il est
   absent — utilisée pour les routes publiques qui adaptent leur réponse selon
   que l'utilisateur est connecté ou non (ex. marquer les recettes en favori).
@@ -672,7 +681,7 @@ En synthèse :
 ## 10. Configuration
 
 Toute la configuration runtime de l'application transite par un **objet `env`
-unique et typé** exporté depuis [backend/src/utils/env.ts](backend/src/utils/env.ts:71).
+unique et typé** exporté depuis [backend/src/utils/env.ts](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/utils/env.ts#L71).
 Aucun module n'accède directement à `process.env` en dehors de ce fichier.
 
 ### 10.1 Lecture typée et fallbacks
@@ -729,7 +738,7 @@ développement, et la validation SMTP est différée au premier envoi d'email
 ## 11. Gestion des erreurs
 
 Le projet utilise une classe d'erreur applicative unique,
-[HttpError](backend/src/utils/errors.ts:1) (et non `AppError`), qui encapsule
+[HttpError](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/utils/errors.ts#L1) (et non `AppError`), qui encapsule
 trois informations :
 
 - `status: number` — code HTTP (400, 401, 403, 404, 409, 500) ;
@@ -741,7 +750,7 @@ trois informations :
 Des helpers `badRequest`, `unauthorized`, `forbidden`, `notFound`, `conflict`,
 `internalError` couvrent les cas usuels.
 
-Le middleware [errorHandler](backend/src/middlewares/error-handler.ts:12) est
+Le middleware [errorHandler](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/error-handler.ts#L12) est
 le **point unique de sérialisation** des erreurs. Toute exception levée dans
 un controller ou un service, propagée par `next(err)`, est traduite en :
 
@@ -753,7 +762,7 @@ avec le bon code HTTP. Les erreurs 5xx sont loggées avec leur stack ; les 4xx
 sont retournées sans bruit (elles correspondent à des comportements clients
 attendus).
 
-Le middleware [notFound](backend/src/middlewares/not-found.ts:3) intercepte les
+Le middleware [notFound](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/src/middlewares/not-found.ts#L3) intercepte les
 routes non matchées et émet une 404 normalisée (`ROUTE_NOT_FOUND`).
 
 Le catalogue exhaustif des codes d'erreur applicatifs (avec leur signification
@@ -762,7 +771,7 @@ et la couche qui les émet) est documenté dans
 
 ## 12. Tests
 
-Les tests automatisés vivent dans [backend/tests/](backend/tests/) et
+Les tests automatisés vivent dans [backend/tests/](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/tests/) et
 reproduisent la structure de `src/` :
 
 ```
@@ -799,7 +808,7 @@ valides et invalides.
 
 Le **test runner est le runner natif de Node**
 (`node --import tsx --test "tests/**/*.test.ts"`, voir
-[backend/package.json:14](backend/package.json:14)), exécuté via `tsx` pour
+[backend/package.json:14](https://github.com/arthur-lagenebre/recipe-shelter-backend/blob/main/package.json#L14)), exécuté via `tsx` pour
 transpiler le TypeScript à la volée. Aucune dépendance externe (Jest, Mocha,
 Vitest) : seul le runtime Node est requis. C'est cohérent avec la philosophie
 « from scratch » du projet et avec la volonté de minimiser la surface

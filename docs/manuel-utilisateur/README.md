@@ -1,3 +1,12 @@
+---
+title: Manuel utilisateur
+description: Guide utilisateur Recipe Shelter — visiteur, membre, admin
+tags:
+  - utilisateur
+  - manuel
+  - bloc-3
+---
+
 # Guide utilisateur — Recipe Shelter
 
 Ce dossier contient un **manuel d'utilisation** de Recipe Shelter, rédigé du point de vue de l'utilisateur final (visiteur, membre, administrateur). Il est conçu comme livrable de certification pour le Bloc 3 et complète le scénario de démonstration (`documentation/soutenance/demo/scenario-demo.md`) qui, lui, vise le jury.

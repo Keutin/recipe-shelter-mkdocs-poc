@@ -1,3 +1,12 @@
+---
+title: Catalogue d'erreurs
+description: ~140 codes d'erreur du backend Recipe Shelter, 11 domaines
+tags:
+  - bloc-2
+  - backend
+  - api
+---
+
 # Catalogue des codes d'erreur
 
 > Source : `backend/src` au commit courant.

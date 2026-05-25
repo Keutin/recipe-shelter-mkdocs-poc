@@ -154,29 +154,31 @@ authentifiées avec `requireAuth`, routes admin avec `requireAuth` +
 ## Note PlantUML (pour version "UML stricte")
 
 Si le jury exige un vrai diagramme de cas d'utilisation UML (acteurs
-stick-figure et ovales), basculer vers PlantUML. Source équivalente :
+stick-figure et ovales), basculer vers PlantUML. La source est conservée
+ci-dessous, à exporter via
+[plantuml.com/plantuml](https://www.plantuml.com/plantuml/uml/) ou
+l'extension VSCode `jebbs.plantuml`.
 
-```plantuml
-@startuml
-left to right direction
-actor Visiteur
-actor Utilisateur
-actor Administrateur
+??? note "Source PlantUML (cliquer pour déplier)"
 
-Utilisateur --|> Visiteur
-Administrateur --|> Utilisateur
+    ```text
+    @startuml
+    left to right direction
+    actor Visiteur
+    actor Utilisateur
+    actor Administrateur
 
-rectangle "Recipe Shelter" {
-  Visiteur -- (Consulter les recettes)
-  Visiteur -- (S'inscrire)
-  Utilisateur -- (Créer une recette)
-  Utilisateur -- (Commenter)
-  Utilisateur -- (Gérer ses favoris)
-  Administrateur -- (Modérer)
-  Administrateur -- (Bannir un utilisateur)
-}
-@enduml
-```
+    Utilisateur --|> Visiteur
+    Administrateur --|> Utilisateur
 
-À exporter via [plantuml.com/plantuml](https://www.plantuml.com/plantuml/uml/)
-ou l'extension VSCode `jebbs.plantuml`.
+    rectangle "Recipe Shelter" {
+      Visiteur -- (Consulter les recettes)
+      Visiteur -- (S'inscrire)
+      Utilisateur -- (Créer une recette)
+      Utilisateur -- (Commenter)
+      Utilisateur -- (Gérer ses favoris)
+      Administrateur -- (Modérer)
+      Administrateur -- (Bannir un utilisateur)
+    }
+    @enduml
+    ```

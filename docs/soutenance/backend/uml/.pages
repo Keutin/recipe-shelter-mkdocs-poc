@@ -1,0 +1,7 @@
+nav:
+  - Index: README.md
+  - 01 — Classes domaine: 01-diagramme-classes-domaine.md
+  - 02 — Classes architecture: 02-diagramme-classes-architecture.md
+  - 03 — Cas d'utilisation: 03-diagramme-cas-utilisation.md
+  - 04 — Séquence connexion: 04-diagramme-sequence-connexion.md
+  - 05 — Séquence recette: 05-diagramme-sequence-recette.md

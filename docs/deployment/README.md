@@ -1,3 +1,11 @@
+---
+title: Déploiement
+description: Diagnostic et plan de déploiement Railway pour Recipe Shelter
+tags:
+  - deploiement
+  - infra
+---
+
 # Déploiement — diagnostic et plan d'action
 
 Ce dossier traite le point #9 de la roadmap : **mettre Recipe Shelter en ligne avant la soutenance**. C'est le seul point restant qualifié d'**éliminatoire** : le cahier des charges l'exige explicitement comme livrable.

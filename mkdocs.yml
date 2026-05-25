@@ -58,9 +58,13 @@ markdown_extensions:
 plugins:
   - search:
       lang: fr
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)'
   - awesome-pages
+  - tags:
+      tags_file: tags.md
 
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Keutin/recipe-shelter-mkdocs-poc

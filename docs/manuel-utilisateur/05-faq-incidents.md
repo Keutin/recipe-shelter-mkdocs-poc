@@ -17,7 +17,7 @@ Le lien est volontairement valide un temps limité (typiquement 24 à 48 heures)
 
 ### J'ai oublié mon mot de passe
 
-Lien `Mot de passe oublié ?` sur la page de connexion. Saisir son adresse email. Un mail avec un lien de réinitialisation est envoyé si l'adresse est connue. Voir [2.4 Mot de passe oublié](02-compte-utilisateur.md#24-mot-de-passe-oublié).
+Lien `Mot de passe oublié ?` sur la page de connexion. Saisir son adresse email. Un mail avec un lien de réinitialisation est envoyé si l'adresse est connue. Voir [2.4 Mot de passe oublié](02-compte-utilisateur.md#24-mot-de-passe-oublie).
 
 ### Mon compte a été suspendu, pourquoi ?
 
@@ -77,7 +77,7 @@ Il n'y a pas de quota strict pour un usage normal. Un compte qui poste de façon
 | `Votre compte a été suspendu.` | Compte banni par un administrateur. | Voir 5.1 « Mon compte a été suspendu ». |
 | `Cette adresse email est déjà utilisée.` | Une inscription précédente existe avec cette adresse. | Utiliser `Mot de passe oublié ?` si vous avez perdu l'accès. |
 | `Ce pseudo est déjà pris.` | Un autre membre utilise déjà ce pseudo. | En choisir un autre (3–30 caractères). |
-| `Le mot de passe ne respecte pas les règles.` | Longueur ou complexité insuffisante. | Voir [2.1 Créer un compte](02-compte-utilisateur.md#21-créer-un-compte). |
+| `Le mot de passe ne respecte pas les règles.` | Longueur ou complexité insuffisante. | Voir [2.1 Créer un compte](02-compte-utilisateur.md#21-creer-un-compte). |
 | `Session expirée, merci de vous reconnecter.` | La session a dépassé sa durée de vie. | Se reconnecter depuis `/sign-in`. |
 | `Vous devez être connecté pour effectuer cette action.` | Action protégée déclenchée sans session. | Se connecter et reprendre l'action. |
 | `Accès refusé.` | Tentative d'ouvrir une page admin sans le rôle. | Se connecter avec un compte administrateur. |

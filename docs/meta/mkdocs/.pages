@@ -1,0 +1,5 @@
+nav:
+  - Index: README.md
+  - 01 — Architecture et justification: 01-architecture-et-justification.md
+  - 02 — Plan POC sandbox: 02-plan-poc-sandbox.md
+  - 03 — Walkthrough handoff Arthur: 03-walkthrough-handoff-arthur.md

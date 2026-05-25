@@ -1,0 +1,12 @@
+nav:
+  - Vue d'ensemble: README.md
+  - Architecture: architecture.md
+  - Sécurité: securite.md
+  - Catalogue d'erreurs: errors.md
+  - OpenAPI (Redoc): openapi
+  - Diagrammes: diagrams
+  - UML: uml
+  - ADR (décisions): adr
+  - Routes API: api
+  - Postman: postman
+  - Base de données: database

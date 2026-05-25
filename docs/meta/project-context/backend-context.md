@@ -172,7 +172,7 @@ backend/
 
 - [[project-recipe-shelter]] — overall project memory
 - [[project-certification-brief]] — RNCP context
-- [`_draft_adr/`](../../soutenance/backend/adr/) — architecture decision records (jury defense)
-- [`_draft_uml/`](../../soutenance/backend/uml/) — UML diagrams
-- [`_draft_deployment/`](../../deployment/) — deployment plan (Railway)
+- [`_draft_adr/`](../../soutenance/backend/adr/README.md) — architecture decision records (jury defense)
+- [`_draft_uml/`](/recipe-shelter-mkdocs-poc/soutenance/backend/uml/README.md) — UML diagrams
+- [`_draft_deployment/`](../../deployment/README.md) — deployment plan (Railway)
 - `CAHIER_DES_CHARGES.md` — cert spec at workspace root

@@ -1,0 +1,8 @@
+nav:
+  - Index: README.md
+  - Narration from-scratch: 00-narration-from-scratch.md
+  - ADR-001 Express comme couche HTTP: adr-001-express-comme-couche-http.md
+  - ADR-002 Repository (interface + impl): adr-002-pattern-repository-interface-impl.md
+  - ADR-003 JWT cookie HttpOnly: adr-003-jwt-cookie-httponly.md
+  - ADR-004 Soft-delete + log modération: adr-004-soft-delete-et-log-moderation.md
+  - ADR-005 Slug en deux phases: adr-005-slug-en-deux-phases.md

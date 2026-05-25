@@ -137,11 +137,11 @@ Les zones à **obligatoirement** retoucher (marquées `[À COMPLÉTER]` dans le 
 
 | Artefact | Lien | Quand le mentionner pendant la soutenance |
 |---|---|---|
-| Diagrammes UML | [`../_draft_uml/`](../soutenance/backend/uml/) | Slides 13, 18 — référencer si jury demande la modélisation |
-| ADRs | [`../_draft_adr/`](../soutenance/backend/adr/) | Slides 10-12, 15, 17 — chaque décision techn. = une ADR à mentionner |
-| Narration from-scratch | [`../_draft_adr/00-narration-from-scratch.md`](../soutenance/backend/adr/00-narration-from-scratch.md) | Slide 9 — la pièce maîtresse pour défendre le Bloc 2 |
-| Banque de questions jury | [`../_draft_jury/`](../jury/) | Préparation **hors soutenance** — drill avant le jour J |
-| Cahier des charges | [`../CAHIER_DES_CHARGES.md`](../CAHIER_DES_CHARGES.md) | Slide 4 — citer textuellement la contrainte « from scratch » |
+| Diagrammes UML | [Diagrammes UML](../soutenance/backend/uml/README.md) | Slides 13, 18 — référencer si jury demande la modélisation |
+| ADRs | [ADRs](../soutenance/backend/adr/README.md) | Slides 10-12, 15, 17 — chaque décision techn. = une ADR à mentionner |
+| Narration from-scratch | [Narration from-scratch](../soutenance/backend/adr/00-narration-from-scratch.md) | Slide 9 — la pièce maîtresse pour défendre le Bloc 2 |
+| Banque de questions jury | [Banque de questions jury](../jury/README.md) | Préparation **hors soutenance** — drill avant le jour J |
+| Cahier des charges | `CAHIER_DES_CHARGES.md` (hors site, racine du workspace) | Slide 4 — citer textuellement la contrainte « from scratch » |
 
 ---
 

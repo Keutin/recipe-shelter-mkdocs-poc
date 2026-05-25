@@ -1,3 +1,11 @@
+---
+title: Banque de questions jury
+description: ~104 questions de préparation à la soutenance RNCP
+tags:
+  - jury
+  - soutenance
+---
+
 # Banque de questions jury — Recipe Shelter
 
 > Préparation du **oral de soutenance** (RNCP, jury de 2 professionnels ≥ 3 ans d'expérience).
@@ -101,7 +109,7 @@ Mieux vaut une réponse honnête « je n'ai pas implémenté ça mais voilà com
 
 | Artefact | Emplacement | Utilité pour la soutenance |
 |---|---|---|
-| Diagrammes UML | [`_draft_uml/`](../soutenance/backend/uml/) | Support visuel pour expliquer l'archi |
-| ADRs (5 décisions) | [`_draft_adr/`](../soutenance/backend/adr/) | Justifications écrites des choix techniques |
-| Narration « from scratch » | [`_draft_adr/00-narration-from-scratch.md`](../soutenance/backend/adr/00-narration-from-scratch.md) | **Pierre angulaire** pour défendre le respect du Bloc 2 |
-| Cahier des charges officiel | [`../CAHIER_DES_CHARGES.md`](../CAHIER_DES_CHARGES.md) | Le référentiel auquel se raccrocher en cas de doute |
+| Diagrammes UML | [Diagrammes UML](../soutenance/backend/uml/README.md) | Support visuel pour expliquer l'archi |
+| ADRs (5 décisions) | [ADRs](../soutenance/backend/adr/README.md) | Justifications écrites des choix techniques |
+| Narration « from scratch » | [Narration from-scratch](../soutenance/backend/adr/00-narration-from-scratch.md) | **Pierre angulaire** pour défendre le respect du Bloc 2 |
+| Cahier des charges officiel | `CAHIER_DES_CHARGES.md` (hors site, racine du workspace) | Le référentiel auquel se raccrocher en cas de doute |
