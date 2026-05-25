@@ -133,11 +133,23 @@
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/data-dictionary/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/environment/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
          <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/errors/</loc>
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>
          <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/securite/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/tests/</loc>
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>
@@ -193,6 +205,22 @@
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/diagrams/g5-erd/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/diagrams/g6-pipeline-erreur/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/diagrams/g7-slug-two-phase/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/diagrams/g8-user-lifecycle/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
          <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/openapi/</loc>
          <lastmod>2026-05-25</lastmod>
     </url>
@@ -238,6 +266,30 @@
     </url>
     <url>
          <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/Responsive/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/adr/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/adr/adr-006-angular-signals-standalone/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/adr/adr-007-ssr-per-route/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/adr/adr-008-typescript-strict/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/adr/adr-009-vitest/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/adr/adr-010-bootstrap-partial-scss/</loc>
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>

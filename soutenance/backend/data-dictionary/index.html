@@ -1,0 +1,4619 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="POC MkDocs Material pour le projet Recipe Shelter">
+      
+      
+        <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
+      
+      
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/data-dictionary/">
+      
+      
+        <link rel="prev" href="../architecture/">
+      
+      
+        <link rel="next" href="../environment/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Data dictionary du backend Recipe Shelter - Recipe Shelter — Documentation (POC sandbox)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-dictionary-du-backend-recipe-shelter" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-header__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Recipe Shelter — Documentation (POC sandbox)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data dictionary du backend Recipe Shelter
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Soutenance
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../manuel-utilisateur/" class="md-tabs__link">
+          
+  
+  Manuel utilisateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../deployment/" class="md-tabs__link">
+          
+  
+  Déploiement
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../jury/" class="md-tabs__link">
+          
+  
+  Jury Q&A
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../meta/mkdocs/" class="md-tabs__link">
+          
+  
+  Méta
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../GIT_CONVENTION/" class="md-tabs__link">
+        
+  
+    
+  
+  Convention Git
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-nav__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Recipe Shelter — Documentation (POC sandbox)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accueil
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Soutenance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Soutenance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vue d'ensemble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../securite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sécurité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catalogue d'erreurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            OpenAPI (Redoc)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Diagrammes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Diagrammes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g1-architecture-c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G1 — Architecture C4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g2-pipeline-middleware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G2 — Pipeline middleware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g3-sequence-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G3 — Séquence modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g4-sequence-auth-email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G4 — Séquence auth/email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_7" id="__nav_2_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UML
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            UML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/01-diagramme-classes-domaine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Classes domaine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/02-diagramme-classes-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Classes architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/03-diagramme-cas-utilisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Cas d'utilisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/04-diagramme-sequence-connexion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Séquence connexion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/05-diagramme-sequence-recette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Séquence recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_8" id="__nav_2_1_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADR (décisions)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            ADR (décisions)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/00-narration-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Narration from-scratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-001-express-comme-couche-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-001 Express comme couche HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-002 Repository (interface + impl)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-003 JWT cookie HttpOnly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-004 Soft-delete + log modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-005 Slug en deux phases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_9" id="__nav_2_1_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Routes API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            Routes API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routes API (vue statique)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_10" id="__nav_2_1_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            Postman
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Postman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_11" id="__nav_2_1_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Base de données
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_11">
+            <span class="md-nav__icon md-icon"></span>
+            Base de données
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schéma de base de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Frontend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit Lighthouse + RGAA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Audit Lighthouse + RGAA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/01-lighthouse-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Template Lighthouse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/02-rgaa-grille/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Grille RGAA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/03-findings-detailles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Findings détaillés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/04-plan-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Plan de remédiation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/05-defense-jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Défense jury
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Captures responsive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Captures responsive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/Responsive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Captures responsive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Démo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Démo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/comptes-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comptes de test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/scenario-demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scénario de démo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manuel utilisateur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Manuel utilisateur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Découverte
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Compte utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Utiliser les recettes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/04-administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — FAQ & incidents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Déploiement
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Déploiement
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vue d'ensemble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/01-options-comparees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Options comparées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/02-plan-railway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Plan Railway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/03-fallback-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Fallback & défense
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Slides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slides soutenance — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/soutenance-slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soutenance slides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Jury Q&A
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Jury Q&A
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index + principes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/00-questions-transversales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00 — Questions transversales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/01-bloc1-frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Bloc 1 (frontend HTML/CSS/JS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/02-bloc2-backend-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Bloc 2 (backend from scratch)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/03-bloc3-angular/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Bloc 3 (Angular)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/04-securite-rgpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Sécurité & RGPD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/05-pieges-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Pièges & défense
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/06-ameliorations-innovantes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 — Améliorations innovantes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/07-mode-entrainement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 — Mode entraînement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Méta
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Méta
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plan MkDocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Plan MkDocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/01-architecture-et-justification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Architecture et justification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/02-plan-poc-sandbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Plan POC sandbox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/03-walkthrough-handoff-arthur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Walkthrough handoff Arthur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contextes LLM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contextes LLM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/project-context/backend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backend (Node/TS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/project-context/frontend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frontend (Angular)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GIT_CONVENTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convention Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-pourquoi-un-data-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pourquoi un data dictionary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Vue d'ensemble
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-auth-et-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Auth et Users
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Auth et Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Roles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-usermoderationlogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. UserModerationLogs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-emailvalidations" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. EmailValidations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-passwordresets" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. PasswordResets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-catalogues" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Catalogues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Catalogues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-recipecategories" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. RecipeCategories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-ingredients" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Ingredients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-equipments" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Equipments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Tags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-recettes" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Recettes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Recettes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-recipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Recipes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-recipesteps" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. RecipeSteps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-recipeingredients" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. RecipeIngredients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-recipeequipments" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. RecipeEquipments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-recipetags" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5. RecipeTags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-social" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Social
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Social">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-favorites" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Favorites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Comments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-conventions-de-modelisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Conventions de modélisation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-coherence-avec-le-code-applicatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Cohérence avec le code applicatif
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-cross-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Cross-références
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/backend/data-dictionary.md" title="Editer cette page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="data-dictionary-du-backend-recipe-shelter">Data dictionary du backend Recipe Shelter<a class="headerlink" href="#data-dictionary-du-backend-recipe-shelter" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Document de référence pour la défense de soutenance (RNCP). Décrit le schéma
+physique de la base MySQL, table par table, colonne par colonne, avec les
+contraintes, les index et les choix de modélisation.</p>
+</blockquote>
+<h2 id="1-pourquoi-un-data-dictionary">1. Pourquoi un data dictionary<a class="headerlink" href="#1-pourquoi-un-data-dictionary" title="Permanent link">&para;</a></h2>
+<p>Le data dictionary est la <strong>source de vérité documentaire</strong> du modèle de
+données. Il sert trois objectifs précis dans le cadre de la défense.</p>
+<p>Premièrement, il fournit au jury un point d'entrée unique pour évaluer le
+<strong>bloc 3 (conception et développement)</strong> : plutôt que de demander à l'examinateur
+de lire un script SQL de 306 lignes, on lui présente un document structuré qui
+explique chaque table dans son contexte métier, avec les contraintes et les
+choix de modélisation associés.</p>
+<p>Deuxièmement, il garantit la <strong>cohérence schéma ↔ code applicatif</strong>. Le backend
+ne s'appuie sur aucun ORM : les requêtes SQL sont écrites à la main dans la
+couche <code>repositories/</code>, et les types TypeScript des entités du domaine sont
+rédigés à la main également. Le risque d'une dérive silencieuse entre la base
+et le code est réel ; ce document est l'outil qui permet de la détecter en
+révision.</p>
+<p>Troisièmement, il sert de <strong>support à l'audit RGPD</strong>. Toutes les données
+personnelles (<code>Mail</code>, <code>Username</code>, <code>Password</code>, journaux de modération) sont
+visibles dans un seul document, ce qui facilite l'inventaire des traitements,
+la justification des durées de conservation et l'identification des trous
+résiduels (le plus important étant l'absence d'un statut <code>deleted</code> pour les
+utilisateurs — voir §3.2).</p>
+<p>La <strong>source unique de vérité</strong> est le script de migration
+<code>backend/database/migrations/1_create_schema.sql</code>.
+Toute divergence entre ce document et ce fichier doit être traitée comme un
+bug du document, jamais du SQL.</p>
+<h2 id="2-vue-densemble">2. Vue d'ensemble<a class="headerlink" href="#2-vue-densemble" title="Permanent link">&para;</a></h2>
+<p>Le schéma compte <strong>16 tables</strong> organisées en cinq domaines fonctionnels.</p>
+<table>
+<thead>
+<tr>
+<th>Domaine</th>
+<th>Tables</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auth / Users</td>
+<td><code>Roles</code>, <code>Users</code>, <code>EmailValidations</code>, <code>PasswordResets</code></td>
+<td>Comptes, sessions, validation email, réinitialisation mot de passe.</td>
+</tr>
+<tr>
+<td>Modération utilisateur</td>
+<td><code>UserModerationLogs</code></td>
+<td>Audit trail des bans et débans administrateurs.</td>
+</tr>
+<tr>
+<td>Catalogues</td>
+<td><code>RecipeCategories</code>, <code>Ingredients</code>, <code>Equipments</code>, <code>Tags</code></td>
+<td>Référentiels normalisés réutilisés par les recettes.</td>
+</tr>
+<tr>
+<td>Recettes</td>
+<td><code>Recipes</code>, <code>RecipeSteps</code>, <code>RecipeIngredients</code>, <code>RecipeEquipments</code>, <code>RecipeTags</code></td>
+<td>Recette principale et ses contenus liés.</td>
+</tr>
+<tr>
+<td>Social</td>
+<td><code>Favorites</code>, <code>Comments</code></td>
+<td>Interactions communautaires sur les recettes publiées.</td>
+</tr>
+</tbody>
+</table>
+<p>Toutes les tables utilisent le moteur <strong>InnoDB</strong>, le charset <strong>utf8mb4</strong> et la
+collation <strong>utf8mb4_unicode_ci</strong>. Les clés étrangères sont systématiquement
+déclarées, avec des règles <code>ON UPDATE CASCADE</code> et des règles <code>ON DELETE</code> qui
+varient selon la sémantique métier (voir §11).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>        Roles ◄────── Users ◄─────── UserModerationLogs
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                       ▲   │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                       │   ├── EmailValidations
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                       │   ├── PasswordResets
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                       │   ├── Recipes ────► RecipeCategories
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                       │   │     │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                       │   │     ├── RecipeSteps
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                       │   │     ├── RecipeIngredients ──► Ingredients
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                       │   │     ├── RecipeEquipments ──► Equipments
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                       │   │     └── RecipeTags ────────► Tags
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                       │   │
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                       │   ├── Favorites ◄── Recipes
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                       │   └── Comments  ◄── Recipes
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                       │
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>                       └── self-FK : Users.BannedByUserId
+</code></pre></div>
+<p>Diagramme ERD complet attendu dans
+<a href="documentation/soutenance/backend/diagrams/g5-erd.md"><code>documentation/soutenance/backend/diagrams/g5-erd.md</code></a>.</p>
+<h2 id="3-auth-et-users">3. Auth et Users<a class="headerlink" href="#3-auth-et-users" title="Permanent link">&para;</a></h2>
+<h3 id="31-roles">3.1. <code>Roles</code><a class="headerlink" href="#31-roles" title="Permanent link">&para;</a></h3>
+<p>Référentiel des rôles applicatifs. Trois rôles sont attendus en seed :
+<code>user</code>, <code>admin</code>, <code>superadmin</code>. La table est intentionnellement triviale : un
+identifiant et un nom unique, sans hiérarchie matérialisée. La logique
+d'autorisation (qui peut modérer, qui peut bannir) est tranchée côté
+services à partir du nom du rôle, pas par une table de permissions.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>VARCHAR(64)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>roles_name_UK</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-users">3.2. <code>Users</code><a class="headerlink" href="#32-users" title="Permanent link">&para;</a></h3>
+<p>Table centrale du domaine. Stocke les comptes utilisateurs et leur état de
+modération. Le champ <code>Password</code> contient un hash bcrypt (jamais le mot de
+passe en clair), conformément au coût configuré par la variable
+d'environnement <code>BCRYPT_COST</code> (défaut 12).</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>Mail</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>users_mail_UK</code>)</td>
+</tr>
+<tr>
+<td><code>Username</code></td>
+<td>VARCHAR(64)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>users_username_UK</code>)</td>
+</tr>
+<tr>
+<td><code>Password</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Hash bcrypt (jamais en clair)</td>
+</tr>
+<tr>
+<td><code>RoleId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Roles.Id</code></td>
+</tr>
+<tr>
+<td><code>Status</code></td>
+<td>ENUM(...)</td>
+<td>NOT NULL</td>
+<td><code>'inactive'</code></td>
+<td>Voir ENUM ci-dessous</td>
+</tr>
+<tr>
+<td><code>EmailValidatedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>Renseigné après usage d'un <code>EmailValidations.TokenHash</code></td>
+</tr>
+<tr>
+<td><code>BannedByUserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NULL</td>
+<td>—</td>
+<td>Self-FK → <code>Users.Id</code></td>
+</tr>
+<tr>
+<td><code>BannedReason</code></td>
+<td>TEXT</td>
+<td>NULL</td>
+<td>—</td>
+<td>Motif lisible saisi par l'admin</td>
+</tr>
+<tr>
+<td><code>BannedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>Date du dernier ban appliqué</td>
+</tr>
+<tr>
+<td><code>CreatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>UpdatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td><code>ON UPDATE CURRENT_TIMESTAMP</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>ENUM <code>Users.Status</code></strong> : <code>'inactive' | 'active' | 'banned'</code>.
+- <code>inactive</code> : compte créé, email non encore validé. Valeur par défaut.
+- <code>active</code> : email validé, le compte peut s'authentifier et publier.
+- <code>banned</code> : compte verrouillé par un administrateur. La session est rejetée
+  à l'entrée des middlewares d'authentification.</p>
+<p><strong>Point RGPD signalé en Vague 1 <code>securite.md</code></strong> : il n'existe <strong>pas</strong> de
+valeur <code>'deleted'</code> dans cet ENUM, et aucune colonne <code>DeletedAt</code> n'existe sur
+<code>Users</code>. Le soft-delete utilisateur n'est donc pas implémenté à ce jour, ce
+qui constitue un trou identifié dans l'inventaire des traitements (droit à
+l'effacement, art. 17 RGPD). Mention attendue à la soutenance, avec piste
+de remédiation : ajout d'une valeur <code>deleted</code> à l'ENUM et anonymisation des
+champs <code>Mail</code> / <code>Username</code> en place.</p>
+<p><strong>Foreign keys</strong></p>
+<table>
+<thead>
+<tr>
+<th>Contrainte</th>
+<th>Cible</th>
+<th>ON UPDATE</th>
+<th>ON DELETE</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>users_role_FK</code></td>
+<td><code>Roles.Id</code></td>
+<td>CASCADE</td>
+<td>RESTRICT</td>
+<td>On refuse de supprimer un rôle encore utilisé.</td>
+</tr>
+<tr>
+<td><code>users_banned_by_user_FK</code></td>
+<td><code>Users.Id</code> (self-FK)</td>
+<td>CASCADE</td>
+<td>SET NULL</td>
+<td>Si l'admin qui a banni est supprimé, on conserve la trace du ban mais on oublie qui l'a posé.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Index secondaires</strong> : <code>idx_users_role_id</code>, <code>idx_users_status</code>,
+<code>idx_users_banned_by_user_id</code>. Les deux premiers servent les requêtes
+d'administration (listing par rôle, par état) ; le troisième sert
+l'intégrité de la self-FK.</p>
+<h3 id="33-usermoderationlogs">3.3. <code>UserModerationLogs</code><a class="headerlink" href="#33-usermoderationlogs" title="Permanent link">&para;</a></h3>
+<p>Journal d'audit des actions de modération sur les comptes. Une ligne est
+insérée à chaque ban et à chaque déban, avec l'identifiant de l'admin qui a
+agi, le motif et la date. La table est en <strong>append-only</strong> côté code : aucun
+chemin applicatif ne supprime ni ne modifie une ligne existante.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>UserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Users.Id</code> (utilisateur ciblé)</td>
+</tr>
+<tr>
+<td><code>AdminId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Users.Id</code> (admin qui a agi)</td>
+</tr>
+<tr>
+<td><code>Action</code></td>
+<td>ENUM(...)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Voir ENUM ci-dessous</td>
+</tr>
+<tr>
+<td><code>Reason</code></td>
+<td>TEXT</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Motif obligatoire</td>
+</tr>
+<tr>
+<td><code>CreatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ENUM <code>UserModerationLogs.Action</code></strong> : <code>'ban' | 'unban'</code>.
+- <code>ban</code> : l'admin a posé un ban (<code>Users.Status</code> passe à <code>'banned'</code>).
+- <code>unban</code> : l'admin a levé un ban (<code>Users.Status</code> repasse à <code>'active'</code>).</p>
+<p><strong>Foreign keys</strong> : les deux FK pointent vers <code>Users.Id</code> avec <code>ON DELETE
+RESTRICT</code>. C'est délibéré : un journal d'audit perdrait sa valeur probante
+si un utilisateur ciblé ou un admin auteur pouvait être effacé en cascade.</p>
+<p><strong>Index secondaires</strong> : <code>idx_user_moderation_logs_user_id</code>,
+<code>idx_user_moderation_logs_admin_id</code>, <code>idx_user_moderation_logs_created_at</code>.
+Le tri chronologique est explicitement indexé pour la consultation
+"historique des actions d'un admin sur les 30 derniers jours".</p>
+<h3 id="34-emailvalidations">3.4. <code>EmailValidations</code><a class="headerlink" href="#34-emailvalidations" title="Permanent link">&para;</a></h3>
+<p>Stocke les jetons à usage unique générés à l'inscription pour valider
+l'adresse mail du compte. Le jeton n'est jamais stocké en clair : la
+colonne <code>TokenHash</code> contient son empreinte <strong>SHA-256 en hexadécimal</strong>, soit
+exactement 64 caractères, d'où le type <code>CHAR(64)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>UserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Users.Id</code></td>
+</tr>
+<tr>
+<td><code>TokenHash</code></td>
+<td>CHAR(64)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>email_validations_tokenhash_UK</code>), SHA-256 hex</td>
+</tr>
+<tr>
+<td><code>ExpiresAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Vérifié à la consommation</td>
+</tr>
+<tr>
+<td><code>UsedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>NULL = jeton encore utilisable</td>
+</tr>
+<tr>
+<td><code>CreatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Foreign key</strong> : <code>email_validations_user_FK</code> → <code>Users.Id</code> avec <code>ON DELETE
+CASCADE</code>. Cohérent avec la sémantique : si le compte disparaît, ses jetons
+résiduels n'ont plus de sens.</p>
+<h3 id="35-passwordresets">3.5. <code>PasswordResets</code><a class="headerlink" href="#35-passwordresets" title="Permanent link">&para;</a></h3>
+<p>Structure jumelle de <code>EmailValidations</code>, mais pour le workflow de
+réinitialisation de mot de passe. Mêmes choix techniques : hash SHA-256
+hex en <code>CHAR(64)</code>, unicité du hash, expiration explicite, marqueur de
+consommation <code>UsedAt</code>. La séparation en deux tables (plutôt qu'une table
+générique <code>Tokens</code> avec un discriminant) est volontaire : les deux
+workflows ont des durées d'expiration différentes et la séparation simplifie
+les requêtes de purge.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>UserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Users.Id</code></td>
+</tr>
+<tr>
+<td><code>TokenHash</code></td>
+<td>CHAR(64)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>password_resets_tokenhash_UK</code>), SHA-256 hex</td>
+</tr>
+<tr>
+<td><code>ExpiresAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>UsedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>CreatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Foreign key</strong> : <code>password_resets_user_FK</code> → <code>Users.Id</code> avec <code>ON DELETE
+CASCADE</code> (même raison qu'en §3.4).</p>
+<h2 id="4-catalogues">4. Catalogues<a class="headerlink" href="#4-catalogues" title="Permanent link">&para;</a></h2>
+<p>Les quatre tables suivantes sont des <strong>référentiels</strong> : peu d'écritures
+(seeds, ajouts ponctuels par les admins), beaucoup de lectures. Elles sont
+toutes structurées sur le couple <code>(Name, Slug)</code> avec deux contraintes
+d'unicité, le slug servant d'identifiant stable dans les URL frontend.</p>
+<h3 id="41-recipecategories">4.1. <code>RecipeCategories</code><a class="headerlink" href="#41-recipecategories" title="Permanent link">&para;</a></h3>
+<p>Catégories métier d'une recette (entrées, plats, desserts, etc.). Contient
+en plus un <code>IconName</code> côté frontend pour afficher une icône cohérente.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>VARCHAR(100)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>recipe_categories_name_UK</code>)</td>
+</tr>
+<tr>
+<td><code>Slug</code></td>
+<td>VARCHAR(100)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>recipe_categories_slug_UK</code>)</td>
+</tr>
+<tr>
+<td><code>IconName</code></td>
+<td>VARCHAR(64)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Nom d'icône côté frontend (ex. <code>'utensils'</code>)</td>
+</tr>
+<tr>
+<td><code>CreatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>UpdatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td><code>ON UPDATE CURRENT_TIMESTAMP</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-ingredients">4.2. <code>Ingredients</code><a class="headerlink" href="#42-ingredients" title="Permanent link">&para;</a></h3>
+<p>Catalogue des ingrédients réutilisables (farine, sucre, oeuf, etc.). Pas
+de timestamps : le catalogue est considéré comme stable, les mutations
+restent rares.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>ingredients_name_UK</code>)</td>
+</tr>
+<tr>
+<td><code>Slug</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>ingredients_slug_UK</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-equipments">4.3. <code>Equipments</code><a class="headerlink" href="#43-equipments" title="Permanent link">&para;</a></h3>
+<p>Catalogue des équipements de cuisine (four, robot, fouet, etc.). Même
+structure minimale que <code>Ingredients</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>equipments_name_UK</code>)</td>
+</tr>
+<tr>
+<td><code>Slug</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>equipments_slug_UK</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-tags">4.4. <code>Tags</code><a class="headerlink" href="#44-tags" title="Permanent link">&para;</a></h3>
+<p>Catalogue des tags libres associables à une recette (végétarien, sans
+gluten, rapide, etc.).</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>tags_name_UK</code>)</td>
+</tr>
+<tr>
+<td><code>Slug</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>tags_slug_UK</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-recettes">5. Recettes<a class="headerlink" href="#5-recettes" title="Permanent link">&para;</a></h2>
+<h3 id="51-recipes">5.1. <code>Recipes</code><a class="headerlink" href="#51-recipes" title="Permanent link">&para;</a></h3>
+<p>Entité métier principale du domaine. Une recette appartient à un
+utilisateur (<code>UserId</code>), peut être rattachée à une catégorie (<code>CategoryId</code>,
+nullable), et traverse un cycle de vie matérialisé par la colonne <code>Status</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>UserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Users.Id</code> (auteur)</td>
+</tr>
+<tr>
+<td><code>CategoryId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NULL</td>
+<td>—</td>
+<td>FK → <code>RecipeCategories.Id</code></td>
+</tr>
+<tr>
+<td><code>Title</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Indexé en FULLTEXT (<code>ft_recipes_title</code>)</td>
+</tr>
+<tr>
+<td><code>Slug</code></td>
+<td>VARCHAR(255)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>UNIQUE (<code>recipes_slug_UK</code>)</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>TEXT</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>RecipeCoverImage</code></td>
+<td>VARCHAR(2048)</td>
+<td>NULL</td>
+<td>—</td>
+<td>URL ou chemin de l'image de couverture</td>
+</tr>
+<tr>
+<td><code>PrepTimeMinutes</code></td>
+<td>INT</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Temps de préparation</td>
+</tr>
+<tr>
+<td><code>RestTimeMinutes</code></td>
+<td>INT</td>
+<td>NULL</td>
+<td>—</td>
+<td>Temps de repos</td>
+</tr>
+<tr>
+<td><code>CookTimeMinutes</code></td>
+<td>INT</td>
+<td>NULL</td>
+<td>—</td>
+<td>Temps de cuisson</td>
+</tr>
+<tr>
+<td><code>Servings</code></td>
+<td>INT</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Nombre de portions</td>
+</tr>
+<tr>
+<td><code>Status</code></td>
+<td>ENUM(...)</td>
+<td>NOT NULL</td>
+<td><code>'draft'</code></td>
+<td>Voir ENUM ci-dessous</td>
+</tr>
+<tr>
+<td><code>CreatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>SubmittedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>Date de passage <code>draft → pending</code></td>
+</tr>
+<tr>
+<td><code>ModeratedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>Date de la décision de modération</td>
+</tr>
+<tr>
+<td><code>ModeratedByUserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NULL</td>
+<td>—</td>
+<td>FK → <code>Users.Id</code> (modérateur)</td>
+</tr>
+<tr>
+<td><code>PublishedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>Date de passage à <code>published</code></td>
+</tr>
+<tr>
+<td><code>ArchivedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>Date de passage à <code>archived</code></td>
+</tr>
+<tr>
+<td><code>RejectionReason</code></td>
+<td>TEXT</td>
+<td>NULL</td>
+<td>—</td>
+<td>Motif si <code>Status = 'rejected'</code></td>
+</tr>
+<tr>
+<td><code>UpdatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td><code>ON UPDATE CURRENT_TIMESTAMP</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>ENUM <code>Recipes.Status</code></strong> :
+<code>'draft' | 'pending' | 'published' | 'rejected' | 'archived'</code>.</p>
+<ul>
+<li><code>draft</code> : brouillon créé par l'auteur, modifiable, invisible au public.</li>
+<li><code>pending</code> : soumis à modération. <strong>Attention : la valeur est <code>pending</code>,
+  pas <code>pending_review</code>.</strong> Plusieurs documents internes ont employé l'un
+  pour l'autre ; la valeur canonique est celle déclarée ici.</li>
+<li><code>published</code> : validé par un modérateur, visible publiquement.</li>
+<li><code>rejected</code> : refusé par un modérateur, motif dans <code>RejectionReason</code>.</li>
+<li><code>archived</code> : retiré de la diffusion publique sans suppression physique.</li>
+</ul>
+<p><strong>Foreign keys</strong></p>
+<table>
+<thead>
+<tr>
+<th>Contrainte</th>
+<th>Cible</th>
+<th>ON UPDATE</th>
+<th>ON DELETE</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recipes_user_FK</code></td>
+<td><code>Users.Id</code></td>
+<td>CASCADE</td>
+<td>RESTRICT</td>
+<td>On refuse de supprimer un auteur tant qu'il a des recettes.</td>
+</tr>
+<tr>
+<td><code>recipes_category_FK</code></td>
+<td><code>RecipeCategories.Id</code></td>
+<td>CASCADE</td>
+<td>RESTRICT</td>
+<td>On refuse de supprimer une catégorie utilisée.</td>
+</tr>
+<tr>
+<td><code>recipes_moderated_by_user_FK</code></td>
+<td><code>Users.Id</code></td>
+<td>CASCADE</td>
+<td>SET NULL</td>
+<td>Si le modérateur disparaît, on conserve la décision mais on oublie qui l'a prise.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Index secondaires</strong> : <code>idx_recipes_user_id</code> (listing par auteur),
+<code>idx_recipes_category_id</code> (filtre par catégorie),
+<code>idx_recipes_status</code> (file de modération, listing public),
+<code>idx_recipes_moderated_by_user_id</code> (audit par modérateur),
+<code>ft_recipes_title</code> (<strong>FULLTEXT</strong> sur <code>Title</code>).</p>
+<p><strong>Note sur le FULLTEXT</strong> : la recherche textuelle de recettes par titre
+s'appuie sur cet index FULLTEXT MySQL natif (<code>MATCH(Title) AGAINST(?)</code>).
+Le choix d'un index FULLTEXT plutôt qu'un <code>LIKE '%mot%'</code> est défendable :
+performance acceptable au-delà de quelques centaines de recettes, et
+ranking pertinent géré par MySQL. La limite (insensibilité aux fautes
+d'orthographe, dépendance à la longueur minimale de mot configurée dans
+MySQL) est assumée pour le périmètre actuel.</p>
+<h3 id="52-recipesteps">5.2. <code>RecipeSteps</code><a class="headerlink" href="#52-recipesteps" title="Permanent link">&para;</a></h3>
+<p>Étapes d'une recette, ordonnées par <code>StepNumber</code>. La clé primaire
+composite <code>(RecipeId, StepNumber)</code> garantit qu'une étape donnée d'une
+recette est unique sans nécessiter de contrainte d'unicité supplémentaire.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RecipeId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>PK composite, FK → <code>Recipes.Id</code></td>
+</tr>
+<tr>
+<td><code>StepNumber</code></td>
+<td>INT</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>PK composite</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>TEXT</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Texte libre de l'étape</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Foreign key</strong> : <code>recipe_steps_recipe_FK</code> → <code>Recipes.Id</code> avec <code>ON DELETE
+CASCADE</code>. La suppression d'une recette efface ses étapes.</p>
+<h3 id="53-recipeingredients">5.3. <code>RecipeIngredients</code><a class="headerlink" href="#53-recipeingredients" title="Permanent link">&para;</a></h3>
+<p>Association <code>Recipes</code> ↔ <code>Ingredients</code> enrichie d'une quantité, d'une
+unité, d'une note libre et d'un ordre d'affichage. Contrairement à
+<code>RecipeSteps</code>, on utilise un <code>Id</code> auto-incrémenté plutôt qu'une PK
+composite, car le même ingrédient peut apparaître plusieurs fois dans
+une recette avec des notes différentes (ex. "100 g pour la pâte" et
+"50 g pour le dressage").</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>RecipeId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Recipes.Id</code></td>
+</tr>
+<tr>
+<td><code>IngredientId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Ingredients.Id</code></td>
+</tr>
+<tr>
+<td><code>Quantity</code></td>
+<td>DECIMAL(10,3)</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Précision 3 décimales (ex. <code>0.250</code>)</td>
+</tr>
+<tr>
+<td><code>Unit</code></td>
+<td>VARCHAR(64)</td>
+<td>NULL</td>
+<td>—</td>
+<td>Unité libre (<code>g</code>, <code>ml</code>, <code>cuillère</code>, etc.)</td>
+</tr>
+<tr>
+<td><code>Note</code></td>
+<td>VARCHAR(255)</td>
+<td>NULL</td>
+<td>—</td>
+<td>Précision libre par ingrédient</td>
+</tr>
+<tr>
+<td><code>SortOrder</code></td>
+<td>INT</td>
+<td>NOT NULL</td>
+<td><code>1</code></td>
+<td>Ordre d'affichage dans la recette</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Foreign keys</strong></p>
+<table>
+<thead>
+<tr>
+<th>Contrainte</th>
+<th>Cible</th>
+<th>ON UPDATE</th>
+<th>ON DELETE</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recipe_ingredients_recipe_FK</code></td>
+<td><code>Recipes.Id</code></td>
+<td>CASCADE</td>
+<td>CASCADE</td>
+<td>Supprimer une recette efface ses ingrédients.</td>
+</tr>
+<tr>
+<td><code>recipe_ingredients_ingredient_FK</code></td>
+<td><code>Ingredients.Id</code></td>
+<td>CASCADE</td>
+<td>RESTRICT</td>
+<td>On refuse de supprimer un ingrédient référencé.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Index secondaires</strong> : <code>idx_recipe_ingredients_recipe_sort (RecipeId,
+SortOrder)</code> pour la liste ordonnée des ingrédients d'une recette,
+<code>idx_recipe_ingredients_ingredient_id</code> pour le sens inverse (recettes
+contenant un ingrédient donné).</p>
+<h3 id="54-recipeequipments">5.4. <code>RecipeEquipments</code><a class="headerlink" href="#54-recipeequipments" title="Permanent link">&para;</a></h3>
+<p>Association <code>Recipes</code> ↔ <code>Equipments</code>, sans donnée supplémentaire. PK
+composite <code>(RecipeId, EquipmentId)</code> : une recette ne référence qu'une
+seule fois un équipement.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RecipeId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>PK composite, FK → <code>Recipes.Id</code></td>
+</tr>
+<tr>
+<td><code>EquipmentId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>PK composite, FK → <code>Equipments.Id</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Foreign keys</strong></p>
+<table>
+<thead>
+<tr>
+<th>Contrainte</th>
+<th>Cible</th>
+<th>ON UPDATE</th>
+<th>ON DELETE</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recipe_equipment_recipe_FK</code></td>
+<td><code>Recipes.Id</code></td>
+<td>CASCADE</td>
+<td>CASCADE</td>
+<td>Supprimer une recette efface ses associations.</td>
+</tr>
+<tr>
+<td><code>recipe_equipements_equipment_FK</code></td>
+<td><code>Equipments.Id</code></td>
+<td>CASCADE</td>
+<td>RESTRICT</td>
+<td>On refuse de supprimer un équipement utilisé.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Index secondaire</strong> : <code>idx_recipe_equipments_equipment_id</code> pour le sens
+inverse.</p>
+<h3 id="55-recipetags">5.5. <code>RecipeTags</code><a class="headerlink" href="#55-recipetags" title="Permanent link">&para;</a></h3>
+<p>Association <code>Recipes</code> ↔ <code>Tags</code>. Même structure et mêmes choix que
+<code>RecipeEquipments</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RecipeId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>PK composite, FK → <code>Recipes.Id</code></td>
+</tr>
+<tr>
+<td><code>TagId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>PK composite, FK → <code>Tags.Id</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Foreign keys</strong></p>
+<table>
+<thead>
+<tr>
+<th>Contrainte</th>
+<th>Cible</th>
+<th>ON UPDATE</th>
+<th>ON DELETE</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recipe_tags_recipe_FK</code></td>
+<td><code>Recipes.Id</code></td>
+<td>CASCADE</td>
+<td>CASCADE</td>
+<td>Supprimer une recette efface ses tags.</td>
+</tr>
+<tr>
+<td><code>recipe_tags_tag_FK</code></td>
+<td><code>Tags.Id</code></td>
+<td>CASCADE</td>
+<td>RESTRICT</td>
+<td>On refuse de supprimer un tag référencé.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Index secondaire</strong> : <code>idx_recipe_tags_tag_id</code>.</p>
+<h2 id="6-social">6. Social<a class="headerlink" href="#6-social" title="Permanent link">&para;</a></h2>
+<h3 id="61-favorites">6.1. <code>Favorites</code><a class="headerlink" href="#61-favorites" title="Permanent link">&para;</a></h3>
+<p>Mise en favori d'une recette par un utilisateur. PK composite
+<code>(UserId, RecipeId)</code> : un utilisateur ne met une recette en favori
+qu'une fois. Pas de soft-delete : retirer un favori, c'est supprimer la
+ligne. La sémantique métier ne nécessite pas de conserver l'historique.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>PK composite, FK → <code>Users.Id</code></td>
+</tr>
+<tr>
+<td><code>RecipeId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>PK composite, FK → <code>Recipes.Id</code></td>
+</tr>
+<tr>
+<td><code>CreatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Foreign keys</strong> : <code>favorites_user_FK</code> et <code>favorites_recipe_FK</code>, toutes
+deux en <code>ON DELETE CASCADE</code>. Conséquence : supprimer un utilisateur ou
+une recette efface les favoris associés sans alerte. C'est cohérent avec
+la nature transitoire de l'information.</p>
+<p><strong>Index secondaire</strong> : <code>idx_favorites_recipe_id</code> pour les agrégats
+"nombre de favoris d'une recette".</p>
+<h3 id="62-comments">6.2. <code>Comments</code><a class="headerlink" href="#62-comments" title="Permanent link">&para;</a></h3>
+<p>Commentaires et notes des utilisateurs sur les recettes publiées.
+Structure la plus dense du schéma : elle porte en même temps la
+hiérarchie de discussion (thread), la modération, le soft-delete et la
+notation.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Default</th>
+<th>Contraintes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+</tr>
+<tr>
+<td><code>RecipeId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Recipes.Id</code></td>
+</tr>
+<tr>
+<td><code>UserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>FK → <code>Users.Id</code> (auteur du commentaire)</td>
+</tr>
+<tr>
+<td><code>ParentCommentId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NULL</td>
+<td>—</td>
+<td>Self-FK → <code>Comments.Id</code> (réponse à...)</td>
+</tr>
+<tr>
+<td><code>ModeratedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>Date de la décision de modération</td>
+</tr>
+<tr>
+<td><code>ModeratedByUserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NULL</td>
+<td>—</td>
+<td>FK → <code>Users.Id</code> (modérateur)</td>
+</tr>
+<tr>
+<td><code>DeletedAt</code></td>
+<td>DATETIME</td>
+<td>NULL</td>
+<td>—</td>
+<td>Soft-delete : NULL = visible</td>
+</tr>
+<tr>
+<td><code>DeletedByUserId</code></td>
+<td>BIGINT UNSIGNED</td>
+<td>NULL</td>
+<td>—</td>
+<td>FK → <code>Users.Id</code> (qui a supprimé)</td>
+</tr>
+<tr>
+<td><code>Rating</code></td>
+<td>TINYINT UNSIGNED</td>
+<td>NULL</td>
+<td>—</td>
+<td>CHECK : NULL ou compris entre 1 et 5</td>
+</tr>
+<tr>
+<td><code>Comment</code></td>
+<td>TEXT</td>
+<td>NOT NULL</td>
+<td>—</td>
+<td>Texte du commentaire</td>
+</tr>
+<tr>
+<td><code>CreatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>UpdatedAt</code></td>
+<td>DATETIME</td>
+<td>NOT NULL</td>
+<td>CURRENT_TIMESTAMP</td>
+<td><code>ON UPDATE CURRENT_TIMESTAMP</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>CHECK constraint <code>comments_rating_chk</code></strong> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">Rating</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">Rating</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+<p>Garantit au niveau base que la note, lorsqu'elle est présente, est un
+entier de 1 à 5. La validation applicative côté DTO double cette
+garantie, mais la contrainte SQL est la défense en profondeur.</p>
+<p><strong>Soft-delete via <code>DeletedAt</code></strong> : cohérent avec l'ADR-004 sur la
+modération des contenus. Une suppression de commentaire (par l'auteur
+ou par un modérateur) renseigne <code>DeletedAt</code> et <code>DeletedByUserId</code> sans
+effacer la ligne, ce qui permet à la fois de conserver la trace pour
+audit et de maintenir la structure des threads de réponse (un
+commentaire supprimé reste un noeud parent valide pour ses réponses).</p>
+<p><strong>Foreign keys</strong></p>
+<table>
+<thead>
+<tr>
+<th>Contrainte</th>
+<th>Cible</th>
+<th>ON UPDATE</th>
+<th>ON DELETE</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>comments_recipe_FK</code></td>
+<td><code>Recipes.Id</code></td>
+<td>CASCADE</td>
+<td>CASCADE</td>
+<td>Supprimer la recette efface ses commentaires.</td>
+</tr>
+<tr>
+<td><code>comments_user_FK</code></td>
+<td><code>Users.Id</code></td>
+<td>CASCADE</td>
+<td>CASCADE</td>
+<td>Supprimer l'utilisateur efface ses commentaires.</td>
+</tr>
+<tr>
+<td><code>comments_parent_FK</code></td>
+<td><code>Comments.Id</code> (self)</td>
+<td>CASCADE</td>
+<td>SET NULL</td>
+<td>Si le parent disparaît, la réponse devient orpheline plutôt que d'être effacée.</td>
+</tr>
+<tr>
+<td><code>comments_moderated_by_FK</code></td>
+<td><code>Users.Id</code></td>
+<td>CASCADE</td>
+<td>SET NULL</td>
+<td>On conserve la décision sans le décideur.</td>
+</tr>
+<tr>
+<td><code>comments_deleted_by_FK</code></td>
+<td><code>Users.Id</code></td>
+<td>CASCADE</td>
+<td>SET NULL</td>
+<td>Idem.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note sur l'asymétrie avec <code>Users</code></strong> : <code>comments_user_FK</code> est en
+<code>CASCADE</code> alors que <code>recipes_user_FK</code> est en <code>RESTRICT</code>. La raison est
+pédagogique et métier : on accepte qu'une suppression utilisateur
+emporte ses commentaires (volume élevé, faible valeur unitaire), mais
+pas ses recettes (valeur de contenu trop élevée, modération en amont).
+À nouveau, le soft-delete utilisateur (§3.2) rendrait toute cette
+discussion sans objet : c'est l'angle d'attaque prioritaire pour la
+remédiation RGPD.</p>
+<p><strong>Index secondaires</strong> : <code>idx_comments_recipe_id</code> (commentaires d'une
+recette), <code>idx_comments_user_id</code> (commentaires d'un utilisateur),
+<code>idx_comments_parent_comment_id</code> (réponses à un commentaire),
+<code>idx_comments_deleted_at</code> (filtrer les supprimés), <code>idx_comments_moderated_at</code>
+(file de modération).</p>
+<h2 id="7-conventions-de-modelisation">7. Conventions de modélisation<a class="headerlink" href="#7-conventions-de-modelisation" title="Permanent link">&para;</a></h2>
+<p>Les choix suivants sont appliqués de manière homogène à l'ensemble du
+schéma. Les exceptions sont explicitement documentées dans les sections
+par table ci-dessus.</p>
+<table>
+<thead>
+<tr>
+<th>Convention</th>
+<th>Règle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clé primaire</td>
+<td><code>Id BIGINT UNSIGNED AUTO_INCREMENT</code> pour les entités. PK composite pour les pures tables d'association.</td>
+</tr>
+<tr>
+<td>Naming</td>
+<td>Tables en <strong>PascalCase pluriel</strong> (<code>Users</code>, <code>Recipes</code>, <code>RecipeIngredients</code>). Colonnes en <strong>PascalCase</strong>.</td>
+</tr>
+<tr>
+<td>Timestamps</td>
+<td><code>CreatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP</code> et <code>UpdatedAt ... ON UPDATE CURRENT_TIMESTAMP</code> quand l'entité est mutable.</td>
+</tr>
+<tr>
+<td>Soft-delete</td>
+<td>Colonne <code>DeletedAt DATETIME NULL</code> quand le besoin métier l'exige (<code>Comments</code> uniquement à ce jour).</td>
+</tr>
+<tr>
+<td>Slugs</td>
+<td><code>Slug VARCHAR(255) NOT NULL UNIQUE</code> pour toute entité référencée dans une URL frontend.</td>
+</tr>
+<tr>
+<td>Identifiants externes hashés</td>
+<td>Jetons stockés en <code>CHAR(64)</code> (SHA-256 hex), jamais en clair.</td>
+</tr>
+<tr>
+<td>Charset</td>
+<td><code>utf8mb4</code> / <code>utf8mb4_unicode_ci</code> sur toutes les tables (support emoji et caractères étendus).</td>
+</tr>
+<tr>
+<td>Moteur</td>
+<td><code>InnoDB</code> exclusivement (transactions, contraintes référentielles).</td>
+</tr>
+<tr>
+<td>ENUMs</td>
+<td>Préférés aux tables de référence pour les états bornés et stables (<code>Users.Status</code>, <code>Recipes.Status</code>, <code>UserModerationLogs.Action</code>).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-coherence-avec-le-code-applicatif">8. Cohérence avec le code applicatif<a class="headerlink" href="#8-coherence-avec-le-code-applicatif" title="Permanent link">&para;</a></h2>
+<p>Le backend ne s'appuie sur aucun ORM. Les types TypeScript du domaine
+sont définis à la main dans <code>backend/src/repositories/**/*.repository.mysql.ts</code>,
+et chaque colonne du schéma a un pendant dans l'interface du repository
+correspondant. Ce document est l'outil de référence pour vérifier que
+les deux représentations restent synchronisées en revue de code.</p>
+<p>Trois exemples concrets :</p>
+<ul>
+<li><code>backend/src/repositories/users/user.repository.mysql.ts</code> doit refléter
+  les champs de la table <code>Users</code> (§3.2), notamment l'ENUM <code>Status</code> et la
+  self-FK <code>BannedByUserId</code>. Une dérive typique à surveiller : ajouter
+  <code>'deleted'</code> dans le type TypeScript sans avoir d'abord migré l'ENUM
+  côté SQL.</li>
+<li><code>backend/src/repositories/recipes/recipe.repository.mysql.ts</code> doit
+  exposer les cinq valeurs de <code>Recipes.Status</code> (§5.1). Toute
+  apparition de <code>'pending_review'</code> dans le code est un bug de
+  documentation à corriger : la valeur canonique est <code>'pending'</code>.</li>
+<li><code>backend/src/repositories/comments/comments.repository.mysql.ts</code> doit
+  matérialiser le contrat de soft-delete : les requêtes de lecture
+  publique filtrent obligatoirement sur <code>DeletedAt IS NULL</code>, et la
+  contrainte <code>CHECK</code> sur <code>Rating</code> (§6.2) est doublée par une validation
+  applicative côté DTO.</li>
+</ul>
+<p>La règle de revue est simple : <strong>toute modification de
+<code>1_create_schema.sql</code> doit s'accompagner d'une mise à jour visible des
+repositories concernés et de ce data dictionary, dans le même commit</strong>.</p>
+<h2 id="9-cross-references">9. Cross-références<a class="headerlink" href="#9-cross-references" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Diagramme entité-relation visuel :
+  <a href="documentation/soutenance/backend/diagrams/g5-erd.md"><code>documentation/soutenance/backend/diagrams/g5-erd.md</code></a>
+  (à venir).</li>
+<li>Architecture applicative, §9 Persistence (pool MySQL, transactions,
+  pattern Repository) :
+  <code>_draft_backend_docs/architecture.md</code>.</li>
+<li>Catalogue des erreurs renvoyées par la couche persistance (codes
+  applicatifs, mapping HTTP) :
+  <code>_draft_backend_docs/errors.md</code>.</li>
+<li>Source unique de vérité du schéma :
+  <code>backend/database/migrations/1_create_schema.sql</code>.</li>
+<li>Inventaire RGPD et trous résiduels (notamment l'absence de
+  soft-delete utilisateur) : <code>_draft_securite/securite.md</code>, Vague 1.</li>
+<li>ADR-004 sur le soft-delete des commentaires : à référencer depuis le
+  dossier <code>documentation/soutenance/backend/decisions/</code>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../architecture/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Architecture">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Architecture
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../environment/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Variables d&#39;environnement du backend Recipe Shelter">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Variables d'environnement du backend Recipe Shelter
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>
