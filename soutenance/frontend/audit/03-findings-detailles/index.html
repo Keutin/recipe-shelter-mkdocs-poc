@@ -1,0 +1,2653 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="POC MkDocs Material pour le projet Recipe Shelter">
+      
+      
+        <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
+      
+      
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/audit/03-findings-detailles/">
+      
+      
+        <link rel="prev" href="../02-rgaa-grille/">
+      
+      
+        <link rel="next" href="../04-plan-remediation/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Findings détaillés — audit statique frontend - Recipe Shelter — Documentation (POC sandbox)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#findings-detailles-audit-statique-frontend" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-header__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Recipe Shelter — Documentation (POC sandbox)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Findings détaillés — audit statique frontend
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter - Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../GIT_CONVENTION/" class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter - Git Convention
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../manuel-utilisateur/" class="md-tabs__link">
+          
+  
+  Manuel utilisateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../backend/adr/" class="md-tabs__link">
+          
+  
+  Soutenance
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-nav__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Recipe Shelter — Documentation (POC sandbox)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter - Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../GIT_CONVENTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter - Git Convention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manuel utilisateur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Manuel utilisateur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide utilisateur — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Découvrir Recipe Shelter (sans compte)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Compte utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Utiliser les recettes (membre connecté)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/04-administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. FAQ et messages d'erreur courants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Soutenance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Soutenance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Adr
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Adr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR — Architecture Decision Records
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/00-narration-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Narration "from scratch" — défense pour la soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-001-express-comme-couche-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-001 — Express comme couche HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-002 — Pattern Repository : interface + implémentation MySQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-003 — JWT en cookie HttpOnly (vs header Authorization)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-004 — Soft-delete et log de modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-005 — Slug en deux phases (brouillon puis public)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Uml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Uml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UML — Brouillons à intégrer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/01-diagramme-classes-domaine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Modèle de domaine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/02-diagramme-classes-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Architecture backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/03-diagramme-cas-utilisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de cas d'utilisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/04-diagramme-sequence-connexion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Connexion (login)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/05-diagramme-sequence-recette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Cycle de vie d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Demo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Demo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../demo/comptes-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comptes de test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../demo/scenario-demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scénario de démonstration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Frontend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Audit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloc 1 — Audit Lighthouse + grille RGAA/WCAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-lighthouse-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lighthouse — Template d'audit à remplir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-rgaa-grille/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Findings détaillés — audit statique frontend
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Findings détaillés — audit statique frontend
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-html-semantique" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. HTML sémantique
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. HTML sémantique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-images-et-alt" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Images et alt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Images et alt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-formulaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Formulaires
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Formulaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-navigation-clavier-et-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Navigation clavier et focus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Navigation clavier et focus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-aria" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. ARIA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ARIA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-contraste-et-visuel" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Contraste et visuel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Contraste et visuel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-langue-et-localisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Langue et localisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Langue et localisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-seo" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. SEO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. SEO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-responsive" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Responsive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Responsive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-rgpd-consentement" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. RGPD / consentement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. RGPD / consentement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-gestion-derreurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Gestion d'erreurs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Gestion d'erreurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-methodologiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes méthodologiques
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-plan-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan de remédiation priorisé
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-defense-jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Défendre le Bloc 1 en soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-html-semantique" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. HTML sémantique
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. HTML sémantique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-images-et-alt" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Images et alt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Images et alt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-formulaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Formulaires
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Formulaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-navigation-clavier-et-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Navigation clavier et focus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Navigation clavier et focus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-aria" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. ARIA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ARIA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-contraste-et-visuel" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Contraste et visuel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Contraste et visuel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-langue-et-localisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Langue et localisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Langue et localisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-seo" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. SEO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. SEO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-responsive" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Responsive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Responsive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-rgpd-consentement" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. RGPD / consentement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. RGPD / consentement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-gestion-derreurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Gestion d'erreurs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Gestion d'erreurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bon_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manquant-risque_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manquant / risqué
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-methodologiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes méthodologiques
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/frontend/audit/03-findings-detailles.md" title="Editer cette page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="findings-detailles-audit-statique-frontend">Findings détaillés — audit statique frontend<a class="headerlink" href="#findings-detailles-audit-statique-frontend" title="Permanent link">&para;</a></h1>
+<p>Inventaire technique brut, par thématique, des observations faites en lisant le code source. Chaque finding est ancré sur <code>file:line</code> pour pouvoir être vérifié ou corrigé directement.</p>
+<blockquote>
+<p>Ce fichier sert de <strong>base technique</strong> pour la grille RGAA (<code>02-rgaa-grille.md</code>) et le plan de remédiation (<code>04-plan-remediation.md</code>). Il peut rester dans <code>_draft_bloc1_audit/</code> et <strong>ne pas être copié</strong> dans le repo <code>documentation</code> si on préfère un livrable plus synthétique côté jury.</p>
+</blockquote>
+<p>Périmètre : <code>frontend/src/</code> (Angular 21, SSR, standalone, signals, Bootstrap 5 partiel).</p>
+<hr />
+<h2 id="1-html-semantique">1. HTML sémantique<a class="headerlink" href="#1-html-semantique" title="Permanent link">&para;</a></h2>
+<h3 id="bon">Bon<a class="headerlink" href="#bon" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>&lt;main class="rs-main"&gt;</code> autour de <code>&lt;router-outlet&gt;</code> — <code>app/app.html:3-5</code>.</li>
+<li><code>&lt;rs-header&gt;</code> utilise <code>&lt;header&gt;</code> + <code>&lt;nav class="navbar" aria-label="En tête"&gt;</code> — <code>app/layouts/header/header.html:1-2</code>.</li>
+<li><code>&lt;footer aria-label="Pied de page"&gt;</code> + <code>&lt;nav aria-label="Liens légaux"&gt;</code> imbriqué — <code>app/layouts/footer/footer.html:1,7</code>.</li>
+<li>Fiche recette utilise <code>&lt;article&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;section&gt;</code> proprement — <code>app/pages/recipes/detail/recipe-detail.html:17,18,79,80,111</code>.</li>
+<li>Commentaires : chaque commentaire = <code>&lt;article&gt;</code> avec <code>&lt;header&gt;</code> — <code>app/pages/recipes/detail/recipe-detail.html:144,239</code>.</li>
+<li>Listes : <code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code> pour ingrédients et étapes — <code>app/pages/recipes/detail/recipe-detail.html:83,114</code>.</li>
+<li>Définition list (<code>&lt;dl&gt;/&lt;dt&gt;/&lt;dd&gt;</code>) pour profil utilisateur — <code>app/pages/admin/users/user-detail/user-detail.html:40-60</code>.</li>
+<li>Un seul <code>&lt;h1&gt;</code> par page, <code>&lt;h2&gt;</code> de section — <code>app/pages/home/home.html:5,17,45</code>, <code>app/pages/recipes/detail/recipe-detail.html:25,81,96,112,129</code>, <code>app/pages/profile/profile.html:5,34,83,130</code>, <code>app/pages/about/about.html:2,7,14,20</code>.</li>
+<li><code>aria-labelledby</code> qui lie une section à son titre — <code>app/pages/home/home.html:15,42</code>, <code>app/pages/recipes/submit/recipe-form.html:41,76,94,112</code>, <code>app/pages/users/profile/profile.html:35</code>.</li>
+</ul>
+<h3 id="manquant-risque">Manquant / risqué<a class="headerlink" href="#manquant-risque" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>&lt;main&gt;</code> imbriqué dans <code>&lt;main&gt;</code></strong> — <code>app/pages/admin/users/user-detail/user-detail.html:36</code> et <code>app/pages/admin/review/review.html:33</code> ajoutent un <code>&lt;main class="rs-user-content"&gt;</code> à l'intérieur du <code>&lt;main&gt;</code> du layout (<code>app/app.html:3</code>). RGAA 9.1 → un seul <code>&lt;main&gt;</code> par page. <strong>Fix</strong> : passer en <code>&lt;section&gt;</code> ou <code>&lt;div role="region" aria-label="..."&gt;</code>.</li>
+<li><strong><code>role="list"</code> / <code>role="listitem"</code> sur <code>&lt;div&gt;</code></strong> — <code>app/pages/contact/contact.html:12-29</code>. Antipattern, utiliser un vrai <code>&lt;ul&gt;/&lt;li&gt;</code>.</li>
+<li><strong>Cartes de recettes en <code>&lt;h2&gt;</code></strong> sous une section dont le titre est aussi <code>&lt;h2&gt;</code> — <code>app/shared/recipe-card/recipe-card.html:14</code> vs <code>app/pages/home/home.html:45</code>. Idéalement <code>&lt;h3&gt;</code> pour les cartes.</li>
+<li><strong>Boutons modération sans <code>aria-label</code></strong> — « Modérer », « Supprimer » au lecteur d'écran : sans contexte du commentaire associé. <code>app/pages/recipes/detail/recipe-detail.html:198-215, 277-289</code>. <strong>Fix</strong> : <code>[attr.aria-label]="'Supprimer le commentaire de ' + comment.author.username"</code>.</li>
+</ul>
+<hr />
+<h2 id="2-images-et-alt">2. Images et alt<a class="headerlink" href="#2-images-et-alt" title="Permanent link">&para;</a></h2>
+<h3 id="bon_1">Bon<a class="headerlink" href="#bon_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Hero correctement décoratif : <code>alt=""</code> + <code>width="1920" height="1280" loading="eager" fetchpriority="high" decoding="async"</code> — <code>app/pages/home/home.html:3</code>.</li>
+<li>Cartes : <code>alt=""</code> (décoratif) + <code>width/height/loading</code> — <code>app/shared/recipe-card/recipe-card.html:5,7</code>.</li>
+<li>Fiche recette : <code>alt = titre</code> — <code>app/pages/recipes/detail/recipe-detail.html:72</code>.</li>
+<li>Aperçu image dans le formulaire avec alt descriptif — <code>app/pages/recipes/submit/recipe-cover-image-form.html:14</code>.</li>
+<li>Préchargement hero : <code>&lt;link rel="preload" as="image" href="/assets/images/home/home-hero.webp" type="image/webp" fetchpriority="high"&gt;</code> — <code>src/index.html:11</code>.</li>
+<li>Toutes les <code>&lt;img&gt;</code> ont <code>width</code> et <code>height</code> → pas de CLS.</li>
+</ul>
+<h3 id="manquant-risque_1">Manquant / risqué<a class="headerlink" href="#manquant-risque_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>NgOptimizedImage</code> (<code>ngSrc</code>) jamais utilisé</strong> (grep zero). À brancher au minimum sur <code>home.html:3</code>, <code>recipe-detail.html:72</code>, <code>recipe-card.html:5,7</code>, <code>review.html:51</code> → srcset auto, lazy auto, LCP detection.</li>
+<li><strong>Image admin review sans dimensions</strong> — <code>app/pages/admin/review/review.html:51</code> : <code>&lt;img [src]="recipe.coverImageUrl" [alt]="recipe.title"&gt;</code>. <strong>Fix</strong> : ajouter <code>width</code>, <code>height</code>, <code>loading="lazy"</code>.</li>
+<li><strong>Aperçu formulaire sans dimensions</strong> — <code>app/pages/recipes/submit/recipe-cover-image-form.html:14</code>.</li>
+<li><strong>Typo</strong> : <code>"Apercu"</code> (sans accent) — <code>recipe-cover-image-form.html:14</code>. <strong>Fix</strong> : <code>"Aperçu de l'image de couverture"</code>.</li>
+</ul>
+<hr />
+<h2 id="3-formulaires">3. Formulaires<a class="headerlink" href="#3-formulaires" title="Permanent link">&para;</a></h2>
+<h3 id="bon_2">Bon<a class="headerlink" href="#bon_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Tous les inputs sondés ont un <code>&lt;label for="..."&gt;</code> correctement lié.</li>
+<li><code>autocomplete</code> correct : <code>email</code>, <code>current-password</code>, <code>new-password</code>, <code>name</code> — <code>sign-in.html:8,21</code>, <code>sign-up.html:8,17,30,43</code>, <code>contact.html:46-99</code>, <code>profile.html:45-96</code>, <code>reset-password.html:14-28</code>.</li>
+<li>IDs dynamiques pour les form arrays — <code>recipe-ingredients-form.html:3-4,9-10,15-16,26-27</code> (<code>[attr.for]</code> + <code>[id]</code>).</li>
+<li>Astérisque + mention « champs marqués * obligatoires » — <code>contact.html:41</code>, <code>profile.html:7</code>.</li>
+<li><code>&lt;form role="search"&gt;</code> + label visually-hidden dans le header — <code>header.html:6-7,11</code>.</li>
+<li><code>inputmode</code> adapté : <code>email</code>, <code>numeric</code>, <code>decimal</code> (<code>contact.html:64</code>, <code>recipe-form.html:50,58,63,68</code>, <code>recipe-ingredients-form.html:4</code>).</li>
+<li><code>novalidate</code> pour laisser Angular gérer la validation — <code>contact.html:43</code>, <code>recipe-form.html:34</code>, <code>profile.html:33</code>.</li>
+<li>Erreurs <code>role="alert"</code> (<code>sign-up.html:72</code>, <code>contact.html:119</code>, <code>reset-password.html:40</code>), succès <code>role="status" aria-live="polite"</code> (<code>sign-in.html:29</code>, <code>contact.html:115</code>).</li>
+<li><code>role="group"</code> + <code>aria-labelledby</code> pour les tags — <code>recipe-tags-form.html:10</code>.</li>
+<li>Style invalide tied à <code>.ng-touched.ng-invalid</code> — <code>shared/styles/auth-form.css:106-109</code>.</li>
+</ul>
+<h3 id="manquant-risque_2">Manquant / risqué<a class="headerlink" href="#manquant-risque_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>aria-invalid</code> jamais positionné</strong> (grep zero). <strong>Fix généralisé</strong> :
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[attr.aria-invalid]=&quot;control.touched <span class="err">&amp;&amp;</span> control.invalid ? &#39;true&#39; : null&quot;
+</code></pre></div>
+  à appliquer sur tous les inputs validés.</li>
+<li><strong><code>aria-describedby</code> → message d'erreur</strong> quasi absent. Seul <code>sign-up.html:56</code> le fait pour la checkbox CGU avec <code>aria-describedby="termsAccepted-error"</code> lié à <code>&lt;p id="termsAccepted-error" ...&gt;</code> (<code>sign-up.html:67</code>). <strong>Fix généralisé</strong> : donner un <code>id</code> aux <code>&lt;p class="rs-field-error"&gt;</code> et référencer depuis l'input quand l'erreur est visible.</li>
+<li><strong><code>required</code> sans <code>aria-required</code></strong> sur les inputs — mineur, <code>required</code> suffit dans la plupart des AT.</li>
+<li><strong>Forgot-password : erreur en dehors du <code>.rs-field</code></strong> — <code>forgot-password.html:9-13</code>.</li>
+<li><strong><code>inputmode="name"</code> invalide</strong> — <code>profile.html:96</code>. Valeurs valides : <code>none|text|tel|url|email|numeric|decimal|search</code>. <strong>Fix</strong> : <code>inputmode="text"</code> ou retirer.</li>
+<li><strong>Sélect multiple sans helper</strong> — <code>search.html:30,42</code> pas de hint sur Ctrl-clic, considérer un widget chip multi-select.</li>
+<li><strong>Champ temps total sans <code>aria-describedby</code></strong> pour l'unité « minute(s) » — <code>search.html:54</code>.</li>
+</ul>
+<hr />
+<h2 id="4-navigation-clavier-et-focus">4. Navigation clavier et focus<a class="headerlink" href="#4-navigation-clavier-et-focus" title="Permanent link">&para;</a></h2>
+<h3 id="bon_3">Bon<a class="headerlink" href="#bon_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Global : <code>:focus-visible { outline: 3px solid var(--rs-focus-ring); outline-offset: 3px; }</code> — <code>src/styles.scss:51-54</code>.</li>
+<li>Focus renforcé sur inputs auth — <code>shared/styles/auth-form.css:62-67</code>.</li>
+<li>Focus visible sur submit search header — <code>layouts/header/header.css:79-82</code>.</li>
+<li><strong>Aucun <code>outline:none</code> / <code>outline:0</code></strong> dans le code (grep zero).</li>
+<li>Boutons natifs partout pour les actions cliquables.</li>
+<li>Toggle mobile menu expose son état : <code>[attr.aria-expanded]</code>, <code>aria-controls="main-navbar"</code>, <code>[attr.aria-label]</code> qui bascule entre « Afficher / Fermer le menu » — <code>header.html:20</code>.</li>
+<li>Dropdown user : <code>[attr.aria-expanded]</code> + <code>aria-controls="user-menu"</code> — <code>header.html:27</code>.</li>
+</ul>
+<h3 id="manquant-risque_3">Manquant / risqué<a class="headerlink" href="#manquant-risque_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pas de skip link</strong> (<code>grep skip</code> zero). <strong>Fix</strong> dans <code>app/app.html</code> :
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;visually-hidden-focusable&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#main-content&quot;</span><span class="p">&gt;</span>Aller au contenu principal<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></div></li>
+<li><code>id="main-content"</code> sur <code>&lt;main&gt;</code>, et <code>tabindex="-1"</code> pour permettre le focus.</li>
+<li><strong>Pas de gestion de focus sur changement de route</strong> — <code>app.config.ts:15-18</code> scroll en haut mais ne déplace pas le focus. <strong>Fix</strong> : injecter <code>Router</code> + écouter <code>NavigationEnd</code> + <code>setTimeout(() =&gt; document.querySelector('h1')?.focus())</code> (avec <code>tabindex="-1"</code> sur h1).</li>
+<li><strong>Dropdown user menu non accessible clavier</strong> — <code>header.html:26-39</code> : pas de <code>role="menu"</code>/<code>menuitem</code>, pas d'Escape pour fermer, pas de flèches haut/bas, pas de retour focus sur le toggle. <strong>Fix</strong> : <code>(keydown.escape)="closeMenu()"</code> + <code>@angular/cdk/menu</code> ou implémentation manuelle.</li>
+<li><strong>Pas de focus trap</strong> sur dropdown — neutre car pas de modal, mais à prévoir si modal ajouté.</li>
+<li><strong>Focus pas déplacé dans les formulaires d'édition/réponse de commentaire</strong> — <code>recipe-detail.html:164-191, 218-233</code>. À l'ouverture, le textarea n'est pas auto-focus.</li>
+</ul>
+<hr />
+<h2 id="5-aria">5. ARIA<a class="headerlink" href="#5-aria" title="Permanent link">&para;</a></h2>
+<h3 id="bon_4">Bon<a class="headerlink" href="#bon_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>139 attributs <code>aria-*</code> répartis sur 33 fichiers (bonne adoption).</li>
+<li><code>aria-live="polite"</code> sur chargements asynchrones — <code>home.html:21,23,25,39,50,52,54</code>, <code>pagination-controls.html:3</code>, formulaires.</li>
+<li><code>role="alert"</code> pour erreurs critiques.</li>
+<li><code>role="status"</code> pour succès, paired avec <code>aria-live="polite"</code>.</li>
+<li><code>aria-labelledby</code> qui lie <code>&lt;section&gt;</code> à son titre.</li>
+<li><code>aria-label</code> sur boutons icône — favori, recherche submit, user menu toggle.</li>
+<li><code>ariaCurrentWhenActive="page"</code> sur les nav links — <code>header.html:42,50,53,56</code>.</li>
+<li><code>aria-hidden="true"</code> + <code>focusable="false"</code> sur SVGs décoratifs — <code>header.html:8,13</code>, <code>recipe-card.html:41,45</code>, <code>recipe-detail.html:29,33</code>, <code>shared/category-icon/category-icon.html:1-2</code>.</li>
+<li><code>aria-busy="true"</code> sur skeletons — <code>recipe-list-shell.html:18</code>, <code>recipe-detail.html:5</code>.</li>
+</ul>
+<h3 id="manquant-risque_4">Manquant / risqué<a class="headerlink" href="#manquant-risque_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Live regions dupliquées sur la même page</strong> — <code>dashboard.html:25,31,43,49,61,67,79,85</code> cumule 5 <code>aria-live</code> + 5 <code>role="alert"</code>. Risque d'annonces simultanées. <strong>Fix</strong> : une seule live region partagée par zone, swap du message.</li>
+<li><strong>Dropdown sans <code>role="menu"</code>/<code>menuitem</code></strong> — <code>header.html:26-39</code>. Acceptable si on garde <code>&lt;ul&gt;/&lt;li&gt;/&lt;a&gt;</code> natifs, mais alors clavier doit fonctionner naturellement.</li>
+</ul>
+<hr />
+<h2 id="6-contraste-et-visuel">6. Contraste et visuel<a class="headerlink" href="#6-contraste-et-visuel" title="Permanent link">&para;</a></h2>
+<h3 id="bon_5">Bon<a class="headerlink" href="#bon_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Design tokens dans <code>:root</code> — <code>src/styles.scss:24-49</code>. Primaire <code>#384688</code>, dark <code>#1e1e1e</code>, cream <code>#f8f5f2</code>, accent jaune <code>#fcc417</code>.</li>
+<li>Focus ring primary-dark <code>#2c376d</code> à 3px outline + 3px offset — fortement visible — <code>src/styles.scss:51-54</code>.</li>
+<li>Inputs : hover + focus avec bord + shadow — <code>shared/styles/auth-form.css:58-67</code>.</li>
+<li>Aucun <code>outline:none</code>.</li>
+<li>Erreur rouge <code>#b42318</code> ≈ 4.97:1 sur blanc, succès vert <code>#067647</code> ≈ 5.03:1, warning brun <code>#8a5400</code> ≈ 5.34:1 — tous WCAG AA — <code>shared/styles/auth-form.css:96,103,107</code>.</li>
+<li>Placeholder forcé en <code>opacity:1</code> pour neutraliser Firefox — <code>src/styles.scss:56-59</code>.</li>
+</ul>
+<h3 id="manquant-risque_5">Manquant / risqué<a class="headerlink" href="#manquant-risque_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Bouton CTA jaune sur photo brightness(.75)</strong> — <code>app/pages/home/home.html:8</code> + <code>pages/home/home.css:16</code>. Contraste runtime variable selon les pixels de l'image. <strong>Fix</strong> : scrim solide sombre derrière les CTA.</li>
+<li><strong>Hero texte blanc avec <code>text-shadow: 0 4px 20px rgba(0,0,0,.45)</code></strong> — <code>home.css:43-44</code>. WCAG ne dispense pas du 4.5:1 grâce à un shadow. <strong>Fix</strong> : gradient sombre plus marqué.</li>
+<li><strong>Texte muted en <code>rgb(--rs-dark-rgb / 0.62)</code> ≈ 4.4:1</strong> — limite — <code>src/styles.scss:57</code>, <code>auth-form.css:15,28,45,78</code>. <strong>Fix</strong> : passer à 0.7+ ou couleur solide <code>#5a5a5a</code>.</li>
+<li><strong>Placeholder à 62% opacité</strong> ≈ &lt; 4.5:1 sur blanc.</li>
+<li><strong><code>.text-muted</code> Bootstrap</strong> sur about/privacy ≈ 4.69:1 — passe de justesse.</li>
+<li><strong><code>.rs-btn:disabled</code> à 46% opacité</strong> ≈ 3:1 — exempté par WCAG (disabled), mais UX faible.</li>
+</ul>
+<hr />
+<h2 id="7-langue-et-localisation">7. Langue et localisation<a class="headerlink" href="#7-langue-et-localisation" title="Permanent link">&para;</a></h2>
+<h3 id="bon_6">Bon<a class="headerlink" href="#bon_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>&lt;html lang="fr"&gt;</code> — <code>src/index.html:2</code>.</li>
+<li>UI en français, ARIA labels en français, messages d'erreur en français.</li>
+<li>Dates via <code>date: 'dd/MM/yyyy'</code> (format locale-agnostic).</li>
+<li>Tri français explicite : <code>localeCompare(right.name, 'fr')</code> — <code>core/services/recipe-reference-data.service.ts:53,62</code>.</li>
+</ul>
+<h3 id="manquant-risque_6">Manquant / risqué<a class="headerlink" href="#manquant-risque_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pas de <code>LOCALE_ID = 'fr-FR'</code></strong> dans <code>app.config.ts</code>. Sans <code>registerLocaleData(localeFr)</code> + <code>{ provide: LOCALE_ID, useValue: 'fr-FR' }</code>, le pipe <code>date</code> utilise par défaut <code>en-US</code>. OK en pratique pour <code>dd/MM/yyyy</code> mais cassé si on utilise <code>MMMM</code>. <strong>Fix</strong> :
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LOCALE_ID</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerLocaleData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@angular/common&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">import</span><span class="w"> </span><span class="nx">localeFr</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@angular/common/locales/fr&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">registerLocaleData</span><span class="p">(</span><span class="nx">localeFr</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">// providers: { provide: LOCALE_ID, useValue: &#39;fr-FR&#39; }</span>
+</code></pre></div></li>
+<li><strong>Apostrophe typographique vs droite</strong> incohérente — <code>resend-validation-email.html:3</code> utilise <code>’</code> alors que le reste utilise <code>'</code>. Mineur.</li>
+</ul>
+<hr />
+<h2 id="8-seo">8. SEO<a class="headerlink" href="#8-seo" title="Permanent link">&para;</a></h2>
+<h3 id="bon_7">Bon<a class="headerlink" href="#bon_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>&lt;title&gt;</code> statique — <code>src/index.html:6</code>.</li>
+<li><code>&lt;meta name="description"&gt;</code> — <code>src/index.html:7</code>.</li>
+<li><code>&lt;meta name="robots" content="index, follow"&gt;</code> — <code>src/index.html:8</code>.</li>
+<li><code>&lt;base href="/"&gt;</code> + viewport — <code>src/index.html:9,10</code>.</li>
+<li><code>public/robots.txt</code> présent, structuré (disallow <code>/admin/</code>, <code>/auth/</code>, <code>/api/</code>, tracking params).</li>
+<li>SSR pour les pages publiques — <code>app.routes.server.ts:60-67</code>. Auth/profile/admin en <code>RenderMode.Client</code>.</li>
+</ul>
+<h3 id="manquant-risque_7">Manquant / risqué<a class="headerlink" href="#manquant-risque_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Angular <code>Title</code>/<code>Meta</code> jamais utilisés</strong> (grep usage zero hors imports). Tous les onglets affichent le même <code>Recipe Shelter — Cook. Share. Discover.</code>. <strong>Fix</strong> : injecter <code>Title</code>/<code>Meta</code> dans <code>recipe-detail.ts</code>, <code>users/profile/profile.ts</code>, <code>home.ts</code>, <code>search.ts</code>, etc. <code>title.setTitle(...)</code> + <code>meta.updateTag(...)</code> au chargement des données.</li>
+<li><strong>Pas d'OpenGraph / Twitter Card</strong> dans <code>index.html</code>. <strong>Fix</strong> : ajouter <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>og:type</code> (statique + dynamique côté pages détail).</li>
+<li><strong>Pas de <code>sitemap.xml</code></strong> dans <code>public/</code>. <strong>Fix</strong> : générer à la build SSR avec la liste des slugs prerendered.</li>
+<li><strong>Pas de JSON-LD <code>Recipe</code></strong> — manque rich results Google. <strong>Fix</strong> : <code>&lt;script type="application/ld+json"&gt;</code> dans <code>recipe-detail.html</code> avec <code>@type: Recipe</code>, ingredients, steps, prep/cook time, ratings.</li>
+<li><strong>Pas de <code>&lt;link rel="canonical"&gt;</code></strong> — risque de duplicate content.</li>
+<li><strong>Robots.txt bloque <code>/assets/</code></strong> — à vérifier (risque pour Google Images).</li>
+</ul>
+<hr />
+<h2 id="9-performance">9. Performance<a class="headerlink" href="#9-performance" title="Permanent link">&para;</a></h2>
+<h3 id="bon_8">Bon<a class="headerlink" href="#bon_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Lazy routes partout — <code>app/app.routes.ts:12-54</code>.</li>
+<li>SSR + hydratation client avec event replay — <code>app.config.ts:20</code>.</li>
+<li>HTTP Fetch API (pas XHR) — <code>app.config.ts:22-24</code>.</li>
+<li>Hero préchargé WebP + width/height + <code>fetchpriority="high"</code> + <code>decoding="async"</code> — <code>src/index.html:11</code>, <code>home.html:3</code>.</li>
+<li>Première carte de la liste en <code>loading="eager"</code>, suivantes en <code>lazy</code>, <code>fetchpriority="high"</code> seulement sur la première — <code>recipe-list.html:3</code>, <code>recipe-card.html:5,7</code>.</li>
+<li>Skeletons pendant chargement — <code>recipe-detail.html:5-11</code>, <code>recipe-list-shell.html:18-22</code>.</li>
+<li>Prerender + SSR + CSR mix par route — <code>app.routes.server.ts</code>.</li>
+<li>Bootstrap cherry-picked (nav, navbar, dropdown, buttons, helpers seulement) — <code>src/styles.scss:1-19</code>.</li>
+</ul>
+<h3 id="manquant-risque_8">Manquant / risqué<a class="headerlink" href="#manquant-risque_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>ChangeDetectionStrategy.OnPush</code> jamais utilisé</strong> (grep zero). Avec signals déjà en place, OnPush est gratuit. <strong>Fix</strong> : ajouter à chaque composant standalone.</li>
+<li><strong><code>@defer</code> jamais utilisé</strong> (grep zero). <strong>Fix</strong> : envelopper la section commentaires de la fiche recette en <code>@defer (on viewport) { ... } @placeholder { ... }</code> — <code>recipe-detail.html:126</code>.</li>
+<li><strong>Pas de <code>NgOptimizedImage</code></strong> — voir §2.</li>
+<li><strong>Pas de <code>&lt;link rel="preconnect"&gt;</code></strong> vers l'API — <code>src/index.html</code>. <strong>Fix</strong> : <code>&lt;link rel="preconnect" href="https://api.recipe-shelter.fr"&gt;</code>.</li>
+<li><strong>Liste de commentaires non virtualisée</strong> — acceptable à scale faible, mais penser à <code>@defer (on interaction)</code> pour les replies.</li>
+</ul>
+<hr />
+<h2 id="10-responsive">10. Responsive<a class="headerlink" href="#10-responsive" title="Permanent link">&para;</a></h2>
+<h3 id="bon_9">Bon<a class="headerlink" href="#bon_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Viewport : <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code> — pas de <code>maximum-scale</code> (a11y respectée).</li>
+<li>38 <code>@media</code> répartis sur 26 fichiers.</li>
+<li>Typographie fluide via <code>clamp()</code> — <code>home.css:31,37</code>, <code>auth-form.css:3</code>, <code>styles.scss:64</code>.</li>
+<li>Navbar collapse &lt; 992px — <code>header.css:138</code>.</li>
+</ul>
+<h3 id="manquant-risque_9">Manquant / risqué<a class="headerlink" href="#manquant-risque_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>min-height: 520px</code> du hero</strong> — <code>home.css:5</code>. Sur petit landscape, plus haut que le viewport. <strong>Fix</strong> : <code>min-height: clamp(360px, 60vh, 520px)</code>.</li>
+<li><strong>Hero overlay <code>width: 50%</code></strong> — <code>home.css:22</code>. Probablement override mobile, à vérifier.</li>
+<li><strong>Pas de <code>prefers-reduced-motion</code></strong> — transitions partout. <strong>Fix</strong> : wrap dans <code>@media (prefers-reduced-motion: no-preference)</code>.</li>
+<li><strong>Pas de <code>prefers-color-scheme: dark</code></strong> — choix de design assumable, mais variables dark déjà importées sans être utilisées (<code>styles.scss:4</code>).</li>
+<li><strong>Touch target submit search header 32×32</strong> — <code>header.css:68,71</code>. WCAG 2.5.5 AAA = 44×44, AA = 24×24 → passe AA, sous AAA.</li>
+</ul>
+<hr />
+<h2 id="11-rgpd-consentement">11. RGPD / consentement<a class="headerlink" href="#11-rgpd-consentement" title="Permanent link">&para;</a></h2>
+<h3 id="bon_10">Bon<a class="headerlink" href="#bon_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Politique de confidentialité — <code>pages/legal/privacy/privacy.html</code>.</li>
+<li>Inscription nécessite checkbox consentement CGU + privacy — <code>sign-up.html:54-69</code>.</li>
+<li>Texte usage des données inline — <code>sign-up.html:58-62</code>.</li>
+<li>Hint contact « email pour répondre » — <code>contact.html:126</code>.</li>
+<li>CGU/Privacy/Mentions Légales liés dans footer — <code>footer.html:8-10</code>.</li>
+<li>Privacy mentionne cookies (<code>privacy.html:80</code>) et responsable de traitement (<code>privacy.html:14-20</code>).</li>
+</ul>
+<h3 id="manquant-risque_10">Manquant / risqué<a class="headerlink" href="#manquant-risque_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pas de bannière consentement</strong> (grep <code>cookie|consent|cnil|tarteaucitron|axeptio</code> → seulement texte statique). Si analytics/tracking en place : non-conforme CNIL. <strong>Fix</strong> :</li>
+<li>Soit déclarer dans privacy que SEUL le cookie session auth est utilisé (pas de bannière requise).</li>
+<li>Soit implémenter une bannière (ngx-cookie-consent ou custom).</li>
+<li><strong>Contradiction</strong> : privacy parle de cookies « à des fins de mesure d'audience » (<code>privacy.html:81</code>) sans bannière. <strong>Fix urgent</strong> : aligner le texte avec la réalité (probablement retirer la mention « mesure d'audience »).</li>
+<li><strong>Pas de bouton « Supprimer mon compte »</strong> visible — <code>profile.html</code> change email/username/password mais pas de delete. <strong>Fix</strong> : ajouter le flux suppression.</li>
+<li><strong>Pas de log/horodatage de consentement</strong> côté inscription (seulement booléen). Côté backend : tracer version CGU + timestamp.</li>
+</ul>
+<hr />
+<h2 id="12-gestion-derreurs">12. Gestion d'erreurs<a class="headerlink" href="#12-gestion-derreurs" title="Permanent link">&para;</a></h2>
+<h3 id="bon_11">Bon<a class="headerlink" href="#bon_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Erreurs inline en FR sur tous les inputs.</li>
+<li><code>role="alert"</code> pour erreurs API, <code>role="status" aria-live="polite"</code> pour succès.</li>
+<li>Skeletons pendant chargement.</li>
+<li>États vides dédiés — <code>recipe-list-shell.html:27-32</code>, <code>recipe-detail.html:346-350</code>, <code>users/profile.html:41-44</code>.</li>
+<li>Recette introuvable avec <code>&lt;h1&gt;</code> + explication — <code>recipe-detail.html:346-350</code>.</li>
+<li>Reset-password gère token manquant gracieusement — <code>reset-password.html:5-10</code>.</li>
+<li>Validate-email gère <code>loading | success | error</code> avec retry — <code>validate-email.html:5-15</code>.</li>
+<li>Submit buttons disable + label « Envoi... » — anti double-soumission.</li>
+</ul>
+<h3 id="manquant-risque_11">Manquant / risqué<a class="headerlink" href="#manquant-risque_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pas de page 404 globale</strong> — <code>app.routes.ts:57</code> fait <code>redirectTo: ''</code> → home affichée à la place + statut HTTP 200. Mauvais SEO + UX. <strong>Fix</strong> :</li>
+<li>Créer <code>pages/not-found/not-found.ts</code>.</li>
+<li>Remplacer <code>{ path: '**', redirectTo: '' }</code> par <code>{ path: '**', loadComponent: ... }</code>.</li>
+<li>En SSR, retourner HTTP 404.</li>
+<li><strong>Pas d'intercepteur HTTP global pour erreurs</strong> — <code>app.config.ts:23</code> ne charge que <code>authInterceptor</code>. Erreurs réseau bubbles par page. <strong>Fix</strong> : ajouter un error interceptor → toast global ou signal.</li>
+<li><strong>Pas de bouton « Réessayer »</strong> sur erreurs de liste — <code>recipe-list-shell.html:25</code>.</li>
+<li><strong><code>provideBrowserGlobalErrorListeners()</code></strong> présent — <code>app.config.ts:12</code> — mais pas de surface UI pour erreurs capturées.</li>
+<li><strong>Pas de gestion offline / network failure</strong> — pas de PWA / service worker (grep <code>service-worker</code> zero). Optionnel pour le scope cert.</li>
+</ul>
+<hr />
+<h2 id="notes-methodologiques">Notes méthodologiques<a class="headerlink" href="#notes-methodologiques" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Audit statique</strong> : pas d'exécution réelle, pas de Lighthouse, pas de NVDA/VoiceOver. Certaines règles (contraste exact d'images de fond, performance réelle) demandent l'app en marche.</li>
+<li><strong>Périmètre</strong> : <code>frontend/src/</code> complet, échantillonné par feature (1–2 templates par zone fonctionnelle + global styles + layout + composants partagés clés).</li>
+<li><strong>Outils</strong> : grep / read de fichier source uniquement. Pas d'eslint a11y plugin, pas d'<code>axe</code>, pas de <code>pa11y</code>.</li>
+<li><strong>Sources des règles</strong> : RGAA 4.1.2 (https://accessibilite.numerique.gouv.fr/), WCAG 2.1 AA, Angular best practices (https://angular.dev), Lighthouse v11 weighting.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../02-rgaa-grille/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04-plan-remediation/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Plan de remédiation priorisé">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Plan de remédiation priorisé
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

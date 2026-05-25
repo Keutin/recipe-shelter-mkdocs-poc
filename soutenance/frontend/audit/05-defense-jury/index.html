@@ -1,0 +1,2079 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="POC MkDocs Material pour le projet Recipe Shelter">
+      
+      
+        <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
+      
+      
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/frontend/audit/05-defense-jury/">
+      
+      
+        <link rel="prev" href="../04-plan-remediation/">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Défendre le Bloc 1 en soutenance - Recipe Shelter — Documentation (POC sandbox)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#defendre-le-bloc-1-en-soutenance" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-header__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Recipe Shelter — Documentation (POC sandbox)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Défendre le Bloc 1 en soutenance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter - Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../GIT_CONVENTION/" class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter - Git Convention
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../manuel-utilisateur/" class="md-tabs__link">
+          
+  
+  Manuel utilisateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../backend/adr/" class="md-tabs__link">
+          
+  
+  Soutenance
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-nav__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Recipe Shelter — Documentation (POC sandbox)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter - Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../GIT_CONVENTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter - Git Convention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manuel utilisateur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Manuel utilisateur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide utilisateur — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Découvrir Recipe Shelter (sans compte)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Compte utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Utiliser les recettes (membre connecté)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/04-administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. FAQ et messages d'erreur courants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Soutenance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Soutenance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Adr
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Adr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR — Architecture Decision Records
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/00-narration-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Narration "from scratch" — défense pour la soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-001-express-comme-couche-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-001 — Express comme couche HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-002 — Pattern Repository : interface + implémentation MySQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-003 — JWT en cookie HttpOnly (vs header Authorization)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-004 — Soft-delete et log de modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-005 — Slug en deux phases (brouillon puis public)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Uml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Uml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UML — Brouillons à intégrer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/01-diagramme-classes-domaine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Modèle de domaine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/02-diagramme-classes-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Architecture backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/03-diagramme-cas-utilisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de cas d'utilisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/04-diagramme-sequence-connexion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Connexion (login)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backend/uml/05-diagramme-sequence-recette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Cycle de vie d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Demo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Demo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../demo/comptes-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comptes de test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../demo/scenario-demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scénario de démonstration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Frontend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Audit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloc 1 — Audit Lighthouse + grille RGAA/WCAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-lighthouse-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lighthouse — Template d'audit à remplir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-rgaa-grille/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-findings-detailles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Findings détaillés — audit statique frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-plan-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan de remédiation priorisé
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Défendre le Bloc 1 en soutenance
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Défendre le Bloc 1 en soutenance
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#posture-generale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Posture générale
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-pitch-douverture-45-secondes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le pitch d'ouverture (45 secondes)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-3-non-conformites-a-expliquer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les 3 non-conformités à expliquer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-questions-probables-et-leurs-reponses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les questions probables et leurs réponses
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les questions probables et leurs réponses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q1-pourquoi-pas-100-de-conformite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1. « Pourquoi pas 100% de conformité ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q2-vous-avez-utilise-quel-referentiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2. « Vous avez utilisé quel référentiel ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q3-vous-avez-teste-avec-un-lecteur-decran" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3. « Vous avez testé avec un lecteur d'écran ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q4-comment-vous-avez-mesure-le-contraste" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q4. « Comment vous avez mesuré le contraste ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-lighthouse-vous-donne-82-en-performance-pourquoi-pas-plus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q5. « Lighthouse vous donne 82 en performance, pourquoi pas plus ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q6-vous-parlez-dopengraph-manquant-cest-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6. « Vous parlez d'OpenGraph manquant — c'est important ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q7-vous-avez-parle-de-rgpd-ou-est-la-banniere-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q7. « Vous avez parlé de RGPD — où est la bannière cookies ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q8-70-de-conformite-cest-suffisant-pour-parler-de-site-accessible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q8. « 70% de conformité, c'est suffisant pour parler de "site accessible" ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q9-cest-quoi-un-skip-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q9. « C'est quoi un skip link ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q10-pourquoi-pas-tout-en-angular-material-ou-autre-framework-a11y-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q10. « Pourquoi pas tout en Angular Material ou autre framework a11y-ready ? »
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pieges-a-eviter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pièges à éviter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pièges à éviter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-confondre-lighthouse-et-rgaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas confondre Lighthouse et RGAA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-inventer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas inventer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-minimiser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas minimiser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-survendre-la-ssr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas survendre la SSR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-oublier-les-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas oublier les images
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mantras-bloc-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mantras Bloc 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-avec-les-autres-livrables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lien avec les autres livrables
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#posture-generale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Posture générale
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-pitch-douverture-45-secondes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le pitch d'ouverture (45 secondes)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-3-non-conformites-a-expliquer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les 3 non-conformités à expliquer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-questions-probables-et-leurs-reponses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les questions probables et leurs réponses
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les questions probables et leurs réponses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q1-pourquoi-pas-100-de-conformite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1. « Pourquoi pas 100% de conformité ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q2-vous-avez-utilise-quel-referentiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2. « Vous avez utilisé quel référentiel ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q3-vous-avez-teste-avec-un-lecteur-decran" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3. « Vous avez testé avec un lecteur d'écran ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q4-comment-vous-avez-mesure-le-contraste" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q4. « Comment vous avez mesuré le contraste ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-lighthouse-vous-donne-82-en-performance-pourquoi-pas-plus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q5. « Lighthouse vous donne 82 en performance, pourquoi pas plus ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q6-vous-parlez-dopengraph-manquant-cest-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6. « Vous parlez d'OpenGraph manquant — c'est important ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q7-vous-avez-parle-de-rgpd-ou-est-la-banniere-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q7. « Vous avez parlé de RGPD — où est la bannière cookies ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q8-70-de-conformite-cest-suffisant-pour-parler-de-site-accessible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q8. « 70% de conformité, c'est suffisant pour parler de "site accessible" ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q9-cest-quoi-un-skip-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q9. « C'est quoi un skip link ? »
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q10-pourquoi-pas-tout-en-angular-material-ou-autre-framework-a11y-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q10. « Pourquoi pas tout en Angular Material ou autre framework a11y-ready ? »
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pieges-a-eviter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pièges à éviter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pièges à éviter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-confondre-lighthouse-et-rgaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas confondre Lighthouse et RGAA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-inventer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas inventer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-minimiser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas minimiser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-survendre-la-ssr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas survendre la SSR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ne-pas-oublier-les-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ne pas oublier les images
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mantras-bloc-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mantras Bloc 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-avec-les-autres-livrables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lien avec les autres livrables
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/frontend/audit/05-defense-jury.md" title="Editer cette page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="defendre-le-bloc-1-en-soutenance">Défendre le Bloc 1 en soutenance<a class="headerlink" href="#defendre-le-bloc-1-en-soutenance" title="Permanent link">&para;</a></h1>
+<p>Notes pour Arthur : comment parler de l'audit, comment encaisser les questions, comment retourner les défauts en preuves de méthode.</p>
+<h2 id="posture-generale">Posture générale<a class="headerlink" href="#posture-generale" title="Permanent link">&para;</a></h2>
+<p>Le jury Bloc 1 cherche <strong>trois signaux</strong> :</p>
+<ol>
+<li><strong>Tu connais les standards</strong> (RGAA / WCAG / Lighthouse), pas par cœur, mais tu sais où chercher.</li>
+<li><strong>Tu as mesuré honnêtement</strong> ton site (pas auto-évaluation complaisante).</li>
+<li><strong>Tu sais ce qui reste à faire</strong> (roadmap concrète, pas vœux pieux).</li>
+</ol>
+<p>Un score Lighthouse à 99 sans capacité à discuter les écarts vaut <strong>moins</strong> qu'un score à 82 défendu avec lucidité. Le jury préfère la rigueur à la perfection.</p>
+<h2 id="le-pitch-douverture-45-secondes">Le pitch d'ouverture (45 secondes)<a class="headerlink" href="#le-pitch-douverture-45-secondes" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>« Pour le Bloc 1, j'ai mené deux audits parallèles. Le premier, Lighthouse : performance, accessibilité, bonnes pratiques, SEO sur cinq pages clés (home, liste, fiche, sign-in, admin), en mobile et desktop, en production. Le deuxième, plus exigeant : une grille RGAA 4.1 critère par critère, 64 critères applicables sur les 13 thématiques officielles.</p>
+<p>Sur la grille RGAA, je suis aujourd'hui à environ 70 % de conformité : 45 critères conformes, 16 partiels, 3 non conformes. Je vais vous présenter d'où viennent les écarts et ce que j'ai prévu de corriger. »</p>
+</blockquote>
+<p>Ce pitch :
+- <strong>Annonce le périmètre</strong> (5 pages, 2 modes, 64 critères).
+- <strong>Annonce le résultat</strong> sans le maquiller.
+- <strong>Promet la suite</strong> (les écarts + le plan).</p>
+<h2 id="les-3-non-conformites-a-expliquer">Les 3 non-conformités à expliquer<a class="headerlink" href="#les-3-non-conformites-a-expliquer" title="Permanent link">&para;</a></h2>
+<p>Si on a corrigé avant la soutenance (recommandé), expliquer la séquence :</p>
+<blockquote>
+<p>« Pendant l'audit, j'ai identifié trois non-conformités : pas de skip link, pas de titre de page dynamique, et l'utilisation détournée de <code>role="list"</code> sur des div. Les trois sont corrigées sur la branche <code>docs/bloc1-audit</code>. Le skip link prend dix minutes mais débloque le critère 12.7. Les titres dynamiques s'appuient sur le service <code>Title</code> d'Angular — c'est trois lignes par page. Le <code>role="list"</code> était un mauvais réflexe : un vrai <code>&lt;ul&gt;</code> fait la même chose en HTML natif. »</p>
+</blockquote>
+<p>Si on <strong>n'a pas corrigé</strong> : honnêteté → « identifié, documenté, planifié dans P1 du plan de remédiation ».</p>
+<h2 id="les-questions-probables-et-leurs-reponses">Les questions probables et leurs réponses<a class="headerlink" href="#les-questions-probables-et-leurs-reponses" title="Permanent link">&para;</a></h2>
+<h3 id="q1-pourquoi-pas-100-de-conformite">Q1. « Pourquoi pas 100% de conformité ? »<a class="headerlink" href="#q1-pourquoi-pas-100-de-conformite" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« Parce que 100% sur 64 critères demande un investissement disproportionné par rapport à un projet de certification. J'ai priorisé : les non-conformités critiques sont corrigées, les partiels les plus visibles aussi. Les chantiers restants — comme le dropdown user menu avec gestion clavier complète — demandent une refonte du composant qui sort du périmètre. C'est documenté dans le plan P3. »</p>
+</blockquote>
+<h3 id="q2-vous-avez-utilise-quel-referentiel">Q2. « Vous avez utilisé quel référentiel ? »<a class="headerlink" href="#q2-vous-avez-utilise-quel-referentiel" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« RGAA 4.1.2 — la version 2023, hébergée sur accessibilite.numerique.gouv.fr. Je m'appuie aussi sur WCAG 2.1 niveau AA pour les zones grises, parce que WCAG est plus précis sur certains critères techniques. Lighthouse utilise WCAG en interne, donc les deux audits sont compatibles. »</p>
+</blockquote>
+<h3 id="q3-vous-avez-teste-avec-un-lecteur-decran">Q3. « Vous avez testé avec un lecteur d'écran ? »<a class="headerlink" href="#q3-vous-avez-teste-avec-un-lecteur-decran" title="Permanent link">&para;</a></h3>
+<p>Honnête :</p>
+<blockquote>
+<p>« Une passe rapide avec NVDA sur la home et une fiche recette. Pas un audit complet. Ce qui en est sorti : les annonces des <code>aria-live</code> du dashboard se chevauchent, ce qui valide le finding de l'audit statique. Une passe NVDA complète est dans la P3 du plan. »</p>
+</blockquote>
+<p>Ou si rien fait :</p>
+<blockquote>
+<p>« Pas de passe lecteur d'écran à ce stade. Je le note dans le plan de remédiation. L'audit s'est fait sur le code et avec l'extension axe DevTools, ce qui couvre les critères automatisables. »</p>
+</blockquote>
+<h3 id="q4-comment-vous-avez-mesure-le-contraste">Q4. « Comment vous avez mesuré le contraste ? »<a class="headerlink" href="#q4-comment-vous-avez-mesure-le-contraste" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« Deux méthodes. Pour les couleurs définies en tokens CSS — <code>#384688</code> sur cream <code>#f8f5f2</code> — calcul manuel via la formule WCAG. Pour les textes avec opacité — par exemple <code>rgb(--rs-dark-rgb / 0.62)</code> — j'ai converti en RGB final puis calculé. Pour le hero où le texte blanc est superposé à une image filtrée <code>brightness(.75)</code>, je note que le contraste est runtime-variable et ne peut pas être garanti par CSS seul — c'est dans les findings. La correction proposée est un scrim solide sombre. »</p>
+</blockquote>
+<h3 id="q5-lighthouse-vous-donne-82-en-performance-pourquoi-pas-plus">Q5. « Lighthouse vous donne 82 en performance, pourquoi pas plus ? »<a class="headerlink" href="#q5-lighthouse-vous-donne-82-en-performance-pourquoi-pas-plus" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« Trois raisons identifiées dans l'audit. Premièrement, je n'utilise pas <code>NgOptimizedImage</code> — toutes mes balises <code>&lt;img&gt;</code> sont des <code>&lt;img&gt;</code> natives avec <code>width</code>/<code>height</code>/<code>loading</code>. C'est suffisant pour éviter le CLS et la priorité LCP, mais ça ne génère pas de <code>srcset</code> automatique. Deuxièmement, mes composants Angular ne sont pas en <code>OnPush</code> — avec les signals que j'utilise, c'est gratuit à activer, c'est dans P2. Troisièmement, je n'ai pas de <code>@defer</code> sur les zones lourdes comme les commentaires, qui pourraient se charger après le viewport. Les trois sont planifiées. »</p>
+</blockquote>
+<h3 id="q6-vous-parlez-dopengraph-manquant-cest-important">Q6. « Vous parlez d'OpenGraph manquant — c'est important ? »<a class="headerlink" href="#q6-vous-parlez-dopengraph-manquant-cest-important" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« Pour un site de partage de recettes, oui. Quand on partage un lien de recette sur WhatsApp ou Slack, sans <code>og:image</code> ni <code>og:title</code>, on voit "Recipe Shelter" tout court. Avec les balises OG dynamiques par recette, on voit l'image de couverture et le titre — beaucoup plus engageant. Lighthouse le détecte aussi dans la catégorie SEO. C'est en P3 parce que ça demande de toucher chaque page de détail. »</p>
+</blockquote>
+<h3 id="q7-vous-avez-parle-de-rgpd-ou-est-la-banniere-cookies">Q7. « Vous avez parlé de RGPD — où est la bannière cookies ? »<a class="headerlink" href="#q7-vous-avez-parle-de-rgpd-ou-est-la-banniere-cookies" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« Volontairement absente. J'ai un seul cookie côté navigateur, le cookie de session auth en HttpOnly, qui rentre dans la catégorie "strictement nécessaire" de la CNIL — donc pas de consentement obligatoire. La politique de confidentialité actuelle mentionne malheureusement une "mesure d'audience" qui n'existe pas vraiment en production : c'est une incohérence que j'ai identifiée pendant l'audit. La correction est soit de retirer cette mention, soit d'implémenter vraiment la mesure d'audience avec une bannière conforme. Je penche pour la première option. »</p>
+</blockquote>
+<h3 id="q8-70-de-conformite-cest-suffisant-pour-parler-de-site-accessible">Q8. « 70% de conformité, c'est suffisant pour parler de "site accessible" ? »<a class="headerlink" href="#q8-70-de-conformite-cest-suffisant-pour-parler-de-site-accessible" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« Non. La déclaration officielle de conformité distingue trois niveaux : non conforme (&lt; 50%), partiellement conforme (50–95%), totalement conforme (100%). À 70% je suis dans "partiellement conforme". Pour pouvoir afficher "totalement conforme", il faudrait corriger toutes les non-conformités et la majorité des partiels, et idéalement faire valider l'audit par un auditeur certifié — ce qui sort du périmètre cert. »</p>
+</blockquote>
+<h3 id="q9-cest-quoi-un-skip-link">Q9. « C'est quoi un skip link ? »<a class="headerlink" href="#q9-cest-quoi-un-skip-link" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« Un lien invisible par défaut, qui apparaît au premier <code>Tab</code> en haut de page, et qui permet de sauter directement au contenu principal sans tabuler dans la navigation. Critère RGAA 12.7. Sans ça, un utilisateur clavier doit traverser tous les liens du header à chaque page — pénible. »</p>
+</blockquote>
+<h3 id="q10-pourquoi-pas-tout-en-angular-material-ou-autre-framework-a11y-ready">Q10. « Pourquoi pas tout en Angular Material ou autre framework a11y-ready ? »<a class="headerlink" href="#q10-pourquoi-pas-tout-en-angular-material-ou-autre-framework-a11y-ready" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« Trois raisons. D'abord, Angular Material n'est pas exempt de défauts a11y — il faut quand même les configurer correctement. Ensuite, Bootstrap 5 est plus léger en bundle pour ce que j'utilise — j'ai cherry-picked nav, dropdown, buttons, helpers — c'est documenté dans <code>styles.scss</code>. Enfin, écrire mes propres composants m'oblige à comprendre les patterns ARIA plutôt que les déléguer — c'est l'esprit du from-scratch que je défends. La contrepartie, c'est que je dois assumer certains défauts comme le dropdown sans Escape, et les corriger. »</p>
+</blockquote>
+<h2 id="pieges-a-eviter">Pièges à éviter<a class="headerlink" href="#pieges-a-eviter" title="Permanent link">&para;</a></h2>
+<h3 id="ne-pas-confondre-lighthouse-et-rgaa">Ne pas confondre Lighthouse et RGAA<a class="headerlink" href="#ne-pas-confondre-lighthouse-et-rgaa" title="Permanent link">&para;</a></h3>
+<p>Lighthouse mesure une <strong>partie</strong> de WCAG (les critères automatisables). RGAA va plus loin et inclut des critères qui demandent une revue manuelle (cohérence des intitulés, pertinence des alternatives, etc.). Ne pas dire « j'ai 95 en accessibilité Lighthouse donc le site est conforme RGAA » — c'est faux et le jury le sait.</p>
+<h3 id="ne-pas-inventer">Ne pas inventer<a class="headerlink" href="#ne-pas-inventer" title="Permanent link">&para;</a></h3>
+<p>Si le jury demande « quel est le critère exact pour les titres de page ? » — répondre « 8.5 et 8.6 » si on le sait, ou « la thématique 8, éléments obligatoires, je vérifie le numéro exact » si on ne le sait pas. Mieux que d'inventer un numéro.</p>
+<h3 id="ne-pas-minimiser">Ne pas minimiser<a class="headerlink" href="#ne-pas-minimiser" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>« Oh, le skip link, c'est pas grave, personne ne s'en sert. »</p>
+</blockquote>
+<p>→ Faux. Les utilisateurs clavier — handicap moteur, RSI, utilisateurs avancés — l'utilisent quotidiennement. <strong>Ne jamais minimiser un manquement RGAA devant un jury de certification.</strong></p>
+<h3 id="ne-pas-survendre-la-ssr">Ne pas survendre la SSR<a class="headerlink" href="#ne-pas-survendre-la-ssr" title="Permanent link">&para;</a></h3>
+<p>La SSR Angular <strong>n'est pas</strong> une garantie d'accessibilité. Elle améliore le SEO et la performance perçue (LCP). Mais le HTML rendu côté serveur peut très bien être inaccessible — c'est ce qu'on aurait sans audit.</p>
+<h3 id="ne-pas-oublier-les-images">Ne pas oublier les images<a class="headerlink" href="#ne-pas-oublier-les-images" title="Permanent link">&para;</a></h3>
+<p>L'attribut <code>alt</code> n'est <strong>pas</strong> une option. Une image décorative = <code>alt=""</code> (présent et vide). Une image porteuse = <code>alt="description courte"</code>. Une image absente = balise <code>&lt;img&gt;</code> sans <code>alt</code> = non conforme.</p>
+<h2 id="mantras-bloc-1">Mantras Bloc 1<a class="headerlink" href="#mantras-bloc-1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>« Mesurer avant d'optimiser. »</li>
+<li>« 70% honnête vaut mieux que 95% maquillé. »</li>
+<li>« Le skip link, ça coûte 10 minutes et ça gagne un critère. »</li>
+<li>« Lighthouse mesure ce qui est mesurable. Le reste, c'est de la lecture critique. »</li>
+<li>« L'accessibilité, c'est une roadmap, pas un livrable one-shot. »</li>
+</ul>
+<h2 id="lien-avec-les-autres-livrables">Lien avec les autres livrables<a class="headerlink" href="#lien-avec-les-autres-livrables" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Les questions ci-dessus recoupent <strong><code>_draft_jury/01-bloc1-frontend.md</code></strong> : ne pas dupliquer, harmoniser les réponses entre les deux fichiers.</li>
+<li>Le slide <code>Bloc 1 — Lighthouse + accessibilité</code> du <strong><code>_draft_slides/soutenance-slides.md</code></strong> doit afficher les scores Lighthouse remplis ET la ligne « 45 / 16 / 3 / 17 » de la grille RGAA.</li>
+<li>Si on cite les chiffres au jury, garder une <strong>copie imprimée du rapport Lighthouse HTML</strong> sous la main — preuve matérielle.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../04-plan-remediation/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Plan de remédiation priorisé">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Plan de remédiation priorisé
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

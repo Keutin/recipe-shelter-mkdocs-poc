@@ -1,0 +1,8 @@
+ *  Executing task: npm run db:reset:demo 
+
+
+> recipe-shelter-backend@1.0.0 db:reset:demo
+> mysql -u root -p < database/reset_demo.sql
+
+Enter password: ********************
+ *  Terminal will be reused by tasks, press any key to close it. 
