@@ -1,0 +1,3060 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="POC MkDocs Material pour le projet Recipe Shelter">
+      
+      
+        <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
+      
+      
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/00-questions-transversales/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../01-bloc1-frontend/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>00 — Questions transversales - Recipe Shelter — Documentation (POC sandbox)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#00-questions-transversales" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-header__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Recipe Shelter — Documentation (POC sandbox)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              00 — Questions transversales
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter — Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../GIT_CONVENTION/" class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter - Git Convention
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../deployment/" class="md-tabs__link">
+          
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Jury
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../manuel-utilisateur/" class="md-tabs__link">
+          
+  
+  Manuel utilisateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../meta/mkdocs/" class="md-tabs__link">
+          
+  
+  Meta
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../slides/" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../soutenance/backend/" class="md-tabs__link">
+          
+  
+  Soutenance
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-nav__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Recipe Shelter — Documentation (POC sandbox)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter — Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GIT_CONVENTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter - Git Convention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Déploiement — diagnostic et plan d'action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/01-options-comparees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Options de déploiement comparées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/02-plan-railway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan déploiement Railway pas-à-pas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/03-fallback-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan B et défense jury
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Jury
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Jury
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Banque de questions jury — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    00 — Questions transversales
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    00 — Questions transversales
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1-presentez-nous-votre-projet-en-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1. Présentez-nous votre projet en 2 minutes.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2-pourquoi-avoir-choisi-ce-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2. Pourquoi avoir choisi ce projet ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-comment-vous-etes-vous-organise-pour-mener-ce-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3. Comment vous êtes-vous organisé pour mener ce projet ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q4-avez-vous-utilise-un-gestionnaire-de-versions-comment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q4. Avez-vous utilisé un gestionnaire de versions ? Comment ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q5-quelle-est-votre-stack-technique-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q5. Quelle est votre stack technique complète ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q6-ou-est-deployee-votre-application-comment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6. Où est déployée votre application ? Comment ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q7-combien-de-temps-avez-vous-passe-sur-ce-projet-quelle-a-ete-la-phase-la-plus-difficile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q7. Combien de temps avez-vous passé sur ce projet ? Quelle a été la phase la plus difficile ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q8-si-vous-deviez-recommencer-le-projet-aujourdhui-que-changeriez-vous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q8. Si vous deviez recommencer le projet aujourd'hui, que changeriez-vous ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q9-quel-a-ete-votre-processus-de-test-combien-de-tests-quelle-couverture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q9. Quel a été votre processus de test ? Combien de tests, quelle couverture ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q10-comment-avez-vous-gere-les-erreurs-et-les-cas-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q10. Comment avez-vous géré les erreurs et les cas limites ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q11-avez-vous-documente-votre-projet-pour-qui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q11. Avez-vous documenté votre projet ? Pour qui ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q12-quels-outils-ou-bibliotheques-vous-ont-sauve-la-vie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q12. Quels outils ou bibliothèques vous ont sauvé la vie ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q13-y-a-t-il-une-partie-de-votre-code-dont-vous-etes-particulierement-fier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q13. Y a-t-il une partie de votre code dont vous êtes particulièrement fier ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q14-quelles-sont-les-fonctionnalites-principales-de-votre-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q14. Quelles sont les fonctionnalités principales de votre application ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q15-quavez-vous-appris-sur-vous-meme-en-faisant-ce-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q15. Qu'avez-vous appris sur vous-même en faisant ce projet ?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-bloc1-frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Bloc 1 : Front-End HTML/CSS/JS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-bloc2-backend-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Bloc 2 : Back-End from scratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-bloc3-angular/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Bloc 3 : Framework (Angular)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-securite-rgpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Sécurité et RGPD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-pieges-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Questions pièges et défense d'architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-ameliorations-innovantes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 — Améliorations innovantes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-mode-entrainement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 — Mode d'entraînement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manuel utilisateur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Manuel utilisateur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide utilisateur — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Découvrir Recipe Shelter (sans compte)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Compte utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Utiliser les recettes (membre connecté)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/04-administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. FAQ et messages d'erreur courants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Meta
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Meta
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MkDocs — Plan d'intégration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/mkdocs/01-architecture-et-justification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Architecture cible et justification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/mkdocs/02-plan-poc-sandbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — POC sandbox côté Quentin (Keutin)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/mkdocs/03-walkthrough-handoff-arthur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Walkthrough handoff Arthur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Project context
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Project context
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/project-context/backend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/project-context/frontend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Slides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slides soutenance — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/soutenance-slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soutenance slides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Soutenance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Soutenance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    _draft_backend_docs/ — Documentation backend pour soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture du backend Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/errors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catalogue des codes d'erreur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/securite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sécurité — Recipe Shelter (Backend)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_5" id="__nav_8_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Adr
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Adr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR — Architecture Decision Records
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/00-narration-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Narration "from scratch" — défense pour la soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-001-express-comme-couche-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-001 — Express comme couche HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-002 — Pattern Repository : interface + implémentation MySQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-003 — JWT en cookie HttpOnly (vs header Authorization)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-004 — Soft-delete et log de modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-005 — Slug en deux phases (brouillon puis public)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_6" id="__nav_8_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Diagrams
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/diagrams/g1-architecture-c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G1 — Architecture C4 Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/diagrams/g2-pipeline-middleware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G2 — Pipeline middleware Express
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/diagrams/g3-sequence-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G3 — Séquence : modération d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/diagrams/g4-sequence-auth-email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G4 — Séquences : reset password &amp; validation email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_7" id="__nav_8_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Uml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Uml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UML — Brouillons à intégrer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/01-diagramme-classes-domaine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Modèle de domaine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/02-diagramme-classes-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Architecture backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/03-diagramme-cas-utilisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de cas d'utilisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/04-diagramme-sequence-connexion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Connexion (login)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/05-diagramme-sequence-recette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Cycle de vie d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Demo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Demo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/demo/comptes-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comptes de test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/demo/scenario-demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scénario de démonstration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Frontend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3_1" id="__nav_8_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Audit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloc 1 — Audit Lighthouse + grille RGAA/WCAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/01-lighthouse-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lighthouse — Template d'audit à remplir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/02-rgaa-grille/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/03-findings-detailles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Findings détaillés — audit statique frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/04-plan-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan de remédiation priorisé
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/05-defense-jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Défendre le Bloc 1 en soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1-presentez-nous-votre-projet-en-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1. Présentez-nous votre projet en 2 minutes.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2-pourquoi-avoir-choisi-ce-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2. Pourquoi avoir choisi ce projet ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-comment-vous-etes-vous-organise-pour-mener-ce-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3. Comment vous êtes-vous organisé pour mener ce projet ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q4-avez-vous-utilise-un-gestionnaire-de-versions-comment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q4. Avez-vous utilisé un gestionnaire de versions ? Comment ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q5-quelle-est-votre-stack-technique-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q5. Quelle est votre stack technique complète ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q6-ou-est-deployee-votre-application-comment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6. Où est déployée votre application ? Comment ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q7-combien-de-temps-avez-vous-passe-sur-ce-projet-quelle-a-ete-la-phase-la-plus-difficile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q7. Combien de temps avez-vous passé sur ce projet ? Quelle a été la phase la plus difficile ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q8-si-vous-deviez-recommencer-le-projet-aujourdhui-que-changeriez-vous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q8. Si vous deviez recommencer le projet aujourd'hui, que changeriez-vous ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q9-quel-a-ete-votre-processus-de-test-combien-de-tests-quelle-couverture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q9. Quel a été votre processus de test ? Combien de tests, quelle couverture ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q10-comment-avez-vous-gere-les-erreurs-et-les-cas-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q10. Comment avez-vous géré les erreurs et les cas limites ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q11-avez-vous-documente-votre-projet-pour-qui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q11. Avez-vous documenté votre projet ? Pour qui ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q12-quels-outils-ou-bibliotheques-vous-ont-sauve-la-vie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q12. Quels outils ou bibliothèques vous ont sauvé la vie ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q13-y-a-t-il-une-partie-de-votre-code-dont-vous-etes-particulierement-fier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q13. Y a-t-il une partie de votre code dont vous êtes particulièrement fier ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q14-quelles-sont-les-fonctionnalites-principales-de-votre-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q14. Quelles sont les fonctionnalités principales de votre application ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q15-quavez-vous-appris-sur-vous-meme-en-faisant-ce-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q15. Qu'avez-vous appris sur vous-même en faisant ce projet ?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/jury/00-questions-transversales.md" title="Editer cette page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="00-questions-transversales">00 — Questions transversales<a class="headerlink" href="#00-questions-transversales" title="Permanent link">&para;</a></h1>
+<p>Questions générales sur le projet, l'organisation, le cycle de vie. Ce sont presque toujours les <strong>premières questions</strong> du jury — c'est l'occasion de poser un cadre clair, de paraître posé, et d'aiguiller le jury vers les sujets que tu maîtrises le mieux.</p>
+<hr />
+<h2 id="q1-presentez-nous-votre-projet-en-2-minutes">Q1. Présentez-nous votre projet en 2 minutes.<a class="headerlink" href="#q1-presentez-nous-votre-projet-en-2-minutes" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Premier filtre : est-ce qu'Arthur sait synthétiser ? Est-ce qu'il connaît son projet de bout en bout ?</p>
+<p><strong>Ossature de réponse</strong></p>
+<ol>
+<li><strong>Le quoi</strong> — « Recipe Shelter est un site collaboratif de recettes. Les utilisateurs peuvent publier, commenter, et sauvegarder des recettes. Un rôle administrateur permet la modération. »</li>
+<li><strong>Le pourquoi (côté cert)</strong> — « Le projet couvre les trois blocs : un front HTML/CSS/JS pur, un back-end Node.js développé entièrement from-scratch sans framework HTTP de haut niveau, et une application Angular qui consomme l'API. »</li>
+<li><strong>Les chiffres</strong> — « Côté back : environ X endpoints, Y entités MySQL, Z tests unitaires. Côté front Angular : N composants standalone, SSR activé. »</li>
+<li><strong>L'aboutissement</strong> — « C'est déployé sur [URL], et tout le code est sur GitHub sous l'organisation <code>arthur-lagenebre</code>. »</li>
+</ol>
+<p><strong>Ancres</strong> — connaître par cœur le nombre de tables, le nombre d'endpoints, le nombre de tests.</p>
+<p><strong>Pièges</strong>
+- ❌ Commencer par la techno (« j'ai utilisé Node, Angular, MySQL ») → ça sonne comme un CV.
+- ❌ Dépasser 2 min sur la présentation → le jury décroche.</p>
+<hr />
+<h2 id="q2-pourquoi-avoir-choisi-ce-projet">Q2. Pourquoi avoir choisi ce projet ?<a class="headerlink" href="#q2-pourquoi-avoir-choisi-ce-projet" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Vérifier la motivation, voir si Arthur s'est approprié le sujet ou s'il l'a subi.</p>
+<p><strong>Ossature de réponse</strong></p>
+<ol>
+<li>Sujet imposé dans la liste de la formation, <strong>mais</strong> :</li>
+<li>Il combine plusieurs axes intéressants techniquement : authentification + rôles + recherche multi-critères + modération + interactions sociales (favoris, commentaires).</li>
+<li>C'est un domaine qu'il comprend (la cuisine, c'est concret, ça l'a aidé à imaginer les cas d'usage utilisateurs).</li>
+</ol>
+<p><strong>Pièges</strong>
+- ❌ « C'est le sujet qu'on m'a donné. » → trop passif.
+- ❌ Survendre une passion personnelle → si le jury creuse et qu'il n'y a rien derrière, ça se voit.</p>
+<hr />
+<h2 id="q3-comment-vous-etes-vous-organise-pour-mener-ce-projet">Q3. Comment vous êtes-vous organisé pour mener ce projet ?<a class="headerlink" href="#q3-comment-vous-etes-vous-organise-pour-mener-ce-projet" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Méthodologie de travail, capacité à planifier seul.</p>
+<p><strong>Ossature de réponse</strong></p>
+<ol>
+<li><strong>Découpage par bloc</strong> — d'abord le back-end from-scratch (Bloc 2) parce qu'il définit le contrat d'API ; ensuite l'Angular (Bloc 3) qui consomme l'API ; le front pur HTML/CSS/JS (Bloc 1) en parallèle pour les pages statiques / showcase.</li>
+<li><strong>Sprints courts</strong> — découpage en petites itérations, une fonctionnalité = une branche = une PR.</li>
+<li><strong>Conventional Commits</strong> — formalisé dans <code>documentation/GIT_CONVENTION.md</code>. Ça aide à se relire et à générer un changelog si besoin.</li>
+<li><strong>Documentation au fil de l'eau</strong> — pas en bloc à la fin. Les ADRs sont écrits quand la décision est prise, pas reconstruits a posteriori.</li>
+</ol>
+<p><strong>Ancres</strong> — <code>documentation/GIT_CONVENTION.md</code>, structure <code>feat:</code>, <code>fix:</code>, <code>docs:</code>.</p>
+<p><strong>Pièges</strong>
+- ❌ Dire « j'ai utilisé Scrum » sans pouvoir nommer les rituels concrets → le jury creuse et c'est embarrassant.</p>
+<hr />
+<h2 id="q4-avez-vous-utilise-un-gestionnaire-de-versions-comment">Q4. Avez-vous utilisé un gestionnaire de versions ? Comment ?<a class="headerlink" href="#q4-avez-vous-utilise-un-gestionnaire-de-versions-comment" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Maîtrise de Git, bonne hygiène.</p>
+<p><strong>Ossature de réponse</strong></p>
+<ol>
+<li><strong>Trois repos séparés</strong> sur GitHub (<code>recipe-shelter-backend</code>, <code>-frontend</code>, <code>-documentation</code>) — décision consciente pour bien isoler les responsabilités.</li>
+<li><strong>Workflow par branches</strong> : <code>main</code> protégée, branches <code>feat/</code>, <code>fix/</code>, <code>docs/</code> selon le type de changement.</li>
+<li><strong>Conventional Commits</strong> documentés.</li>
+<li><strong>Hooks Husky</strong> côté back pour passer le lint + les tests avant chaque commit.</li>
+</ol>
+<p><strong>Ancres</strong> — <code>documentation/GIT_CONVENTION.md</code>, le <code>husky/</code> du back.</p>
+<p><strong>Pièges</strong>
+- ❌ Si jamais une question sur le rebase vs merge : avoir une réponse honnête (« j'ai fait des merges principalement, je n'ai pas systématiquement rebase »).</p>
+<hr />
+<h2 id="q5-quelle-est-votre-stack-technique-complete">Q5. Quelle est votre stack technique complète ?<a class="headerlink" href="#q5-quelle-est-votre-stack-technique-complete" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Inventaire propre, mais surtout : capacité à expliquer <strong>pourquoi</strong> chaque brique.</p>
+<p><strong>Ossature de réponse</strong> — Annoncer par couche :</p>
+<ul>
+<li><strong>Front Bloc 1</strong> : HTML5, CSS3 (avec media queries, variables CSS), JavaScript ES modules</li>
+<li><strong>Back Bloc 2</strong> : Node.js (LTS), TypeScript, Express (5.x) — <em>uniquement comme couche HTTP</em> (voir ADR-001), mysql2 (driver natif, pas d'ORM), bcrypt, jsonwebtoken, cookie-parser, cors, dotenv, nodemailer</li>
+<li><strong>Tests back</strong> : <code>node:test</code> (runner natif Node, voir narration from-scratch)</li>
+<li><strong>DB</strong> : MySQL 8</li>
+<li><strong>Front Bloc 3</strong> : Angular 21, Signals, standalone components, SSR, Bootstrap 5, TypeScript strict</li>
+<li><strong>Outillage</strong> : ESLint, Husky, Stylelint, Postman pour les essais d'API</li>
+</ul>
+<p><strong>Pièges</strong>
+- ❌ Énumérer sans justifier → préparer une mini-justif pour chaque brique au cas où le jury demande « pourquoi celle-là ? ».</p>
+<hr />
+<h2 id="q6-ou-est-deployee-votre-application-comment">Q6. Où est déployée votre application ? Comment ?<a class="headerlink" href="#q6-ou-est-deployee-votre-application-comment" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Le cahier des charges exige une <strong>démo en ligne</strong> pour chaque bloc.</p>
+<p><strong>Ossature de réponse</strong> — <em>(à compléter avec Arthur — pending #9 dans la roadmap)</em></p>
+<ul>
+<li>Front Angular : <code>[URL]</code> — hébergé sur <code>[plateforme]</code></li>
+<li>API back : <code>[URL]</code> — hébergée sur <code>[plateforme]</code></li>
+<li>DB : <code>[où]</code></li>
+<li>Variables d'environnement gérées via <code>.env</code> (non versionné), template dans <code>.env.example</code></li>
+<li>Process de déploiement : <code>[manuel / CI]</code></li>
+</ul>
+<p><strong>Pièges</strong>
+- ❌ « C'est en local. » → rouge vif. Le cahier des charges l'exige en ligne.</p>
+<blockquote>
+<p><strong>⚠ TODO Arthur</strong> : ce point est <strong>bloquant</strong>. Si rien n'est en ligne au jour J, c'est éliminatoire. À traiter avant la soutenance.</p>
+</blockquote>
+<hr />
+<h2 id="q7-combien-de-temps-avez-vous-passe-sur-ce-projet-quelle-a-ete-la-phase-la-plus-difficile">Q7. Combien de temps avez-vous passé sur ce projet ? Quelle a été la phase la plus difficile ?<a class="headerlink" href="#q7-combien-de-temps-avez-vous-passe-sur-ce-projet-quelle-a-ete-la-phase-la-plus-difficile" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Auto-évaluation, lucidité, identifier les points de douleur (donc les zones où ils vont creuser).</p>
+<p><strong>Ossature de réponse</strong></p>
+<ol>
+<li>Temps total réaliste (ne pas survendre — un jury sent l'exagération).</li>
+<li><strong>Phase la plus difficile</strong> : choisir un sujet qu'Arthur maîtrise vraiment, parce que le jury va creuser dessus. Ex possible :</li>
+<li>« La gestion de l'authentification — quel format de token, où le stocker, comment gérer l'expiration. J'ai itéré 2-3 fois avant de fixer JWT + cookie HttpOnly (voir ADR-003). »</li>
+<li>ou « Le pattern Repository pour rester from-scratch tout en gardant le code testable — j'ai dû désapprendre les réflexes ORM. »</li>
+</ol>
+<p><strong>Ancres</strong> — choisir une difficulté avec un ADR derrière.</p>
+<p><strong>Pièges</strong>
+- ❌ « Rien n'était difficile » → ça paraît arrogant ou superficiel.
+- ❌ Choisir une difficulté qu'on ne maîtrise plus → ils vont creuser.</p>
+<hr />
+<h2 id="q8-si-vous-deviez-recommencer-le-projet-aujourdhui-que-changeriez-vous">Q8. Si vous deviez recommencer le projet aujourd'hui, que changeriez-vous ?<a class="headerlink" href="#q8-si-vous-deviez-recommencer-le-projet-aujourdhui-que-changeriez-vous" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Recul, lucidité, force de proposition.</p>
+<p><strong>Ossature de réponse</strong> — Citer 2-3 points concrets, <strong>pas trop critiques</strong> sur le travail réalisé :</p>
+<ol>
+<li><strong>Tests E2E</strong> : « J'ai des tests unitaires nombreux côté back, mais j'aurais aimé ajouter une couche d'E2E avec Playwright pour valider le parcours bout-en-bout. »</li>
+<li><strong>CI/CD</strong> : « Mettre en place GitHub Actions pour le lint + tests automatiques + déploiement à chaque push sur <code>main</code>. »</li>
+<li><strong>Observabilité</strong> : « Ajouter un logger structuré (Pino) et exposer un endpoint <code>/health</code> pour le monitoring. »</li>
+</ol>
+<p><strong>Pièges</strong>
+- ❌ Énumérer 10 choses → ça revient à dire « mon projet est mauvais ».
+- ❌ Pointer un défaut qu'on aurait dû corriger en 2 h → ça donne l'air paresseux.</p>
+<hr />
+<h2 id="q9-quel-a-ete-votre-processus-de-test-combien-de-tests-quelle-couverture">Q9. Quel a été votre processus de test ? Combien de tests, quelle couverture ?<a class="headerlink" href="#q9-quel-a-ete-votre-processus-de-test-combien-de-tests-quelle-couverture" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Maturité sur la qualité.</p>
+<p><strong>Ossature de réponse</strong></p>
+<ol>
+<li><strong>Test runner natif</strong> Node (<code>node:test</code>) — choix cohérent avec la contrainte from-scratch (voir ADR / narration).</li>
+<li><strong>~40 fichiers de tests</strong> côté back, couvrant DTOs (validation), services (logique métier), middlewares (auth/erreurs), mappers.</li>
+<li><strong>Stratégie</strong> : tests unitaires sur les services en mockant les repositories ; pas de tests d'intégration en base réelle (limite assumée).</li>
+<li><strong>Front Angular</strong> : tests sur les services et composants critiques avec Jasmine/Karma (le runner par défaut d'Angular).</li>
+</ol>
+<p><strong>Ancres</strong> — <code>backend/tests/</code>, montrer un fichier <code>*.test.ts</code> représentatif (ex : un service).</p>
+<p><strong>Pièges</strong>
+- ❌ Dire « j'ai 90 % de couverture » sans pouvoir le prouver → si le jury demande un rapport, c'est gênant.</p>
+<hr />
+<h2 id="q10-comment-avez-vous-gere-les-erreurs-et-les-cas-limites">Q10. Comment avez-vous géré les erreurs et les cas limites ?<a class="headerlink" href="#q10-comment-avez-vous-gere-les-erreurs-et-les-cas-limites" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Robustesse, vision défensive.</p>
+<p><strong>Ossature de réponse</strong></p>
+<ol>
+<li><strong>Middleware d'erreur Express</strong> centralisé qui transforme les exceptions en réponses HTTP propres (404, 400, 500).</li>
+<li><strong>Validation des entrées via DTOs</strong> : chaque endpoint a un DTO qui valide la forme du payload avant que la requête atteigne le service.</li>
+<li><strong>Erreurs typées</strong> dans le domaine (ex : <code>RecipeNotFoundError</code>, <code>UnauthorizedError</code>) → le middleware sait les mapper vers le bon code HTTP.</li>
+<li><strong>Côté front Angular</strong> : intercepteur HTTP pour capter les 401 et rediriger vers <code>/login</code>, toasts pour les autres erreurs.</li>
+</ol>
+<p><strong>Ancres</strong> — middleware d'erreur du back (chemin exact), un DTO représentatif.</p>
+<p><strong>Pièges</strong>
+- ❌ Avoir un <code>try/catch</code> géant qui renvoie 500 sur tout → si c'est ça le code, mieux vaut le dire et l'assumer comme limite.</p>
+<hr />
+<h2 id="q11-avez-vous-documente-votre-projet-pour-qui">Q11. Avez-vous documenté votre projet ? Pour qui ?<a class="headerlink" href="#q11-avez-vous-documente-votre-projet-pour-qui" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Vérifier que le livrable « documentation » du cahier des charges est respecté.</p>
+<p><strong>Ossature de réponse</strong></p>
+<ol>
+<li><strong>README</strong> dans chacun des 3 repos avec install + démarrage.</li>
+<li><strong><code>documentation/</code> repo dédié</strong> avec :</li>
+<li>Diagrammes UML (5 diagrammes : domaine, archi, cas d'usage, séquence connexion, séquence recette)</li>
+<li>ADRs (5 décisions architecturales avec contexte / option / conséquences)</li>
+<li>Convention Git</li>
+<li>Captures écran + maquettes responsive</li>
+<li><strong>Cibles différentes</strong> : le README s'adresse à un développeur qui rejoint le projet ; les ADRs s'adressent à un futur lui-même ou un mainteneur qui veut comprendre <strong>pourquoi</strong> une décision a été prise.</li>
+</ol>
+<p><strong>Ancres</strong> — <code>documentation/soutenance/backend/uml/</code>, <code>documentation/soutenance/backend/adr/</code>, README de chaque repo.</p>
+<p><strong>Pièges</strong>
+- ❌ Ne pas savoir où sont les fichiers → fatal. Avoir l'arborescence en tête.</p>
+<hr />
+<h2 id="q12-quels-outils-ou-bibliotheques-vous-ont-sauve-la-vie">Q12. Quels outils ou bibliothèques vous ont sauvé la vie ?<a class="headerlink" href="#q12-quels-outils-ou-bibliotheques-vous-ont-sauve-la-vie" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Question légère, mais permet de voir la curiosité et l'écosystème connu.</p>
+<p><strong>Ossature de réponse</strong> — Choisir 2-3 vrais :</p>
+<ul>
+<li><strong>bcrypt</strong> côté back — pour ne pas réinventer le hashage de mots de passe (et ne pas se planter).</li>
+<li><strong><code>node:test</code> + assert</strong> — pour valider que TypeScript a tenu ses promesses (typage) et que la logique métier est correcte.</li>
+<li><strong>Postman</strong> — pour valider les endpoints à la main avant chaque commit.</li>
+<li><strong>Angular CLI</strong> — pour le scaffolding et le serveur de dev avec hot reload.</li>
+</ul>
+<p><strong>Pièges</strong>
+- ❌ Citer une lib qu'on n'a en fait pas utilisée.</p>
+<hr />
+<h2 id="q13-y-a-t-il-une-partie-de-votre-code-dont-vous-etes-particulierement-fier">Q13. Y a-t-il une partie de votre code dont vous êtes particulièrement fier ?<a class="headerlink" href="#q13-y-a-t-il-une-partie-de-votre-code-dont-vous-etes-particulierement-fier" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Voir où Arthur place son curseur, et l'amener à parler d'un sujet qu'il maîtrise.</p>
+<p><strong>Ossature de réponse</strong> — Choisir <strong>un seul point</strong> et le développer :</p>
+<p>Exemples :
+- « Le pattern Repository côté back. C'est ce qui m'a permis de rester from-scratch sur la persistance tout en gardant des services testables — chaque repo a une interface et une impl MySQL, et au démarrage <code>app.ts</code> câble tout à la main. C'est l'illustration la plus claire de l'inversion de dépendance dans le projet. » (voir ADR-002)
+- « La logique de slug en deux phases — d'abord je crée la recette pour récupérer l'ID, ensuite je calcule le slug à partir du titre + ID. Ça évite les collisions sans avoir à faire de retry. » (voir ADR-005)</p>
+<p><strong>Pièges</strong>
+- ❌ Choisir un point que le jury va démolir.</p>
+<hr />
+<h2 id="q14-quelles-sont-les-fonctionnalites-principales-de-votre-application">Q14. Quelles sont les fonctionnalités principales de votre application ?<a class="headerlink" href="#q14-quelles-sont-les-fonctionnalites-principales-de-votre-application" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Vérifier que toutes les exigences du cahier des charges sont couvertes.</p>
+<p><strong>Ossature de réponse</strong> — Aller dans l'ordre du cahier :</p>
+<ol>
+<li><strong>Auth + rôles</strong> — inscription, connexion, récupération de mot de passe, profil, rôle admin.</li>
+<li><strong>CRUD recettes</strong> — création, édition, suppression (soft-delete), affichage.</li>
+<li><strong>Recherche avancée</strong> — par ingrédients, type de cuisine, temps de préparation.</li>
+<li><strong>Interactions sociales</strong> — commentaires, favoris.</li>
+<li><strong>Modération</strong> — l'admin peut supprimer ou désactiver une recette / un commentaire ; log de modération.</li>
+<li><strong>Responsivité</strong> — testée sur mobile / tablette / desktop.</li>
+<li><strong>Accessibilité</strong> — ARIA, contrastes, navigation clavier.</li>
+</ol>
+<p><strong>Ancres</strong> — pouvoir associer chaque fonctionnalité à un endpoint + une page Angular.</p>
+<hr />
+<h2 id="q15-quavez-vous-appris-sur-vous-meme-en-faisant-ce-projet">Q15. Qu'avez-vous appris sur vous-même en faisant ce projet ?<a class="headerlink" href="#q15-quavez-vous-appris-sur-vous-meme-en-faisant-ce-projet" title="Permanent link">&para;</a></h2>
+<p><strong>Intention jury</strong> — Question parfois posée à la fin pour clore. Permet de montrer la maturité.</p>
+<p><strong>Ossature de réponse</strong> — Un point technique + un point soft :</p>
+<ul>
+<li>Technique : « J'ai compris que la contrainte from-scratch n'était pas un handicap mais un cadre qui m'a forcé à comprendre ce que les frameworks cachent normalement — l'injection de dépendances à la main dans <code>app.ts</code>, c'est devenu mon référentiel mental. »</li>
+<li>Soft : « J'ai sous-estimé le temps de la documentation. La prochaine fois je commencerai le README et les ADRs avant d'avoir terminé le code. »</li>
+</ul>
+<p><strong>Pièges</strong>
+- ❌ « J'ai appris à coder. » → trop vague.
+- ❌ Réponse purement personnelle (« je suis plus patient ») → on s'éloigne du contenu.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Banque de questions jury — Recipe Shelter">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Banque de questions jury — Recipe Shelter
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../01-bloc1-frontend/" class="md-footer__link md-footer__link--next" aria-label="Suivant: 01 — Bloc 1 : Front-End HTML/CSS/JS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                01 — Bloc 1 : Front-End HTML/CSS/JS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

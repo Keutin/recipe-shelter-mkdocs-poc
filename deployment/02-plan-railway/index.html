@@ -1,0 +1,3337 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="POC MkDocs Material pour le projet Recipe Shelter">
+      
+      
+        <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
+      
+      
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/deployment/02-plan-railway/">
+      
+      
+        <link rel="prev" href="../01-options-comparees/">
+      
+      
+        <link rel="next" href="../03-fallback-et-defense/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Plan déploiement Railway pas-à-pas - Recipe Shelter — Documentation (POC sandbox)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plan-deploiement-railway-pas-a-pas" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-header__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Recipe Shelter — Documentation (POC sandbox)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plan déploiement Railway pas-à-pas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter — Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../GIT_CONVENTION/" class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter - Git Convention
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../jury/" class="md-tabs__link">
+          
+  
+  Jury
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../manuel-utilisateur/" class="md-tabs__link">
+          
+  
+  Manuel utilisateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../meta/mkdocs/" class="md-tabs__link">
+          
+  
+  Meta
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../slides/" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../soutenance/backend/" class="md-tabs__link">
+          
+  
+  Soutenance
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-nav__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Recipe Shelter — Documentation (POC sandbox)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter — Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GIT_CONVENTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter - Git Convention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Déploiement — diagnostic et plan d'action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-options-comparees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Options de déploiement comparées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Plan déploiement Railway pas-à-pas
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Plan déploiement Railway pas-à-pas
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-preparer-le-code-pour-la-prod-30-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1 — Préparer le code pour la prod (30 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1 — Préparer le code pour la prod (30 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-verifier-le-port-decoute-du-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Vérifier le port d'écoute du backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-verifier-la-connexion-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Vérifier la connexion MySQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-build-le-backend-localement-pour-valider" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Build le backend localement pour valider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-build-le-frontend-prod-localement" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Build le frontend prod localement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-commit-les-eventuels-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 Commit les éventuels fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-provisionner-mysql-sur-railway-15-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2 — Provisionner MySQL sur Railway (15 min)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-charger-le-seed-demo-dans-railway-mysql-15-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3 — Charger le seed démo dans Railway MySQL (15 min)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-4-deployer-le-backend-45-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 4 — Déployer le backend (45 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 4 — Déployer le backend (45 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#si-le-build-casse-diagnostics-frequents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Si le build casse — diagnostics fréquents
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-5-deployer-le-frontend-45-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 5 — Déployer le frontend (45 min)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-6-smtp-transactionnel-30-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 6 — SMTP transactionnel (30 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 6 — SMTP transactionnel (30 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choix-recommande-brevo-ex-sendinblue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choix recommandé : Brevo (ex-Sendinblue)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-resend-httpsresendcom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternative : Resend (https://resend.com)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-rapide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test rapide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-7-mettre-a-jour-la-documentation-15-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 7 — Mettre à jour la documentation (15 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 7 — Mettre à jour la documentation (15 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentationsoutenancedemoscenario-demomd-ligne-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      documentation/soutenance/demo/scenario-demo.md ligne 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentationsoutenancedemocomptes-testmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      documentation/soutenance/demo/comptes-test.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_draft_slidessoutenance-slidesmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      _draft_slides/soutenance-slides.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontendreadmemd-optionnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      frontend/README.md (optionnel)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-8-test-end-to-end-45-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 8 — Test end-to-end (45 min)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Récap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-fallback-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan B et défense jury
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Jury
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Jury
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Banque de questions jury — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jury/00-questions-transversales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00 — Questions transversales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jury/01-bloc1-frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Bloc 1 : Front-End HTML/CSS/JS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jury/02-bloc2-backend-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Bloc 2 : Back-End from scratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jury/03-bloc3-angular/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Bloc 3 : Framework (Angular)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jury/04-securite-rgpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Sécurité et RGPD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jury/05-pieges-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Questions pièges et défense d'architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jury/06-ameliorations-innovantes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 — Améliorations innovantes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jury/07-mode-entrainement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 — Mode d'entraînement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manuel utilisateur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Manuel utilisateur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide utilisateur — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Découvrir Recipe Shelter (sans compte)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Compte utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Utiliser les recettes (membre connecté)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/04-administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. FAQ et messages d'erreur courants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Meta
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Meta
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MkDocs — Plan d'intégration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/mkdocs/01-architecture-et-justification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Architecture cible et justification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/mkdocs/02-plan-poc-sandbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — POC sandbox côté Quentin (Keutin)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/mkdocs/03-walkthrough-handoff-arthur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Walkthrough handoff Arthur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Project context
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Project context
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/project-context/backend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/project-context/frontend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Slides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slides soutenance — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/soutenance-slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soutenance slides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Soutenance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Soutenance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    _draft_backend_docs/ — Documentation backend pour soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture du backend Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/errors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catalogue des codes d'erreur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/securite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sécurité — Recipe Shelter (Backend)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_5" id="__nav_8_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Adr
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Adr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR — Architecture Decision Records
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/00-narration-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Narration "from scratch" — défense pour la soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-001-express-comme-couche-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-001 — Express comme couche HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-002 — Pattern Repository : interface + implémentation MySQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-003 — JWT en cookie HttpOnly (vs header Authorization)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-004 — Soft-delete et log de modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-005 — Slug en deux phases (brouillon puis public)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_6" id="__nav_8_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Diagrams
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/diagrams/g1-architecture-c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G1 — Architecture C4 Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/diagrams/g2-pipeline-middleware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G2 — Pipeline middleware Express
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/diagrams/g3-sequence-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G3 — Séquence : modération d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/diagrams/g4-sequence-auth-email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G4 — Séquences : reset password &amp; validation email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_7" id="__nav_8_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Uml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Uml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UML — Brouillons à intégrer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/01-diagramme-classes-domaine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Modèle de domaine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/02-diagramme-classes-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Architecture backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/03-diagramme-cas-utilisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de cas d'utilisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/04-diagramme-sequence-connexion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Connexion (login)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/backend/uml/05-diagramme-sequence-recette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Cycle de vie d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Demo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Demo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/demo/comptes-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comptes de test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/demo/scenario-demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scénario de démonstration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Frontend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3_1" id="__nav_8_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Audit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloc 1 — Audit Lighthouse + grille RGAA/WCAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/01-lighthouse-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lighthouse — Template d'audit à remplir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/02-rgaa-grille/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/03-findings-detailles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Findings détaillés — audit statique frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/04-plan-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan de remédiation priorisé
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soutenance/frontend/audit/05-defense-jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Défendre le Bloc 1 en soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-preparer-le-code-pour-la-prod-30-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1 — Préparer le code pour la prod (30 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1 — Préparer le code pour la prod (30 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-verifier-le-port-decoute-du-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Vérifier le port d'écoute du backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-verifier-la-connexion-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Vérifier la connexion MySQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-build-le-backend-localement-pour-valider" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Build le backend localement pour valider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-build-le-frontend-prod-localement" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Build le frontend prod localement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-commit-les-eventuels-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 Commit les éventuels fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-provisionner-mysql-sur-railway-15-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2 — Provisionner MySQL sur Railway (15 min)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-charger-le-seed-demo-dans-railway-mysql-15-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3 — Charger le seed démo dans Railway MySQL (15 min)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-4-deployer-le-backend-45-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 4 — Déployer le backend (45 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 4 — Déployer le backend (45 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#si-le-build-casse-diagnostics-frequents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Si le build casse — diagnostics fréquents
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-5-deployer-le-frontend-45-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 5 — Déployer le frontend (45 min)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-6-smtp-transactionnel-30-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 6 — SMTP transactionnel (30 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 6 — SMTP transactionnel (30 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choix-recommande-brevo-ex-sendinblue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choix recommandé : Brevo (ex-Sendinblue)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-resend-httpsresendcom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternative : Resend (https://resend.com)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-rapide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test rapide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-7-mettre-a-jour-la-documentation-15-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 7 — Mettre à jour la documentation (15 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 7 — Mettre à jour la documentation (15 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentationsoutenancedemoscenario-demomd-ligne-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      documentation/soutenance/demo/scenario-demo.md ligne 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentationsoutenancedemocomptes-testmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      documentation/soutenance/demo/comptes-test.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_draft_slidessoutenance-slidesmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      _draft_slides/soutenance-slides.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontendreadmemd-optionnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      frontend/README.md (optionnel)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-8-test-end-to-end-45-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 8 — Test end-to-end (45 min)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Récap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/deployment/02-plan-railway.md" title="Editer cette page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="plan-deploiement-railway-pas-a-pas">Plan déploiement Railway pas-à-pas<a class="headerlink" href="#plan-deploiement-railway-pas-a-pas" title="Permanent link">&para;</a></h1>
+<p>Procédure complète pour mettre Recipe Shelter en ligne sur Railway. Effort estimé : <strong>3 heures</strong> si rien ne dérape, <strong>5 heures</strong> avec debug.</p>
+<blockquote>
+<p>Pré-requis : compte GitHub avec les 3 repos <code>arthur-lagenebre/recipe-shelter-*</code> accessibles. Compte email pour Railway.</p>
+</blockquote>
+<h2 id="phase-1-preparer-le-code-pour-la-prod-30-min">Phase 1 — Préparer le code pour la prod (30 min)<a class="headerlink" href="#phase-1-preparer-le-code-pour-la-prod-30-min" title="Permanent link">&para;</a></h2>
+<p>Avant de cliquer Deploy, valider que le code accepte une config prod.</p>
+<h3 id="11-verifier-le-port-decoute-du-backend">1.1 Vérifier le port d'écoute du backend<a class="headerlink" href="#11-verifier-le-port-decoute-du-backend" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\D</span>EV<span class="se">\A</span>RTHUR<span class="se">\R</span>ECETTES<span class="se">\b</span>ackend
+</code></pre></div>
+<p>Ouvrir <code>src/server.ts</code> (ou équivalent). Chercher <code>app.listen(...)</code>. Doit ressembler à :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`API listening on </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">));</span>
+</code></pre></div>
+<p>Si c'est en dur (<code>app.listen(3000)</code>), corriger. Railway injecte <code>$PORT</code> dynamiquement, refuser cette injection = service down.</p>
+<h3 id="12-verifier-la-connexion-mysql">1.2 Vérifier la connexion MySQL<a class="headerlink" href="#12-verifier-la-connexion-mysql" title="Permanent link">&para;</a></h3>
+<p>Ouvrir le fichier de config DB (probablement <code>src/infrastructure/database/</code> ou <code>src/config/</code>). Doit lire :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DB_HOST</span><span class="p">,</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_PORT</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">&#39;3306&#39;</span><span class="p">),</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DB_USER</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DB_PASSWORD</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DB_NAME</span><span class="p">,</span>
+</code></pre></div>
+<p>Railway MySQL fournit <code>MYSQLHOST</code>, <code>MYSQLPORT</code>, <code>MYSQLUSER</code>, <code>MYSQLPASSWORD</code>, <code>MYSQLDATABASE</code>. Tu peux soit :</p>
+<ul>
+<li>Aliaser via les variables Railway (<code>DB_HOST=${{MYSQL.MYSQLHOST}}</code>),</li>
+<li>Soit ajouter du code de fallback.</li>
+</ul>
+<p>Recommandation : aliaser dans Railway (interface graphique) → pas de modif code.</p>
+<h3 id="13-build-le-backend-localement-pour-valider">1.3 Build le backend localement pour valider<a class="headerlink" href="#13-build-le-backend-localement-pour-valider" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm<span class="w"> </span>install
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w">           </span><span class="c1"># devrait produire dist/server.js</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>node<span class="w"> </span>dist/server.js<span class="w">     </span><span class="c1"># doit démarrer sans erreur (modulo MySQL pas accessible)</span>
+</code></pre></div>
+<p>Si le build casse → fix avant de continuer.</p>
+<h3 id="14-build-le-frontend-prod-localement">1.4 Build le frontend prod localement<a class="headerlink" href="#14-build-le-frontend-prod-localement" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>..<span class="se">\f</span>rontend
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>npm<span class="w"> </span>install
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w">           </span><span class="c1"># produit dist/recipe-shelter/{browser,server}</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>npm<span class="w"> </span>run<span class="w"> </span>serve:ssr:recipe-shelter<span class="w">   </span><span class="c1"># doit servir sur :4000</span>
+</code></pre></div>
+<p>Ouvrir <code>http://localhost:4000</code> → home s'affiche.</p>
+<h3 id="15-commit-les-eventuels-fixes">1.5 Commit les éventuels fixes<a class="headerlink" href="#15-commit-les-eventuels-fixes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>chore/prepare-prod
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">&quot;chore: prepare backend for production env&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>chore/prepare-prod
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Merge la PR sur main ensuite</span>
+</code></pre></div>
+<h2 id="phase-2-provisionner-mysql-sur-railway-15-min">Phase 2 — Provisionner MySQL sur Railway (15 min)<a class="headerlink" href="#phase-2-provisionner-mysql-sur-railway-15-min" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Aller sur <code>https://railway.app</code> → <code>New Project</code> → <code>Provision MySQL</code>.</li>
+<li>Une fois créé, ouvrir le service MySQL → onglet <code>Variables</code> → noter :</li>
+<li><code>MYSQLHOST</code></li>
+<li><code>MYSQLPORT</code></li>
+<li><code>MYSQLUSER</code></li>
+<li><code>MYSQLPASSWORD</code></li>
+<li><code>MYSQLDATABASE</code></li>
+<li>Onglet <code>Connect</code> → récupérer la commande <code>mysql -h &lt;host&gt; -P &lt;port&gt; -u &lt;user&gt; -p&lt;password&gt; &lt;database&gt;</code>.</li>
+</ol>
+<h2 id="phase-3-charger-le-seed-demo-dans-railway-mysql-15-min">Phase 3 — Charger le seed démo dans Railway MySQL (15 min)<a class="headerlink" href="#phase-3-charger-le-seed-demo-dans-railway-mysql-15-min" title="Permanent link">&para;</a></h2>
+<p>Le fichier <code>backend/database/reset_demo.sql</code> contient le schéma + données de démo (comptes utilisateurs, recettes, commentaires).</p>
+<p>Depuis ton poste local, avec un client MySQL :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Option A — client mysql en ligne de commande (si installé)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>mysql<span class="w"> </span>-h<span class="w"> </span>&lt;MYSQLHOST&gt;<span class="w"> </span>-P<span class="w"> </span>&lt;MYSQLPORT&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;MYSQLUSER&gt;<span class="w"> </span>-p&lt;MYSQLPASSWORD&gt;<span class="w"> </span>&lt;MYSQLDATABASE&gt;<span class="w"> </span>&lt;<span class="w"> </span>C:<span class="se">\D</span>EV<span class="se">\A</span>RTHUR<span class="se">\R</span>ECETTES<span class="se">\b</span>ackend<span class="se">\d</span>atabase<span class="se">\r</span>eset_demo.sql
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Option B — MySQL Workbench / DBeaver (GUI)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Connecter avec les credentials Railway, ouvrir le SQL editor, charger et exécuter reset_demo.sql.</span>
+</code></pre></div>
+<p>Validation :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span><span class="w">          </span><span class="c1">-- doit retourner &gt; 0</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%admin%&#39;</span><span class="p">;</span><span class="w">   </span><span class="c1">-- doit voir admin_demo@recipe-shelter.fr</span>
+</code></pre></div>
+<h2 id="phase-4-deployer-le-backend-45-min">Phase 4 — Déployer le backend (45 min)<a class="headerlink" href="#phase-4-deployer-le-backend-45-min" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Dans le projet Railway, <code>New Service</code> → <code>GitHub Repo</code> → autoriser → choisir <code>recipe-shelter-backend</code>.</li>
+<li>Railway détecte Node automatiquement (présence de <code>package.json</code>).</li>
+<li>Onglet <code>Settings</code> du service backend :</li>
+<li><strong>Build command</strong> : <code>npm ci &amp;&amp; npm run build</code></li>
+<li><strong>Start command</strong> : <code>npm start</code> (qui lance <code>node dist/server.js</code>)</li>
+<li><strong>Root directory</strong> : laisser vide (repo entier)</li>
+<li>Onglet <code>Variables</code> → ajouter (en s'inspirant de <code>backend/.env.example</code>) :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>NODE_ENV=production
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>PORT=3000                  # Railway override en interne, mais doit être présent
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>DB_HOST=${{MySQL.MYSQLHOST}}
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>DB_PORT=${{MySQL.MYSQLPORT}}
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>DB_NAME=${{MySQL.MYSQLDATABASE}}
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>DB_USER=${{MySQL.MYSQLUSER}}
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>DB_PASSWORD=${{MySQL.MYSQLPASSWORD}}
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>DB_CONNECTION_LIMIT=10
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>JWT_SECRET=&lt;générer 64 caractères aléatoires — utiliser https://passwordsgenerator.net/ ou openssl rand -hex 32&gt;
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>JWT_EXPIRES_IN=7d
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>AUTH_SESSION_COOKIE_NAME=rs_session
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>AUTH_SESSION_COOKIE_SAME_SITE=none      # cross-site (back et front sur 2 domaines)
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>AUTH_SESSION_COOKIE_SECURE=true         # HTTPS prod
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>BCRYPT_COST=12
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>AUTH_DEFAULT_ROLE_NAME=user
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>AUTH_RATE_LIMIT_MAX_ATTEMPTS=5
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>AUTH_RATE_LIMIT_WINDOW_MS=900000
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>CORS_ALLOWED_ORIGINS=https://&lt;frontend-railway-domain&gt;.up.railway.app
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>FRONTEND_BASE_URL=https://&lt;frontend-railway-domain&gt;.up.railway.app
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a># SMTP — voir phase 6 pour les valeurs réelles
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>SMTP_HOST=smtp.brevo.com
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>SMTP_PORT=587
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>SMTP_SECURE=false
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>SMTP_USER=&lt;à remplir&gt;
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>SMTP_PASSWORD=&lt;à remplir&gt;
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>SMTP_FROM=no-reply@recipe-shelter.up.railway.app
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>CONTACT_RECIPIENT_EMAIL=&lt;ton email perso&gt;
+</code></pre></div>
+<ol>
+<li>Onglet <code>Settings</code> → <code>Networking</code> → <code>Generate Domain</code> → noter l'URL <code>https://&lt;backend-railway&gt;.up.railway.app</code>.</li>
+<li>Onglet <code>Deployments</code> → attendre que le build passe au vert.</li>
+<li>Tester : <code>curl https://&lt;backend-railway&gt;.up.railway.app/api/v1/health</code> (si une route health existe ; sinon <code>curl ...</code> la route d'une liste de recettes publiques).</li>
+</ol>
+<h3 id="si-le-build-casse-diagnostics-frequents">Si le build casse — diagnostics fréquents<a class="headerlink" href="#si-le-build-casse-diagnostics-frequents" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Erreur log</th>
+<th>Cause probable</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ERR_MODULE_NOT_FOUND</code></td>
+<td>Build TypeScript pas exécuté</td>
+<td>Vérifier <code>npm run build</code> produit <code>dist/server.js</code></td>
+</tr>
+<tr>
+<td><code>ECONNREFUSED ::1:3306</code></td>
+<td>DB_HOST pointe localhost</td>
+<td>Variables MySQL pas reliées au service MySQL Railway</td>
+</tr>
+<tr>
+<td><code>Access denied for user</code></td>
+<td>Credentials MySQL incorrects</td>
+<td>Re-copier depuis l'onglet Variables MySQL</td>
+</tr>
+<tr>
+<td><code>Cannot find module 'tsx'</code></td>
+<td>Tentative de lancer en dev</td>
+<td>Vérifier que start = <code>node dist/server.js</code>, pas <code>tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="phase-5-deployer-le-frontend-45-min">Phase 5 — Déployer le frontend (45 min)<a class="headerlink" href="#phase-5-deployer-le-frontend-45-min" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Mettre à jour <code>frontend/src/environments/environment.prod.ts</code> :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nx">production</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nx">apiBaseUrl</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://&lt;backend-railway&gt;.up.railway.app/api/v1&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">};</span>
+</code></pre></div>
+<p>Commit + push sur <code>main</code>.</p>
+<ol>
+<li>Dans Railway, <code>New Service</code> → <code>GitHub Repo</code> → <code>recipe-shelter-frontend</code>.</li>
+<li>Settings :</li>
+<li><strong>Build command</strong> : <code>npm ci &amp;&amp; npm run build</code></li>
+<li><strong>Start command</strong> : <code>npm run serve:ssr:recipe-shelter</code></li>
+<li><strong>Root directory</strong> : vide</li>
+<li>Variables :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>NODE_ENV=production
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>PORT=4000                  # le serveur SSR écoute sur PORT (à vérifier dans dist/server.mjs)
+</code></pre></div>
+<p>Si le SSR Angular écoute en dur sur 4000, c'est OK Railway redirige. Sinon vérifier <code>frontend/src/server.ts</code>.</p>
+<ol>
+<li><code>Generate Domain</code> → noter l'URL <code>https://&lt;frontend-railway&gt;.up.railway.app</code>.</li>
+<li>
+<p><strong>Retour côté backend</strong> : mettre à jour les variables <code>CORS_ALLOWED_ORIGINS</code> et <code>FRONTEND_BASE_URL</code> avec l'URL frontend réelle, redéployer.</p>
+</li>
+<li>
+<p>Tester : ouvrir <code>https://&lt;frontend-railway&gt;.up.railway.app</code> → home Angular doit s'afficher avec données réelles (recettes seedées).</p>
+</li>
+</ol>
+<h2 id="phase-6-smtp-transactionnel-30-min">Phase 6 — SMTP transactionnel (30 min)<a class="headerlink" href="#phase-6-smtp-transactionnel-30-min" title="Permanent link">&para;</a></h2>
+<p>L'app envoie des emails (activation compte, mot de passe oublié, contact). Sans SMTP, ces flux sont cassés.</p>
+<h3 id="choix-recommande-brevo-ex-sendinblue">Choix recommandé : Brevo (ex-Sendinblue)<a class="headerlink" href="#choix-recommande-brevo-ex-sendinblue" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Free tier : 300 emails/jour — largement assez pour la cert.</li>
+<li>Account creation : <code>https://www.brevo.com/</code>.</li>
+<li>Une fois inscrit, aller dans <code>SMTP &amp; API</code> → générer une clé SMTP.</li>
+</ul>
+<p>Variables à mettre côté backend Railway :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>SMTP_HOST=smtp-relay.brevo.com
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>SMTP_PORT=587
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>SMTP_SECURE=false
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>SMTP_USER=&lt;email-account-brevo&gt;
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>SMTP_PASSWORD=&lt;smtp-key-générée&gt;
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>SMTP_FROM=no-reply@&lt;un-domaine-validé-chez-brevo&gt;
+</code></pre></div>
+<p>Brevo demande de valider le <code>FROM</code>. Soit :
+- Tu valides ton domaine <code>recipe-shelter.fr</code> (si tu l'achètes plus tard).
+- Soit tu valides ton email perso (rapide) et utilises <code>arthur.lagenebre@gmail.com</code> comme FROM — moins propre mais ça marche.</p>
+<h3 id="alternative-resend-httpsresendcom">Alternative : Resend (<code>https://resend.com</code>)<a class="headerlink" href="#alternative-resend-httpsresendcom" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Free tier : 100 emails/jour, 3000/mois.</li>
+<li>API plus simple, mais nécessite un domaine validé (pas d'envoi depuis Gmail).</li>
+</ul>
+<h3 id="test-rapide">Test rapide<a class="headerlink" href="#test-rapide" title="Permanent link">&para;</a></h3>
+<p>Une fois SMTP configuré, créer un compte de test sur le site déployé → vérifier que l'email d'activation arrive.</p>
+<h2 id="phase-7-mettre-a-jour-la-documentation-15-min">Phase 7 — Mettre à jour la documentation (15 min)<a class="headerlink" href="#phase-7-mettre-a-jour-la-documentation-15-min" title="Permanent link">&para;</a></h2>
+<p>Une fois tout en ligne, modifier :</p>
+<h3 id="documentationsoutenancedemoscenario-demomd-ligne-5"><code>documentation/soutenance/demo/scenario-demo.md</code> ligne 5<a class="headerlink" href="#documentationsoutenancedemoscenario-demomd-ligne-5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="gd">-&gt; Pré-requis : frontend lancé sur `http://localhost:4200`, backend lancé sur `http://localhost:3000`, base de données de démonstration chargée. Sinon le site déployé sur internet avec la base de données de démonstration chargée.</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="gi">+&gt; Pré-requis : site en ligne à `https://&lt;frontend-railway&gt;.up.railway.app` (recommandé), ou démo locale avec frontend sur `http://localhost:4200`, backend sur `http://localhost:3000` et base de démo chargée.</span>
+</code></pre></div>
+<h3 id="documentationsoutenancedemocomptes-testmd"><code>documentation/soutenance/demo/comptes-test.md</code><a class="headerlink" href="#documentationsoutenancedemocomptes-testmd" title="Permanent link">&para;</a></h3>
+<p>Ajouter une section en tête :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="gu">## Accès</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Site déployé**</span> : <span class="sb">`https://&lt;frontend-railway&gt;.up.railway.app`</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">-</span><span class="w"> </span><span class="gs">**API**</span> : <span class="sb">`https://&lt;backend-railway&gt;.up.railway.app/api/v1`</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Mot de passe commun des comptes de test**</span> : <span class="sb">`Password123!`</span>
+</code></pre></div>
+<h3 id="_draft_slidessoutenance-slidesmd"><code>_draft_slides/soutenance-slides.md</code><a class="headerlink" href="#_draft_slidessoutenance-slidesmd" title="Permanent link">&para;</a></h3>
+<p>Remplir la zone <code>[À COMPLÉTER]</code> URLs avec les URLs Railway, et l'email de contact réel.</p>
+<h3 id="frontendreadmemd-optionnel"><code>frontend/README.md</code> (optionnel)<a class="headerlink" href="#frontendreadmemd-optionnel" title="Permanent link">&para;</a></h3>
+<p>Ajouter une section <code>Déploiement</code> qui pointe vers l'URL prod et explique brièvement la stack (Railway).</p>
+<h2 id="phase-8-test-end-to-end-45-min">Phase 8 — Test end-to-end (45 min)<a class="headerlink" href="#phase-8-test-end-to-end-45-min" title="Permanent link">&para;</a></h2>
+<p>Du téléphone (4G, pas Wi-Fi), suivre le <strong>scénario de démo complet</strong> (<code>documentation/soutenance/demo/scenario-demo.md</code>) :</p>
+<ol>
+<li>Tentative login compte inactif → message correct.</li>
+<li>Tentative login compte banni → message correct.</li>
+<li>Login user <code>sophie.leclerc@yahoo.fr</code> → menu compte apparaît.</li>
+<li>Recherche recette → résultats.</li>
+<li>Ajout favori → cœur change d'état.</li>
+<li>Création recette → brouillon enregistré.</li>
+<li>Soumission recette → statut "En attente".</li>
+<li>Login admin → tableau de bord.</li>
+<li>Validation recette → publication.</li>
+<li>Modération commentaire.</li>
+<li>Déconnexion.</li>
+</ol>
+<p>Si une étape échoue → fix avant J-day.</p>
+<p>Prendre des <strong>captures du site déployé</strong> pour les slides.</p>
+<h2 id="recap">Récap<a class="headerlink" href="#recap" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Temps</th>
+<th>Risque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Préparer code</td>
+<td>30 min</td>
+<td>Faible (l'app est déjà conçue pour des envs)</td>
+</tr>
+<tr>
+<td>2. Provisionner MySQL</td>
+<td>15 min</td>
+<td>Faible</td>
+</tr>
+<tr>
+<td>3. Charger seed démo</td>
+<td>15 min</td>
+<td>Moyen (à valider client MySQL)</td>
+</tr>
+<tr>
+<td>4. Déployer backend</td>
+<td>45 min</td>
+<td>Moyen (variables ENV à bien câbler)</td>
+</tr>
+<tr>
+<td>5. Déployer frontend</td>
+<td>45 min</td>
+<td>Moyen (SSR Angular, à tester)</td>
+</tr>
+<tr>
+<td>6. SMTP</td>
+<td>30 min</td>
+<td>Faible (Brevo bien doc)</td>
+</tr>
+<tr>
+<td>7. Doc</td>
+<td>15 min</td>
+<td>Faible</td>
+</tr>
+<tr>
+<td>8. Test E2E</td>
+<td>45 min</td>
+<td>Critique — c'est ici qu'on découvre les bugs</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>3 h 30</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Prévoir <strong>un samedi entier</strong> (5-6h) pour être tranquille, pas un soir après un cours.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../01-options-comparees/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Options de déploiement comparées">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Options de déploiement comparées
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-fallback-et-defense/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Plan B et défense jury">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Plan B et défense jury
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4473 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="POC MkDocs Material pour le projet Recipe Shelter">
+      
+      
+        <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
+      
+      
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/securite/">
+      
+      
+        <link rel="prev" href="../errors/">
+      
+      
+        <link rel="next" href="../adr/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Sécurité — Recipe Shelter (Backend) - Recipe Shelter — Documentation (POC sandbox)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#securite-recipe-shelter-backend" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-header__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Recipe Shelter — Documentation (POC sandbox)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sécurité — Recipe Shelter (Backend)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter — Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../GIT_CONVENTION/" class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter - Git Convention
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../deployment/" class="md-tabs__link">
+          
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../jury/" class="md-tabs__link">
+          
+  
+  Jury
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../manuel-utilisateur/" class="md-tabs__link">
+          
+  
+  Manuel utilisateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../meta/mkdocs/" class="md-tabs__link">
+          
+  
+  Meta
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Soutenance
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-nav__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Recipe Shelter — Documentation (POC sandbox)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter — Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GIT_CONVENTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter - Git Convention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Déploiement — diagnostic et plan d'action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/01-options-comparees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Options de déploiement comparées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/02-plan-railway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan déploiement Railway pas-à-pas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/03-fallback-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan B et défense jury
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Jury
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Jury
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Banque de questions jury — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/00-questions-transversales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00 — Questions transversales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/01-bloc1-frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Bloc 1 : Front-End HTML/CSS/JS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/02-bloc2-backend-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Bloc 2 : Back-End from scratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/03-bloc3-angular/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Bloc 3 : Framework (Angular)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/04-securite-rgpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Sécurité et RGPD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/05-pieges-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Questions pièges et défense d'architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/06-ameliorations-innovantes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 — Améliorations innovantes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/07-mode-entrainement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 — Mode d'entraînement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manuel utilisateur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Manuel utilisateur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide utilisateur — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Découvrir Recipe Shelter (sans compte)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Compte utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Utiliser les recettes (membre connecté)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/04-administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. FAQ et messages d'erreur courants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Meta
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Meta
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MkDocs — Plan d'intégration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/01-architecture-et-justification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Architecture cible et justification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/02-plan-poc-sandbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — POC sandbox côté Quentin (Keutin)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/03-walkthrough-handoff-arthur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Walkthrough handoff Arthur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Project context
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Project context
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/project-context/backend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/project-context/frontend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Slides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slides soutenance — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/soutenance-slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soutenance slides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Soutenance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Soutenance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    _draft_backend_docs/ — Documentation backend pour soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture du backend Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catalogue des codes d'erreur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Sécurité — Recipe Shelter (Backend)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Sécurité — Recipe Shelter (Backend)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Vue d'ensemble
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Vue d'ensemble">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-perimetre-de-lapplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Périmètre de l'application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-surface-dattaque-couverte" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Surface d'attaque couverte
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-perimetre-explicitement-hors-scope-assume" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Périmètre EXPLICITEMENT hors scope (assumé)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-authentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Authentification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Authentification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-hash-des-mots-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Hash des mots de passe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-politique-de-mot-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Politique de mot de passe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 JWT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-session-cookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Session / Cookie
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Session / Cookie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-nom-et-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Nom et flags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-pourquoi-un-cookie-httponly-plutot-que-localstorage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Pourquoi un cookie HttpOnly plutôt que localStorage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-deconnexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Déconnexion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-autorisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Autorisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Autorisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-requireauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 requireAuth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-requireadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 requireAdmin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ownership-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Ownership checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-ordre-dans-le-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Ordre dans le pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. CORS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-csrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. CSRF
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. CSRF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-defense-en-profondeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Défense en profondeur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-pourquoi-pas-de-token-csrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Pourquoi pas de token CSRF ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-limite-assumee" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Limite assumée
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-validation-des-entrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Validation des entrées
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Validation des entrées">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-helpers-de-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Helpers de DTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-rejets-au-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Rejets au boundary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-validation-email-specifique" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Validation email spécifique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-normalisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 Normalisation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Rate limiting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Rate limiting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 Implémentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-limites-assumees" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3 Limites assumées
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-headers-de-securite-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Headers de sécurité HTTP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-emails-tokens-a-usage-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Emails &amp; tokens à usage unique
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Emails & tokens à usage unique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-generation-de-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1 Génération de token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-reset-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2 Reset password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-validation-email" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.3 Validation email
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-persistance-anti-sql-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Persistance — Anti SQL Injection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Persistance — Anti SQL Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-pattern-systematique" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1 Pattern systématique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-cas-dinterpolation-controlee" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2 Cas d'interpolation contrôlée
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-transaction-et-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3 Transaction et isolation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-mapping-owasp-top-10-2021" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Mapping OWASP Top 10 (2021)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-rgpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. RGPD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. RGPD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-donnees-personnelles-collectees" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1 Données personnelles collectées
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-droits-utilisateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2 Droits utilisateurs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-conservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3 Conservation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-consentement" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.4 Consentement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ameliorations-identifiees-transparence-pedagogique" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Améliorations identifiées (transparence pédagogique)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Améliorations identifiées (transparence pédagogique)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-headers-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.1 Headers de sécurité
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-authentification-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.2 Authentification / Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-rate-limiter" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.3 Rate limiter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-csrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.4 CSRF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#145-logs-et-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.5 Logs et monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#146-dependances" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.6 Dépendances
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#147-rgpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.7 RGPD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#148-tests-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.8 Tests de sécurité
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#149-infrastructure-hors-scope-applicatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.9 Infrastructure (hors scope applicatif)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-recapitulatif-defensif-pour-le-jury" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Récapitulatif défensif (pour le jury)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annexes-fichiers-cles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annexes — Fichiers clés
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_5" id="__nav_8_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Adr
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Adr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR — Architecture Decision Records
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/00-narration-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Narration "from scratch" — défense pour la soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-001-express-comme-couche-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-001 — Express comme couche HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-002 — Pattern Repository : interface + implémentation MySQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-003 — JWT en cookie HttpOnly (vs header Authorization)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-004 — Soft-delete et log de modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-005 — Slug en deux phases (brouillon puis public)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_6" id="__nav_8_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Diagrams
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g1-architecture-c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G1 — Architecture C4 Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g2-pipeline-middleware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G2 — Pipeline middleware Express
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g3-sequence-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G3 — Séquence : modération d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g4-sequence-auth-email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G4 — Séquences : reset password &amp; validation email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_7" id="__nav_8_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Uml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Uml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UML — Brouillons à intégrer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/01-diagramme-classes-domaine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Modèle de domaine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/02-diagramme-classes-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Architecture backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/03-diagramme-cas-utilisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de cas d'utilisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/04-diagramme-sequence-connexion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Connexion (login)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/05-diagramme-sequence-recette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Cycle de vie d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Demo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Demo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/comptes-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comptes de test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/scenario-demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scénario de démonstration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Frontend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3_1" id="__nav_8_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Audit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloc 1 — Audit Lighthouse + grille RGAA/WCAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/01-lighthouse-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lighthouse — Template d'audit à remplir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/02-rgaa-grille/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/03-findings-detailles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Findings détaillés — audit statique frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/04-plan-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan de remédiation priorisé
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/05-defense-jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Défendre le Bloc 1 en soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Vue d'ensemble
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Vue d'ensemble">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-perimetre-de-lapplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Périmètre de l'application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-surface-dattaque-couverte" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Surface d'attaque couverte
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-perimetre-explicitement-hors-scope-assume" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Périmètre EXPLICITEMENT hors scope (assumé)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-authentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Authentification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Authentification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-hash-des-mots-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Hash des mots de passe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-politique-de-mot-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Politique de mot de passe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 JWT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-session-cookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Session / Cookie
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Session / Cookie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-nom-et-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Nom et flags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-pourquoi-un-cookie-httponly-plutot-que-localstorage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Pourquoi un cookie HttpOnly plutôt que localStorage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-deconnexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Déconnexion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-autorisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Autorisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Autorisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-requireauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 requireAuth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-requireadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 requireAdmin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ownership-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Ownership checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-ordre-dans-le-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Ordre dans le pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. CORS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-csrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. CSRF
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. CSRF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-defense-en-profondeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Défense en profondeur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-pourquoi-pas-de-token-csrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Pourquoi pas de token CSRF ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-limite-assumee" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Limite assumée
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-validation-des-entrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Validation des entrées
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Validation des entrées">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-helpers-de-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Helpers de DTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-rejets-au-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Rejets au boundary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-validation-email-specifique" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Validation email spécifique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-normalisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 Normalisation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Rate limiting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Rate limiting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 Implémentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-limites-assumees" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3 Limites assumées
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-headers-de-securite-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Headers de sécurité HTTP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-emails-tokens-a-usage-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Emails &amp; tokens à usage unique
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Emails & tokens à usage unique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-generation-de-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1 Génération de token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-reset-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2 Reset password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-validation-email" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.3 Validation email
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-persistance-anti-sql-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Persistance — Anti SQL Injection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Persistance — Anti SQL Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-pattern-systematique" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1 Pattern systématique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-cas-dinterpolation-controlee" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2 Cas d'interpolation contrôlée
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-transaction-et-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3 Transaction et isolation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-mapping-owasp-top-10-2021" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Mapping OWASP Top 10 (2021)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-rgpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. RGPD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. RGPD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-donnees-personnelles-collectees" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1 Données personnelles collectées
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-droits-utilisateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2 Droits utilisateurs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-conservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3 Conservation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-consentement" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.4 Consentement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ameliorations-identifiees-transparence-pedagogique" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Améliorations identifiées (transparence pédagogique)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Améliorations identifiées (transparence pédagogique)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-headers-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.1 Headers de sécurité
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-authentification-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.2 Authentification / Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-rate-limiter" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.3 Rate limiter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-csrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.4 CSRF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#145-logs-et-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.5 Logs et monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#146-dependances" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.6 Dépendances
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#147-rgpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.7 RGPD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#148-tests-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.8 Tests de sécurité
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#149-infrastructure-hors-scope-applicatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.9 Infrastructure (hors scope applicatif)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-recapitulatif-defensif-pour-le-jury" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Récapitulatif défensif (pour le jury)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annexes-fichiers-cles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annexes — Fichiers clés
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/backend/securite.md" title="Editer cette page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="securite-recipe-shelter-backend">Sécurité — Recipe Shelter (Backend)<a class="headerlink" href="#securite-recipe-shelter-backend" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Document de référence pour la soutenance RNCP.
+Toutes les affirmations sont sourcées sur le code (<code>fichier:ligne</code>).
+Section finale : "Améliorations identifiées" — honnêteté pédagogique sur ce qui n'a PAS été implémenté.</p>
+</blockquote>
+<hr />
+<h2 id="1-vue-densemble">1. Vue d'ensemble<a class="headerlink" href="#1-vue-densemble" title="Permanent link">&para;</a></h2>
+<h3 id="11-perimetre-de-lapplication">1.1 Périmètre de l'application<a class="headerlink" href="#11-perimetre-de-lapplication" title="Permanent link">&para;</a></h3>
+<p>Recipe Shelter est une application web composée d'une API REST (Express + TypeScript), d'un front Angular et d'une base de données MySQL. Le backend expose <code>/api/v1/*</code> (voir <code>backend/src/app.ts:133-147</code>). L'authentification est portée par un cookie de session (JWT signé) déposé par le serveur.</p>
+<h3 id="12-surface-dattaque-couverte">1.2 Surface d'attaque couverte<a class="headerlink" href="#12-surface-dattaque-couverte" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Authentification (inscription, login, logout, reset password, email validation)</li>
+<li>Autorisation (utilisateur authentifié / administrateur)</li>
+<li>Persistance des mots de passe (hash bcrypt)</li>
+<li>Communication HTTP (CORS strict, cookie HttpOnly)</li>
+<li>Brute-force credentials (rate limiting sur les routes sensibles)</li>
+<li>Injection SQL (mysql2 + placeholders paramétrés)</li>
+<li>Tokens à usage unique (reset mot de passe, validation email)</li>
+<li>Validation des entrées au boundary HTTP (DTOs explicites)</li>
+<li>Gestion d'erreurs maîtrisée (pas de stack trace renvoyée au client)</li>
+</ul>
+<h3 id="13-perimetre-explicitement-hors-scope-assume">1.3 Périmètre EXPLICITEMENT hors scope (assumé)<a class="headerlink" href="#13-perimetre-explicitement-hors-scope-assume" title="Permanent link">&para;</a></h3>
+<p>Choix pédagogique : le projet est "from scratch" et vise à démontrer la maîtrise des fondamentaux. Les éléments ci-dessous, bien que recommandés en production, ne font pas partie du scope :</p>
+<ul>
+<li><strong>WAF</strong> (Web Application Firewall) → mutualisé en infra (Cloudflare, AWS WAF…), pas géré applicativement.</li>
+<li><strong>Protection DDoS</strong> → mutualisée au niveau infra/CDN.</li>
+<li><strong>IDS/IPS</strong> → relève de la couche système/réseau.</li>
+<li><strong>Audit logs centralisés</strong> → un logger applicatif existe (<code>backend/src/utils/logger.ts</code>) mais pas d'envoi vers SIEM.</li>
+<li><strong>Rotation automatique des secrets</strong> → faite manuellement via variables d'environnement.</li>
+<li><strong>Scan de dépendances en CI</strong> → audit manuel via <code>npm audit</code>.</li>
+</ul>
+<hr />
+<h2 id="2-authentification">2. Authentification<a class="headerlink" href="#2-authentification" title="Permanent link">&para;</a></h2>
+<h3 id="21-hash-des-mots-de-passe">2.1 Hash des mots de passe<a class="headerlink" href="#21-hash-des-mots-de-passe" title="Permanent link">&para;</a></h3>
+<p>Algorithme <strong>bcrypt</strong>, coût par défaut <strong>12</strong> (configurable via <code>BCRYPT_COST</code>).</p>
+<ul>
+<li>Configuration : <code>backend/src/utils/env.ts:98</code> → <code>bcryptCost: readNumber(process.env.BCRYPT_COST, 12)</code></li>
+<li>Hash au register : <code>backend/src/services/auth/auth.service.ts:63</code> → <code>bcrypt.hash(password, env.auth.bcryptCost)</code></li>
+<li>Vérification au login : <code>backend/src/services/auth/auth.service.ts:81</code> → <code>bcrypt.compare(password, authUser.passwordHash)</code></li>
+<li>Hash lors du reset : <code>backend/src/services/auth/password-reset.service.ts:64</code> → <code>bcrypt.hash(newPassword, env.auth.bcryptCost)</code></li>
+</ul>
+<p><strong>Pourquoi bcrypt</strong> : algorithme à fonction de hachage lent (résistant aux attaques GPU), salt intégré au hash, coût configurable. Coût 12 ≈ 250 ms/hash sur matériel courant — bon compromis sécurité/latence.</p>
+<p><strong>Note</strong> : <code>backend/src/services/users/users.service.ts:112</code> utilise une valeur littérale <code>12</code> au lieu de <code>env.auth.bcryptCost</code> lors de l'update de mot de passe. À aligner sur l'env (voir section "Améliorations").</p>
+<h3 id="22-politique-de-mot-de-passe">2.2 Politique de mot de passe<a class="headerlink" href="#22-politique-de-mot-de-passe" title="Permanent link">&para;</a></h3>
+<p>Fichier : <code>backend/src/services/auth/password-policy.ts</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>- Chaîne non vide (ligne 2-3)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>- Longueur minimale : 8 caractères (ligne 5-6)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- Longueur maximale : 128 caractères (ligne 8-9)
+</code></pre></div>
+<p><strong>Justification du choix</strong> : la politique suit les recommandations NIST SP 800-63B (longueur &gt; complexité). Pas d'obligation de caractères spéciaux/majuscules qui pousse les utilisateurs à des mots de passe prévisibles. La longueur max protège contre les attaques DoS par bcrypt (bcrypt tronque à 72 octets, mais la borne 128 évite le coût de hash sur des entrées géantes).</p>
+<p>Application :
+- Register : <code>auth.service.ts:47-49</code> (jette <code>AUTH_WEAK_PASSWORD</code>)
+- Reset : <code>password-reset.service.ts:54-56</code>
+- Update : <code>users.service.ts:107-110</code></p>
+<h3 id="23-jwt">2.3 JWT<a class="headerlink" href="#23-jwt" title="Permanent link">&para;</a></h3>
+<p>Bibliothèque : <code>jsonwebtoken@^9.0.3</code> (<code>backend/package.json:46</code>).</p>
+<ul>
+<li><strong>Algorithme de signature</strong> : <code>HS256</code> (algo par défaut de <code>jwt.sign</code> quand un secret string est fourni).</li>
+<li><strong>Secret</strong> : <code>JWT_SECRET</code> exigé via env (<code>env.ts:90</code> lève une erreur si absent — pas de défaut secret).</li>
+<li><strong>Claims</strong> (<code>auth.service.ts:14-19</code>) :</li>
+<li><code>sub</code> (user id, number)</li>
+<li><code>username</code> (string)</li>
+<li><code>roleId</code> (number)</li>
+<li><code>status</code> (<code>'inactive' | 'active' | 'banned'</code>)</li>
+<li><strong>Durée de vie</strong> : <code>JWT_EXPIRES_IN</code>, défaut <strong>7 jours</strong> (<code>env.ts:68</code>).</li>
+<li><strong>Vérification</strong> : <code>require-auth.ts:76</code> → <code>jwt.verify(token, env.auth.jwtSecret)</code> (catch global lève <code>unauthorized</code>).</li>
+<li><strong>Garde-fou statut</strong> : <code>require-auth.ts:57-67</code> — après vérification JWT, on recharge le user en base et on rejette si <code>status !== 'active'</code>. Empêche un token volé d'un compte banni de rester valide.</li>
+</ul>
+<hr />
+<h2 id="3-session-cookie">3. Session / Cookie<a class="headerlink" href="#3-session-cookie" title="Permanent link">&para;</a></h2>
+<h3 id="31-nom-et-flags">3.1 Nom et flags<a class="headerlink" href="#31-nom-et-flags" title="Permanent link">&para;</a></h3>
+<p>Fichier : <code>backend/src/utils/session-cookie.ts</code></p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Valeur</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nom</td>
+<td><code>rs_session</code> (configurable <code>AUTH_SESSION_COOKIE_NAME</code>)</td>
+<td><code>env.ts:92</code></td>
+</tr>
+<tr>
+<td><code>httpOnly</code></td>
+<td><code>true</code></td>
+<td><code>session-cookie.ts:10</code></td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td><code>/</code></td>
+<td><code>session-cookie.ts:11</code></td>
+</tr>
+<tr>
+<td><code>sameSite</code></td>
+<td><code>'lax'</code> par défaut (configurable)</td>
+<td><code>env.ts:94</code>, <code>session-cookie.ts:12</code></td>
+</tr>
+<tr>
+<td><code>secure</code></td>
+<td><code>true</code> en production, <code>false</code> en dev</td>
+<td><code>env.ts:95</code></td>
+</tr>
+<tr>
+<td><code>domain</code></td>
+<td>optionnel, non posé par défaut</td>
+<td><code>session-cookie.ts:15-16</code></td>
+</tr>
+<tr>
+<td><code>maxAge</code></td>
+<td>7 jours par défaut (aligné sur JWT_EXPIRES_IN)</td>
+<td><code>env.ts:96</code>, <code>session-cookie.ts:24</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-pourquoi-un-cookie-httponly-plutot-que-localstorage">3.2 Pourquoi un cookie HttpOnly plutôt que localStorage<a class="headerlink" href="#32-pourquoi-un-cookie-httponly-plutot-que-localstorage" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Anti-XSS</strong> : le flag <code>HttpOnly</code> empêche JavaScript d'accéder au cookie. Une faille XSS sur le front ne permet pas d'exfiltrer le token.</li>
+<li><strong><code>localStorage</code></strong> est lisible par tout script s'exécutant dans la page (extensions, librairies tierces compromises, XSS) — vecteur de vol de session trivial.</li>
+<li><strong><code>SameSite=Lax</code></strong> réduit fortement la surface CSRF (voir §6) tout en restant compatible avec la navigation classique (lien externe vers le site).</li>
+<li><strong><code>Secure</code></strong> en production garantit que le cookie n'est jamais envoyé en clair sur HTTP.</li>
+</ul>
+<h3 id="33-deconnexion">3.3 Déconnexion<a class="headerlink" href="#33-deconnexion" title="Permanent link">&para;</a></h3>
+<p><code>clearSessionCookie</code> (<code>session-cookie.ts:36-38</code>) utilise les mêmes options (sans <code>maxAge</code>) que la pose, condition <code>clearCookie</code> d'Express pour effacer correctement le cookie côté navigateur.</p>
+<hr />
+<h2 id="4-autorisation">4. Autorisation<a class="headerlink" href="#4-autorisation" title="Permanent link">&para;</a></h2>
+<h3 id="41-requireauth">4.1 <code>requireAuth</code><a class="headerlink" href="#41-requireauth" title="Permanent link">&para;</a></h3>
+<p>Fichier : <code>backend/src/middlewares/require-auth.ts</code></p>
+<p>Pipeline :
+1. Lit le cookie de session (<code>getSessionToken</code>, ligne 30-34).
+2. Si absent → <code>401 AUTH_NO_TOKEN</code>.
+3. Vérifie la signature JWT (<code>jwt.verify</code>, ligne 76).
+4. Parse les claims (<code>parseAuthPayload</code>, ligne 36-55) : rejette si <code>sub</code>, <code>roleId</code> ou <code>username</code> invalides.
+5. Recharge l'utilisateur en base (<code>resolveActiveAuth</code>, ligne 57-67) : rejette si user introuvable ou <code>status !== 'active'</code>.
+6. Attache <code>req.auth = { userId, username, roleId, status }</code>.</p>
+<p><strong>Variante</strong> : <code>optionalAuth</code> (ligne 94-117) — même logique mais ne bloque jamais ; utilisée pour les routes publiques qui adaptent leur réponse selon que le visiteur est connecté ou non (ex. flag "is owned" sur les recettes).</p>
+<h3 id="42-requireadmin">4.2 <code>requireAdmin</code><a class="headerlink" href="#42-requireadmin" title="Permanent link">&para;</a></h3>
+<p>Fichier : <code>backend/src/middlewares/require-admin.ts</code> (10 lignes).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">auth</span><span class="o">?</span><span class="p">.</span><span class="nx">roleId</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">(</span><span class="nx">forbidden</span><span class="p">(</span><span class="s1">&#39;Admin access required&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ADMIN_ACCESS_REQUIRED&#39;</span><span class="p">));</span>
+</code></pre></div>
+<p><strong>Conventions</strong> :
+- <code>roleId === 1</code> = administrateur (rôle seedé en base, voir <code>backend/database/</code>).
+- DOIT être chaîné APRÈS <code>requireAuth</code> — <code>req.auth</code> n'existe que si <code>requireAuth</code> est passé.</p>
+<h3 id="43-ownership-checks">4.3 Ownership checks<a class="headerlink" href="#43-ownership-checks" title="Permanent link">&para;</a></h3>
+<p>La vérification "le user agit sur SES propres ressources" se fait dans les services métier (ex. <code>comments.service.ts:38-47</code> <code>deleteComment(id, userId)</code> — le repository ne supprime que si <code>UserId</code> matche). Pattern à généraliser (voir Améliorations).</p>
+<h3 id="44-ordre-dans-le-pipeline">4.4 Ordre dans le pipeline<a class="headerlink" href="#44-ordre-dans-le-pipeline" title="Permanent link">&para;</a></h3>
+<p>Voir document <code>_draft_backend_docs/diagrams/g2-pipeline-middleware.md</code> (à produire). Ordre Express type :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cors → cookieParser → express.json → router → [requireAuth → requireAdmin] → controller → errorHandler
+</code></pre></div>
+<p>Sources : <code>app.ts:80-82</code> (middlewares globaux), <code>auth.routes.ts:24</code> (rate limiter spécifique).</p>
+<hr />
+<h2 id="5-cors">5. CORS<a class="headerlink" href="#5-cors" title="Permanent link">&para;</a></h2>
+<p>Fichier : <code>backend/src/app.ts:72-80</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">origins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">env</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">corsAllowedOrigins</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">o</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">o</span><span class="p">.</span><span class="nx">trim</span><span class="p">()).</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">);</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">origins</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">))</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;CORS_ALLOWED_ORIGINS must list explicit origins when credentials are enabled&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">({</span><span class="w"> </span><span class="nx">credentials</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="kt">origins</span><span class="w"> </span><span class="p">}));</span>
+</code></pre></div>
+<p><strong>Points clés</strong> :
+- <strong>Origines explicites</strong> : liste blanche d'origines (<code>CORS_ALLOWED_ORIGINS</code>, défaut <code>http://localhost:4200,http://127.0.0.1:4200</code> en <code>env.ts:76</code>).
+- <strong><code>credentials: true</code></strong> : autorise l'envoi du cookie de session cross-origin pour le front Angular.
+- <strong>Garde-fou wildcard</strong> (<code>app.ts:77-78</code>) : refuse explicitement <code>*</code> dans la liste. C'est INTERDIT par la spec CORS quand <code>credentials: true</code> est posé — la lib <code>cors</code> n'enforce pas, nous le faisons au démarrage de l'app. <strong>Cette protection est CRITIQUE</strong> : un <code>*</code> avec <code>credentials: true</code> permettrait à n'importe quelle origine de lancer des requêtes authentifiées.</p>
+<hr />
+<h2 id="6-csrf">6. CSRF<a class="headerlink" href="#6-csrf" title="Permanent link">&para;</a></h2>
+<h3 id="61-defense-en-profondeur">6.1 Défense en profondeur<a class="headerlink" href="#61-defense-en-profondeur" title="Permanent link">&para;</a></h3>
+<p>Pas de token CSRF explicite. La protection repose sur :</p>
+<ol>
+<li><strong><code>SameSite=Lax</code></strong> sur le cookie (<code>session-cookie.ts:12</code>) : le navigateur n'envoie PAS le cookie sur les requêtes cross-site déclenchées par des balises form ou XHR depuis un autre site (sauf navigation top-level GET).</li>
+<li><strong><code>HttpOnly</code></strong> : un attaquant ne peut pas lire le cookie via XSS pour le rejouer.</li>
+<li><strong>CORS strict</strong> (<code>credentials: true</code> + liste blanche d'origines, §5) : un XHR cross-site depuis une origine non listée est bloqué par le navigateur AVANT que la requête atteigne le code applicatif.</li>
+</ol>
+<h3 id="62-pourquoi-pas-de-token-csrf">6.2 Pourquoi pas de token CSRF ?<a class="headerlink" href="#62-pourquoi-pas-de-token-csrf" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Avec <code>SameSite=Lax</code>, l'attaque CSRF classique (form POST cross-site) est neutralisée par le navigateur.</li>
+<li>Le coût d'implémentation d'un double-submit token apporte une protection marginale dans ce contexte (pas de support de très vieux navigateurs).</li>
+<li>En revanche, <strong>un compromis XSS du frontend resterait fatal</strong> — peu importe le token CSRF puisque l'attaquant pourrait le récupérer. La priorité est donc anti-XSS (CSP côté front, échappement Angular natif, validation server-side).</li>
+</ul>
+<h3 id="63-limite-assumee">6.3 Limite assumée<a class="headerlink" href="#63-limite-assumee" title="Permanent link">&para;</a></h3>
+<p>Si la politique passait à <code>SameSite=None</code> (ex. front sur domaine distinct sans proxy), il faudrait introduire un token CSRF (cf. Améliorations).</p>
+<hr />
+<h2 id="7-validation-des-entrees">7. Validation des entrées<a class="headerlink" href="#7-validation-des-entrees" title="Permanent link">&para;</a></h2>
+<h3 id="71-helpers-de-dto">7.1 Helpers de DTO<a class="headerlink" href="#71-helpers-de-dto" title="Permanent link">&para;</a></h3>
+<p>Fichier : <code>backend/src/api/http/dto.helpers.ts</code></p>
+<p>Helpers stricts, lève <code>badRequest</code> (400) en cas d'invalidité :</p>
+<table>
+<thead>
+<tr>
+<th>Helper</th>
+<th>Garantie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getRequiredString</code> (ligne 7-14)</td>
+<td>string non vide après <code>trim</code></td>
+</tr>
+<tr>
+<td><code>getOptionalString</code> (ligne 16-24)</td>
+<td>undefined OU string</td>
+</tr>
+<tr>
+<td><code>getOptionalNullableString</code> (26-37)</td>
+<td>undefined / null / string</td>
+</tr>
+<tr>
+<td><code>getOptionalNumber</code> (39-47)</td>
+<td>undefined / null / number fini</td>
+</tr>
+<tr>
+<td><code>getRequiredNumber</code> (62-67)</td>
+<td>number fini</td>
+</tr>
+<tr>
+<td><code>getRequiredPositiveInteger</code> (69-74)</td>
+<td>integer &gt; 0</td>
+</tr>
+<tr>
+<td><code>getOptionalArray</code> (76-84)</td>
+<td>undefined / null / tableau (parseur par item)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-rejets-au-boundary">7.2 Rejets au boundary<a class="headerlink" href="#72-rejets-au-boundary" title="Permanent link">&para;</a></h3>
+<p>Toute violation se traduit par une erreur applicative <code>badRequest</code> (code 400), levée AVANT que la donnée atteigne le service ou le repository. Pattern systématique dans les controllers.</p>
+<h3 id="73-validation-email-specifique">7.3 Validation email spécifique<a class="headerlink" href="#73-validation-email-specifique" title="Permanent link">&para;</a></h3>
+<p><code>users.service.ts:65-68</code> : regex simple <code>/^[^\s@]+@[^\s@]+\.[^\s@]+$/</code> pour l'update email. Volontairement minimale (la validation finale = envoi d'un mail de confirmation, voir §10).</p>
+<h3 id="74-normalisation">7.4 Normalisation<a class="headerlink" href="#74-normalisation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Email systématiquement normalisé (lowercase + trim) via <code>normalizeEmail</code> (<code>utils/string.ts</code>). Évite le bypass d'unicité (<code>Alice@x.com</code> vs <code>alice@x.com</code>).</li>
+<li>Username <code>trim()</code> + longueur min 3 (<code>auth.service.ts:54-55</code>).</li>
+</ul>
+<hr />
+<h2 id="8-rate-limiting">8. Rate limiting<a class="headerlink" href="#8-rate-limiting" title="Permanent link">&para;</a></h2>
+<h3 id="81-implementation">8.1 Implémentation<a class="headerlink" href="#81-implementation" title="Permanent link">&para;</a></h3>
+<p>Fichier : <code>backend/src/middlewares/rate-limiter.ts</code></p>
+<ul>
+<li>Store en mémoire (<code>Map&lt;string, { count, resetAt }&gt;</code>, ligne 3).</li>
+<li>Clé : <code>IP + method + baseUrl + path</code> (ligne 5-12).</li>
+<li>Renvoie <code>429 RATE_LIMIT</code> + headers <code>RateLimit-*</code> + <code>Retry-After</code> quand <code>count &gt;= max</code>.</li>
+<li>Fenêtre glissante par "bucket" : à expiration, le compteur est réinitialisé.</li>
+</ul>
+<h3 id="82-application">8.2 Application<a class="headerlink" href="#82-application" title="Permanent link">&para;</a></h3>
+<p>Routes protégées :</p>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Limite</th>
+<th>Fenêtre</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST /auth/register</code></td>
+<td>5 (configurable)</td>
+<td>15 min</td>
+<td><code>auth.routes.ts:24</code></td>
+</tr>
+<tr>
+<td><code>POST /auth/login</code></td>
+<td>5</td>
+<td>15 min</td>
+<td><code>auth.routes.ts:25</code></td>
+</tr>
+<tr>
+<td><code>POST /auth/validate-email</code></td>
+<td>5</td>
+<td>15 min</td>
+<td><code>auth.routes.ts:28</code></td>
+</tr>
+<tr>
+<td><code>POST /auth/resend-validation-email</code></td>
+<td>5</td>
+<td>15 min</td>
+<td><code>auth.routes.ts:29</code></td>
+</tr>
+<tr>
+<td><code>POST /auth/forgot-password</code></td>
+<td>5</td>
+<td>15 min</td>
+<td><code>auth.routes.ts:30</code></td>
+</tr>
+<tr>
+<td><code>POST /contact</code></td>
+<td>5</td>
+<td>1 h</td>
+<td><code>contact.router.ts:11-16</code></td>
+</tr>
+</tbody>
+</table>
+<p>Configuration : <code>AUTH_RATE_LIMIT_MAX_ATTEMPTS</code> (défaut 5) et <code>AUTH_RATE_LIMIT_WINDOW_MS</code> (défaut 900000 = 15 min), <code>env.ts:99-100</code>.</p>
+<h3 id="83-limites-assumees">8.3 Limites assumées<a class="headerlink" href="#83-limites-assumees" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Store mémoire</strong> : non partagé entre instances ⇒ ne tient pas l'horizontal scaling. À porter sur Redis pour une vraie prod (voir Améliorations).</li>
+<li><strong>Clé IP</strong> : peut être contournée par rotation d'IP (botnets). Combinaison avec une politique de mot de passe forte et bcrypt coût 12 reste défensive.</li>
+<li><strong><code>POST /auth/reset-password</code></strong> n'est PAS rate-limité (<code>auth.routes.ts:31</code>). Argument : la connaissance du token (32 octets aléatoires) suffit comme protection ; mais ajouter un rate limit est trivial et conseillé (cf. Améliorations).</li>
+</ul>
+<hr />
+<h2 id="9-headers-de-securite-http">9. Headers de sécurité HTTP<a class="headerlink" href="#9-headers-de-securite-http" title="Permanent link">&para;</a></h2>
+<p><strong>État actuel</strong> : aucun middleware <code>helmet</code> n'est utilisé (<code>backend/package.json</code> n'inclut PAS <code>helmet</code>). Aucun header CSP, HSTS, X-Frame-Options, X-Content-Type-Options n'est posé par l'application.</p>
+<p><strong>Conséquence</strong> : les protections classiques contre clickjacking, MIME-sniffing, mixed content ne sont pas actives au niveau applicatif. En production, ces headers DOIVENT être posés par le reverse proxy (Nginx, Cloudflare) OU par l'ajout de <code>helmet</code> à Express.</p>
+<p>Voir Améliorations §14.</p>
+<hr />
+<h2 id="10-emails-tokens-a-usage-unique">10. Emails &amp; tokens à usage unique<a class="headerlink" href="#10-emails-tokens-a-usage-unique" title="Permanent link">&para;</a></h2>
+<h3 id="101-generation-de-token">10.1 Génération de token<a class="headerlink" href="#101-generation-de-token" title="Permanent link">&para;</a></h3>
+<p>Fichier : <code>backend/src/utils/security/password-reset-token.ts</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nx">generateResetToken</span><span class="p">()</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mf">32</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span><span class="w">   </span><span class="c1">// 256 bits</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">hashResetToken</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w">    </span><span class="err">→</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="s1">&#39;sha256&#39;</span><span class="p">).</span><span class="nx">update</span><span class="p">(</span><span class="nx">t</span><span class="p">).</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Propriétés</strong> :
+- 32 octets aléatoires (CSPRNG <code>crypto.randomBytes</code>) → entropie 256 bits, impraticable à brute-forcer.
+- <strong>Le token brut n'est JAMAIS stocké en base</strong> : seul son SHA-256 l'est. Une fuite de la table <code>PasswordResets</code> ne révèle pas les tokens utilisables (le hash SHA-256 ne se "renverse" pas en pratique pour 256 bits aléatoires).
+- Le hash SHA-256 est suffisant car le token est à très haute entropie (pas besoin de bcrypt sur du random 256 bits, où l'attaque par dictionnaire n'a aucun sens).</p>
+<h3 id="102-reset-password">10.2 Reset password<a class="headerlink" href="#102-reset-password" title="Permanent link">&para;</a></h3>
+<p>Fichier : <code>backend/src/services/auth/password-reset.service.ts</code></p>
+<ul>
+<li><strong>TTL</strong> : 30 minutes (<code>PASSWORD_RESET_TTL_MINUTES</code>, ligne 22).</li>
+<li><strong>Invalidation préalable</strong> : <code>resets.invalidateAllForUser(user.id)</code> (ligne 37) — chaque demande invalide les tokens précédents.</li>
+<li><strong>Énumération utilisateurs neutralisée</strong> : <code>requestReset</code> renvoie silencieusement si l'email n'existe pas (ligne 32-34) ⇒ pas de leak "ce compte existe".</li>
+<li><strong>Usage unique</strong> : <code>markUsed(reset.Id)</code> (ligne 67) après update du password.</li>
+<li><strong>Notification</strong> : email "password changed" envoyé après changement (ligne 71) — alerte l'utilisateur en cas d'usage malveillant.</li>
+</ul>
+<h3 id="103-validation-email">10.3 Validation email<a class="headerlink" href="#103-validation-email" title="Permanent link">&para;</a></h3>
+<p>Fichier : <code>backend/src/services/auth/email-validation.service.ts</code></p>
+<ul>
+<li>Même primitive de token (réutilise <code>generateResetToken</code> / <code>hashResetToken</code>).</li>
+<li><strong>TTL</strong> : 24 heures (<code>EMAIL_VALIDATION_TTL_MINUTES = 24 * 60</code>, ligne 15).</li>
+<li><strong>Compte inactif jusqu'à validation</strong> : <code>register</code> crée le compte avec <code>status: 'inactive'</code> (<code>auth.service.ts:64</code>), et <code>login</code> refuse <code>EMAIL_NOT_VALIDATED</code> tant que non validé (<code>auth.service.ts:85-86</code>).</li>
+<li><strong>Resend</strong> : possible seulement si <code>status === 'inactive'</code> (<code>email-validation.service.ts:35-36</code>), évite l'abus pour utilisateurs déjà actifs.</li>
+<li><strong>Pas de leak d'énumération</strong> : <code>resendValidationEmail</code> renvoie silencieusement si email inconnu (ligne 32-33).</li>
+</ul>
+<hr />
+<h2 id="11-persistance-anti-sql-injection">11. Persistance — Anti SQL Injection<a class="headerlink" href="#11-persistance-anti-sql-injection" title="Permanent link">&para;</a></h2>
+<h3 id="111-pattern-systematique">11.1 Pattern systématique<a class="headerlink" href="#111-pattern-systematique" title="Permanent link">&para;</a></h3>
+<p>mysql2 avec <strong>placeholders <code>?</code></strong> sur toutes les requêtes paramétrées. Exemple type :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="sb">`UPDATE Recipes SET Slug = ?, ... WHERE Id = ?`</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="p">[</span><span class="nx">slug</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">]</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">);</span>
+</code></pre></div>
+<p>Source : <code>backend/src/repositories/recipes/recipe.repository.mysql.ts:145-149</code>.</p>
+<h3 id="112-cas-dinterpolation-controlee">11.2 Cas d'interpolation contrôlée<a class="headerlink" href="#112-cas-dinterpolation-controlee" title="Permanent link">&para;</a></h3>
+<p>Certains repos construisent dynamiquement des fragments SQL (clauses LIMIT/OFFSET, listes de placeholders, SET clause). Audit :</p>
+<table>
+<thead>
+<tr>
+<th>Fichier:ligne</th>
+<th>Contenu interpolé</th>
+<th>Vecteur SQLi ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recipe.repository.mysql.ts:110</code></td>
+<td><code>${updateFields.join(', ')}</code> — <code>'Field = ?'</code></td>
+<td>NON — strings construites en code, jamais de user input</td>
+</tr>
+<tr>
+<td><code>recipe.repository.mysql.ts:207,225,235,237,270</code></td>
+<td><code>${limitOffsetClause}</code> / <code>${where.clause}</code></td>
+<td>NON — fragments générés en interne, valeurs en <code>?</code></td>
+</tr>
+<tr>
+<td><code>recipe.repository.mysql.ts:320</code></td>
+<td><code>\</code>%${filters.q}%`<code>| NON — c'est une VALEUR poussée dans</code>params[]<code>, jouée en</code>?`</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recipe.repository.mysql.ts:333,345</code></td>
+<td><code>${placeholders}</code> (suite de <code>?,?,?</code>)</td>
+<td>NON — chaîne fixe de marqueurs <code>?</code></td>
+</tr>
+<tr>
+<td><code>favorites.repository.mysql.ts:76</code></td>
+<td><code>${limitOffsetClause}</code></td>
+<td>NON — interne</td>
+</tr>
+<tr>
+<td><code>admin.users.repository.mysql.ts:64</code></td>
+<td><code>LIMIT ${USER_MODERATION_LOGS_LIMIT}</code></td>
+<td>NON — constante littérale</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusion</strong> : aucune interpolation de user input dans une chaîne SQL. Toutes les valeurs utilisateur passent par les placeholders <code>?</code> (paramètres préparés). <strong>Protection SQLi : OK.</strong></p>
+<h3 id="113-transaction-et-isolation">11.3 Transaction et isolation<a class="headerlink" href="#113-transaction-et-isolation" title="Permanent link">&para;</a></h3>
+<p>Le repository recettes utilise <code>connection.commit()</code> / <code>rollback()</code> (<code>recipe.repository.mysql.ts:128,137</code>) pour garantir l'atomicité des updates multi-tables (recipe + ingredients + steps + equipments + tags). Pool de connexions configuré via <code>DB_CONNECTION_LIMIT</code> (<code>env.ts:86</code>, défaut 10).</p>
+<hr />
+<h2 id="12-mapping-owasp-top-10-2021">12. Mapping OWASP Top 10 (2021)<a class="headerlink" href="#12-mapping-owasp-top-10-2021" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Catégorie</th>
+<th>Statut dans Recipe Shelter</th>
+<th>Évidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>Broken Access Control</td>
+<td><strong>Couvert</strong></td>
+<td><code>requireAuth</code> + <code>requireAdmin</code> (§4) ; ownership checks dans services</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>Cryptographic Failures</td>
+<td><strong>Couvert</strong></td>
+<td>bcrypt coût 12, JWT HS256, cookie <code>Secure</code> en prod, tokens SHA-256 256 bits (§2, §10)</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>Injection</td>
+<td><strong>Couvert</strong></td>
+<td>mysql2 placeholders <code>?</code>, DTO validation au boundary (§7, §11)</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>Insecure Design</td>
+<td><strong>Couvert</strong></td>
+<td>Pattern Repository + couches (controller→service→repo), garde-fou statut user en plus du JWT, énumération email neutralisée</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>Security Misconfiguration</td>
+<td><strong>Partiel</strong></td>
+<td><code>JWT_SECRET</code> requis (pas de défaut), CORS sans wildcard, error-handler ne fuit pas la stack ; MAIS pas de helmet (§9)</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>Vulnerable &amp; Outdated Components</td>
+<td><strong>Manuel</strong></td>
+<td>Audit <code>npm audit</code> ponctuel, pas de Dependabot/Renovate (cf. Améliorations)</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>Identification &amp; Authentication Failures</td>
+<td><strong>Couvert</strong></td>
+<td>bcrypt + politique mdp + rate limiting login/forgot + email validation obligatoire (§2, §8, §10)</td>
+</tr>
+<tr>
+<td>A08</td>
+<td>Software &amp; Data Integrity Failures</td>
+<td><strong>Couvert</strong></td>
+<td>JWT signé (HS256), pas d'<code>eval</code>, pas de désérialisation untrusted, package-lock.json présent</td>
+</tr>
+<tr>
+<td>A09</td>
+<td>Security Logging &amp; Monitoring Failures</td>
+<td><strong>Partiel</strong></td>
+<td>Logger applicatif (<code>utils/logger.ts</code>) ; pas d'envoi SIEM, pas d'alerting (cf. Améliorations)</td>
+</tr>
+<tr>
+<td>A10</td>
+<td>Server-Side Request Forgery (SSRF)</td>
+<td><strong>N/A</strong></td>
+<td>L'application ne fait aucun appel HTTP sortant depuis un input utilisateur. Le seul flux sortant est SMTP (mail), destinataire = email du user destinataire d'un email transactionnel uniquement</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="13-rgpd">13. RGPD<a class="headerlink" href="#13-rgpd" title="Permanent link">&para;</a></h2>
+<h3 id="131-donnees-personnelles-collectees">13.1 Données personnelles collectées<a class="headerlink" href="#131-donnees-personnelles-collectees" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Donnée</th>
+<th>Finalité</th>
+<th>Base légale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td>Identification, communication transactionnelle</td>
+<td>Exécution du contrat</td>
+</tr>
+<tr>
+<td>Username</td>
+<td>Identité publique sur la plateforme</td>
+<td>Exécution du contrat</td>
+</tr>
+<tr>
+<td>Hash mot de passe</td>
+<td>Authentification</td>
+<td>Exécution du contrat</td>
+</tr>
+<tr>
+<td>Recettes publiées</td>
+<td>Contenu utilisateur (volontairement publié)</td>
+<td>Exécution du contrat</td>
+</tr>
+<tr>
+<td>Commentaires</td>
+<td>Interactions sur les recettes</td>
+<td>Exécution du contrat</td>
+</tr>
+<tr>
+<td>Favoris</td>
+<td>Personnalisation</td>
+<td>Exécution du contrat</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pas de cookies traceurs</strong>, pas de tracking publicitaire, pas de profilage.</p>
+<h3 id="132-droits-utilisateurs">13.2 Droits utilisateurs<a class="headerlink" href="#132-droits-utilisateurs" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Droit</th>
+<th>Implémenté ?</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accès (lire ses données)</td>
+<td>Oui</td>
+<td><code>GET /users/me</code> (<code>users.service.ts:28-42</code>)</td>
+</tr>
+<tr>
+<td>Rectification (email/username)</td>
+<td>Oui</td>
+<td><code>users.service.ts:59-91, 117-147</code></td>
+</tr>
+<tr>
+<td>Modification mot de passe</td>
+<td>Oui</td>
+<td><code>users.service.ts:93-115</code></td>
+</tr>
+<tr>
+<td><strong>Suppression du compte</strong></td>
+<td><strong>Non implémenté</strong></td>
+<td>Aucune méthode <code>deleteAccount</code> dans <code>UserService</code>. <strong>Trou RGPD à combler</strong> (cf. Améliorations)</td>
+</tr>
+<tr>
+<td>Bannissement par admin</td>
+<td>Oui (modération)</td>
+<td><code>admin.users.service.ts:61-72</code></td>
+</tr>
+<tr>
+<td>Portabilité (export)</td>
+<td>Non</td>
+<td>Non implémenté</td>
+</tr>
+</tbody>
+</table>
+<h3 id="133-conservation">13.3 Conservation<a class="headerlink" href="#133-conservation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Mots de passe : conservés sous forme bcrypt (irréversible).</li>
+<li>Tokens de reset/validation : table dédiée, <code>markUsed</code> après usage, expiration automatique (30 min / 24 h).</li>
+<li>Pas de purge automatique des tokens expirés ⇒ croissance de la table. <strong>À prévoir un cron de purge</strong> (cf. Améliorations).</li>
+</ul>
+<h3 id="134-consentement">13.4 Consentement<a class="headerlink" href="#134-consentement" title="Permanent link">&para;</a></h3>
+<p>À documenter côté frontend : checkbox "j'accepte les CGU" à l'inscription. La présence est à vérifier dans <code>frontend/src/app/.../signup</code> (hors scope de ce document backend).</p>
+<hr />
+<h2 id="14-ameliorations-identifiees-transparence-pedagogique">14. Améliorations identifiées (transparence pédagogique)<a class="headerlink" href="#14-ameliorations-identifiees-transparence-pedagogique" title="Permanent link">&para;</a></h2>
+<p>Choix assumé : prioriser la maîtrise des fondamentaux plutôt que la couverture exhaustive. Voici ce qui MANQUE et serait ajouté en V2 :</p>
+<h3 id="141-headers-de-securite">14.1 Headers de sécurité<a class="headerlink" href="#141-headers-de-securite" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ajouter <code>helmet</code></strong> dans <code>app.ts</code> (<code>app.use(helmet())</code>) pour poser : HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy.</li>
+<li><strong>Content-Security-Policy</strong> stricte (script-src 'self', object-src 'none', etc.) — à coordonner avec le front Angular.</li>
+</ul>
+<h3 id="142-authentification-session">14.2 Authentification / Session<a class="headerlink" href="#142-authentification-session" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Rotation des JWT</strong> : actuellement durée fixe 7 jours. Introduire un refresh token + access token court (15 min) pour limiter la fenêtre d'usage d'un token volé.</li>
+<li><strong>Révocation côté serveur</strong> : pas de blacklist JWT (cohérent avec le design stateless). En cas de compromission, seul <code>status</code> (rechargé à chaque requête) permet d'invalider — OK mais pas instantané si on cachait l'utilisateur.</li>
+<li><strong>Rate limit sur <code>/auth/reset-password</code></strong> : actuellement non rate-limité.</li>
+<li><strong>Politique mot de passe</strong> : envisager un check contre la liste HaveIBeenPwned (k-anonymity API).</li>
+<li><strong>2FA / TOTP</strong> : non implémenté.</li>
+<li><strong>Aligner <code>users.service.ts:112</code></strong> sur <code>env.auth.bcryptCost</code> (actuellement valeur littérale <code>12</code>).</li>
+</ul>
+<h3 id="143-rate-limiter">14.3 Rate limiter<a class="headerlink" href="#143-rate-limiter" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Externaliser sur Redis</strong> pour supporter l'horizontal scaling.</li>
+<li><strong>Combiner clé IP + clé email</strong> pour bloquer aussi les attaques distribuées sur un même compte.</li>
+</ul>
+<h3 id="144-csrf">14.4 CSRF<a class="headerlink" href="#144-csrf" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Si jamais le cookie devait passer en <code>SameSite=None</code> (front sur domaine distinct sans proxy), introduire un <strong>token CSRF double-submit</strong>.</li>
+</ul>
+<h3 id="145-logs-et-monitoring">14.5 Logs et monitoring<a class="headerlink" href="#145-logs-et-monitoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Audit log centralisé</strong> des actions sensibles (login échec, ban, reset password, suppression de compte) avec corrélation <code>request-id</code>.</li>
+<li><strong>Envoi vers un SIEM</strong> (ELK, Datadog) pour alerting.</li>
+<li><strong>Alerting sur seuils</strong> (ex. &gt; 100 logins échoués/min ⇒ alerte).</li>
+</ul>
+<h3 id="146-dependances">14.6 Dépendances<a class="headerlink" href="#146-dependances" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Renovate / Dependabot</strong> sur le repo.</li>
+<li><strong><code>npm audit</code> en CI</strong> avec seuil <code>--audit-level=high</code>.</li>
+</ul>
+<h3 id="147-rgpd">14.7 RGPD<a class="headerlink" href="#147-rgpd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Implémenter <code>DELETE /users/me</code></strong> avec choix anonymisation (recettes/commentaires conservés sous "Utilisateur supprimé") OU suppression complète.</li>
+<li><strong>Export des données</strong> (JSON) à la demande.</li>
+<li><strong>Cron de purge</strong> des tokens email/reset expirés.</li>
+</ul>
+<h3 id="148-tests-de-securite">14.8 Tests de sécurité<a class="headerlink" href="#148-tests-de-securite" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tests automatisés</strong> sur les chemins d'autorisation (un user A ne peut pas modifier la recette d'un user B → couvrir tous les endpoints).</li>
+<li><strong>Scan SAST</strong> (Semgrep, CodeQL) en CI.</li>
+<li><strong>Scan DAST</strong> (OWASP ZAP) en pre-prod.</li>
+</ul>
+<h3 id="149-infrastructure-hors-scope-applicatif">14.9 Infrastructure (hors scope applicatif)<a class="headerlink" href="#149-infrastructure-hors-scope-applicatif" title="Permanent link">&para;</a></h3>
+<ul>
+<li>WAF (Cloudflare, AWS WAF).</li>
+<li>Protection DDoS au CDN.</li>
+<li>HSTS preload list.</li>
+<li>Certificat TLS via Let's Encrypt avec renouvellement auto.</li>
+</ul>
+<hr />
+<h2 id="15-recapitulatif-defensif-pour-le-jury">15. Récapitulatif défensif (pour le jury)<a class="headerlink" href="#15-recapitulatif-defensif-pour-le-jury" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>"Ce projet implémente les fondamentaux de la sécurité applicative : authentification robuste (bcrypt 12, politique de mot de passe, JWT signé, cookie HttpOnly+Secure+SameSite=Lax), autorisation à deux niveaux (<code>requireAuth</code>/<code>requireAdmin</code>) avec garde-fou statut user, anti-SQL injection systématique via mysql2 paramétré, validation des entrées au boundary HTTP, rate limiting sur les routes sensibles, tokens à usage unique haute entropie pour reset/validation, CORS strict avec liste blanche d'origines et garde-fou anti-wildcard, défense CSRF par SameSite + CORS, et neutralisation de l'énumération utilisateurs. Les éléments non couverts (helmet, refresh token, suppression de compte, audit log centralisé) sont identifiés et documentés comme évolutions V2 — le scope a été délibérément concentré sur la démonstration de la maîtrise des principes, pas la couverture exhaustive."</p>
+</blockquote>
+<hr />
+<h2 id="annexes-fichiers-cles">Annexes — Fichiers clés<a class="headerlink" href="#annexes-fichiers-cles" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Domaine</th>
+<th>Fichier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configuration</td>
+<td><code>backend/src/utils/env.ts</code></td>
+</tr>
+<tr>
+<td>Bootstrap app (CORS, etc.)</td>
+<td><code>backend/src/app.ts</code></td>
+</tr>
+<tr>
+<td>Auth service</td>
+<td><code>backend/src/services/auth/auth.service.ts</code></td>
+</tr>
+<tr>
+<td>Politique mot de passe</td>
+<td><code>backend/src/services/auth/password-policy.ts</code></td>
+</tr>
+<tr>
+<td>Reset mot de passe</td>
+<td><code>backend/src/services/auth/password-reset.service.ts</code></td>
+</tr>
+<tr>
+<td>Validation email</td>
+<td><code>backend/src/services/auth/email-validation.service.ts</code></td>
+</tr>
+<tr>
+<td>Tokens (random + hash)</td>
+<td><code>backend/src/utils/security/password-reset-token.ts</code></td>
+</tr>
+<tr>
+<td>Cookie session</td>
+<td><code>backend/src/utils/session-cookie.ts</code></td>
+</tr>
+<tr>
+<td>Middleware auth</td>
+<td><code>backend/src/middlewares/require-auth.ts</code></td>
+</tr>
+<tr>
+<td>Middleware admin</td>
+<td><code>backend/src/middlewares/require-admin.ts</code></td>
+</tr>
+<tr>
+<td>Rate limiter</td>
+<td><code>backend/src/middlewares/rate-limiter.ts</code></td>
+</tr>
+<tr>
+<td>Error handler</td>
+<td><code>backend/src/middlewares/error-handler.ts</code></td>
+</tr>
+<tr>
+<td>Helpers DTO</td>
+<td><code>backend/src/api/http/dto.helpers.ts</code></td>
+</tr>
+<tr>
+<td>Service users (RGPD)</td>
+<td><code>backend/src/services/users/users.service.ts</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../errors/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Catalogue des codes d&#39;erreur">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Catalogue des codes d'erreur
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../adr/" class="md-footer__link md-footer__link--next" aria-label="Suivant: ADR — Architecture Decision Records">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                ADR — Architecture Decision Records
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2186 @@
+openapi: 3.1.0
+info:
+  title: Recipe Shelter API
+  version: 1.0.0
+  description: |
+    REST API publique pour Recipe Shelter, plateforme communautaire de
+    partage de recettes. Authentification par cookie HttpOnly (`rs_session`)
+    contenant un JWT signe cote serveur. Toutes les routes sont prefixees
+    par `/api/v1`.
+
+    - Endpoints publics : navigation des recettes publiees, taxonomies
+      (categories, tags, ingredients, equipements), inscription/connexion,
+      formulaire de contact.
+    - Endpoints proteges (cookieAuth) : gestion du profil, recettes
+      personnelles, commentaires, favoris.
+    - Endpoints admin : moderation des recettes, des commentaires et des
+      utilisateurs (necessite le role `admin`).
+  contact:
+    name: Arthur Lagenebre
+    email: arthur@example.com
+  license:
+    name: Proprietary
+servers:
+  - url: https://api.recipe-shelter.fr/api/v1
+    description: Production (placeholder, a confirmer)
+  - url: http://localhost:3000/api/v1
+    description: Developpement local
+tags:
+  - name: Auth
+    description: Inscription, connexion, gestion du mot de passe, validation d'email.
+  - name: Recipes
+    description: Recettes publiees et recettes personnelles (espace auteur).
+  - name: Comments
+    description: Commentaires et notes sur les recettes.
+  - name: Favorites
+    description: Recettes mises en favoris par l'utilisateur connecte.
+  - name: Users
+    description: Profil de l'utilisateur connecte et profils publics.
+  - name: Categories
+    description: Catalogue des categories de recettes (lecture seule).
+  - name: Tags
+    description: Catalogue des tags (lecture seule).
+  - name: Ingredients
+    description: Catalogue des ingredients (lecture seule).
+  - name: Equipments
+    description: Catalogue des equipements de cuisine (lecture seule).
+  - name: Contact
+    description: Formulaire de contact public.
+  - name: Health
+    description: Sondes de sante (live, ready). Reservees aux admins.
+  - name: Admin Recipes
+    description: Moderation des recettes (approve, reject, archive, delete).
+  - name: Admin Comments
+    description: Moderation des commentaires (hide, restore, edit, delete).
+  - name: Admin Users
+    description: Moderation des utilisateurs (ban, unban, consultation).
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: rs_session
+      description: |
+        Cookie HttpOnly contenant un JWT signe. Nom configurable via
+        `AUTH_SESSION_COOKIE_NAME` (defaut `rs_session`). Pose
+        automatiquement par `POST /auth/login` et `POST /auth/register`.
+  parameters:
+    PageQuery:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Numero de page (1-indexe).
+    LimitQuery:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+      description: Nombre d'elements par page (max 50, defaut variable selon endpoint).
+    RecipeIdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+      description: Identifiant numerique de la recette.
+    RecipeSlugPath:
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Slug URL-safe de la recette publiee.
+    CommentIdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    UserIdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    CategoryIdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    TagIdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    IngredientIdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    EquipmentIdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    UsernamePath:
+      name: username
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 1
+  schemas:
+    ApiError:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - message
+            - code
+          properties:
+            message:
+              type: string
+              description: Message lisible (non localise cote serveur).
+              example: Unauthorized
+            code:
+              type: string
+              description: |
+                Code stable et machine-readable. Prefixes typiques :
+                `AUTH_*`, `RECIPES_*`, `COMMENTS_*`, `USERS_*`,
+                `ADMIN_*`, `CONTACT_*`, `NOT_FOUND`, `INTERNAL_ERROR`.
+              example: AUTH_UNAUTHORIZED
+    OkMessage:
+      type: object
+      required:
+        - ok
+      properties:
+        ok:
+          type: boolean
+        message:
+          type: string
+    OkResult:
+      type: object
+      required:
+        - ok
+      properties:
+        ok:
+          type: boolean
+    PaginationMetadata:
+      type: object
+      required:
+        - page
+        - limit
+        - totalItems
+        - totalPages
+        - hasNextPage
+        - hasPreviousPage
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+        hasNextPage:
+          type: boolean
+        hasPreviousPage:
+          type: boolean
+    Author:
+      type: object
+      description: Reference publique vers un auteur.
+      required:
+        - id
+        - username
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+    UserProfile:
+      type: object
+      description: Profil utilisateur retourne par `/auth/me` et `/users/me`.
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        mail:
+          type: string
+          format: email
+          description: Present uniquement pour le profil prive de l'utilisateur connecte.
+        role:
+          type: string
+          examples:
+            - user
+            - admin
+        emailValidatedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+      additionalProperties: true
+    PublicUser:
+      type: object
+      description: Profil public d'un utilisateur (consultable via `/users/{username}`).
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      additionalProperties: true
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+      additionalProperties: true
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+      additionalProperties: true
+    Ingredient:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+      additionalProperties: true
+    Equipment:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+      additionalProperties: true
+    RecipeIngredientInput:
+      type: object
+      required:
+        - ingredientId
+        - quantity
+      properties:
+        ingredientId:
+          type: integer
+          minimum: 1
+        quantity:
+          type: number
+        unit:
+          type:
+            - string
+            - "null"
+        note:
+          type: string
+        sortOrder:
+          type: integer
+    RecipeStepInput:
+      type: object
+      required:
+        - description
+      properties:
+        stepNumber:
+          type: integer
+        description:
+          type: string
+    RecipeEquipmentInput:
+      type: object
+      required:
+        - equipmentId
+      properties:
+        equipmentId:
+          type: integer
+          minimum: 1
+    RecipeBody:
+      type: object
+      description: Corps utilise pour la creation et la mise a jour d'une recette (brouillon).
+      required:
+        - title
+      properties:
+        categoryId:
+          type:
+            - integer
+            - "null"
+        title:
+          type: string
+          minLength: 5
+        description:
+          type: string
+        coverImageUrl:
+          type:
+            - string
+            - "null"
+        prepTimeMinutes:
+          type: integer
+          minimum: 0
+        restTimeMinutes:
+          type:
+            - integer
+            - "null"
+        cookTimeMinutes:
+          type:
+            - integer
+            - "null"
+        servings:
+          type: integer
+          minimum: 0
+        tagIds:
+          type: array
+          items:
+            type: integer
+            minimum: 1
+        ingredients:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecipeIngredientInput"
+        steps:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecipeStepInput"
+        equipments:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecipeEquipmentInput"
+    RecipeSummary:
+      type: object
+      description: Vue resumee d'une recette (espace auteur).
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          examples:
+            - draft
+            - submitted
+            - published
+            - rejected
+            - archived
+        createdAt:
+          type: string
+          format: date-time
+        submittedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        publishedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        rejectionReason:
+          type:
+            - string
+            - "null"
+      additionalProperties: true
+    Recipe:
+      type: object
+      description: Recette complete (vue auteur ou admin).
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        categoryId:
+          type:
+            - integer
+            - "null"
+        title:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        coverImageUrl:
+          type:
+            - string
+            - "null"
+        prepTimeMinutes:
+          type: integer
+        restTimeMinutes:
+          type:
+            - integer
+            - "null"
+        cookTimeMinutes:
+          type:
+            - integer
+            - "null"
+        servings:
+          type: integer
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        submittedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        moderatedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        moderatedByUserId:
+          type:
+            - integer
+            - "null"
+        publishedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        archivedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        rejectionReason:
+          type:
+            - string
+            - "null"
+        updatedAt:
+          type: string
+          format: date-time
+        tagIds:
+          type: array
+          items:
+            type: integer
+        ingredients:
+          type: array
+          items:
+            type: object
+            properties:
+              ingredientId:
+                type: integer
+              quantity:
+                type: number
+              unit:
+                type:
+                  - string
+                  - "null"
+              note:
+                type:
+                  - string
+                  - "null"
+              sortOrder:
+                type: integer
+        steps:
+          type: array
+          items:
+            type: object
+            properties:
+              stepNumber:
+                type: integer
+              description:
+                type: string
+        equipments:
+          type: array
+          items:
+            type: object
+            properties:
+              equipmentId:
+                type: integer
+      additionalProperties: true
+    RecipeListItem:
+      type: object
+      description: Element de liste d'une recette publiee (feed public).
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        description:
+          type:
+            - string
+            - "null"
+        category:
+          type:
+            - string
+            - "null"
+        coverImageUrl:
+          type:
+            - string
+            - "null"
+        prepTimeMinutes:
+          type:
+            - integer
+            - "null"
+        cookTimeMinutes:
+          type:
+            - integer
+            - "null"
+        restTimeMinutes:
+          type:
+            - integer
+            - "null"
+        servings:
+          type:
+            - integer
+            - "null"
+        authorUsername:
+          type: string
+        publishedAt:
+          type: string
+          format: date-time
+        isFavorite:
+          type: boolean
+      additionalProperties: true
+    RecipeDetailComment:
+      type: object
+      properties:
+        id:
+          type: integer
+        isModerated:
+          type: boolean
+        isDeleted:
+          type: boolean
+        author:
+          $ref: "#/components/schemas/Author"
+        parentCommentId:
+          type:
+            - integer
+            - "null"
+        moderatedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        rating:
+          type:
+            - integer
+            - "null"
+          minimum: 1
+          maximum: 5
+        comment:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        children:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecipeDetailComment"
+    RecipeDetail:
+      allOf:
+        - $ref: "#/components/schemas/RecipeListItem"
+        - type: object
+          properties:
+            author:
+              $ref: "#/components/schemas/Author"
+            ingredients:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  slug:
+                    type: string
+                  quantity:
+                    type: number
+                  unit:
+                    type:
+                      - string
+                      - "null"
+                  note:
+                    type:
+                      - string
+                      - "null"
+                  sortOrder:
+                    type: integer
+            steps:
+              type: array
+              items:
+                type: object
+                properties:
+                  stepNumber:
+                    type: integer
+                  description:
+                    type: string
+            equipments:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  slug:
+                    type: string
+            tags:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  slug:
+                    type: string
+            comments:
+              type: array
+              items:
+                $ref: "#/components/schemas/RecipeDetailComment"
+            commentsCount:
+              type: integer
+            averageRating:
+              type:
+                - number
+                - "null"
+            ratingsCount:
+              type: integer
+    Comment:
+      type: object
+      description: Commentaire (forme generique). La forme exacte varie selon l'endpoint.
+      properties:
+        id:
+          type: integer
+        recipeId:
+          type: integer
+        userId:
+          type: integer
+        parentCommentId:
+          type:
+            - integer
+            - "null"
+        rating:
+          type:
+            - integer
+            - "null"
+          minimum: 1
+          maximum: 5
+        comment:
+          type: string
+        moderatedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        deletedAt:
+          type:
+            - string
+            - "null"
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      additionalProperties: true
+    Favorite:
+      type: object
+      properties:
+        recipeId:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+      additionalProperties: true
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          examples:
+            - ok
+            - degraded
+        uptimeSeconds:
+          type: number
+      additionalProperties: true
+  responses:
+    BadRequest:
+      description: Requete invalide (validation DTO).
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+    Unauthorized:
+      description: Non authentifie (cookie manquant ou invalide).
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+    Forbidden:
+      description: Authentifie mais sans les droits suffisants (ex. requireAdmin).
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+    NotFound:
+      description: Ressource introuvable.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+    Conflict:
+      description: Conflit metier (ex. email deja utilise, doublon).
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+    TooManyRequests:
+      description: Rate-limit atteint.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+    Internal:
+      description: Erreur interne.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+paths:
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: Inscription d'un nouvel utilisateur
+      description: |
+        Cree un compte et envoie un email de validation. Rate-limite
+        (`AUTH_RATE_LIMIT_MAX_ATTEMPTS` / fenetre `AUTH_RATE_LIMIT_WINDOW_MS`).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mail, username, password]
+              properties:
+                mail:
+                  type: string
+                  format: email
+                username:
+                  type: string
+                  minLength: 3
+                password:
+                  type: string
+                  minLength: 8
+      responses:
+        "201":
+          description: Compte cree, cookie de session pose.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "429": { $ref: "#/components/responses/TooManyRequests" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Connexion par email + mot de passe
+      description: Rate-limite. Pose le cookie `rs_session` en cas de succes.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mail, password]
+              properties:
+                mail:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Authentifie, cookie pose.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "429": { $ref: "#/components/responses/TooManyRequests" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /auth/me:
+    get:
+      tags: [Auth]
+      summary: Profil de l'utilisateur connecte
+      security: [{ cookieAuth: [] }]
+      responses:
+        "200":
+          description: Profil courant.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /auth/logout:
+    post:
+      tags: [Auth]
+      summary: Deconnexion (efface le cookie de session)
+      responses:
+        "204":
+          description: Cookie efface.
+        "500": { $ref: "#/components/responses/Internal" }
+  /auth/validate-email:
+    post:
+      tags: [Auth]
+      summary: Valider l'email avec un token recu par mail
+      description: Rate-limite.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [token]
+              properties:
+                token:
+                  type: string
+      responses:
+        "200":
+          description: Email valide.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkMessage"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "429": { $ref: "#/components/responses/TooManyRequests" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /auth/resend-validation-email:
+    post:
+      tags: [Auth]
+      summary: Re-envoyer l'email de validation
+      description: Rate-limite.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mail]
+              properties:
+                mail:
+                  type: string
+                  format: email
+      responses:
+        "200":
+          description: Email renvoye (ou ignore silencieusement si inconnu).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkMessage"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "429": { $ref: "#/components/responses/TooManyRequests" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /auth/forgot-password:
+    post:
+      tags: [Auth]
+      summary: Demander un email de reinitialisation de mot de passe
+      description: Rate-limite. Reponse generique pour ne pas divulguer l'existence d'un compte.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mail]
+              properties:
+                mail:
+                  type: string
+                  format: email
+      responses:
+        "200":
+          description: Demande acceptee (peut ou non avoir envoye un email).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkMessage"
+        "429": { $ref: "#/components/responses/TooManyRequests" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /auth/reset-password:
+    post:
+      tags: [Auth]
+      summary: Definir un nouveau mot de passe avec un token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [token, password]
+              properties:
+                token:
+                  type: string
+                password:
+                  type: string
+                  minLength: 8
+      responses:
+        "200":
+          description: Mot de passe mis a jour.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkMessage"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /recipes:
+    get:
+      tags: [Recipes]
+      summary: Liste paginee des recettes publiees (avec filtres optionnels)
+      description: |
+        L'authentification est optionnelle (`optionalAuth`) : si l'utilisateur
+        est connecte, le champ `isFavorite` est renseigne par item.
+      parameters:
+        - $ref: "#/components/parameters/PageQuery"
+        - $ref: "#/components/parameters/LimitQuery"
+        - name: q
+          in: query
+          schema: { type: string }
+        - name: categoryId
+          in: query
+          schema: { type: integer, minimum: 1 }
+        - name: tagIds
+          in: query
+          description: Liste d'IDs separes par des virgules.
+          schema: { type: string }
+        - name: ingredientIds
+          in: query
+          description: Liste d'IDs separes par des virgules.
+          schema: { type: string }
+        - name: maxTotalTimeMinutes
+          in: query
+          schema: { type: integer, minimum: 1 }
+      responses:
+        "200":
+          description: Liste paginee.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/RecipeListItem"
+                  pagination:
+                    $ref: "#/components/schemas/PaginationMetadata"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "500": { $ref: "#/components/responses/Internal" }
+    post:
+      tags: [Recipes]
+      summary: Creer une recette (brouillon)
+      security: [{ cookieAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RecipeBody"
+      responses:
+        "201":
+          description: Recette creee (brouillon).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /recipes/search:
+    get:
+      tags: [Recipes]
+      summary: Recherche plein-texte des recettes publiees
+      description: Auth optionnelle (impacte `isFavorite`).
+      parameters:
+        - $ref: "#/components/parameters/PageQuery"
+        - $ref: "#/components/parameters/LimitQuery"
+        - name: q
+          in: query
+          schema: { type: string }
+        - name: categoryId
+          in: query
+          schema: { type: integer, minimum: 1 }
+        - name: tagIds
+          in: query
+          schema: { type: string }
+        - name: ingredientIds
+          in: query
+          schema: { type: string }
+        - name: maxTotalTimeMinutes
+          in: query
+          schema: { type: integer, minimum: 1 }
+      responses:
+        "200":
+          description: Liste paginee.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/RecipeListItem"
+                  pagination:
+                    $ref: "#/components/schemas/PaginationMetadata"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /recipes/recent:
+    get:
+      tags: [Recipes]
+      summary: Recettes les plus recemment publiees
+      description: Auth optionnelle. `limit` plafonne a 20 (defaut 12).
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 20, default: 12 }
+      responses:
+        "200":
+          description: Liste plate (non paginee) des recettes recentes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RecipeListItem"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /recipes/{slug}:
+    get:
+      tags: [Recipes]
+      summary: Detail d'une recette publiee par slug
+      description: Auth optionnelle (impacte `isFavorite`).
+      parameters:
+        - $ref: "#/components/parameters/RecipeSlugPath"
+      responses:
+        "200":
+          description: Detail complet.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecipeDetail"
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /recipes/me:
+    get:
+      tags: [Recipes]
+      summary: Recettes de l'utilisateur connecte (tous statuts)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/PageQuery"
+        - $ref: "#/components/parameters/LimitQuery"
+      responses:
+        "200":
+          description: Liste paginee.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/RecipeSummary"
+                  pagination:
+                    $ref: "#/components/schemas/PaginationMetadata"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /recipes/me/{id}:
+    get:
+      tags: [Recipes]
+      summary: Detail d'une recette personnelle (auteur ou admin)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/RecipeIdPath"
+      responses:
+        "200":
+          description: Detail editorial complet.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+    patch:
+      tags: [Recipes]
+      summary: Mettre a jour une recette personnelle (brouillon)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/RecipeIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RecipeBody"
+      responses:
+        "200":
+          description: Recette mise a jour.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /recipes/me/{id}/submit:
+    post:
+      tags: [Recipes]
+      summary: Soumettre une recette a la moderation
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/RecipeIdPath"
+      responses:
+        "200":
+          description: Recette soumise.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /recipes/me/{id}/archive:
+    post:
+      tags: [Recipes]
+      summary: Archiver une de ses recettes
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/RecipeIdPath"
+      responses:
+        "200":
+          description: Resultat.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkResult"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /recipes/{recipeId}/comments:
+    get:
+      tags: [Comments]
+      summary: Liste des commentaires d'une recette
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema: { type: integer, minimum: 1 }
+        - $ref: "#/components/parameters/PageQuery"
+        - $ref: "#/components/parameters/LimitQuery"
+      responses:
+        "200":
+          description: Liste (paginee ou plate selon implementation). TODO confirmer la forme exacte.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: "#/components/schemas/Comment"
+                  - type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Comment"
+                      pagination:
+                        $ref: "#/components/schemas/PaginationMetadata"
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+    post:
+      tags: [Comments]
+      summary: Poster un commentaire (ou une reponse) sur une recette
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema: { type: integer, minimum: 1 }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [comment]
+              properties:
+                comment:
+                  type: string
+                rating:
+                  type:
+                    - integer
+                    - "null"
+                  minimum: 1
+                  maximum: 5
+                parentCommentId:
+                  type:
+                    - integer
+                    - "null"
+                  description: |
+                    Si renseigne, le commentaire est une reponse. Dans ce cas,
+                    `rating` doit etre absent ou null.
+      responses:
+        "201":
+          description: Commentaire cree.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /comments/{id}:
+    patch:
+      tags: [Comments]
+      summary: Modifier son propre commentaire
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CommentIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [comment]
+              properties:
+                comment:
+                  type: string
+                rating:
+                  type:
+                    - integer
+                    - "null"
+                  minimum: 1
+                  maximum: 5
+      responses:
+        "200":
+          description: Commentaire mis a jour.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+    delete:
+      tags: [Comments]
+      summary: Supprimer son propre commentaire (soft-delete)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CommentIdPath"
+      responses:
+        "204":
+          description: Supprime.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /favorites/{recipeId}:
+    post:
+      tags: [Favorites]
+      summary: Ajouter une recette aux favoris
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema: { type: integer, minimum: 1 }
+      responses:
+        "201":
+          description: Favori cree.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Favorite"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "500": { $ref: "#/components/responses/Internal" }
+    delete:
+      tags: [Favorites]
+      summary: Retirer une recette des favoris
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema: { type: integer, minimum: 1 }
+      responses:
+        "204":
+          description: Retire.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /favorites/me:
+    get:
+      tags: [Favorites]
+      summary: Recettes favorites de l'utilisateur connecte
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/PageQuery"
+        - $ref: "#/components/parameters/LimitQuery"
+      responses:
+        "200":
+          description: Liste des recettes favorites. TODO confirmer si paginee.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: "#/components/schemas/RecipeListItem"
+                  - type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/RecipeListItem"
+                      pagination:
+                        $ref: "#/components/schemas/PaginationMetadata"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /users/me:
+    get:
+      tags: [Users]
+      summary: Profil prive de l'utilisateur connecte
+      security: [{ cookieAuth: [] }]
+      responses:
+        "200":
+          description: Profil prive.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /users/{username}:
+    get:
+      tags: [Users]
+      summary: Profil public d'un utilisateur (par username)
+      description: Auth optionnelle.
+      parameters:
+        - $ref: "#/components/parameters/UsernamePath"
+      responses:
+        "200":
+          description: Profil public.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PublicUser"
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /users/me/email:
+    patch:
+      tags: [Users]
+      summary: Mettre a jour son email (re-auth par mot de passe)
+      security: [{ cookieAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [newEmail, currentPassword]
+              properties:
+                newEmail:
+                  type: string
+                  format: email
+                currentPassword:
+                  type: string
+      responses:
+        "200":
+          description: Email mis a jour.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  message: { type: string }
+                  user: { $ref: "#/components/schemas/UserProfile" }
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /users/me/password:
+    patch:
+      tags: [Users]
+      summary: Changer son mot de passe (re-auth par mot de passe)
+      security: [{ cookieAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [currentPassword, newPassword]
+              properties:
+                currentPassword:
+                  type: string
+                newPassword:
+                  type: string
+                  minLength: 8
+      responses:
+        "200":
+          description: Mot de passe mis a jour.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkMessage"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /users/me/username:
+    patch:
+      tags: [Users]
+      summary: Changer son username (re-auth par mot de passe)
+      security: [{ cookieAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [newUsername, currentPassword]
+              properties:
+                newUsername:
+                  type: string
+                  minLength: 3
+                currentPassword:
+                  type: string
+      responses:
+        "200":
+          description: Username mis a jour.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  message: { type: string }
+                  user: { $ref: "#/components/schemas/UserProfile" }
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /categories:
+    get:
+      tags: [Categories]
+      summary: Liste des categories
+      responses:
+        "200":
+          description: Liste des categories.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+        "500": { $ref: "#/components/responses/Internal" }
+  /categories/{id}:
+    get:
+      tags: [Categories]
+      summary: Detail d'une categorie
+      parameters:
+        - $ref: "#/components/parameters/CategoryIdPath"
+      responses:
+        "200":
+          description: Categorie.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /tags:
+    get:
+      tags: [Tags]
+      summary: Liste des tags
+      responses:
+        "200":
+          description: Liste des tags.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tag"
+        "500": { $ref: "#/components/responses/Internal" }
+  /tags/{id}:
+    get:
+      tags: [Tags]
+      summary: Detail d'un tag
+      parameters:
+        - $ref: "#/components/parameters/TagIdPath"
+      responses:
+        "200":
+          description: Tag.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tag"
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /ingredients:
+    get:
+      tags: [Ingredients]
+      summary: Liste des ingredients
+      responses:
+        "200":
+          description: Liste des ingredients.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Ingredient"
+        "500": { $ref: "#/components/responses/Internal" }
+  /ingredients/{id}:
+    get:
+      tags: [Ingredients]
+      summary: Detail d'un ingredient
+      parameters:
+        - $ref: "#/components/parameters/IngredientIdPath"
+      responses:
+        "200":
+          description: Ingredient.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Ingredient"
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /equipments:
+    get:
+      tags: [Equipments]
+      summary: Liste des equipements
+      responses:
+        "200":
+          description: Liste des equipements.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Equipment"
+        "500": { $ref: "#/components/responses/Internal" }
+  /equipments/{id}:
+    get:
+      tags: [Equipments]
+      summary: Detail d'un equipement
+      parameters:
+        - $ref: "#/components/parameters/EquipmentIdPath"
+      responses:
+        "200":
+          description: Equipement.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Equipment"
+        "404": { $ref: "#/components/responses/NotFound" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /contact:
+    post:
+      tags: [Contact]
+      summary: Envoyer un message via le formulaire de contact
+      description: Rate-limite (5 requetes / heure).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, subject, message]
+              properties:
+                name:
+                  type: string
+                  minLength: 2
+                  maxLength: 100
+                email:
+                  type: string
+                  format: email
+                  maxLength: 255
+                subject:
+                  type: string
+                  minLength: 3
+                  maxLength: 150
+                message:
+                  type: string
+                  minLength: 10
+                  maxLength: 5000
+      responses:
+        "200":
+          description: Message envoye.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkMessage"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "429": { $ref: "#/components/responses/TooManyRequests" }
+        "500": { $ref: "#/components/responses/Internal" }
+
+  /health:
+    get:
+      tags: [Health]
+      summary: Etat global (admin only)
+      security: [{ cookieAuth: [] }]
+      responses:
+        "200":
+          description: Etat global.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /health/live:
+    get:
+      tags: [Health]
+      summary: Liveness probe (admin only)
+      security: [{ cookieAuth: [] }]
+      responses:
+        "200":
+          description: Le process est vivant.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+  /health/ready:
+    get:
+      tags: [Health]
+      summary: Readiness probe (admin only, verifie la DB)
+      security: [{ cookieAuth: [] }]
+      responses:
+        "200":
+          description: Pret a servir.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "503":
+          description: Pas pret (ex. DB indisponible).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+
+  /admin/recipes/pending:
+    get:
+      tags: [Admin Recipes]
+      summary: Liste paginee des recettes en attente de moderation
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/PageQuery"
+        - $ref: "#/components/parameters/LimitQuery"
+      responses:
+        "200":
+          description: Liste paginee.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/RecipeSummary"
+                  pagination:
+                    $ref: "#/components/schemas/PaginationMetadata"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "500": { $ref: "#/components/responses/Internal" }
+  /admin/recipes/pending/count:
+    get:
+      tags: [Admin Recipes]
+      summary: Nombre de recettes en attente
+      security: [{ cookieAuth: [] }]
+      responses:
+        "200":
+          description: Compteur.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+  /admin/recipes/{id}:
+    get:
+      tags: [Admin Recipes]
+      summary: Detail admin d'une recette
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/RecipeIdPath"
+      responses:
+        "200":
+          description: Detail admin.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+    delete:
+      tags: [Admin Recipes]
+      summary: Supprimer definitivement une recette
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/RecipeIdPath"
+      responses:
+        "204":
+          description: Supprimee.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /admin/recipes/{id}/approve:
+    post:
+      tags: [Admin Recipes]
+      summary: Approuver (publier) une recette
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/RecipeIdPath"
+      responses:
+        "200":
+          description: Recette publiee.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+  /admin/recipes/{id}/reject:
+    post:
+      tags: [Admin Recipes]
+      summary: Rejeter une recette en attente
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/RecipeIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [rejectionReason]
+              properties:
+                rejectionReason:
+                  type: string
+                  minLength: 1
+      responses:
+        "200":
+          description: Recette rejetee.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+  /admin/recipes/{id}/archive:
+    post:
+      tags: [Admin Recipes]
+      summary: Archiver une recette (admin)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/RecipeIdPath"
+      responses:
+        "200":
+          description: Recette archivee.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /admin/comments/moderated:
+    get:
+      tags: [Admin Comments]
+      summary: Liste paginee des commentaires moderes (masques)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/PageQuery"
+        - $ref: "#/components/parameters/LimitQuery"
+      responses:
+        "200":
+          description: Liste paginee.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Comment"
+                  pagination:
+                    $ref: "#/components/schemas/PaginationMetadata"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+  /admin/comments/moderated/count:
+    get:
+      tags: [Admin Comments]
+      summary: Nombre de commentaires moderes
+      security: [{ cookieAuth: [] }]
+      responses:
+        "200":
+          description: Compteur.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+  /admin/comments/soft-deleted:
+    get:
+      tags: [Admin Comments]
+      summary: Liste paginee des commentaires soft-deleted
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/PageQuery"
+        - $ref: "#/components/parameters/LimitQuery"
+      responses:
+        "200":
+          description: Liste paginee.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Comment"
+                  pagination:
+                    $ref: "#/components/schemas/PaginationMetadata"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+  /admin/comments/soft-deleted/count:
+    get:
+      tags: [Admin Comments]
+      summary: Nombre de commentaires soft-deleted
+      security: [{ cookieAuth: [] }]
+      responses:
+        "200":
+          description: Compteur.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+  /admin/comments/{id}/hide:
+    post:
+      tags: [Admin Comments]
+      summary: Masquer un commentaire (moderation)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CommentIdPath"
+      responses:
+        "200":
+          description: Commentaire masque.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /admin/comments/{id}/unmoderate:
+    post:
+      tags: [Admin Comments]
+      summary: Annuler la moderation d'un commentaire
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CommentIdPath"
+      responses:
+        "200":
+          description: Commentaire re-affiche.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /admin/comments/{id}/restore:
+    post:
+      tags: [Admin Comments]
+      summary: Restaurer un commentaire soft-deleted
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CommentIdPath"
+      responses:
+        "200":
+          description: Commentaire restaure.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /admin/comments/{id}:
+    patch:
+      tags: [Admin Comments]
+      summary: Editer un commentaire (admin)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CommentIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [comment]
+              properties:
+                comment:
+                  type: string
+                rating:
+                  type:
+                    - integer
+                    - "null"
+                  minimum: 1
+                  maximum: 5
+      responses:
+        "200":
+          description: Commentaire mis a jour.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+    delete:
+      tags: [Admin Comments]
+      summary: Supprimer definitivement un commentaire (admin)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CommentIdPath"
+      responses:
+        "204":
+          description: Supprime.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /admin/users/banned:
+    get:
+      tags: [Admin Users]
+      summary: Liste paginee des utilisateurs bannis
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/PageQuery"
+        - $ref: "#/components/parameters/LimitQuery"
+      responses:
+        "200":
+          description: Liste paginee.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/UserProfile"
+                  pagination:
+                    $ref: "#/components/schemas/PaginationMetadata"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+  /admin/users/banned/count:
+    get:
+      tags: [Admin Users]
+      summary: Nombre d'utilisateurs bannis
+      security: [{ cookieAuth: [] }]
+      responses:
+        "200":
+          description: Compteur.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+  /admin/users/{id}:
+    get:
+      tags: [Admin Users]
+      summary: Detail admin d'un utilisateur
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/UserIdPath"
+      responses:
+        "200":
+          description: Profil utilisateur (vue admin).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /admin/users/{id}/ban:
+    post:
+      tags: [Admin Users]
+      summary: Bannir un utilisateur (raison obligatoire)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/UserIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [reason]
+              properties:
+                reason:
+                  type: string
+                  minLength: 10
+                  maxLength: 1000
+      responses:
+        "200":
+          description: Utilisateur banni.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+  /admin/users/{id}/unban:
+    post:
+      tags: [Admin Users]
+      summary: Debannir un utilisateur (raison obligatoire)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/UserIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [reason]
+              properties:
+                reason:
+                  type: string
+                  minLength: 10
+                  maxLength: 1000
+      responses:
+        "200":
+          description: Utilisateur debanni.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }

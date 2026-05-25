@@ -9,6 +9,58 @@
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/deployment/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/deployment/01-options-comparees/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/deployment/02-plan-railway/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/deployment/03-fallback-et-defense/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/00-questions-transversales/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/01-bloc1-frontend/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/02-bloc2-backend-from-scratch/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/03-bloc3-angular/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/04-securite-rgpd/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/05-pieges-et-defense/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/06-ameliorations-innovantes/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/jury/07-mode-entrainement/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
          <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/manuel-utilisateur/</loc>
          <lastmod>2026-05-25</lastmod>
     </url>
@@ -30,6 +82,54 @@
     </url>
     <url>
          <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/manuel-utilisateur/05-faq-incidents/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/meta/mkdocs/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/meta/mkdocs/01-architecture-et-justification/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/meta/mkdocs/02-plan-poc-sandbox/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/meta/mkdocs/03-walkthrough-handoff-arthur/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/meta/project-context/backend-context/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/meta/project-context/frontend-context/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/slides/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/slides/soutenance-slides/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/architecture/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/errors/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/securite/</loc>
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>
@@ -58,6 +158,22 @@
     </url>
     <url>
          <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/adr/adr-005-slug-en-deux-phases/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/diagrams/g1-architecture-c4/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/diagrams/g2-pipeline-middleware/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/diagrams/g3-sequence-moderation/</loc>
+         <lastmod>2026-05-25</lastmod>
+    </url>
+    <url>
+         <loc>https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/diagrams/g4-sequence-auth-email/</loc>
          <lastmod>2026-05-25</lastmod>
     </url>
     <url>

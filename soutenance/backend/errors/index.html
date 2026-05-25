@@ -1,0 +1,4536 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="POC MkDocs Material pour le projet Recipe Shelter">
+      
+      
+        <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
+      
+      
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/errors/">
+      
+      
+        <link rel="prev" href="../architecture/">
+      
+      
+        <link rel="next" href="../securite/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Catalogue des codes d'erreur - Recipe Shelter — Documentation (POC sandbox)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#catalogue-des-codes-derreur" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-header__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Recipe Shelter — Documentation (POC sandbox)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Catalogue des codes d'erreur
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter — Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../GIT_CONVENTION/" class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter - Git Convention
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../deployment/" class="md-tabs__link">
+          
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../jury/" class="md-tabs__link">
+          
+  
+  Jury
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../manuel-utilisateur/" class="md-tabs__link">
+          
+  
+  Manuel utilisateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../meta/mkdocs/" class="md-tabs__link">
+          
+  
+  Meta
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Soutenance
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-nav__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Recipe Shelter — Documentation (POC sandbox)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter — Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GIT_CONVENTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter - Git Convention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Déploiement — diagnostic et plan d'action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/01-options-comparees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Options de déploiement comparées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/02-plan-railway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan déploiement Railway pas-à-pas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/03-fallback-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan B et défense jury
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Jury
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Jury
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Banque de questions jury — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/00-questions-transversales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00 — Questions transversales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/01-bloc1-frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Bloc 1 : Front-End HTML/CSS/JS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/02-bloc2-backend-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Bloc 2 : Back-End from scratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/03-bloc3-angular/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Bloc 3 : Framework (Angular)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/04-securite-rgpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Sécurité et RGPD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/05-pieges-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Questions pièges et défense d'architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/06-ameliorations-innovantes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 — Améliorations innovantes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/07-mode-entrainement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 — Mode d'entraînement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manuel utilisateur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Manuel utilisateur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide utilisateur — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Découvrir Recipe Shelter (sans compte)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Compte utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Utiliser les recettes (membre connecté)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/04-administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. FAQ et messages d'erreur courants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Meta
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Meta
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MkDocs — Plan d'intégration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/01-architecture-et-justification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Architecture cible et justification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/02-plan-poc-sandbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — POC sandbox côté Quentin (Keutin)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/03-walkthrough-handoff-arthur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Walkthrough handoff Arthur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Project context
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Project context
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/project-context/backend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/project-context/frontend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Slides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slides soutenance — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/soutenance-slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soutenance slides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Soutenance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Soutenance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    _draft_backend_docs/ — Documentation backend pour soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture du backend Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Catalogue des codes d'erreur
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Catalogue des codes d'erreur
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#format-de-reponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format de réponse
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hierarchie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hiérarchie
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hiérarchie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#httperror-erreurs-metier-controle-de-flux-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      HttpError — erreurs métier / contrôle de flux HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dberror-erreurs-de-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      DbError — erreurs de persistence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#catalogue-par-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catalogue par domaine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Catalogue par domaine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentification-auth_-user_banned-email_not_validated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentification (AUTH_*, USER_BANNED, EMAIL_NOT_VALIDATED)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisateurs-user_-users_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilisateurs (USER_*, USERS_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recettes-recipes_-recipe_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recettes (RECIPES_*, RECIPE_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moderation-admin-admin_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modération (admin) (ADMIN_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commentaires-comment_-comments_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commentaires (COMMENT_*, COMMENTS_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#favoris-favorite_-favorites_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Favoris (FAVORITE_*, FAVORITES_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categories-tags-ingredients-equipements-referentiels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catégories, Tags, Ingrédients, Équipements (référentiels)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contact-contact_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact (CONTACT_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination-generique-pagination_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pagination générique (PAGINATION_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-http-rate_limit-route_not_found-internal_error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure HTTP (RATE_LIMIT, ROUTE_NOT_FOUND, INTERNAL_ERROR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mail-mail_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mail (MAIL_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-db-codes-mysql-relayes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistence (DB) — codes MySQL relayés
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-http-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapping HTTP (récap)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convention-de-nommage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convention de nommage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inconsistances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inconsistances
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../securite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sécurité — Recipe Shelter (Backend)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_5" id="__nav_8_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Adr
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Adr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR — Architecture Decision Records
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/00-narration-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Narration "from scratch" — défense pour la soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-001-express-comme-couche-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-001 — Express comme couche HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-002 — Pattern Repository : interface + implémentation MySQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-003 — JWT en cookie HttpOnly (vs header Authorization)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-004 — Soft-delete et log de modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-005 — Slug en deux phases (brouillon puis public)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_6" id="__nav_8_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Diagrams
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g1-architecture-c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G1 — Architecture C4 Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g2-pipeline-middleware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G2 — Pipeline middleware Express
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g3-sequence-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G3 — Séquence : modération d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g4-sequence-auth-email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G4 — Séquences : reset password &amp; validation email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_7" id="__nav_8_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Uml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Uml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UML — Brouillons à intégrer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/01-diagramme-classes-domaine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Modèle de domaine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/02-diagramme-classes-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Architecture backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/03-diagramme-cas-utilisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de cas d'utilisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/04-diagramme-sequence-connexion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Connexion (login)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/05-diagramme-sequence-recette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Cycle de vie d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Demo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Demo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/comptes-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comptes de test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/scenario-demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scénario de démonstration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Frontend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3_1" id="__nav_8_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Audit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloc 1 — Audit Lighthouse + grille RGAA/WCAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/01-lighthouse-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lighthouse — Template d'audit à remplir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/02-rgaa-grille/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/03-findings-detailles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Findings détaillés — audit statique frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/04-plan-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan de remédiation priorisé
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/05-defense-jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Défendre le Bloc 1 en soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#format-de-reponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format de réponse
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hierarchie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hiérarchie
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hiérarchie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#httperror-erreurs-metier-controle-de-flux-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      HttpError — erreurs métier / contrôle de flux HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dberror-erreurs-de-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      DbError — erreurs de persistence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#catalogue-par-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catalogue par domaine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Catalogue par domaine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentification-auth_-user_banned-email_not_validated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentification (AUTH_*, USER_BANNED, EMAIL_NOT_VALIDATED)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisateurs-user_-users_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilisateurs (USER_*, USERS_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recettes-recipes_-recipe_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recettes (RECIPES_*, RECIPE_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moderation-admin-admin_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modération (admin) (ADMIN_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commentaires-comment_-comments_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commentaires (COMMENT_*, COMMENTS_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#favoris-favorite_-favorites_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Favoris (FAVORITE_*, FAVORITES_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categories-tags-ingredients-equipements-referentiels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catégories, Tags, Ingrédients, Équipements (référentiels)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contact-contact_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact (CONTACT_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination-generique-pagination_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pagination générique (PAGINATION_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-http-rate_limit-route_not_found-internal_error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure HTTP (RATE_LIMIT, ROUTE_NOT_FOUND, INTERNAL_ERROR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mail-mail_" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mail (MAIL_*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-db-codes-mysql-relayes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistence (DB) — codes MySQL relayés
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-http-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapping HTTP (récap)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convention-de-nommage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convention de nommage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inconsistances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inconsistances
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/backend/errors.md" title="Editer cette page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="catalogue-des-codes-derreur">Catalogue des codes d'erreur<a class="headerlink" href="#catalogue-des-codes-derreur" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Source : <code>backend/src</code> au commit courant.
+Tous les chemins sont relatifs à <code>backend/</code>.</p>
+</blockquote>
+<h2 id="format-de-reponse">Format de réponse<a class="headerlink" href="#format-de-reponse" title="Permanent link">&para;</a></h2>
+<p>Toutes les erreurs HTTP sont sérialisées par <code>src/middlewares/error-handler.ts:18-23</code> au format suivant :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STRING_CONSTANT&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Le statut HTTP provient de <code>err.statusCode ?? err.status ?? 500</code> (<code>error-handler.ts:13</code>).</li>
+<li>Si l'erreur n'a pas de <code>message</code>, le défaut est <code>"Internal server error"</code>.</li>
+<li>Si l'erreur n'a pas de <code>code</code>, le défaut est <code>"INTERNAL_ERROR"</code>.</li>
+<li>Toute erreur de statut &gt;= 500 est loggée via <code>logger.error('[http] Internal error', err)</code> (<code>error-handler.ts:15-16</code>).</li>
+</ul>
+<p>Le middleware ne renvoie <strong>pas</strong> de champ <code>details</code> : seuls <code>message</code> et <code>code</code> sont exposés au client.</p>
+<p>Quelques controllers court-circuitent le handler en répondant directement (cf. <code>auth.controller.ts</code>, <code>users.controller.ts</code>, <code>recipes.controller.ts</code>, <code>rate-limiter.ts</code>, <code>not-found.ts</code>) mais respectent le même format <code>{ error: { message, code } }</code>.</p>
+<h2 id="hierarchie">Hiérarchie<a class="headerlink" href="#hierarchie" title="Permanent link">&para;</a></h2>
+<p>Le projet n'a pas de classe <code>AppError</code>. Deux classes coexistent :</p>
+<h3 id="httperror-erreurs-metier-controle-de-flux-http"><code>HttpError</code> — erreurs métier / contrôle de flux HTTP<a class="headerlink" href="#httperror-erreurs-metier-controle-de-flux-http" title="Permanent link">&para;</a></h3>
+<p>Définie dans <code>src/utils/errors.ts:1-10</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">HttpError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">code?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>Fabriques exposées (<code>src/utils/errors.ts:12-17</code>) :</p>
+<table>
+<thead>
+<tr>
+<th>Fabrique</th>
+<th>HTTP par défaut</th>
+<th>Message par défaut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>badRequest(message, code?)</code></td>
+<td>400</td>
+<td>(obligatoire)</td>
+</tr>
+<tr>
+<td><code>unauthorized(message?, code?)</code></td>
+<td>401</td>
+<td><code>"Unauthorized"</code></td>
+</tr>
+<tr>
+<td><code>forbidden(message?, code?)</code></td>
+<td>403</td>
+<td><code>"Forbidden"</code></td>
+</tr>
+<tr>
+<td><code>notFound(message?, code?)</code></td>
+<td>404</td>
+<td><code>"Not found"</code></td>
+</tr>
+<tr>
+<td><code>conflict(message?, code?)</code></td>
+<td>409</td>
+<td><code>"Conflict"</code></td>
+</tr>
+<tr>
+<td><code>internalError(message?, code?)</code></td>
+<td>500</td>
+<td><code>"Internal Error"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dberror-erreurs-de-persistence"><code>DbError</code> — erreurs de persistence<a class="headerlink" href="#dberror-erreurs-de-persistence" title="Permanent link">&para;</a></h3>
+<p>Définie dans <code>src/db/errors.ts:1-13</code>. Construite par <code>toDbError()</code> (<code>src/db/errors.ts:15-31</code>) à partir d'une exception MySQL, appelée depuis <code>src/db/query.ts:34</code>. Elle n'a <strong>pas</strong> de <code>statusCode</code> → le handler la traite en 500 et expose le code MySQL natif (ex. <code>ER_DUP_ENTRY</code>, <code>ER_NO_REFERENCED_ROW_2</code>) tel quel dans le champ <code>code</code>.</p>
+<h2 id="catalogue-par-domaine">Catalogue par domaine<a class="headerlink" href="#catalogue-par-domaine" title="Permanent link">&para;</a></h2>
+<h3 id="authentification-auth_-user_banned-email_not_validated">Authentification (<code>AUTH_*</code>, <code>USER_BANNED</code>, <code>EMAIL_NOT_VALIDATED</code>)<a class="headerlink" href="#authentification-auth_-user_banned-email_not_validated" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AUTH_UNAUTHORIZED</code></td>
+<td>401</td>
+<td><code>api/auth/auth.controller.ts:29</code>, <code>api/users/users.controller.ts:10,28,40,54</code>, <code>api/recipes/recipes.controller.ts:11,24,74,87,101,114</code></td>
+<td><code>req.auth</code> absent dans un handler protégé</td>
+<td>"Non authentifié"</td>
+</tr>
+<tr>
+<td><code>AUTH_NO_TOKEN</code></td>
+<td>401</td>
+<td><code>middlewares/require-auth.ts:73</code></td>
+<td>Cookie de session manquant</td>
+<td>"Cookie de session manquant"</td>
+</tr>
+<tr>
+<td><code>AUTH_BAD_TOKEN</code></td>
+<td>401</td>
+<td><code>middlewares/require-auth.ts:80,85,90</code></td>
+<td>Token JWT invalide, expiré, ou payload corrompu</td>
+<td>"Token invalide ou expiré"</td>
+</tr>
+<tr>
+<td><code>AUTH_MISSING_FIELDS</code></td>
+<td>400</td>
+<td><code>services/auth/auth.service.ts:45,75</code>, <code>api/auth/auth.dto.ts:43,61</code></td>
+<td>Body register/login incomplet</td>
+<td>"Champs manquants"</td>
+</tr>
+<tr>
+<td><code>AUTH_INVALID_EMAIL</code></td>
+<td>400</td>
+<td><code>api/auth/auth.dto.ts:45,95</code></td>
+<td>Format email invalide (register / resend)</td>
+<td>"Email invalide"</td>
+</tr>
+<tr>
+<td><code>AUTH_WEAK_USERNAME</code></td>
+<td>400</td>
+<td><code>services/auth/auth.service.ts:55</code>, <code>api/auth/auth.dto.ts:47</code></td>
+<td>Username trop court (register)</td>
+<td>"Nom d'utilisateur trop court"</td>
+</tr>
+<tr>
+<td><code>AUTH_WEAK_PASSWORD</code></td>
+<td>400</td>
+<td><code>services/auth/auth.service.ts:49</code>, <code>api/auth/auth.dto.ts:49</code></td>
+<td>Mot de passe trop faible (register)</td>
+<td>"Mot de passe trop faible"</td>
+</tr>
+<tr>
+<td><code>AUTH_EMAIL_TAKEN</code></td>
+<td>409</td>
+<td><code>services/auth/auth.service.ts:52</code></td>
+<td>Email déjà utilisé à l'inscription</td>
+<td>"Email déjà utilisé"</td>
+</tr>
+<tr>
+<td><code>AUTH_USERNAME_TAKEN</code></td>
+<td>409</td>
+<td><code>services/auth/auth.service.ts:57</code></td>
+<td>Username déjà utilisé à l'inscription</td>
+<td>"Nom d'utilisateur déjà utilisé"</td>
+</tr>
+<tr>
+<td><code>AUTH_ROLE_NOT_FOUND</code></td>
+<td>400</td>
+<td><code>services/auth/auth.service.ts:61</code></td>
+<td>Rôle par défaut introuvable (config)</td>
+<td>"Rôle par défaut introuvable"</td>
+</tr>
+<tr>
+<td><code>AUTH_INVALID_CREDENTIALS</code></td>
+<td>401</td>
+<td><code>services/auth/auth.service.ts:79,83</code></td>
+<td>Login : email/password invalides</td>
+<td>"Identifiants invalides"</td>
+</tr>
+<tr>
+<td><code>EMAIL_NOT_VALIDATED</code></td>
+<td>401</td>
+<td><code>services/auth/auth.service.ts:86</code></td>
+<td>Login : email non validé</td>
+<td>"Email non validé"</td>
+</tr>
+<tr>
+<td><code>USER_BANNED</code></td>
+<td>401 / 403</td>
+<td><code>services/auth/auth.service.ts:89</code> (401), <code>services/auth/email-validation.service.ts:66</code> (403)</td>
+<td>Utilisateur banni</td>
+<td>"Compte banni"</td>
+</tr>
+<tr>
+<td><code>AUTH_FORGOT_PASSWORD_INVALID_EMAIL</code></td>
+<td>400</td>
+<td><code>api/auth/auth.controller.ts:47</code></td>
+<td>Mot de passe oublié : email manquant</td>
+<td>"Email requis"</td>
+</tr>
+<tr>
+<td><code>AUTH_RESET_PASSWORD_MISSING_TOKEN</code></td>
+<td>400</td>
+<td><code>api/auth/auth.dto.ts:83</code></td>
+<td>Reset password : token manquant</td>
+<td>"Token requis"</td>
+</tr>
+<tr>
+<td><code>AUTH_RESET_PASSWORD_BAD_TOKEN</code></td>
+<td>400</td>
+<td><code>api/auth/auth.controller.ts:68</code></td>
+<td>Reset password : token invalide / expiré</td>
+<td>"Token de réinitialisation invalide ou expiré"</td>
+</tr>
+<tr>
+<td><code>AUTH_RESET_PASSWORD_BAD_PASSWORD</code></td>
+<td>400</td>
+<td><code>api/auth/auth.controller.ts:74</code></td>
+<td>Reset password : mot de passe non conforme</td>
+<td>"Mot de passe invalide"</td>
+</tr>
+<tr>
+<td><code>AUTH_EMAIL_VALIDATION_MISSING_TOKEN</code></td>
+<td>400</td>
+<td><code>api/auth/auth.dto.ts:71</code>, <code>services/auth/email-validation.service.ts:46</code></td>
+<td>Validation email : token absent</td>
+<td>"Token requis"</td>
+</tr>
+<tr>
+<td><code>AUTH_EMAIL_VALIDATION_INVALID_TOKEN</code></td>
+<td>400</td>
+<td><code>services/auth/email-validation.service.ts:52,63,74</code></td>
+<td>Validation email : token invalide</td>
+<td>"Token de validation invalide"</td>
+</tr>
+<tr>
+<td><code>AUTH_EMAIL_VALIDATION_TOKEN_USED</code></td>
+<td>400</td>
+<td><code>services/auth/email-validation.service.ts:55</code></td>
+<td>Validation email : token déjà consommé</td>
+<td>"Token déjà utilisé"</td>
+</tr>
+<tr>
+<td><code>AUTH_EMAIL_VALIDATION_TOKEN_EXPIRED</code></td>
+<td>400</td>
+<td><code>services/auth/email-validation.service.ts:58</code></td>
+<td>Validation email : token expiré</td>
+<td>"Token expiré"</td>
+</tr>
+<tr>
+<td><code>AUTH_VALIDATION_RESEND_MISSING_EMAIL</code></td>
+<td>400</td>
+<td><code>services/auth/email-validation.service.ts:28</code>, <code>api/auth/auth.dto.ts:93</code></td>
+<td>Renvoi email de validation : email manquant</td>
+<td>"Email requis"</td>
+</tr>
+<tr>
+<td><code>AUTH_VALIDATION_RESEND_NOT_ALLOWED</code></td>
+<td>400</td>
+<td><code>services/auth/email-validation.service.ts:36</code></td>
+<td>Renvoi email refusé (compte déjà actif)</td>
+<td>"Le renvoi n'est autorisé que pour les comptes inactifs"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utilisateurs-user_-users_">Utilisateurs (<code>USER_*</code>, <code>USERS_*</code>)<a class="headerlink" href="#utilisateurs-user_-users_" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>USER_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/users/users.service.ts:32,48,73,97,129</code>, <code>services/admin/admin.users.service.ts:38,70,81</code></td>
+<td>Utilisateur introuvable (self + admin)</td>
+<td>"Utilisateur introuvable"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_EMAIL_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:21</code></td>
+<td>PATCH email : body non-objet</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_EMAIL_MISSING_EMAIL</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:27</code>, <code>services/users/users.service.ts:63</code></td>
+<td>PATCH email : email absent</td>
+<td>"Nouvel email requis"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_EMAIL_MISSING_PASSWORD</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:30</code></td>
+<td>PATCH email : password de confirmation absent</td>
+<td>"Mot de passe actuel requis"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_EMAIL_INVALID_EMAIL</code></td>
+<td>400</td>
+<td><code>services/users/users.service.ts:68</code></td>
+<td>PATCH email : format invalide</td>
+<td>"Format email invalide"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_EMAIL_BAD_PASSWORD</code></td>
+<td>401</td>
+<td><code>services/users/users.service.ts:78</code></td>
+<td>PATCH email : password de confirmation incorrect</td>
+<td>"Mot de passe actuel incorrect"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_EMAIL_SAME_EMAIL</code></td>
+<td>400</td>
+<td><code>services/users/users.service.ts:81</code></td>
+<td>PATCH email : identique à l'actuel</td>
+<td>"Le nouvel email doit être différent"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_EMAIL_ALREADY_USED</code></td>
+<td>409</td>
+<td><code>services/users/users.service.ts:86</code></td>
+<td>PATCH email : déjà pris</td>
+<td>"Email déjà utilisé"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_PASSWORD_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:37</code></td>
+<td>PATCH password : body invalide</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_PASSWORD_MISSING_CURRENT</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:43</code></td>
+<td>PATCH password : mot de passe actuel absent</td>
+<td>"Mot de passe actuel requis"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_PASSWORD_MISSING_NEW</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:46</code></td>
+<td>PATCH password : nouveau mot de passe absent</td>
+<td>"Nouveau mot de passe requis"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_PASSWORD_BAD_CURRENT</code></td>
+<td>401</td>
+<td><code>services/users/users.service.ts:102</code></td>
+<td>PATCH password : mot de passe actuel faux</td>
+<td>"Mot de passe actuel incorrect"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_PASSWORD_SAME_PASSWORD</code></td>
+<td>400</td>
+<td><code>services/users/users.service.ts:105</code></td>
+<td>PATCH password : identique à l'actuel</td>
+<td>"Le nouveau mot de passe doit être différent"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_PASSWORD_WEAK_PASSWORD</code></td>
+<td>400</td>
+<td><code>services/users/users.service.ts:110</code></td>
+<td>PATCH password : règle de robustesse non satisfaite</td>
+<td>(message dynamique de la règle)</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_USERNAME_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:53</code></td>
+<td>PATCH username : body invalide</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_USERNAME_MISSING_USERNAME</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:59</code>, <code>services/users/users.service.ts:121</code></td>
+<td>PATCH username : absent</td>
+<td>"Nouveau nom d'utilisateur requis"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_USERNAME_MISSING_PASSWORD</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:62</code></td>
+<td>PATCH username : password de confirmation absent</td>
+<td>"Mot de passe actuel requis"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_USERNAME_WEAK_USERNAME</code></td>
+<td>400</td>
+<td><code>services/users/users.service.ts:124</code></td>
+<td>PATCH username : trop court</td>
+<td>"Nom d'utilisateur trop court"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_USERNAME_BAD_PASSWORD</code></td>
+<td>401</td>
+<td><code>services/users/users.service.ts:134</code></td>
+<td>PATCH username : password de confirmation faux</td>
+<td>"Mot de passe actuel incorrect"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_USERNAME_SAME_USERNAME</code></td>
+<td>400</td>
+<td><code>services/users/users.service.ts:137</code></td>
+<td>PATCH username : identique à l'actuel</td>
+<td>"Le nouveau nom d'utilisateur doit être différent"</td>
+</tr>
+<tr>
+<td><code>USERS_UPDATE_USERNAME_ALREADY_USED</code></td>
+<td>409</td>
+<td><code>services/users/users.service.ts:142</code></td>
+<td>PATCH username : déjà pris</td>
+<td>"Nom d'utilisateur déjà utilisé"</td>
+</tr>
+<tr>
+<td><code>USERS_MISSING_USERNAME</code></td>
+<td>400</td>
+<td><code>api/users/users.dto.ts:71</code></td>
+<td>DTO parsing username (route partagée)</td>
+<td>"Nom d'utilisateur requis"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recettes-recipes_-recipe_">Recettes (<code>RECIPES_*</code>, <code>RECIPE_*</code>)<a class="headerlink" href="#recettes-recipes_-recipe_" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RECIPES_BAD_ID</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:106</code></td>
+<td>Paramètre <code>:recipeId</code> non entier positif</td>
+<td>"L'id de recette doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>RECIPES_BAD_SLUG</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:115</code></td>
+<td>Paramètre <code>:slug</code> vide</td>
+<td>"Slug de recette requis"</td>
+</tr>
+<tr>
+<td><code>RECIPES_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/recipes/recipes.services.ts:61,92,104</code>, <code>services/admin/admin.recipes.services.ts:23,44,56,65</code></td>
+<td>Recette introuvable (lecture, update, archive, modération)</td>
+<td>"Recette introuvable"</td>
+</tr>
+<tr>
+<td><code>NOT_FOUND</code></td>
+<td>404</td>
+<td><code>api/recipes/recipes.controller.ts:63</code></td>
+<td>Recette introuvable au niveau controller</td>
+<td>"Recette introuvable"</td>
+</tr>
+<tr>
+<td><code>RECIPES_ACCESS_DENIED</code></td>
+<td>403</td>
+<td><code>services/recipes/recipes.services.ts:64,95</code></td>
+<td>Lecture d'une recette non publiée par un non-propriétaire</td>
+<td>"Accès à la recette refusé"</td>
+</tr>
+<tr>
+<td><code>RECIPES_ARCHIVE_FORBIDDEN</code></td>
+<td>403</td>
+<td><code>services/recipes/recipes.services.ts:67</code>, <code>services/admin/admin.recipes.services.ts:47</code></td>
+<td>Recette non archivable dans son état actuel</td>
+<td>"Recette non archivable"</td>
+</tr>
+<tr>
+<td><code>RECIPES_EDIT_FORBIDDEN</code></td>
+<td>403</td>
+<td><code>services/recipes/recipes.services.ts:107</code></td>
+<td>Recette non éditable dans son état actuel</td>
+<td>"Recette non éditable"</td>
+</tr>
+<tr>
+<td><code>RECIPES_MODERATE_FORBIDDEN</code></td>
+<td>403</td>
+<td><code>services/admin/admin.recipes.services.ts:68</code></td>
+<td>Recette non modérable dans son état actuel</td>
+<td>"Recette non modérable"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:72</code> (préfixe)</td>
+<td>POST recette : body non-objet</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_MISSING_TITLE</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:74</code> (préfixe)</td>
+<td>POST recette : titre absent</td>
+<td>"Le titre est requis"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_WEAK_TITLE</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:77</code> (préfixe)</td>
+<td>POST recette : titre &lt; 5 caractères</td>
+<td>"Le titre doit faire au moins 5 caractères"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_CATEGORY</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:79</code> (préfixe)</td>
+<td>POST recette : <code>categoryId</code> invalide</td>
+<td>"La catégorie doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_DESCRIPTION</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:80</code> (préfixe)</td>
+<td>POST recette : description invalide</td>
+<td>"La description doit être une chaîne"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_COVER_IMAGE_URL</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:81</code></td>
+<td>POST recette : URL d'image invalide</td>
+<td>"L'URL de l'image de couverture doit être une chaîne ou null"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_PREP_TIME</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:82</code></td>
+<td>POST recette : <code>prepTimeMinutes</code> invalide</td>
+<td>"Le temps de préparation doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_REST_TIME</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:83</code></td>
+<td>POST recette : <code>restTimeMinutes</code> invalide</td>
+<td>"Le temps de repos doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_COOK_TIME</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:84</code></td>
+<td>POST recette : <code>cookTimeMinutes</code> invalide</td>
+<td>"Le temps de cuisson doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_SERVINGS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:85</code></td>
+<td>POST recette : <code>servings</code> invalide</td>
+<td>"Le nombre de portions doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_TAGS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:86</code></td>
+<td>POST recette : <code>tagIds</code> non-tableau</td>
+<td>"Les tags doivent être un tableau"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_TAG_ID</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:67</code></td>
+<td>POST recette : tag id non entier positif</td>
+<td>"Le tagId doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_INGREDIENTS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:87</code></td>
+<td>POST recette : <code>ingredients</code> non-tableau</td>
+<td>"Les ingrédients doivent être un tableau"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_INGREDIENT</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:32</code></td>
+<td>POST recette : item ingrédient mal formé</td>
+<td>"Ingrédient #N invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_INGREDIENT_ID</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:39</code></td>
+<td>POST recette : <code>ingredientId</code> manquant/invalide</td>
+<td>"ingredientId doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_INGREDIENT_QUANTITY</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:40</code></td>
+<td>POST recette : quantité invalide</td>
+<td>"La quantité doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_INGREDIENT_UNIT</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:34</code></td>
+<td>POST recette : unité invalide</td>
+<td>"L'unité doit être une chaîne ou null"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_INGREDIENT_NOTE</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:35</code></td>
+<td>POST recette : note invalide</td>
+<td>"La note doit être une chaîne"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_INGREDIENT_SORT_ORDER</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:36</code></td>
+<td>POST recette : <code>sortOrder</code> invalide</td>
+<td>"sortOrder doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_STEPS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:88</code></td>
+<td>POST recette : <code>steps</code> non-tableau</td>
+<td>"Les étapes doivent être un tableau"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_STEP</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:49</code></td>
+<td>POST recette : item step mal formé</td>
+<td>"Étape #N invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_STEP_NUMBER</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:52</code></td>
+<td>POST recette : <code>stepNumber</code> invalide</td>
+<td>"stepNumber doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_STEP_DESCRIPTION</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:53</code></td>
+<td>POST recette : description d'étape absente</td>
+<td>"La description de l'étape est requise"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_EQUIPMENTS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:89</code></td>
+<td>POST recette : <code>equipments</code> non-tableau</td>
+<td>"Les équipements doivent être un tableau"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_EQUIPMENT</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:59</code></td>
+<td>POST recette : item équipement invalide</td>
+<td>"Équipement #N invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_CREATE_BAD_EQUIPMENT_ID</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:62</code></td>
+<td>POST recette : <code>equipmentId</code> manquant</td>
+<td>"equipmentId doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:72</code> (préfixe)</td>
+<td>PATCH recette : body invalide</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_MISSING_TITLE</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:74</code> (préfixe)</td>
+<td>PATCH recette : titre absent</td>
+<td>"Le titre est requis"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_WEAK_TITLE</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:77</code> (préfixe)</td>
+<td>PATCH recette : titre &lt; 5 caractères</td>
+<td>"Le titre doit faire au moins 5 caractères"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_CATEGORY</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:79</code> (préfixe)</td>
+<td>PATCH recette : catégorie invalide</td>
+<td>"La catégorie doit être un nombre"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_DESCRIPTION</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:80</code></td>
+<td>PATCH recette : description invalide</td>
+<td>"La description doit être une chaîne"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_COVER_IMAGE_URL</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:81</code></td>
+<td>PATCH recette : URL image invalide</td>
+<td>"URL de couverture invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_PREP_TIME</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:82</code></td>
+<td>PATCH recette : prep time invalide</td>
+<td>"Temps de préparation invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_REST_TIME</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:83</code></td>
+<td>PATCH recette : rest time invalide</td>
+<td>"Temps de repos invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_COOK_TIME</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:84</code></td>
+<td>PATCH recette : cook time invalide</td>
+<td>"Temps de cuisson invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_SERVINGS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:85</code></td>
+<td>PATCH recette : servings invalide</td>
+<td>"Nombre de portions invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_TAGS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:86</code></td>
+<td>PATCH recette : tagIds invalide</td>
+<td>"Les tags doivent être un tableau"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_INGREDIENTS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:87</code></td>
+<td>PATCH recette : ingredients invalide</td>
+<td>"Les ingrédients doivent être un tableau"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_STEPS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:88</code></td>
+<td>PATCH recette : steps invalide</td>
+<td>"Les étapes doivent être un tableau"</td>
+</tr>
+<tr>
+<td><code>RECIPES_UPDATE_BAD_EQUIPMENTS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:89</code></td>
+<td>PATCH recette : equipments invalide</td>
+<td>"Les équipements doivent être un tableau"</td>
+</tr>
+<tr>
+<td><code>RECIPES_FEED_BAD_QUERY</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:122</code></td>
+<td>GET feed : query non-objet</td>
+<td>"Query invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_FEED_BAD_LIMIT</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:127</code></td>
+<td>GET feed : <code>limit</code> invalide</td>
+<td>"Limit doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>RECIPES_SEARCH_BAD_QUERY</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:172</code></td>
+<td>GET search : query non-objet</td>
+<td>"Query invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_SEARCH_BAD_Q</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:178</code></td>
+<td>GET search : <code>q</code> non-string</td>
+<td>"Le terme de recherche doit être une chaîne"</td>
+</tr>
+<tr>
+<td><code>RECIPES_SEARCH_BAD_CATEGORY</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:186</code></td>
+<td>GET search : <code>categoryId</code> invalide</td>
+<td>"categoryId doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>RECIPES_SEARCH_BAD_TAGS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:163</code></td>
+<td>GET search : <code>tagIds</code> invalides</td>
+<td>"Les ids de tags doivent être une liste séparée par virgules d'entiers positifs"</td>
+</tr>
+<tr>
+<td><code>RECIPES_SEARCH_BAD_INGREDIENTS</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:167</code></td>
+<td>GET search : <code>ingredientIds</code> invalides</td>
+<td>"Les ids d'ingrédients doivent être une liste séparée par virgules d'entiers positifs"</td>
+</tr>
+<tr>
+<td><code>RECIPES_SEARCH_BAD_TOTAL_TIME</code></td>
+<td>400</td>
+<td><code>api/recipes/recipes.dto.ts:201</code></td>
+<td>GET search : <code>maxTotalTimeMinutes</code> invalide</td>
+<td>"Le temps total doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>RECIPES_PAGINATION_BAD_QUERY</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:27</code> via <code>recipes.controller.ts:16,37,45</code></td>
+<td>Pagination recettes : query non-objet</td>
+<td>"Query invalide"</td>
+</tr>
+<tr>
+<td><code>RECIPES_PAGINATION_BAD_PAGE</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:30</code></td>
+<td>Pagination recettes : <code>page</code> invalide</td>
+<td>"Page doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>RECIPES_PAGINATION_BAD_LIMIT</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:31</code></td>
+<td>Pagination recettes : <code>limit</code> invalide</td>
+<td>"Limit doit être un entier positif"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="moderation-admin-admin_">Modération (admin) (<code>ADMIN_*</code>)<a class="headerlink" href="#moderation-admin-admin_" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ADMIN_ACCESS_REQUIRED</code></td>
+<td>403</td>
+<td><code>middlewares/require-admin.ts:8</code></td>
+<td>Route admin appelée par un non-admin</td>
+<td>"Accès administrateur requis"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_BAD_ID</code></td>
+<td>400</td>
+<td><code>api/admin/admin.users.dto.ts:11</code></td>
+<td>Paramètre <code>:userId</code> invalide</td>
+<td>"L'id utilisateur doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_BAN_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/admin/admin.users.dto.ts:17,26</code></td>
+<td>POST ban : body invalide</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_BAN_MISSING_REASON</code></td>
+<td>400</td>
+<td><code>api/admin/admin.users.dto.ts:17,28</code> ; <code>services/admin/admin.users.service.ts:93</code></td>
+<td>POST ban : motif absent</td>
+<td>"Le motif de ban est requis"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_BAN_REASON_TOO_SHORT</code></td>
+<td>400</td>
+<td><code>api/admin/admin.users.dto.ts:31</code> ; <code>services/admin/admin.users.service.ts:98</code></td>
+<td>POST ban : motif &lt; 10 caractères</td>
+<td>"Le motif de ban doit faire au moins 10 caractères"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_BAN_REASON_TOO_LONG</code></td>
+<td>400</td>
+<td><code>api/admin/admin.users.dto.ts:34</code> ; <code>services/admin/admin.users.service.ts:104</code></td>
+<td>POST ban : motif &gt; 1000 caractères</td>
+<td>"Le motif de ban doit faire au plus 1000 caractères"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_BAN_SELF_FORBIDDEN</code></td>
+<td>403</td>
+<td><code>services/admin/admin.users.service.ts:65</code></td>
+<td>Un admin tente de se bannir lui-même</td>
+<td>"Un administrateur ne peut pas se bannir lui-même"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_UNBAN_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/admin/admin.users.dto.ts:21,26</code></td>
+<td>POST unban : body invalide</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_UNBAN_MISSING_REASON</code></td>
+<td>400</td>
+<td><code>api/admin/admin.users.dto.ts:21,28</code> ; <code>services/admin/admin.users.service.ts:93</code></td>
+<td>POST unban : motif absent</td>
+<td>"Le motif de débannissement est requis"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_UNBAN_REASON_TOO_SHORT</code></td>
+<td>400</td>
+<td><code>api/admin/admin.users.dto.ts:31</code> ; <code>services/admin/admin.users.service.ts:98</code></td>
+<td>POST unban : motif &lt; 10 caractères</td>
+<td>"Le motif doit faire au moins 10 caractères"</td>
+</tr>
+<tr>
+<td><code>ADMIN_USERS_UNBAN_REASON_TOO_LONG</code></td>
+<td>400</td>
+<td><code>api/admin/admin.users.dto.ts:34</code> ; <code>services/admin/admin.users.service.ts:104</code></td>
+<td>POST unban : motif &gt; 1000 caractères</td>
+<td>"Le motif doit faire au plus 1000 caractères"</td>
+</tr>
+<tr>
+<td><code>ADMIN_RECIPES_REJECT_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/admin/admin.recipes.dto.ts:9</code></td>
+<td>POST reject recette : body invalide</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>ADMIN_RECIPES_REJECT_MISSING_REASON</code></td>
+<td>400</td>
+<td><code>api/admin/admin.recipes.dto.ts:14</code></td>
+<td>POST reject recette : motif absent</td>
+<td>"Le motif de rejet est requis"</td>
+</tr>
+<tr>
+<td><code>ADMIN_COMMENTS_BAD_ID</code></td>
+<td>400</td>
+<td><code>api/admin/admin.comments.dto.ts:13</code></td>
+<td>Param admin comment id invalide</td>
+<td>"L'id du commentaire doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>ADMIN_COMMENTS_UPDATE_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/admin/admin.comments.dto.ts:20</code></td>
+<td>PATCH commentaire admin : body invalide</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>ADMIN_COMMENTS_UPDATE_BAD_RATING</code></td>
+<td>400</td>
+<td><code>api/admin/admin.comments.dto.ts:26</code></td>
+<td>PATCH commentaire admin : rating invalide</td>
+<td>"La note doit être entre 1 et 5"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="commentaires-comment_-comments_">Commentaires (<code>COMMENT_*</code>, <code>COMMENTS_*</code>)<a class="headerlink" href="#commentaires-comment_-comments_" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>COMMENTS_BAD_ID</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:66</code></td>
+<td>Param <code>:commentId</code> invalide</td>
+<td>"L'id du commentaire doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_BAD_RECIPE_ID</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:70</code></td>
+<td>Param <code>:recipeId</code> invalide (route commentaires)</td>
+<td>"L'id de recette doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>COMMENT_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/comments/comments.service.ts:25,42</code></td>
+<td>Commentaire introuvable (user-facing : update / delete)</td>
+<td>"Commentaire introuvable"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/comments/comments.service.ts:54</code>, <code>services/admin/admin.comments.services.ts:29,34,43,48,57,62,71,80</code></td>
+<td>Aucun commentaire trouvé (liste / admin)</td>
+<td>"Commentaire(s) introuvable(s)"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_PARENT_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/comments/comments.service.ts:63</code></td>
+<td>POST réponse : commentaire parent introuvable</td>
+<td>"Commentaire parent introuvable"</td>
+</tr>
+<tr>
+<td><code>COMMENT_ACCESS_DENIED</code></td>
+<td>403</td>
+<td><code>services/comments/comments.service.ts:28,33,45</code></td>
+<td>Action sur commentaire d'un autre user</td>
+<td>"Accès au commentaire refusé"</td>
+</tr>
+<tr>
+<td><code>COMMENT_CANNOT_BE_CREATED</code></td>
+<td>500</td>
+<td><code>services/comments/comments.service.ts:16</code></td>
+<td>Création échouée (anomalie persistance)</td>
+<td>"Impossible de créer le commentaire"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_CREATE_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:44</code></td>
+<td>POST commentaire : body invalide</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_CREATE_MISSING_COMMENT</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:46</code></td>
+<td>POST commentaire : texte absent</td>
+<td>"Le commentaire est requis"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_CREATE_BAD_PARENT_COMMENT_ID</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:34,37</code></td>
+<td>POST commentaire : parent id invalide</td>
+<td>"L'id du commentaire parent doit être un entier positif ou null"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_CREATE_BAD_RATING</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:25,28</code> (préfixe)</td>
+<td>POST commentaire : note invalide</td>
+<td>"La note doit être un entier entre 1 et 5"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_CREATE_REPLY_WITH_RATING</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:51</code>, <code>services/comments/comments.service.ts:66</code></td>
+<td>POST commentaire : réponse avec note (interdit)</td>
+<td>"Les commentaires de type réponse ne peuvent pas avoir de note"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_CREATE_NESTED_REPLY</code></td>
+<td>400</td>
+<td><code>services/comments/comments.service.ts:66</code></td>
+<td>POST commentaire : profondeur &gt; 1 niveau</td>
+<td>"Une seule profondeur de réponse est autorisée"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_UPDATE_BAD_BODY</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:58</code></td>
+<td>PATCH commentaire : body invalide</td>
+<td>"Corps de requête invalide"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_UPDATE_MISSING_COMMENT</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:60</code></td>
+<td>PATCH commentaire : texte absent</td>
+<td>"Le commentaire est requis"</td>
+</tr>
+<tr>
+<td><code>COMMENTS_UPDATE_BAD_RATING</code></td>
+<td>400</td>
+<td><code>api/comments/comments.dto.ts:25,28</code> (préfixe)</td>
+<td>PATCH commentaire : note invalide</td>
+<td>"La note doit être un entier entre 1 et 5"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="favoris-favorite_-favorites_">Favoris (<code>FAVORITE_*</code>, <code>FAVORITES_*</code>)<a class="headerlink" href="#favoris-favorite_-favorites_" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RECIPE_BAD_ID</code></td>
+<td>400</td>
+<td><code>api/favorites/favorites.dto.ts:7</code></td>
+<td>Param recette favori invalide</td>
+<td>"L'id de recette doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>FAVORITE_CANNOT_BE_CREATED</code></td>
+<td>500</td>
+<td><code>services/favorites/favorites.service.ts:15</code></td>
+<td>Insertion favori échouée</td>
+<td>"Impossible d'ajouter le favori"</td>
+</tr>
+<tr>
+<td><code>FAVORITE_CANNOT_BE_DELETED</code></td>
+<td>500</td>
+<td><code>services/favorites/favorites.service.ts:24</code></td>
+<td>Suppression favori échouée</td>
+<td>"Impossible de supprimer le favori"</td>
+</tr>
+<tr>
+<td><code>FAVORITES_PAGINATION_BAD_QUERY</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:27</code> via <code>api/favorites/favorites.controller.ts:24</code></td>
+<td>Pagination favoris : query invalide</td>
+<td>"Query invalide"</td>
+</tr>
+<tr>
+<td><code>FAVORITES_PAGINATION_BAD_PAGE</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:30</code></td>
+<td>Pagination favoris : page invalide</td>
+<td>"Page doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>FAVORITES_PAGINATION_BAD_LIMIT</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:31</code></td>
+<td>Pagination favoris : limit invalide</td>
+<td>"Limit doit être un entier positif"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="categories-tags-ingredients-equipements-referentiels">Catégories, Tags, Ingrédients, Équipements (référentiels)<a class="headerlink" href="#categories-tags-ingredients-equipements-referentiels" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CATEGORIES_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/category/category.service.ts:13</code></td>
+<td>Liste catégories vide</td>
+<td>"Aucune catégorie trouvée"</td>
+</tr>
+<tr>
+<td><code>CATEGORY_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/category/category.service.ts:22</code></td>
+<td>Catégorie par id introuvable</td>
+<td>"Catégorie introuvable"</td>
+</tr>
+<tr>
+<td><code>CATEGORY_BAD_ID</code></td>
+<td>400</td>
+<td><code>api/category/category.dto.ts:7</code></td>
+<td>Param catégorie id invalide</td>
+<td>"L'id de catégorie doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>TAGS_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/tag/tags.service.ts:13</code></td>
+<td>Liste tags vide</td>
+<td>"Aucun tag trouvé"</td>
+</tr>
+<tr>
+<td><code>TAG_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/tag/tags.service.ts:22</code></td>
+<td>Tag par id introuvable</td>
+<td>"Tag introuvable"</td>
+</tr>
+<tr>
+<td><code>TAG_BAD_ID</code></td>
+<td>400</td>
+<td><code>api/tag/tags.dto.ts:7</code></td>
+<td>Param tag id invalide</td>
+<td>"L'id de tag doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>INGREDIENTS_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/ingredients/ingredients.service.ts:13</code></td>
+<td>Liste ingrédients vide</td>
+<td>"Aucun ingrédient trouvé"</td>
+</tr>
+<tr>
+<td><code>INGREDIENT_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/ingredients/ingredients.service.ts:22</code></td>
+<td>Ingrédient par id introuvable</td>
+<td>"Ingrédient introuvable"</td>
+</tr>
+<tr>
+<td><code>INGREDIENT_BAD_ID</code></td>
+<td>400</td>
+<td><code>api/ingredients/ingredients.dto.ts:7</code></td>
+<td>Param ingrédient id invalide</td>
+<td>"L'id d'ingrédient doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>EQUIPMENTS_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/equipments/equipments.service.ts:13</code></td>
+<td>Liste équipements vide</td>
+<td>"Aucun équipement trouvé"</td>
+</tr>
+<tr>
+<td><code>EQUIPMENT_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>services/equipments/equipments.service.ts:22</code></td>
+<td>Équipement par id introuvable</td>
+<td>"Équipement introuvable"</td>
+</tr>
+<tr>
+<td><code>EQUIPMENT_BAD_ID</code></td>
+<td>400</td>
+<td><code>api/equipments/equipments.dto.ts:7</code></td>
+<td>Param équipement id invalide</td>
+<td>"L'id d'équipement doit être un entier positif"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contact-contact_">Contact (<code>CONTACT_*</code>)<a class="headerlink" href="#contact-contact_" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CONTACT_MISSING_FIELDS</code></td>
+<td>400</td>
+<td><code>api/contact/contact.dto.ts:20,25</code></td>
+<td>POST contact : champs absents</td>
+<td>"Champs manquants"</td>
+</tr>
+<tr>
+<td><code>CONTACT_INVALID_EMAIL</code></td>
+<td>400</td>
+<td><code>api/contact/contact.dto.ts:51</code></td>
+<td>POST contact : email invalide</td>
+<td>"Email invalide"</td>
+</tr>
+<tr>
+<td><code>CONTACT_&lt;FIELD&gt;_TOO_SHORT</code></td>
+<td>400</td>
+<td><code>api/contact/contact.dto.ts:32</code> (dynamique)</td>
+<td>POST contact : champ trop court</td>
+<td>"<Champ> trop court"</td>
+</tr>
+<tr>
+<td><code>CONTACT_&lt;FIELD&gt;_TOO_LONG</code></td>
+<td>400</td>
+<td><code>api/contact/contact.dto.ts:35</code> (dynamique)</td>
+<td>POST contact : champ trop long</td>
+<td>"<Champ> trop long"</td>
+</tr>
+<tr>
+<td><code>CONTACT_SEND_FAILED</code></td>
+<td>500</td>
+<td><code>services/mail/mail.service.ts:170</code></td>
+<td>Échec d'envoi du message de contact</td>
+<td>"Impossible d'envoyer le message de contact"</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>&lt;FIELD&gt;</code> = upper-case du nom de champ envoyé (ex. <code>CONTACT_NAME_TOO_SHORT</code>, <code>CONTACT_MESSAGE_TOO_LONG</code>). Voir <code>api/contact/contact.dto.ts</code> pour la liste exacte.</p>
+</blockquote>
+<h3 id="pagination-generique-pagination_">Pagination générique (<code>PAGINATION_*</code>)<a class="headerlink" href="#pagination-generique-pagination_" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PAGINATION_BAD_QUERY</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:27</code></td>
+<td>Pagination par défaut : query invalide</td>
+<td>"Query invalide"</td>
+</tr>
+<tr>
+<td><code>PAGINATION_BAD_PAGE</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:30</code></td>
+<td>Pagination par défaut : page invalide</td>
+<td>"Page doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>PAGINATION_BAD_LIMIT</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:31,55</code></td>
+<td>Pagination par défaut : limit invalide</td>
+<td>"Limit doit être un entier positif"</td>
+</tr>
+<tr>
+<td><code>PAGINATION_BAD_OFFSET</code></td>
+<td>400</td>
+<td><code>utils/pagination.ts:56</code></td>
+<td>Offset SQL hors plage</td>
+<td>"Offset doit être un entier positif ou nul"</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Le préfixe est paramétrable. Valeurs observées : <code>PAGINATION</code> (défaut), <code>RECIPES_PAGINATION</code>, <code>FAVORITES_PAGINATION</code>.</p>
+</blockquote>
+<h3 id="infrastructure-http-rate_limit-route_not_found-internal_error">Infrastructure HTTP (<code>RATE_LIMIT</code>, <code>ROUTE_NOT_FOUND</code>, <code>INTERNAL_ERROR</code>)<a class="headerlink" href="#infrastructure-http-rate_limit-route_not_found-internal_error" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ROUTE_NOT_FOUND</code></td>
+<td>404</td>
+<td><code>middlewares/not-found.ts:4-8</code></td>
+<td>Aucune route Express ne matche</td>
+<td>"Route introuvable"</td>
+</tr>
+<tr>
+<td><code>RATE_LIMIT</code></td>
+<td>429</td>
+<td><code>middlewares/rate-limiter.ts:41-46</code></td>
+<td>Quota du <code>rateLimiter</code> dépassé</td>
+<td>"Trop de requêtes"</td>
+</tr>
+<tr>
+<td><code>INTERNAL_ERROR</code></td>
+<td>500</td>
+<td>défaut <code>error-handler.ts:21</code></td>
+<td>Erreur sans <code>code</code> explicite</td>
+<td>"Erreur interne du serveur"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mail-mail_">Mail (<code>MAIL_*</code>)<a class="headerlink" href="#mail-mail_" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>HTTP</th>
+<th>Levé dans</th>
+<th>Contexte</th>
+<th>Message FR proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAIL_SEND_FAILED</code></td>
+<td>500</td>
+<td><code>services/mail/mail.service.ts:86,96</code></td>
+<td>Échec d'envoi générique (transport SMTP)</td>
+<td>"Impossible d'envoyer l'email"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="persistence-db-codes-mysql-relayes">Persistence (DB) — codes MySQL relayés<a class="headerlink" href="#persistence-db-codes-mysql-relayes" title="Permanent link">&para;</a></h3>
+<p><code>DbError</code> (<code>src/db/errors.ts</code>) n'ajoute <strong>pas</strong> de statut HTTP. Le handler renvoie donc 500 avec, dans le champ <code>code</code>, <strong>le code MySQL natif</strong> copié depuis l'erreur du driver. Codes susceptibles d'apparaître :</p>
+<table>
+<thead>
+<tr>
+<th>Code MySQL</th>
+<th>HTTP effectif</th>
+<th>Cause typique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ER_DUP_ENTRY</code></td>
+<td>500</td>
+<td>Violation d'index unique (devrait idéalement remonter en 409)</td>
+</tr>
+<tr>
+<td><code>ER_NO_REFERENCED_ROW_2</code></td>
+<td>500</td>
+<td>Insertion référençant une clé étrangère inexistante</td>
+</tr>
+<tr>
+<td><code>ER_ROW_IS_REFERENCED_2</code></td>
+<td>500</td>
+<td>Suppression d'une ligne référencée</td>
+</tr>
+<tr>
+<td><code>ER_BAD_FIELD_ERROR</code></td>
+<td>500</td>
+<td>Bug SQL côté backend</td>
+</tr>
+<tr>
+<td><code>ER_PARSE_ERROR</code></td>
+<td>500</td>
+<td>Bug SQL côté backend</td>
+</tr>
+<tr>
+<td><code>ER_LOCK_DEADLOCK</code></td>
+<td>500</td>
+<td>Deadlock InnoDB (à retry si idempotent)</td>
+</tr>
+<tr>
+<td><code>PROTOCOL_CONNECTION_LOST</code>, <code>ECONNREFUSED</code>, <code>ETIMEDOUT</code></td>
+<td>500</td>
+<td>Indisponibilité MySQL</td>
+</tr>
+</tbody>
+</table>
+<p>Voir "Inconsistances" : aucune traduction <code>ER_DUP_ENTRY → conflict()</code> n'est faite aujourd'hui.</p>
+<h2 id="mapping-http-recap">Mapping HTTP (récap)<a class="headerlink" href="#mapping-http-recap" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>HTTP</th>
+<th>Codes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td>Tous les <code>*_BAD_*</code>, <code>*_MISSING_*</code>, <code>*_WEAK_*</code>, <code>*_INVALID_*</code>, <code>*_TOO_SHORT</code>, <code>*_TOO_LONG</code>, <code>*_SAME_*</code>, <code>AUTH_MISSING_FIELDS</code>, <code>AUTH_INVALID_EMAIL</code>, <code>AUTH_EMAIL_VALIDATION_*</code>, <code>AUTH_RESET_PASSWORD_*</code>, <code>AUTH_FORGOT_PASSWORD_INVALID_EMAIL</code>, <code>AUTH_VALIDATION_RESEND_*</code>, <code>AUTH_ROLE_NOT_FOUND</code>, <code>CONTACT_*</code>, <code>COMMENTS_CREATE_REPLY_WITH_RATING</code>, <code>COMMENTS_CREATE_NESTED_REPLY</code></td>
+</tr>
+<tr>
+<td>401</td>
+<td><code>AUTH_UNAUTHORIZED</code>, <code>AUTH_NO_TOKEN</code>, <code>AUTH_BAD_TOKEN</code>, <code>AUTH_INVALID_CREDENTIALS</code>, <code>EMAIL_NOT_VALIDATED</code>, <code>USER_BANNED</code> (login), <code>USERS_UPDATE_EMAIL_BAD_PASSWORD</code>, <code>USERS_UPDATE_PASSWORD_BAD_CURRENT</code>, <code>USERS_UPDATE_USERNAME_BAD_PASSWORD</code></td>
+</tr>
+<tr>
+<td>403</td>
+<td><code>ADMIN_ACCESS_REQUIRED</code>, <code>ADMIN_USERS_BAN_SELF_FORBIDDEN</code>, <code>USER_BANNED</code> (validation email), <code>RECIPES_ACCESS_DENIED</code>, <code>RECIPES_ARCHIVE_FORBIDDEN</code>, <code>RECIPES_EDIT_FORBIDDEN</code>, <code>RECIPES_MODERATE_FORBIDDEN</code>, <code>COMMENT_ACCESS_DENIED</code></td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>ROUTE_NOT_FOUND</code>, <code>NOT_FOUND</code>, <code>USER_NOT_FOUND</code>, <code>RECIPES_NOT_FOUND</code>, <code>COMMENT_NOT_FOUND</code>, <code>COMMENTS_NOT_FOUND</code>, <code>COMMENTS_PARENT_NOT_FOUND</code>, <code>CATEGORIES_NOT_FOUND</code>, <code>CATEGORY_NOT_FOUND</code>, <code>TAGS_NOT_FOUND</code>, <code>TAG_NOT_FOUND</code>, <code>INGREDIENTS_NOT_FOUND</code>, <code>INGREDIENT_NOT_FOUND</code>, <code>EQUIPMENTS_NOT_FOUND</code>, <code>EQUIPMENT_NOT_FOUND</code></td>
+</tr>
+<tr>
+<td>409</td>
+<td><code>AUTH_EMAIL_TAKEN</code>, <code>AUTH_USERNAME_TAKEN</code>, <code>USERS_UPDATE_EMAIL_ALREADY_USED</code>, <code>USERS_UPDATE_USERNAME_ALREADY_USED</code></td>
+</tr>
+<tr>
+<td>429</td>
+<td><code>RATE_LIMIT</code></td>
+</tr>
+<tr>
+<td>500</td>
+<td><code>INTERNAL_ERROR</code> (défaut), <code>COMMENT_CANNOT_BE_CREATED</code>, <code>FAVORITE_CANNOT_BE_CREATED</code>, <code>FAVORITE_CANNOT_BE_DELETED</code>, <code>MAIL_SEND_FAILED</code>, <code>CONTACT_SEND_FAILED</code>, tous les codes MySQL relayés via <code>DbError</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="convention-de-nommage">Convention de nommage<a class="headerlink" href="#convention-de-nommage" title="Permanent link">&para;</a></h2>
+<p>Observée dans le code :</p>
+<ul>
+<li><strong>Casse</strong> : <code>SCREAMING_SNAKE_CASE</code> uniquement, séparateur <code>_</code>.</li>
+<li><strong>Préfixe par domaine</strong> : <code>AUTH_</code>, <code>USERS_</code>, <code>USER_</code> (entité singulière), <code>RECIPES_</code>, <code>RECIPE_</code>, <code>COMMENTS_</code>, <code>COMMENT_</code>, <code>ADMIN_&lt;DOMAIN&gt;_</code>, <code>CONTACT_</code>, <code>MAIL_</code>, <code>PAGINATION_</code>, <code>&lt;DOMAIN&gt;_PAGINATION_</code>, <code>&lt;RÉFÉRENTIEL&gt;_</code> (<code>CATEGORY_</code>, <code>TAG_</code>, <code>INGREDIENT_</code>, <code>EQUIPMENT_</code>).</li>
+<li><strong>Verbe / action</strong> : <code>&lt;DOMAIN&gt;_&lt;ACTION&gt;_&lt;RAISON&gt;</code> (ex. <code>USERS_UPDATE_EMAIL_BAD_PASSWORD</code>, <code>ADMIN_USERS_BAN_REASON_TOO_SHORT</code>).</li>
+<li><strong>Raisons standardisées</strong> :</li>
+<li><code>BAD_&lt;CHAMP&gt;</code> : type / format invalide.</li>
+<li><code>MISSING_&lt;CHAMP&gt;</code> : champ requis absent.</li>
+<li><code>WEAK_&lt;CHAMP&gt;</code> : règle de robustesse non satisfaite (password, username, title).</li>
+<li><code>INVALID_&lt;CHAMP&gt;</code> : valeur sémantiquement incorrecte.</li>
+<li><code>&lt;X&gt;_TOO_SHORT</code> / <code>&lt;X&gt;_TOO_LONG</code> : violations de longueur.</li>
+<li><code>&lt;X&gt;_NOT_FOUND</code> : ressource absente (404).</li>
+<li><code>&lt;X&gt;_ACCESS_DENIED</code> / <code>&lt;X&gt;_FORBIDDEN</code> : autorisation refusée (403).</li>
+<li><code>&lt;X&gt;_ALREADY_USED</code> / <code>&lt;X&gt;_TAKEN</code> : conflit d'unicité (409).</li>
+<li><code>&lt;X&gt;_CANNOT_BE_&lt;VERB&gt;</code> : échec persistance (500).</li>
+<li><code>&lt;X&gt;_SEND_FAILED</code> : échec I/O externe (500).</li>
+<li><strong>Singulier vs pluriel</strong> : le code respecte le nombre d'instances ciblées (<code>USER_NOT_FOUND</code> pour un user vs <code>CATEGORIES_NOT_FOUND</code> pour une liste vide).</li>
+</ul>
+<h2 id="inconsistances">Inconsistances<a class="headerlink" href="#inconsistances" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Pluralisation incohérente sur "not found"</strong> :</li>
+<li><code>USER_NOT_FOUND</code> (singulier) mais utilisé pour la cible d'une action admin sur <strong>un</strong> utilisateur — OK.</li>
+<li><code>RECIPES_NOT_FOUND</code> est utilisé pour des recherches d'<strong>une</strong> recette (<code>services/recipes/recipes.services.ts:61,92,104</code>). Devrait être <code>RECIPE_NOT_FOUND</code>. Idem <code>COMMENTS_NOT_FOUND</code> côté admin sur des actions ciblant <strong>un</strong> commentaire (<code>services/admin/admin.comments.services.ts</code> 8 occurrences).</li>
+<li>
+<p>Inversement, <code>COMMENT_NOT_FOUND</code> (singulier) est utilisé côté user pour la même sémantique (<code>services/comments/comments.service.ts:25,42</code>) — divergence user/admin.</p>
+</li>
+<li>
+<p><strong><code>NOT_FOUND</code> non préfixé</strong> : <code>api/recipes/recipes.controller.ts:63</code> renvoie <code>NOT_FOUND</code> (au lieu de <code>RECIPES_NOT_FOUND</code>). Cassé du naming, et conflit potentiel avec un futur code global.</p>
+</li>
+<li>
+<p><strong><code>USER_BANNED</code> produit deux statuts HTTP différents</strong> :</p>
+</li>
+<li>401 dans <code>services/auth/auth.service.ts:89</code> (login).</li>
+<li>
+<p>403 dans <code>services/auth/email-validation.service.ts:66</code> (validation email d'un banni).
+   Choix conscient ou bug ? À clarifier — un bannissement à la validation devrait sans doute être 403 partout (ou 401 partout).</p>
+</li>
+<li>
+<p><strong>Codes MySQL fuités en HTTP 500</strong> : <code>DbError</code> ne traduit aucun code MySQL en <code>HttpError</code>. Un <code>ER_DUP_ENTRY</code> sur un insert (ex. course condition register / favori) renvoie 500 + code MySQL au client, alors qu'un 409 + <code>*_ALREADY_USED</code> serait attendu. Recommandation : ajouter un mapping dans <code>db/errors.ts</code> ou un wrapper côté service.</p>
+</li>
+<li>
+<p><strong>Messages 100 % en anglais</strong> : tous les <code>message</code> levés sont en anglais. Le frontend devra traduire via i18n (clé = <code>code</code>), ou bien centraliser les traductions backend-side. Une colonne "Message FR proposé" est donnée ci-dessus pour anticiper ce travail.</p>
+</li>
+<li>
+<p><strong>Codes "dynamiques" via préfixe</strong> : les codes contact <code>CONTACT_&lt;FIELD&gt;_TOO_SHORT|TOO_LONG</code> (<code>api/contact/contact.dto.ts:32,35</code>) sont concaténés à partir du nom de champ runtime. Risque : un champ inconnu produira un code non documenté. Mieux vaut figer la liste des champs admissibles.</p>
+</li>
+<li>
+<p><strong>Codes auth dupliqués entre DTO et service</strong> : <code>AUTH_MISSING_FIELDS</code>, <code>AUTH_INVALID_EMAIL</code>, <code>AUTH_WEAK_USERNAME</code>, <code>AUTH_WEAK_PASSWORD</code>, <code>USERS_UPDATE_EMAIL_MISSING_EMAIL</code>, <code>AUTH_EMAIL_VALIDATION_MISSING_TOKEN</code>, <code>AUTH_VALIDATION_RESEND_MISSING_EMAIL</code> sont levés à la fois dans le DTO et dans le service. Cohérent fonctionnellement (double rempart) mais à documenter pour le frontend.</p>
+</li>
+<li>
+<p><strong>Pas d'<code>AppError</code></strong> : la note initiale mentionnait <code>AppError</code>. La classe n'existe pas — c'est <code>HttpError</code> (+ <code>DbError</code>). Le naming <code>HttpError</code> est plus exact (couplé HTTP), à valider lors du futur portage si une autre couche de transport est envisagée.</p>
+</li>
+<li>
+<p><strong><code>asyncHandler</code> + court-circuits manuels</strong> : plusieurs controllers (<code>auth.controller.ts</code>, <code>users.controller.ts</code>, <code>recipes.controller.ts</code>) renvoient <code>res.status(...).json(...)</code> au lieu de <code>throw unauthorized(...)</code>. Comportement équivalent côté wire, mais contourne le logging centralisé et complique le suivi des codes.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../architecture/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Architecture du backend Recipe Shelter">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Architecture du backend Recipe Shelter
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../securite/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Sécurité — Recipe Shelter (Backend)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Sécurité — Recipe Shelter (Backend)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

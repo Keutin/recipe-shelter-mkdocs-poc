@@ -1,0 +1,4103 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="POC MkDocs Material pour le projet Recipe Shelter">
+      
+      
+        <meta name="author" content="POC sandbox (Quentin Lagenèbre)">
+      
+      
+        <link rel="canonical" href="https://keutin.github.io/recipe-shelter-mkdocs-poc/soutenance/backend/architecture/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../errors/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Architecture du backend Recipe Shelter - Recipe Shelter — Documentation (POC sandbox)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#architecture-du-backend-recipe-shelter" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-header__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Recipe Shelter — Documentation (POC sandbox)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Architecture du backend Recipe Shelter
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter — Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../GIT_CONVENTION/" class="md-tabs__link">
+        
+  
+    
+  
+  Recipe Shelter - Git Convention
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../deployment/" class="md-tabs__link">
+          
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../jury/" class="md-tabs__link">
+          
+  
+  Jury
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../manuel-utilisateur/" class="md-tabs__link">
+          
+  
+  Manuel utilisateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../meta/mkdocs/" class="md-tabs__link">
+          
+  
+  Meta
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Soutenance
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Recipe Shelter — Documentation (POC sandbox)" class="md-nav__button md-logo" aria-label="Recipe Shelter — Documentation (POC sandbox)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Recipe Shelter — Documentation (POC sandbox)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Keutin/recipe-shelter-mkdocs-poc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter — Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GIT_CONVENTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recipe Shelter - Git Convention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Déploiement — diagnostic et plan d'action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/01-options-comparees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Options de déploiement comparées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/02-plan-railway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan déploiement Railway pas-à-pas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/03-fallback-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan B et défense jury
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Jury
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Jury
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Banque de questions jury — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/00-questions-transversales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00 — Questions transversales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/01-bloc1-frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Bloc 1 : Front-End HTML/CSS/JS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/02-bloc2-backend-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — Bloc 2 : Back-End from scratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/03-bloc3-angular/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Bloc 3 : Framework (Angular)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/04-securite-rgpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 — Sécurité et RGPD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/05-pieges-et-defense/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 — Questions pièges et défense d'architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/06-ameliorations-innovantes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 — Améliorations innovantes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../jury/07-mode-entrainement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 — Mode d'entraînement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manuel utilisateur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Manuel utilisateur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide utilisateur — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/01-decouverte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Découvrir Recipe Shelter (sans compte)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/02-compte-utilisateur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Compte utilisateur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/03-utiliser-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Utiliser les recettes (membre connecté)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/04-administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../manuel-utilisateur/05-faq-incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. FAQ et messages d'erreur courants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Meta
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Meta
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MkDocs — Plan d'intégration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/01-architecture-et-justification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 — Architecture cible et justification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/02-plan-poc-sandbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 — POC sandbox côté Quentin (Keutin)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/mkdocs/03-walkthrough-handoff-arthur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 — Walkthrough handoff Arthur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Project context
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Project context
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/project-context/backend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../meta/project-context/frontend-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Context — Recipe Shelter Frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Slides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slides soutenance — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../slides/soutenance-slides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soutenance slides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Soutenance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Soutenance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    _draft_backend_docs/ — Documentation backend pour soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Architecture du backend Recipe Shelter
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Architecture du backend Recipe Shelter
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Vue d'ensemble
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-stack-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Stack technique
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-architecture-en-couches" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Architecture en couches
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Architecture en couches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-couche-api-controllers-routes-et-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Couche api/ — controllers, routes et DTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-couche-services-logique-metier" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Couche services/ — logique métier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-couche-repositories-acces-aux-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Couche repositories/ — accès aux données
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cablage-manuel-dans-appts" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Câblage manuel dans app.ts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Câblage manuel dans app.ts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etape-1-middlewares-globaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 1 — middlewares globaux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-2-instanciation-du-mailer-et-des-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 2 — instanciation du Mailer et des repositories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-3-configuration-du-middleware-requireauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 3 — configuration du middleware requireAuth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-4-instanciation-des-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 4 — instanciation des services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-5-instanciation-des-controllers-et-montage-des-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 5 — instanciation des controllers et montage des routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparaison-avec-un-framework-a-conteneur-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparaison avec un framework à conteneur DI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-domaines-fonctionnels" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Domaines fonctionnels
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-flux-dune-requete" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Flux d'une requête
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-persistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Persistance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Persistance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-pool-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Pool MySQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-helper-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Helper query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Transactions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-schema-de-base-de-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 Schéma de base de données
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-envoi-demails" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Envoi d'emails
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-authentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Authentification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-lecture-typee-et-fallbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1 Lecture typée et fallbacks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-variables-denvironnement-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2 Variables d'environnement principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-validation-au-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.3 Validation au boot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-gestion-des-erreurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Gestion des erreurs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Tests
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catalogue des codes d'erreur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../securite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sécurité — Recipe Shelter (Backend)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_5" id="__nav_8_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Adr
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Adr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR — Architecture Decision Records
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/00-narration-from-scratch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Narration "from scratch" — défense pour la soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-001-express-comme-couche-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-001 — Express comme couche HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-002-pattern-repository-interface-impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-002 — Pattern Repository : interface + implémentation MySQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-003-jwt-cookie-httponly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-003 — JWT en cookie HttpOnly (vs header Authorization)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-004-soft-delete-et-log-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-004 — Soft-delete et log de modération
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/adr-005-slug-en-deux-phases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR-005 — Slug en deux phases (brouillon puis public)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_6" id="__nav_8_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Diagrams
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g1-architecture-c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G1 — Architecture C4 Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g2-pipeline-middleware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G2 — Pipeline middleware Express
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g3-sequence-moderation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G3 — Séquence : modération d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/g4-sequence-auth-email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G4 — Séquences : reset password &amp; validation email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_7" id="__nav_8_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Uml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Uml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UML — Brouillons à intégrer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/01-diagramme-classes-domaine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Modèle de domaine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/02-diagramme-classes-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de classes — Architecture backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/03-diagramme-cas-utilisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de cas d'utilisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/04-diagramme-sequence-connexion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Connexion (login)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/05-diagramme-sequence-recette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagramme de séquence — Cycle de vie d'une recette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Demo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Demo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/comptes-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comptes de test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/scenario-demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scénario de démonstration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Frontend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3_1" id="__nav_8_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Audit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloc 1 — Audit Lighthouse + grille RGAA/WCAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/01-lighthouse-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lighthouse — Template d'audit à remplir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/02-rgaa-grille/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grille RGAA 4.1 / WCAG 2.1 AA — Recipe Shelter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/03-findings-detailles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Findings détaillés — audit statique frontend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/04-plan-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan de remédiation priorisé
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/audit/05-defense-jury/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Défendre le Bloc 1 en soutenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Vue d'ensemble
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-stack-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Stack technique
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-architecture-en-couches" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Architecture en couches
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Architecture en couches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-couche-api-controllers-routes-et-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Couche api/ — controllers, routes et DTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-couche-services-logique-metier" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Couche services/ — logique métier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-couche-repositories-acces-aux-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Couche repositories/ — accès aux données
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cablage-manuel-dans-appts" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Câblage manuel dans app.ts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Câblage manuel dans app.ts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etape-1-middlewares-globaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 1 — middlewares globaux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-2-instanciation-du-mailer-et-des-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 2 — instanciation du Mailer et des repositories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-3-configuration-du-middleware-requireauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 3 — configuration du middleware requireAuth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-4-instanciation-des-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 4 — instanciation des services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-5-instanciation-des-controllers-et-montage-des-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 5 — instanciation des controllers et montage des routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparaison-avec-un-framework-a-conteneur-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparaison avec un framework à conteneur DI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-domaines-fonctionnels" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Domaines fonctionnels
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-flux-dune-requete" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Flux d'une requête
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-persistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Persistance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Persistance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-pool-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Pool MySQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-helper-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Helper query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Transactions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-schema-de-base-de-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 Schéma de base de données
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-envoi-demails" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Envoi d'emails
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-authentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Authentification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-lecture-typee-et-fallbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1 Lecture typée et fallbacks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-variables-denvironnement-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2 Variables d'environnement principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-validation-au-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.3 Validation au boot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-gestion-des-erreurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Gestion des erreurs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Tests
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc/edit/main/docs/soutenance/backend/architecture.md" title="Editer cette page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="architecture-du-backend-recipe-shelter">Architecture du backend Recipe Shelter<a class="headerlink" href="#architecture-du-backend-recipe-shelter" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Document de référence pour la défense de soutenance (RNCP). Décrit l'architecture
+applicative du backend, ses choix techniques et ses partis pris pédagogiques.
+Versionné dans <code>documentation/soutenance/backend/architecture.md</code> (cible),
+brouillon courant dans <code>_draft_backend_docs/architecture.md</code>.</p>
+</blockquote>
+<h2 id="1-vue-densemble">1. Vue d'ensemble<a class="headerlink" href="#1-vue-densemble" title="Permanent link">&para;</a></h2>
+<p>Recipe Shelter est une plateforme communautaire de partage de recettes de cuisine.
+Le backend expose une API HTTP REST consommée exclusivement par le frontend
+Angular (et accessoirement par les tests E2E et l'interface d'administration).
+Il assume la totalité de la logique métier : gestion des comptes utilisateurs,
+cycle de vie des recettes (brouillon → soumission → modération → publication →
+archivage), interactions communautaires (commentaires, favoris) et workflows
+transverses (validation d'email, réinitialisation de mot de passe, formulaire
+de contact).</p>
+<p>Le projet est délibérément construit <strong>sans framework applicatif lourd</strong>. Il ne
+s'appuie ni sur NestJS, ni sur AdonisJS, ni sur un container d'injection de
+dépendances. Express 5 fournit le routeur HTTP et la chaîne de middlewares,
+<code>mysql2/promise</code> fournit le driver de base de données, le reste est écrit à la
+main : couches applicatives, câblage des dépendances, validation des DTO,
+gestion des erreurs, sérialisation des réponses. Ce choix est revendiqué : il
+permet de <strong>comprendre et de défendre chaque ligne de code</strong> lors de la
+soutenance, par opposition à une démarche où la magie d'un framework masque le
+fonctionnement réel de l'application.</p>
+<p>L'architecture est organisée en trois couches strictement séparées
+(<code>api/</code> → <code>services/</code> → <code>repositories/</code>), reliées entre elles par un <strong>câblage
+manuel explicite</strong> réalisé dans <code>backend/src/app.ts</code>. Chaque dépendance entre
+composants est visible dans ce fichier, ce qui en fait la pièce centrale pour
+expliquer comment l'application s'assemble.</p>
+<p>La base de données est MySQL 8, accédée via un pool de connexions partagé. Les
+transactions multi-tables (création d'une recette avec ses ingrédients, étapes,
+équipements et tags par exemple) sont gérées explicitement avec
+<code>BEGIN/COMMIT/ROLLBACK</code>. L'envoi d'emails (validation de compte, mot de passe
+oublié, formulaire de contact) repose sur Nodemailer via un service <code>Mailer</code>
+injecté aux services métier qui en ont besoin.</p>
+<h2 id="2-stack-technique">2. Stack technique<a class="headerlink" href="#2-stack-technique" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Bibliothèque</th>
+<th>Version</th>
+<th>Rôle / raison du choix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runtime</td>
+<td>Node.js</td>
+<td>&gt;= 20</td>
+<td>LTS, ESM natif, test runner intégré (<code>node:test</code>).</td>
+</tr>
+<tr>
+<td>Langage</td>
+<td>TypeScript</td>
+<td>^5.9.3</td>
+<td>Typage statique strict, contrats explicites entre couches, refactor sûr.</td>
+</tr>
+<tr>
+<td>Routeur HTTP</td>
+<td>express</td>
+<td>^5.2.1</td>
+<td>Minimaliste, pipeline de middlewares standard, large compatibilité.</td>
+</tr>
+<tr>
+<td>Driver base de données</td>
+<td>mysql2/promise</td>
+<td>^3.18.2</td>
+<td>Pool de connexions, requêtes préparées, <code>namedPlaceholders</code>, support Promise natif.</td>
+</tr>
+<tr>
+<td>Hashage mot de passe</td>
+<td>bcrypt</td>
+<td>^6.0.0</td>
+<td>Standard éprouvé, coût configurable (<code>BCRYPT_COST</code>, défaut 12).</td>
+</tr>
+<tr>
+<td>JWT</td>
+<td>jsonwebtoken</td>
+<td>^9.0.3</td>
+<td>Signature et vérification des sessions, payload typé <code>AuthTokenPayload</code>.</td>
+</tr>
+<tr>
+<td>Cookies</td>
+<td>cookie-parser</td>
+<td>^1.4.7</td>
+<td>Lecture du cookie de session HttpOnly côté serveur.</td>
+</tr>
+<tr>
+<td>CORS</td>
+<td>cors</td>
+<td>^2.8.6</td>
+<td>Allow-list explicite des origines autorisées, refus du wildcard avec <code>credentials: true</code>.</td>
+</tr>
+<tr>
+<td>Variables d'environnement</td>
+<td>dotenv</td>
+<td>^17.3.1</td>
+<td>Chargement du <code>.env</code> au démarrage, lecture typée via <code>utils/env.ts</code>.</td>
+</tr>
+<tr>
+<td>Envoi d'emails</td>
+<td>nodemailer</td>
+<td>^8.0.7</td>
+<td>SMTP standard, abstrait derrière l'interface <code>Mailer</code>.</td>
+</tr>
+<tr>
+<td>Test runner</td>
+<td>node:test (natif)</td>
+<td>n/a</td>
+<td>Pas de dépendance externe (Jest, Mocha) ; tests TypeScript via <code>tsx</code>.</td>
+</tr>
+<tr>
+<td>Lint</td>
+<td>ESLint + ts-eslint</td>
+<td>^9.39.4</td>
+<td>Règles strictes sur l'ordre des imports, les types implicites, le style.</td>
+</tr>
+</tbody>
+</table>
+<p>Toutes les dépendances de production tiennent sur <strong>huit packages</strong>. C'est
+volontairement minimal : chaque ligne du <code>package.json</code> représente une décision
+défendable plutôt qu'une dépendance transitive subie.</p>
+<p>Référence : <a href="backend/package.json:40-49">backend/package.json</a>.</p>
+<h2 id="3-architecture-en-couches">3. Architecture en couches<a class="headerlink" href="#3-architecture-en-couches" title="Permanent link">&para;</a></h2>
+<p>L'architecture suit un découpage en trois couches, du plus proche du transport
+HTTP au plus proche de la persistance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌──────────────────────────────────────────────────────────────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  api/        Controllers + Routes + DTO          (couche HTTP)   │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│      │       Parsing des requêtes, sérialisation des réponses    │
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│      ▼                                                            │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  services/   Logique métier, règles, orchestration               │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│      │       Indépendant d&#39;Express, testable en isolation        │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│      ▼                                                            │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  repositories/  Accès aux données : interface + impl + mapper    │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│                 Pattern Repository, isolation du SQL             │
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>└──────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                              │
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                              ▼
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                         MySQL (pool mysql2)
+</code></pre></div>
+<h3 id="31-couche-api-controllers-routes-et-dto">3.1 Couche <code>api/</code> — controllers, routes et DTO<a class="headerlink" href="#31-couche-api-controllers-routes-et-dto" title="Permanent link">&para;</a></h3>
+<p>Chaque domaine fonctionnel dispose d'un sous-dossier dans <code>backend/src/api/</code>
+qui contient au minimum trois fichiers :</p>
+<ul>
+<li><code>*.controller.ts</code> — adapte la requête HTTP au service métier ;</li>
+<li><code>*.routes.ts</code> — déclare les routes Express et leur enchaînement de middlewares ;</li>
+<li><code>*.dto.ts</code> — valide et type le payload entrant, formate la sortie si besoin.</li>
+</ul>
+<p><strong>Convention de nommage :</strong> les fabriques exportées sont nommées
+<code>createXxxController(service)</code> et <code>createXxxRouter(controller)</code>. Elles
+retournent respectivement un objet contenant des <code>RequestHandler</code> et un
+<code>Router</code> Express. Cette forme « factory » est la clé du câblage manuel : elle
+permet d'injecter les dépendances depuis <code>app.ts</code> sans recourir à un container.</p>
+<p>Extrait de <a href="backend/src/api/recipes/recipes.controller.ts:7">backend/src/api/recipes/recipes.controller.ts:7-20</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createRecipesController</span><span class="p">(</span><span class="nx">recipeService</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipeService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nx">getMyRecipes</span><span class="o">:</span><span class="w"> </span><span class="kt">asyncHandler</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">req</span><span class="p">.</span><span class="nx">auth</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 401 */</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">pagination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parsePaginationQuery</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;RECIPES_PAGINATION&#39;</span><span class="p">);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">recipeService</span><span class="p">.</span><span class="nx">getMine</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">pagination</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="p">}),</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="c1">// ...</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
+</code></pre></div>
+<p>Les controllers ne contiennent <strong>aucune logique métier</strong>. Ils se contentent de :</p>
+<ol>
+<li>lire la requête (auth, params, query, body) ;</li>
+<li>valider/parser le payload via les helpers <code>parseXxx</code> du DTO ;</li>
+<li>appeler le service ;</li>
+<li>sérialiser la réponse JSON avec le bon code HTTP.</li>
+</ol>
+<p>Le wrapper <a href="backend/src/api/http/async-handler.ts:3">asyncHandler</a> capture les
+exceptions des handlers <code>async</code> et les transmet à <code>next(err)</code>, ce qui les
+achemine vers le middleware d'erreur global sans avoir à écrire des <code>try/catch</code>
+dans chaque controller.</p>
+<p>Les routes décrivent l'enchaînement des middlewares pour chaque endpoint.
+Exemple <a href="backend/src/api/recipes/recipes.routes.ts:20">backend/src/api/recipes/recipes.routes.ts:20-35</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createRecipesRouter</span><span class="p">(</span><span class="nx">controller</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipesController</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Router</span><span class="p">();</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/me&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">requireAuth</span><span class="p">,</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">getMyRecipes</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">requireAuth</span><span class="p">,</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">createRecipe</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">optionalAuth</span><span class="p">,</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">getRecipes</span><span class="p">);</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:slug&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">optionalAuth</span><span class="p">,</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">getRecipeBySlug</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="c1">// ...</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">router</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
+</code></pre></div>
+<p>Les DTO (<code>*.dto.ts</code>) regroupent les fonctions de <strong>validation et de normalisation
+du payload entrant</strong>. Elles lèvent des <code>HttpError</code> 400 quand l'input est
+invalide, garantissant que les services métier reçoivent toujours des données
+bien formées. Cette discipline rend les services indifférents à la couche
+transport.</p>
+<h3 id="32-couche-services-logique-metier">3.2 Couche <code>services/</code> — logique métier<a class="headerlink" href="#32-couche-services-logique-metier" title="Permanent link">&para;</a></h3>
+<p>Les services contiennent la logique applicative : règles métier, orchestration
+de plusieurs repositories, calculs dérivés, contrôles d'autorisation
+fonctionnels (différents de l'authentification, traitée en middleware).</p>
+<p>Convention : chaque service est une <strong>classe</strong> dont le constructeur reçoit ses
+dépendances en paramètres. Aucun service n'importe Express, ni les types
+<code>Request</code>/<code>Response</code>. Cela permet de les tester sans avoir à monter un serveur
+HTTP : il suffit d'instancier la classe avec des doublures de repositories.</p>
+<p>Exemple — <a href="backend/src/services/recipes/recipes.services.ts:24">backend/src/services/recipes/recipes.services.ts:24-25</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">RecipeService</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">recipeRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipeRepository</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">recipeSlugService</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipeSlugService</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="c1">// ...</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
+</code></pre></div>
+<p>Quand un service a besoin de remonter une erreur HTTP au controller (par
+exemple « recette introuvable » ou « accès refusé »), il jette une <code>HttpError</code>
+construite via les helpers <code>notFound</code>, <code>forbidden</code>, <code>badRequest</code>, etc., depuis
+<a href="backend/src/utils/errors.ts:12">backend/src/utils/errors.ts</a>. Le middleware
+d'erreur global la traduit ensuite en réponse JSON normalisée.</p>
+<p>Certains services orchestrent <strong>plusieurs repositories</strong>. Par exemple
+<code>AuthService</code> reçoit le <code>UserRepository</code> et l'<code>EmailValidationService</code> pour
+déclencher l'envoi de l'email de validation lors de l'inscription
+(<a href="backend/src/services/auth/auth.service.ts:22">backend/src/services/auth/auth.service.ts:22</a>).
+<code>EmailValidationService</code> reçoit lui-même le <code>UserRepository</code>, son propre
+repository, le <code>Mailer</code> et l'URL du frontend. Cette composition est entièrement
+visible dans <code>app.ts</code> (voir section 4).</p>
+<h3 id="33-couche-repositories-acces-aux-donnees">3.3 Couche <code>repositories/</code> — accès aux données<a class="headerlink" href="#33-couche-repositories-acces-aux-donnees" title="Permanent link">&para;</a></h3>
+<p>C'est ici que se concentre <strong>tout le SQL</strong> de l'application. La couche est
+structurée autour de quatre fichiers par domaine :</p>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*.repository.interface.ts</code></td>
+<td>Interface TypeScript décrivant le contrat (méthodes attendues).</td>
+</tr>
+<tr>
+<td><code>*.repository.mysql.ts</code></td>
+<td>Implémentation concrète utilisant <code>mysql2</code>.</td>
+</tr>
+<tr>
+<td><code>*.mapper.ts</code></td>
+<td>Conversion des <code>Row</code> SQL (PascalCase) vers les modèles métier (camelCase).</td>
+</tr>
+<tr>
+<td><code>*.types.ts</code></td>
+<td>Types <code>*Row</code> (forme SQL) et types métier (forme applicative).</td>
+</tr>
+</tbody>
+</table>
+<p>Exemple — interface du repository des recettes,
+<a href="backend/src/repositories/recipes/recipe.repository.interface.ts:4">backend/src/repositories/recipes/recipe.repository.interface.ts:4-17</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">RecipeRepository</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nx">create</span><span class="p">(</span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipeInput</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Recipe</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">updateDraft</span><span class="p">(</span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="kt">UpdateRecipeInput</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Recipe</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">submit</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">slug</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Recipe</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nx">archive</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Recipe</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nx">findByUserId</span><span class="p">(</span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">pagination</span><span class="o">:</span><span class="w"> </span><span class="kt">PaginationOptions</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PaginatedResult</span><span class="o">&lt;</span><span class="nx">RecipeSummary</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nx">searchPublished</span><span class="p">(</span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">filters</span><span class="o">:</span><span class="w"> </span><span class="kt">RecipeSearchFilters</span><span class="p">,</span><span class="w"> </span><span class="nx">pagination</span><span class="o">:</span><span class="w"> </span><span class="kt">PaginationOptions</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PaginatedResult</span><span class="o">&lt;</span><span class="nx">RecipeListItem</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nx">findPublishedBySlug</span><span class="p">(</span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">slug</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RecipeDetail</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="c1">// ...</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
+</code></pre></div>
+<p>L'implémentation MySQL est dans
+<a href="backend/src/repositories/recipes/recipe.repository.mysql.ts:20">backend/src/repositories/recipes/recipe.repository.mysql.ts:20-21</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">RecipeRepositoryMysql</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">RecipeRepository</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">db</span><span class="o">:</span><span class="w"> </span><span class="kt">Pool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="c1">// ...</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Pourquoi cette séparation interface / implémentation ?</strong></p>
+<ol>
+<li>
+<p><strong>Testabilité.</strong> Les services dépendent de l'interface, pas de
+   l'implémentation MySQL. Les tests unitaires des services
+   (<a href="backend/tests/services/">backend/tests/services/</a>) instancient un objet
+   stub satisfaisant l'interface (souvent un objet littéral avec les méthodes
+   mockées), sans avoir besoin d'une base de données réelle.</p>
+</li>
+<li>
+<p><strong>Swap possible.</strong> En cas de changement de SGBD (PostgreSQL,
+   SQLite pour les tests, in-memory pour un script), il suffit de fournir une
+   nouvelle implémentation de l'interface. Le câblage change uniquement dans
+   <code>app.ts</code>. Aucune ligne de code métier ne bouge.</p>
+</li>
+<li>
+<p><strong>Documentation explicite.</strong> L'interface liste exactement ce que le
+   repository sait faire. Lire <code>recipe.repository.interface.ts</code> suffit à
+   comprendre l'API de persistance des recettes, sans avoir à parcourir des
+   centaines de lignes de SQL.</p>
+</li>
+</ol>
+<p>Les <strong>mappers</strong> (<a href="backend/src/repositories/recipes/recipe.mapper.ts:3">backend/src/repositories/recipes/recipe.mapper.ts:3</a>)
+isolent la traduction entre le format SQL (colonnes PascalCase typées
+<code>RecipeRow</code>) et le format métier (propriétés camelCase typées <code>Recipe</code>). Cette
+indirection permet de renommer une colonne sans propager le changement à toute
+l'application, et garantit que les services manipulent toujours des modèles
+typés.</p>
+<h2 id="4-cablage-manuel-dans-appts">4. Câblage manuel dans <code>app.ts</code><a class="headerlink" href="#4-cablage-manuel-dans-appts" title="Permanent link">&para;</a></h2>
+<p>Le fichier <a href="backend/src/app.ts:69">backend/src/app.ts</a> est la <strong>clé de voûte
+pédagogique</strong> du projet. Il rend explicite tout ce que des frameworks comme
+NestJS ou Spring cachent dans leur container d'injection. Sa lecture suffit à
+comprendre l'intégralité du graphe de dépendances de l'application.</p>
+<p>L'assemblage se fait en cinq étapes successives dans <code>createApp()</code> :</p>
+<h3 id="etape-1-middlewares-globaux">Étape 1 — middlewares globaux<a class="headerlink" href="#etape-1-middlewares-globaux" title="Permanent link">&para;</a></h3>
+<p><a href="backend/src/app.ts:80">backend/src/app.ts:80-82</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">({</span><span class="w"> </span><span class="nx">credentials</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="kt">origins</span><span class="w"> </span><span class="p">}));</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cookieParser</span><span class="p">());</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+</code></pre></div>
+<p>Ordre important : CORS doit s'appliquer avant tout, <code>cookieParser</code> doit avoir
+peuplé <code>req.cookies</code> avant que <code>requireAuth</code> ne lise le cookie de session, et
+<code>express.json()</code> doit avoir désérialisé le body avant que les controllers ne
+lisent <code>req.body</code>.</p>
+<p>Une garde explicite refuse <code>*</code> comme origine autorisée
+(<a href="backend/src/app.ts:77">backend/src/app.ts:77-78</a>) : avec
+<code>credentials: true</code>, le wildcard est interdit par la spec CORS et constituerait
+une faille de sécurité. Le code lève une erreur au boot plutôt que de laisser
+le serveur démarrer dans un état dangereux.</p>
+<h3 id="etape-2-instanciation-du-mailer-et-des-repositories">Étape 2 — instanciation du <code>Mailer</code> et des repositories<a class="headerlink" href="#etape-2-instanciation-du-mailer-et-des-repositories" title="Permanent link">&para;</a></h3>
+<p><a href="backend/src/app.ts:84">backend/src/app.ts:84-98</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">mailer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SmtpMailService</span><span class="p">(</span><span class="nx">env</span><span class="p">.</span><span class="nx">smtp</span><span class="p">);</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminCommentRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminCommentRepositoryMysql</span><span class="p">(</span><span class="nx">pool</span><span class="p">);</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminRecipeRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminRecipeRepositoryMysql</span><span class="p">(</span><span class="nx">pool</span><span class="p">);</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminUserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminUserRepositoryMysql</span><span class="p">(</span><span class="nx">pool</span><span class="p">);</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">categoryRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CategoryRepositoryMysql</span><span class="p">(</span><span class="nx">pool</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">commentRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CommentRepositoryMysql</span><span class="p">(</span><span class="nx">pool</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1">// ... 13 repositories au total</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="kd">const</span><span class="w"> </span><span class="nx">userRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserRepositoryMysql</span><span class="p">(</span><span class="nx">pool</span><span class="p">);</span>
+</code></pre></div>
+<p>Chaque repository reçoit le même <code>pool</code> mysql2. Une seule pool partagée pour
+toute l'application : c'est la bonne pratique pour mutualiser les connexions
+TCP vers MySQL.</p>
+<h3 id="etape-3-configuration-du-middleware-requireauth">Étape 3 — configuration du middleware <code>requireAuth</code><a class="headerlink" href="#etape-3-configuration-du-middleware-requireauth" title="Permanent link">&para;</a></h3>
+<p><a href="backend/src/app.ts:100">backend/src/app.ts:100</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">configureAuthUserRepository</span><span class="p">(</span><span class="nx">userRepository</span><span class="p">);</span>
+</code></pre></div>
+<p>Le middleware <code>requireAuth</code> a besoin de re-vérifier que l'utilisateur extrait
+du JWT existe toujours et est actif en base. Plutôt que d'importer
+directement le repository (ce qui créerait une dépendance statique difficile à
+tester), on lui injecte la dépendance via une fonction de configuration
+exécutée une fois au démarrage. Voir
+<a href="backend/src/middlewares/require-auth.ts:22">backend/src/middlewares/require-auth.ts:22</a>.</p>
+<h3 id="etape-4-instanciation-des-services">Étape 4 — instanciation des services<a class="headerlink" href="#etape-4-instanciation-des-services" title="Permanent link">&para;</a></h3>
+<p><a href="backend/src/app.ts:102">backend/src/app.ts:102-117</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminCommentService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminCommentService</span><span class="p">(</span><span class="nx">adminCommentRepository</span><span class="p">);</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminRecipeService</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminRecipeService</span><span class="p">(</span><span class="nx">recipeRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">adminRecipeRepository</span><span class="p">);</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">adminUserService</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdminUserService</span><span class="p">(</span><span class="nx">userRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">adminUserRepository</span><span class="p">);</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">emailValidationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EmailValidationService</span><span class="p">(</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="nx">userRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">emailValidationRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">mailer</span><span class="p">,</span><span class="w"> </span><span class="nx">env</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">frontendBaseUrl</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">);</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">authService</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AuthService</span><span class="p">(</span><span class="nx">userRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">emailValidationService</span><span class="p">);</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">categoryService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CategoryService</span><span class="p">(</span><span class="nx">categoryRepository</span><span class="p">);</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="kd">const</span><span class="w"> </span><span class="nx">commentService</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CommentService</span><span class="p">(</span><span class="nx">commentRepository</span><span class="p">);</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">contactService</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactService</span><span class="p">(</span><span class="nx">mailer</span><span class="p">);</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="kd">const</span><span class="w"> </span><span class="nx">equipmentService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EquipmentService</span><span class="p">(</span><span class="nx">equipmentRepository</span><span class="p">);</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="kd">const</span><span class="w"> </span><span class="nx">favoriteService</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FavoriteService</span><span class="p">(</span><span class="nx">favoriteRepository</span><span class="p">);</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">ingredientService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">IngredientService</span><span class="p">(</span><span class="nx">ingredientRepository</span><span class="p">);</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="kd">const</span><span class="w"> </span><span class="nx">passwordResetService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PasswordResetService</span><span class="p">(</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="nx">userRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">passwordResetRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">mailer</span><span class="p">,</span><span class="w"> </span><span class="nx">env</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">frontendBaseUrl</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="p">);</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="kd">const</span><span class="w"> </span><span class="nx">recipeSlugService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RecipeSlugService</span><span class="p">(</span><span class="nx">recipeRepository</span><span class="p">);</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="kd">const</span><span class="w"> </span><span class="nx">recipeService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RecipeService</span><span class="p">(</span><span class="nx">recipeRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">recipeSlugService</span><span class="p">);</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="kd">const</span><span class="w"> </span><span class="nx">tagService</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TagService</span><span class="p">(</span><span class="nx">tagRepository</span><span class="p">);</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="kd">const</span><span class="w"> </span><span class="nx">usersService</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserService</span><span class="p">(</span><span class="nx">userRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">recipeRepository</span><span class="p">);</span>
+</code></pre></div>
+<p>Chaque service reçoit explicitement les dépendances dont il a besoin. Aucune
+résolution automatique, aucun décorateur, aucun fichier de configuration : ce
+qui est ici est exactement ce qui s'exécute. Les <strong>dépendances croisées sont
+visibles à l'œil nu</strong> : <code>AuthService</code> dépend du <code>UserRepository</code> ET de
+<code>EmailValidationService</code>, <code>RecipeService</code> dépend du <code>RecipeRepository</code> ET du
+<code>RecipeSlugService</code>, etc.</p>
+<h3 id="etape-5-instanciation-des-controllers-et-montage-des-routes">Étape 5 — instanciation des controllers et montage des routes<a class="headerlink" href="#etape-5-instanciation-des-controllers-et-montage-des-routes" title="Permanent link">&para;</a></h3>
+<p><a href="backend/src/app.ts:119">backend/src/app.ts:119-147</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">recipesController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createRecipesController</span><span class="p">(</span><span class="nx">recipeService</span><span class="p">);</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">// ...</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/v1/recipes&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">createRecipesRouter</span><span class="p">(</span><span class="nx">recipesController</span><span class="p">));</span>
+</code></pre></div>
+<p>Tous les sous-routeurs sont préfixés par <code>/api/v1/</code> ce qui anticipe un
+versionnement futur de l'API sans casser les clients existants.</p>
+<p>Enfin, les deux middlewares terminaux sont montés :</p>
+<p><a href="backend/src/app.ts:149">backend/src/app.ts:149-150</a> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">notFound</span><span class="p">);</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">errorHandler</span><span class="p">);</span>
+</code></pre></div>
+<p><code>notFound</code> génère une 404 normalisée pour toute route non matchée,
+<code>errorHandler</code> est le <strong>point unique de sérialisation des erreurs</strong> vers une
+réponse JSON <code>{ error: { message, code } }</code>.</p>
+<h3 id="comparaison-avec-un-framework-a-conteneur-di">Comparaison avec un framework à conteneur DI<a class="headerlink" href="#comparaison-avec-un-framework-a-conteneur-di" title="Permanent link">&para;</a></h3>
+<p>Avec NestJS, Spring ou équivalent, le même graphe serait construit par
+décorateurs (<code>@Injectable</code>, <code>@Inject</code>, <code>@Module</code>) et résolu à l'exécution par
+un container qui scannerait les métadonnées. Le développeur ne voit plus le
+graphe : il déclare des intentions, le framework câble.</p>
+<p>Le choix inverse — <strong>câblage manuel explicite</strong> — a été retenu pour Recipe
+Shelter pour trois raisons pédagogiques :</p>
+<ol>
+<li><strong>Lisibilité immédiate.</strong> Un examinateur peut lire <code>app.ts</code> en deux minutes
+   et comprendre l'architecture complète.</li>
+<li><strong>Démonstration de l'inversion de dépendance.</strong> L'absence de magie rend
+   visible le fait que les services dépendent d'<strong>interfaces</strong> et que les
+   implémentations leur sont <strong>fournies de l'extérieur</strong> — la définition même
+   de l'IoC.</li>
+<li><strong>Aucune dépendance cachée.</strong> Le <code>package.json</code> ne contient aucun framework
+   d'injection ; il n'y a donc rien à apprendre d'autre que TypeScript et
+   Express pour modifier l'application.</li>
+</ol>
+<p>À une échelle bien plus grande (centaines de services), un container DI
+deviendrait préférable pour éviter un <code>app.ts</code> ingérable. À l'échelle du
+projet (≈15 domaines, ≈25 services), le câblage manuel reste lisible et
+parfaitement adapté.</p>
+<h2 id="5-domaines-fonctionnels">5. Domaines fonctionnels<a class="headerlink" href="#5-domaines-fonctionnels" title="Permanent link">&para;</a></h2>
+<p>L'API expose <strong>quinze sous-routeurs</strong> sous le préfixe <code>/api/v1/</code>. Chaque domaine
+correspond à un sous-dossier dans <code>api/</code>, <code>services/</code> et <code>repositories/</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Préfixe</th>
+<th>Domaine</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/v1/auth</code></td>
+<td>Authentification</td>
+<td>Inscription, login, logout, mot de passe oublié, validation d'email.</td>
+</tr>
+<tr>
+<td><code>/api/v1/users</code></td>
+<td>Utilisateurs</td>
+<td>Profil de l'utilisateur courant, données publiques d'un auteur.</td>
+</tr>
+<tr>
+<td><code>/api/v1/recipes</code></td>
+<td>Recettes</td>
+<td>CRUD recettes, recherche publique, brouillons, soumission, archivage.</td>
+</tr>
+<tr>
+<td><code>/api/v1/recipes/:recipeId/comments</code></td>
+<td>Commentaires de recette</td>
+<td>Sous-routeur imbriqué : commentaires liés à une recette donnée.</td>
+</tr>
+<tr>
+<td><code>/api/v1/comments</code></td>
+<td>Commentaires</td>
+<td>Endpoints transverses sur les commentaires (suppression par auteur).</td>
+</tr>
+<tr>
+<td><code>/api/v1/favorites</code></td>
+<td>Favoris</td>
+<td>Ajout/retrait d'une recette aux favoris de l'utilisateur.</td>
+</tr>
+<tr>
+<td><code>/api/v1/categories</code></td>
+<td>Catégories</td>
+<td>Référentiel des catégories de recettes.</td>
+</tr>
+<tr>
+<td><code>/api/v1/tags</code></td>
+<td>Tags</td>
+<td>Référentiel des tags applicables aux recettes.</td>
+</tr>
+<tr>
+<td><code>/api/v1/ingredients</code></td>
+<td>Ingrédients</td>
+<td>Référentiel des ingrédients.</td>
+</tr>
+<tr>
+<td><code>/api/v1/equipments</code></td>
+<td>Équipements</td>
+<td>Référentiel du matériel de cuisine.</td>
+</tr>
+<tr>
+<td><code>/api/v1/contact</code></td>
+<td>Contact</td>
+<td>Formulaire de contact public envoyé par email à l'administrateur.</td>
+</tr>
+<tr>
+<td><code>/api/v1/health</code></td>
+<td>Santé</td>
+<td>Endpoint de monitoring pour les sondes Kubernetes / supervision.</td>
+</tr>
+<tr>
+<td><code>/api/v1/admin/recipes</code></td>
+<td>Admin — recettes</td>
+<td>Modération : liste des recettes soumises, validation, rejet.</td>
+</tr>
+<tr>
+<td><code>/api/v1/admin/comments</code></td>
+<td>Admin — commentaires</td>
+<td>Modération des commentaires signalés.</td>
+</tr>
+<tr>
+<td><code>/api/v1/admin/users</code></td>
+<td>Admin — utilisateurs</td>
+<td>Gestion des comptes, bannissement, changement de rôle.</td>
+</tr>
+</tbody>
+</table>
+<p>Les trois domaines <code>admin/*</code> partagent une caractéristique : leurs routeurs
+sont systématiquement protégés par le middleware <code>requireAdmin</code> (en plus de
+<code>requireAuth</code>), qui vérifie que <code>req.auth.roleId === 1</code>.</p>
+<p>Le sous-routeur <code>comments</code> imbriqué sous <code>recipes/:recipeId/comments</code> est
+monté <strong>avant</strong> le routeur <code>recipes/</code> racine
+(<a href="backend/src/app.ts:144">backend/src/app.ts:144-145</a>) pour qu'Express
+matche la route la plus spécifique en premier.</p>
+<h2 id="6-flux-dune-requete">6. Flux d'une requête<a class="headerlink" href="#6-flux-dune-requete" title="Permanent link">&para;</a></h2>
+<p>Suivons un cas concret : un utilisateur authentifié crée une recette via
+<code>POST /api/v1/recipes</code>. Voici le chemin parcouru par la requête, du socket
+TCP jusqu'à la base de données et retour.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Client (Angular)
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    │
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    │  POST /api/v1/recipes
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    │  Cookie: rs_session=&lt;jwt&gt;
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    │  Content-Type: application/json
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    │  Body: { title, description, ingredients, steps, ... }
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    ▼
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>┌─────────────────────────────────────────────────────────────────┐
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>│  Express — pipeline de middlewares globaux                      │
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>├─────────────────────────────────────────────────────────────────┤
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>│  1. cors          → valide l&#39;origine, écrit Access-Control-*    │
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>│  2. cookieParser  → req.cookies.rs_session = &#39;&lt;jwt&gt;&#39;            │
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>│  3. express.json  → req.body = { title, ... }                   │
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>└─────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>    │
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    ▼
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>┌─────────────────────────────────────────────────────────────────┐
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>│  Router /api/v1/recipes → POST &#39;/&#39;                              │
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>├─────────────────────────────────────────────────────────────────┤
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>│  4. requireAuth                                                 │
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>│     - lit le JWT dans req.cookies.rs_session                    │
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>│     - jwt.verify(token, JWT_SECRET)                             │
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>│     - parseAuthPayload(payload)                                 │
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>│     - userRepository.findById(userId) → vérifie status=&#39;active&#39; │
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>│     - req.auth = { userId, username, roleId, status }           │
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>│  5. controller.createRecipe (asyncHandler)                      │
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>└─────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>    │
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>    ▼
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>┌─────────────────────────────────────────────────────────────────┐
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>│  Controller — RecipesController.createRecipe                    │
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>├─────────────────────────────────────────────────────────────────┤
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>│  6. parseCreateRecipeBody(req.body)                             │
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>│     → lève HttpError 400 si le payload est invalide             │
+<a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>│  7. recipeService.create(req.auth.userId, body)                 │
+<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>└─────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a>    │
+<a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>    ▼
+<a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>┌─────────────────────────────────────────────────────────────────┐
+<a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a>│  Service — RecipeService.create                                 │
+<a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>├─────────────────────────────────────────────────────────────────┤
+<a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a>│  8. recipeSlugService.createDraftSlug(userId)                   │
+<a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a>│     → calcule un slug unique pour le brouillon                  │
+<a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a>│  9. normalizeCreateRecipeInput(...)                             │
+<a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a>│     → trim, valeurs par défaut, dédoublonnage des tags          │
+<a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a>│ 10. recipeRepository.create(normalizedInput)                    │
+<a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a>└─────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a>    │
+<a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a>    ▼
+<a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a>┌─────────────────────────────────────────────────────────────────┐
+<a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a>│  Repository — RecipeRepositoryMysql.create                      │
+<a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a>├─────────────────────────────────────────────────────────────────┤
+<a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a>│ 11. connection.beginTransaction()                               │
+<a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a>│ 12. INSERT INTO Recipes ...                                     │
+<a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a>│ 13. INSERT INTO RecipeIngredients ... (N lignes)                │
+<a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a>│ 14. INSERT INTO RecipeSteps ... (N lignes)                      │
+<a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a>│ 15. INSERT INTO RecipeEquipments ... (N lignes)                 │
+<a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a>│ 16. INSERT INTO RecipeTags ... (N lignes)                       │
+<a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a>│ 17. connection.commit()  (rollback en cas d&#39;erreur)             │
+<a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a>│ 18. findById(recipeId) → SELECT + mapRecipe(row)                │
+<a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a>└─────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a>    │
+<a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a>    ▼  Recipe (modèle métier)
+<a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a>┌─────────────────────────────────────────────────────────────────┐
+<a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a>│  Controller — sérialisation                                     │
+<a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a>├─────────────────────────────────────────────────────────────────┤
+<a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a>│ 19. res.status(201).json(result)                                │
+<a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a>└─────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a>    │
+<a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a>    ▼
+<a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a>Client reçoit 201 Created + Recipe au format JSON
+</code></pre></div>
+<p>En cas d'exception levée à n'importe quelle étape, <code>asyncHandler</code> la transmet
+à <code>next(err)</code>, ce qui court-circuite la chaîne et invoque
+<a href="backend/src/middlewares/error-handler.ts:12">errorHandler</a> qui produit la
+réponse <code>{ error: { message, code } }</code> avec le bon code HTTP.</p>
+<p>Pour la visualisation graphique de ce pipeline, voir
+<a href="../diagrams/g2-pipeline-middleware/">diagrams/g2-pipeline-middleware.md</a>.
+Pour le diagramme C4 de l'architecture globale, voir
+<a href="../diagrams/g1-architecture-c4/">diagrams/g1-architecture-c4.md</a>.</p>
+<h2 id="7-persistance">7. Persistance<a class="headerlink" href="#7-persistance" title="Permanent link">&para;</a></h2>
+<h3 id="71-pool-mysql">7.1 Pool MySQL<a class="headerlink" href="#71-pool-mysql" title="Permanent link">&para;</a></h3>
+<p>Le module <a href="backend/src/db/pool.ts:5">backend/src/db/pool.ts</a> instancie une
+unique pool <code>mysql2/promise</code> partagée par tous les repositories :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mysql</span><span class="p">.</span><span class="nx">createPool</span><span class="p">({</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">env.db.host</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">env.db.port</span><span class="p">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">env.db.user</span><span class="p">,</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="kt">env.db.password</span><span class="p">,</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="kt">env.db.name</span><span class="p">,</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">  </span><span class="nx">waitForConnections</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">  </span><span class="nx">connectionLimit</span><span class="o">:</span><span class="w"> </span><span class="kt">env.db.connectionLimit</span><span class="p">,</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">  </span><span class="nx">enableKeepAlive</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">  </span><span class="nx">keepAliveInitialDelay</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">  </span><span class="nx">timezone</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Z&#39;</span><span class="p">,</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">  </span><span class="nx">namedPlaceholders</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="p">});</span>
+</code></pre></div>
+<p>Points notables :</p>
+<ul>
+<li><code>connectionLimit</code> paramétrable via <code>DB_CONNECTION_LIMIT</code> (défaut 10).</li>
+<li><code>waitForConnections: true</code> : si la pool est saturée, les requêtes attendent
+  une connexion plutôt que d'échouer immédiatement.</li>
+<li><code>enableKeepAlive: true</code> : évite que les firewalls coupent les connexions
+  inactives.</li>
+<li><code>timezone: 'Z'</code> : force UTC pour éviter les ambiguïtés de fuseau horaire
+  entre l'application et MySQL.</li>
+<li><code>namedPlaceholders: true</code> : autorise la syntaxe <code>:nom</code> dans les requêtes
+  préparées (utilisé pour les requêtes longues à nombreux paramètres).</li>
+</ul>
+<h3 id="72-helper-query">7.2 Helper <code>query</code><a class="headerlink" href="#72-helper-query" title="Permanent link">&para;</a></h3>
+<p><a href="backend/src/db/query.ts:21">backend/src/db/query.ts:21</a> enveloppe <code>pool.execute</code>
+avec :</p>
+<ul>
+<li>mesure du temps d'exécution (<code>performance.now()</code>) ;</li>
+<li>log debug systématique, log warning au-delà de 200 ms (<code>SLOW_QUERY_MS</code>) ;</li>
+<li>traduction des erreurs SQL en <code>DbError</code> typé via
+  <a href="backend/src/db/errors.ts:15">toDbError</a> ;</li>
+<li>support d'une connexion explicite (pour participer à une transaction).</li>
+</ul>
+<h3 id="73-transactions">7.3 Transactions<a class="headerlink" href="#73-transactions" title="Permanent link">&para;</a></h3>
+<p>Le helper <a href="backend/src/db/transaction.ts:5">transaction</a> standardise le pattern
+<code>beginTransaction / commit / rollback</code> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">transaction</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">fn</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="o">:</span><span class="w"> </span><span class="kt">PoolConnection</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pool</span><span class="p">.</span><span class="nx">getConnection</span><span class="p">();</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">beginTransaction</span><span class="p">();</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fn</span><span class="p">(</span><span class="nx">conn</span><span class="p">);</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">commit</span><span class="p">();</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">rollback</span><span class="p">();</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">        </span><span class="nx">conn</span><span class="p">.</span><span class="nx">release</span><span class="p">();</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="p">}</span>
+</code></pre></div>
+<p>Les repositories qui ont besoin d'écrire sur plusieurs tables de manière
+atomique (création d'une recette avec ses ingrédients, étapes, équipements,
+tags) gèrent leur propre transaction inline avec
+<code>connection.beginTransaction()</code> pour pouvoir intercaler des requêtes
+intermédiaires et utiliser les <code>insertId</code> au fil de l'eau — voir
+<a href="backend/src/repositories/recipes/recipe.repository.mysql.ts:23">backend/src/repositories/recipes/recipe.repository.mysql.ts:23-56</a>.</p>
+<h3 id="74-schema-de-base-de-donnees">7.4 Schéma de base de données<a class="headerlink" href="#74-schema-de-base-de-donnees" title="Permanent link">&para;</a></h3>
+<p>Le schéma relationnel complet est documenté sous forme graphique dans
+<a href="../database/Schema.svg">database/Schema.svg</a>.
+Les principales tables sont :</p>
+<ul>
+<li><code>Users</code>, <code>Roles</code> — comptes utilisateurs et rôles applicatifs ;</li>
+<li><code>Recipes</code>, <code>RecipeIngredients</code>, <code>RecipeSteps</code>, <code>RecipeEquipments</code>, <code>RecipeTags</code> —
+  cœur du modèle, une recette + ses dépendances ;</li>
+<li><code>Categories</code>, <code>Tags</code>, <code>Ingredients</code>, <code>Equipments</code> — référentiels ;</li>
+<li><code>Comments</code>, <code>Favorites</code> — interactions communautaires ;</li>
+<li><code>EmailValidations</code>, <code>PasswordResets</code> — tokens à durée de vie limitée pour les
+  workflows d'authentification.</li>
+</ul>
+<p>Les contraintes d'intégrité (clés étrangères, <code>ON DELETE CASCADE</code>, index
+uniques sur slug et email) sont déclarées au niveau du schéma SQL et servent
+de filet de sécurité en complément des règles applicatives.</p>
+<h2 id="8-envoi-demails">8. Envoi d'emails<a class="headerlink" href="#8-envoi-demails" title="Permanent link">&para;</a></h2>
+<p>L'envoi d'emails est centralisé dans une <strong>interface <code>Mailer</code></strong>
+(<a href="backend/src/services/mail/mail.types.ts">backend/src/services/mail/mail.types.ts</a>)
+implémentée par <a href="backend/src/services/mail/mail.service.ts:19">SmtpMailService</a>
+qui utilise Nodemailer en arrière-plan.</p>
+<p>Trois services métier consomment le <code>Mailer</code> :</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Email envoyé</th>
+<th>Déclencheur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EmailValidationService</code></td>
+<td>Email de validation de compte</td>
+<td>Inscription, ré-envoi sur demande</td>
+</tr>
+<tr>
+<td><code>PasswordResetService</code></td>
+<td>Email de réinitialisation</td>
+<td>Formulaire « mot de passe oublié »</td>
+</tr>
+<tr>
+<td><code>PasswordResetService</code></td>
+<td>Email de confirmation de changement</td>
+<td>Changement effectif du mot de passe</td>
+</tr>
+<tr>
+<td><code>ContactService</code></td>
+<td>Email de contact à l'administrateur</td>
+<td>Soumission du formulaire <code>/api/v1/contact</code></td>
+</tr>
+</tbody>
+</table>
+<p>Les emails applicatifs (validation, mot de passe) utilisent l'expéditeur
+<code>SMTP_FROM</code>. L'email de contact utilise également <code>SMTP_FROM</code> comme expéditeur
+mais place l'adresse du visiteur en <code>Reply-To</code> pour permettre une réponse
+directe.</p>
+<p>Le service vérifie la complétude de la configuration SMTP avant tout envoi et
+lève une <code>HttpError</code> 500 normalisée (<code>MAIL_SEND_FAILED</code> ou <code>CONTACT_SEND_FAILED</code>)
+si une variable obligatoire manque. Cela évite de découvrir un problème de
+configuration uniquement à l'exécution.</p>
+<h2 id="9-authentification">9. Authentification<a class="headerlink" href="#9-authentification" title="Permanent link">&para;</a></h2>
+<p>L'authentification repose sur un <strong>JWT signé</strong> transporté dans un <strong>cookie
+HttpOnly + Secure + SameSite</strong>. Le détail des règles de sécurité (politique
+de mot de passe, rate limiting, durée de vie des tokens, headers cookies) est
+documenté dans <a href="../securite/">securite.md</a>.</p>
+<p>En synthèse :</p>
+<ul>
+<li>À l'inscription, <code>AuthService.register</code>
+  (<a href="backend/src/services/auth/auth.service.ts:39">backend/src/services/auth/auth.service.ts:39</a>)
+  valide le payload, hashe le mot de passe avec bcrypt (<code>BCRYPT_COST=12</code>),
+  crée l'utilisateur en statut <code>inactive</code> et délègue à
+  <code>EmailValidationService</code> l'envoi de l'email d'activation.</li>
+<li>Au login, <code>AuthService.login</code> vérifie le hash bcrypt et le statut du compte
+  (<code>inactive</code>, <code>banned</code> → 401), puis signe un JWT contenant
+  <code>{ sub, username, roleId, status }</code>.</li>
+<li>Le controller pose le cookie de session via les options définies dans
+  <code>env.auth.sessionCookie*</code> (HttpOnly, Secure en production, SameSite=lax par
+  défaut, expiration alignée sur le JWT).</li>
+<li>Sur chaque requête authentifiée, <a href="backend/src/middlewares/require-auth.ts:69">requireAuth</a>
+  lit le cookie, vérifie le JWT, <strong>re-charge l'utilisateur depuis la base</strong> et
+  contrôle qu'il est toujours <code>active</code>. Cette double vérification permet de
+  révoquer immédiatement un utilisateur banni sans attendre l'expiration du
+  JWT.</li>
+<li><a href="backend/src/middlewares/require-auth.ts:94">optionalAuth</a> est une variante
+  qui peuple <code>req.auth</code> si le cookie est valide mais n'échoue pas s'il est
+  absent — utilisée pour les routes publiques qui adaptent leur réponse selon
+  que l'utilisateur est connecté ou non (ex. marquer les recettes en favori).</li>
+</ul>
+<h2 id="10-configuration">10. Configuration<a class="headerlink" href="#10-configuration" title="Permanent link">&para;</a></h2>
+<p>Toute la configuration runtime de l'application transite par un <strong>objet <code>env</code>
+unique et typé</strong> exporté depuis <a href="backend/src/utils/env.ts:71">backend/src/utils/env.ts</a>.
+Aucun module n'accède directement à <code>process.env</code> en dehors de ce fichier.</p>
+<h3 id="101-lecture-typee-et-fallbacks">10.1 Lecture typée et fallbacks<a class="headerlink" href="#101-lecture-typee-et-fallbacks" title="Permanent link">&para;</a></h3>
+<p>Le module définit des fonctions utilitaires qui convertissent les chaînes
+brutes de <code>process.env</code> en valeurs typées avec un fallback explicite :</p>
+<ul>
+<li><code>readNumber(value, fallback)</code> — entier, retombe sur <code>fallback</code> si invalide.</li>
+<li><code>readBoolean(value, fallback)</code> — accepte <code>1/0/true/false/yes/no/on/off</code>.</li>
+<li><code>readString(value, fallback)</code> — non vide après trim.</li>
+<li><code>readOptionalString(value)</code> — <code>undefined</code> si absent.</li>
+<li><code>readSameSite(value, fallback)</code> — restreint à <code>'strict' | 'lax' | 'none'</code>.</li>
+<li><code>readDurationMs(value, fallback)</code> — parse <code>7d</code>, <code>30m</code>, <code>500ms</code>, etc.</li>
+</ul>
+<p>Cette discipline garantit qu'un <code>env.auth.bcryptCost</code> est <strong>toujours un
+<code>number</code></strong>, pas un <code>string | undefined</code> qu'il faudrait re-vérifier dans chaque
+appel à bcrypt.</p>
+<h3 id="102-variables-denvironnement-principales">10.2 Variables d'environnement principales<a class="headerlink" href="#102-variables-denvironnement-principales" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Défaut</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NODE_ENV</code></td>
+<td><code>development</code></td>
+<td>Active des comportements production (cookie secure).</td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td><code>3000</code></td>
+<td>Port d'écoute HTTP.</td>
+</tr>
+<tr>
+<td><code>CORS_ALLOWED_ORIGINS</code></td>
+<td><code>http://localhost:4200,...</code></td>
+<td>Allow-list CSV d'origines (refus de <code>*</code>).</td>
+</tr>
+<tr>
+<td><code>FRONTEND_BASE_URL</code></td>
+<td><code>http://localhost:4200</code></td>
+<td>Base URL utilisée dans les liens des emails.</td>
+</tr>
+<tr>
+<td><code>DB_HOST</code>, <code>DB_PORT</code>, <code>DB_USER</code>, ...</td>
+<td><code>127.0.0.1</code>, <code>3306</code>, <code>root</code>, ...</td>
+<td>Connexion MySQL.</td>
+</tr>
+<tr>
+<td><code>DB_CONNECTION_LIMIT</code></td>
+<td><code>10</code></td>
+<td>Taille de la pool de connexions.</td>
+</tr>
+<tr>
+<td><code>JWT_SECRET</code></td>
+<td><strong>obligatoire</strong> (sinon throw)</td>
+<td>Clé de signature des JWT.</td>
+</tr>
+<tr>
+<td><code>JWT_EXPIRES_IN</code></td>
+<td><code>7d</code></td>
+<td>Durée de vie du JWT (format <code>7d</code>, <code>30m</code>, ...).</td>
+</tr>
+<tr>
+<td><code>AUTH_SESSION_COOKIE_NAME</code></td>
+<td><code>rs_session</code></td>
+<td>Nom du cookie de session.</td>
+</tr>
+<tr>
+<td><code>AUTH_SESSION_COOKIE_SAME_SITE</code></td>
+<td><code>lax</code></td>
+<td>Politique SameSite (<code>strict</code>, <code>lax</code>, <code>none</code>).</td>
+</tr>
+<tr>
+<td><code>AUTH_SESSION_COOKIE_SECURE</code></td>
+<td><code>true</code> en prod</td>
+<td>Flag Secure sur le cookie.</td>
+</tr>
+<tr>
+<td><code>BCRYPT_COST</code></td>
+<td><code>12</code></td>
+<td>Coût bcrypt (10–14 recommandé).</td>
+</tr>
+<tr>
+<td><code>AUTH_RATE_LIMIT_MAX_ATTEMPTS</code></td>
+<td><code>5</code></td>
+<td>Nombre max de tentatives par fenêtre (login, register).</td>
+</tr>
+<tr>
+<td><code>AUTH_RATE_LIMIT_WINDOW_MS</code></td>
+<td><code>900000</code> (15 min)</td>
+<td>Fenêtre du rate limiter.</td>
+</tr>
+<tr>
+<td><code>SMTP_HOST</code>, <code>SMTP_PORT</code>, <code>SMTP_USER</code>...</td>
+<td>vide</td>
+<td>Configuration SMTP (validée au moment de l'envoi).</td>
+</tr>
+<tr>
+<td><code>CONTACT_RECIPIENT_EMAIL</code></td>
+<td>vide</td>
+<td>Destinataire du formulaire de contact.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="103-validation-au-boot">10.3 Validation au boot<a class="headerlink" href="#103-validation-au-boot" title="Permanent link">&para;</a></h3>
+<p>Deux validations sont effectuées <strong>au démarrage</strong> plutôt qu'à l'usage :</p>
+<ol>
+<li><strong><code>JWT_SECRET</code> absent</strong> → <code>throw new Error('JWT_SECRET is required')</code> au
+   chargement du module env, le serveur ne démarre pas.</li>
+<li><strong><code>CORS_ALLOWED_ORIGINS</code> contient <code>*</code> avec <code>credentials: true</code></strong> → throw
+   dans <code>createApp</code>, le serveur ne démarre pas.</li>
+</ol>
+<p>Ces deux gardes interdisent de lancer l'application dans un état non
+sécurisable. Les autres variables ont des défauts raisonnables pour le
+développement, et la validation SMTP est différée au premier envoi d'email
+(pour permettre un démarrage sans SMTP en dev local).</p>
+<h2 id="11-gestion-des-erreurs">11. Gestion des erreurs<a class="headerlink" href="#11-gestion-des-erreurs" title="Permanent link">&para;</a></h2>
+<p>Le projet utilise une classe d'erreur applicative unique,
+<a href="backend/src/utils/errors.ts:1">HttpError</a> (et non <code>AppError</code>), qui encapsule
+trois informations :</p>
+<ul>
+<li><code>status: number</code> — code HTTP (400, 401, 403, 404, 409, 500) ;</li>
+<li><code>message: string</code> — message humain ;</li>
+<li><code>code?: string</code> — code applicatif stable (ex. <code>AUTH_INVALID_CREDENTIALS</code>,
+  <code>RECIPES_NOT_FOUND</code>) que le frontend peut matcher pour afficher un message
+  localisé.</li>
+</ul>
+<p>Des helpers <code>badRequest</code>, <code>unauthorized</code>, <code>forbidden</code>, <code>notFound</code>, <code>conflict</code>,
+<code>internalError</code> couvrent les cas usuels.</p>
+<p>Le middleware <a href="backend/src/middlewares/error-handler.ts:12">errorHandler</a> est
+le <strong>point unique de sérialisation</strong> des erreurs. Toute exception levée dans
+un controller ou un service, propagée par <code>next(err)</code>, est traduite en :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>avec le bon code HTTP. Les erreurs 5xx sont loggées avec leur stack ; les 4xx
+sont retournées sans bruit (elles correspondent à des comportements clients
+attendus).</p>
+<p>Le middleware <a href="backend/src/middlewares/not-found.ts:3">notFound</a> intercepte les
+routes non matchées et émet une 404 normalisée (<code>ROUTE_NOT_FOUND</code>).</p>
+<p>Le catalogue exhaustif des codes d'erreur applicatifs (avec leur signification
+et la couche qui les émet) est documenté dans
+<a href="../errors/">errors.md</a>.</p>
+<h2 id="12-tests">12. Tests<a class="headerlink" href="#12-tests" title="Permanent link">&para;</a></h2>
+<p>Les tests automatisés vivent dans <a href="backend/tests/">backend/tests/</a> et
+reproduisent la structure de <code>src/</code> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>backend/tests/
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>├── api/
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>│   ├── admin/          (3 fichiers : admin.comments|recipes|users.dto.test.ts)
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>│   ├── auth/           (auth.controller + auth.dto)
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>│   ├── comments/       (comments.dto)
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>│   ├── contact/        (contact.dto)
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>│   ├── recipes/        (recipes.dto)
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>│   └── users/          (users.dto)
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>├── middlewares/        (error-handler, not-found, rate-limiter,
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>│                        require-admin, require-auth)
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>├── repositories/
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>│   ├── comments/       (comments.mapper)
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>│   └── recipes/        (recipe.mapper)
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>├── services/
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>│   ├── admin/          (admin.comments|recipes|users.service)
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>│   ├── auth/           (auth, email-validation, password-policy,
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>│   │                    password-reset)
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>│   ├── comments/       (comments.service)
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>│   ├── recipes/        (recipe-slug, recipes.service)
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>│   └── users/          (users.service)
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>└── utils/
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>    ├── pagination.test.ts
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>    └── security/password-reset-token.test.ts
+</code></pre></div>
+<p>Soit <strong>29 fichiers de tests</strong> couvrant les trois couches. Les services sont
+testés en isolation avec des doublures de repositories ; les middlewares sont
+testés avec des objets <code>req</code>/<code>res</code> simulés ; les mappers sont testés sur
+des lignes SQL fabriquées à la main ; les DTO sont testés sur des payloads
+valides et invalides.</p>
+<p>Le <strong>test runner est le runner natif de Node</strong>
+(<code>node --import tsx --test "tests/**/*.test.ts"</code>, voir
+<a href="backend/package.json:14">backend/package.json:14</a>), exécuté via <code>tsx</code> pour
+transpiler le TypeScript à la volée. Aucune dépendance externe (Jest, Mocha,
+Vitest) : seul le runtime Node est requis. C'est cohérent avec la philosophie
+« from scratch » du projet et avec la volonté de minimiser la surface
+d'apprentissage de la stack.</p>
+<p>Les tests E2E (parcours complets avec une base de données réelle) ne sont
+pas dans ce répertoire : ils relèvent de la stratégie de test du frontend
+(Playwright/Cypress) et sont documentés séparément.</p>
+<hr />
+<p><strong>Documents associés</strong> :</p>
+<ul>
+<li><a href="../diagrams/g1-architecture-c4/">diagrams/g1-architecture-c4.md</a> — diagrammes C4 contexte/conteneur/composant.</li>
+<li><a href="../diagrams/g2-pipeline-middleware/">diagrams/g2-pipeline-middleware.md</a> — diagramme de séquence du pipeline de middlewares.</li>
+<li><a href="../securite/">securite.md</a> — sécurité applicative en détail (JWT, cookies, bcrypt, rate limiting, CORS).</li>
+<li><a href="../errors/">errors.md</a> — catalogue exhaustif des codes d'erreur applicatifs.</li>
+<li><code>CAHIER_DES_CHARGES.md</code> — exigences fonctionnelles et non fonctionnelles (à la racine du workspace, hors du site).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Précédent: _draft_backend_docs/ — Documentation backend pour soutenance">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                _draft_backend_docs/ — Documentation backend pour soutenance
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../errors/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Catalogue des codes d&#39;erreur">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Catalogue des codes d'erreur
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Keutin/recipe-shelter-mkdocs-poc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>
