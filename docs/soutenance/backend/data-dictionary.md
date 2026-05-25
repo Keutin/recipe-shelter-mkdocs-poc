@@ -30,7 +30,7 @@ résiduels (le plus important étant l'absence d'un statut `deleted` pour les
 utilisateurs — voir §3.2).
 
 La **source unique de vérité** est le script de migration
-[`backend/database/migrations/1_create_schema.sql`](backend/database/migrations/1_create_schema.sql).
+``backend/database/migrations/1_create_schema.sql``.
 Toute divergence entre ce document et ce fichier doit être traitée comme un
 bug du document, jamais du SQL.
 
@@ -552,12 +552,12 @@ repositories concernés et de ce data dictionary, dans le même commit**.
   (à venir).
 - Architecture applicative, §9 Persistence (pool MySQL, transactions,
   pattern Repository) :
-  [`_draft_backend_docs/architecture.md`](_draft_backend_docs/architecture.md).
+  ``_draft_backend_docs/architecture.md``.
 - Catalogue des erreurs renvoyées par la couche persistance (codes
   applicatifs, mapping HTTP) :
-  [`_draft_backend_docs/errors.md`](_draft_backend_docs/errors.md).
+  ``_draft_backend_docs/errors.md``.
 - Source unique de vérité du schéma :
-  [`backend/database/migrations/1_create_schema.sql`](backend/database/migrations/1_create_schema.sql).
+  ``backend/database/migrations/1_create_schema.sql``.
 - Inventaire RGPD et trous résiduels (notamment l'absence de
   soft-delete utilisateur) : `_draft_securite/securite.md`, Vague 1.
 - ADR-004 sur le soft-delete des commentaires : à référencer depuis le

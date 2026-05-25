@@ -20,7 +20,7 @@ import, qui est déclenché par `backend/src/app.ts`. Toute variable obligatoire
 manquante fait planter le processus immédiatement, avant même que le serveur
 HTTP n'écoute. C'est le cas de `JWT_SECRET` qui, s'il est absent, lève
 explicitement l'erreur `JWT_SECRET is required`
-([backend/src/utils/env.ts:90](../backend/src/utils/env.ts)). Le mode "le
+([backend/src/utils/env.ts:90`). Le mode "le
 serveur démarre mais explose à la première requête" est ainsi écarté.
 
 **Typage TypeScript des consommateurs.** L'objet `env` est typé par inférence.
@@ -48,7 +48,7 @@ Le module définit six fonctions utilitaires privées, toutes situées en haut d
 d'environnement et la conversion vers le type cible attendu par les
 consommateurs.
 
-### 2.1 `readString(value, fallback)` — [env.ts:27-29](../backend/src/utils/env.ts)
+### 2.1 `readString(value, fallback)` — [env.ts:27-29`
 
 ```ts
 function readString(value: string | undefined, fallback: string): string {
@@ -62,7 +62,7 @@ définie. Cette règle évite les pièges classiques (`DB_USER= `, copié-collé
 maladroit) et garantit que les valeurs reçues côté métier sont toujours
 significatives.
 
-### 2.2 `readNumber(value, fallback)` — [env.ts:3-10](../backend/src/utils/env.ts)
+### 2.2 `readNumber(value, fallback)` — [env.ts:3-10`
 
 ```ts
 function readNumber(value: string | undefined, fallback: number): number {
@@ -81,7 +81,7 @@ préfère démarrer avec une valeur sûre que planter sur une faute de frappe
 dans le `.env`, à l'exception explicite des variables réellement
 obligatoires (cf. `JWT_SECRET`).
 
-### 2.3 `readBoolean(value, fallback)` — [env.ts:12-25](../backend/src/utils/env.ts)
+### 2.3 `readBoolean(value, fallback)` — [env.ts:12-25`
 
 ```ts
 function readBoolean(value: string | undefined, fallback: boolean): boolean {
@@ -106,7 +106,7 @@ fallback. L'intention est de tolérer les conventions des différents
 environnements d'hébergement (Railway, Docker, systemd) sans avoir à mémoriser
 laquelle est attendue.
 
-### 2.4 `readOptionalString(value)` — [env.ts:31-33](../backend/src/utils/env.ts)
+### 2.4 `readOptionalString(value)` — [env.ts:31-33`
 
 ```ts
 function readOptionalString(value: string | undefined): string | undefined {
@@ -120,7 +120,7 @@ optionnelles, dont la simple absence est un signal métier — par exemple
 `AUTH_SESSION_COOKIE_DOMAIN`, qui par défaut n'est pas positionné sur le
 cookie de session pour rester compatible avec `localhost`.
 
-### 2.5 `readSameSite(value, fallback)` — [env.ts:35-42](../backend/src/utils/env.ts)
+### 2.5 `readSameSite(value, fallback)` — [env.ts:35-42`
 
 ```ts
 function readSameSite(value, fallback: 'strict' | 'lax' | 'none') {
@@ -138,7 +138,7 @@ session. Le type de retour est une union littérale (`'strict' | 'lax' |
 'none'`), ce qui force les consommateurs à traiter exactement ces trois cas et
 permet à TypeScript de vérifier l'exhaustivité.
 
-### 2.6 `readDurationMs(value, fallback)` — [env.ts:44-65](../backend/src/utils/env.ts)
+### 2.6 `readDurationMs(value, fallback)` — [env.ts:44-65`
 
 ```ts
 function readDurationMs(value: string, fallback: number): number {
@@ -162,7 +162,7 @@ est absente :
 jwtSecret: process.env.JWT_SECRET ?? (() => { throw new Error('JWT_SECRET is required'); })(),
 ```
 
-[env.ts:90](../backend/src/utils/env.ts). Le choix est délibéré : un secret de
+[env.ts:90`. Le choix est délibéré : un secret de
 signature JWT n'a pas de valeur par défaut acceptable. Toute valeur générique
 ("changeme", "secret"...) ferait du backend une cible triviale pour la
 fabrication de tokens. Plutôt que de proposer un fallback dangereux, on
@@ -319,7 +319,7 @@ liés.
 
 ### 5.1 `AUTH_SESSION_COOKIE_SECURE` dépend de `NODE_ENV`
 
-[env.ts:95](../backend/src/utils/env.ts) :
+[env.ts:95` :
 
 ```ts
 sessionCookieSecure: readBoolean(process.env.AUTH_SESSION_COOKIE_SECURE, nodeEnv === 'production'),
@@ -337,7 +337,7 @@ pour pouvoir utiliser `http://localhost:4200` sans certificat TLS.
 ### 5.2 `CORS_ALLOWED_ORIGINS` doit être réécrit en production
 
 Le défaut `http://localhost:4200,http://127.0.0.1:4200`
-([env.ts:76](../backend/src/utils/env.ts)) est calibré pour un développement
+([env.ts:76`) est calibré pour un développement
 local avec Angular CLI sur son port standard. Il ne convient évidemment pas à
 une instance déployée : il faut renseigner les origines réelles du frontend
 hébergé (`https://recipe-shelter.fr`, `https://staging.recipe-shelter.fr`,
@@ -351,7 +351,7 @@ quand `credentials: true` (cf. `architecture.md` §2).
 
 ### 5.3 `AUTH_SESSION_COOKIE_MAX_AGE_MS` dérivé de `JWT_EXPIRES_IN`
 
-[env.ts:67-69, 96](../backend/src/utils/env.ts) :
+[env.ts:67-69, 96` :
 
 ```ts
 const jwtExpiresIn = readString(process.env.JWT_EXPIRES_IN, '7d');
@@ -427,7 +427,7 @@ gagneront à être revues.
 
 Le détail des étapes d'installation et la mise à jour de chaque variable côté
 Railway sont décrits dans
-[`_draft_deployment/02-plan-railway.md`](../_draft_deployment/02-plan-railway.md).
+``_draft_deployment/02-plan-railway.md``.
 Ce document couvre notamment la création du projet Railway, le branchement du
 service MySQL géré et l'import des variables via l'interface web ou la CLI.
 
