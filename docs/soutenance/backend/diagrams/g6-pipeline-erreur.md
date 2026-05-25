@@ -48,7 +48,7 @@ flowchart TB
     COND -- non --> SKIP[pas de log]
     LOG --> SERIAL
     SKIP --> SERIAL
-    SERIAL[res.status statusCode .json<br/>{ error: { message, code } }]
+    SERIAL["res.status statusCode .json<br/>error: message, code"]
     SERIAL --> RES([Reponse HTTP au client]):::exit
 
     classDef entry fill:#e8f4ff,stroke:#1f6feb,color:#0a2540

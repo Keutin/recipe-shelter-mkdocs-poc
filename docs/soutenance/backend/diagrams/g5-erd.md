@@ -96,7 +96,7 @@ erDiagram
     }
 
     RecipeSteps {
-        bigint RecipeId PK_FK
+        bigint RecipeId PK
         int StepNumber PK
         text Description
     }
@@ -112,18 +112,18 @@ erDiagram
     }
 
     RecipeEquipments {
-        bigint RecipeId PK_FK
-        bigint EquipmentId PK_FK
+        bigint RecipeId PK
+        bigint EquipmentId PK
     }
 
     RecipeTags {
-        bigint RecipeId PK_FK
-        bigint TagId PK_FK
+        bigint RecipeId PK
+        bigint TagId PK
     }
 
     Favorites {
-        bigint UserId PK_FK
-        bigint RecipeId PK_FK
+        bigint UserId PK
+        bigint RecipeId PK
         datetime CreatedAt
     }
 
@@ -173,7 +173,7 @@ erDiagram
 
 ## Legende et points de lecture
 
-- **PK / FK / UK** : cle primaire, cle etrangere, contrainte d'unicite. `PK_FK` marque une colonne qui est a la fois dans la PK composite et FK d'une autre table (cas des tables d'association : `RecipeSteps`, `RecipeEquipments`, `RecipeTags`, `Favorites`).
+- **PK / FK / UK** : cle primaire, cle etrangere, contrainte d'unicite. `PK` marque une colonne qui est a la fois dans la PK composite et FK d'une autre table (cas des tables d'association : `RecipeSteps`, `RecipeEquipments`, `RecipeTags`, `Favorites`).
 - **ENUMs MySQL** :
   - `Users.Status` : `inactive | active | banned`
   - `Recipes.Status` : `draft | pending | published | rejected | archived` (cycle de vie editorial)
